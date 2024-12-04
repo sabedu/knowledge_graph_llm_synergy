@@ -1,0 +1,3007 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "In the last month, there were 29 commits.",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-27T00:00:00Z\" AND c.committedDate < \"2024-08-27T00:00:00Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 29
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 1,
+        "category": 1
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit is identified by the ID \"2056aeeeaddd977eb205619c6f236b94dac896be\". It was committed on August 18, 2024, at 09:22:30 UTC. The commit message is: \"Revert 'feat(git)!: ask for confirmation in `gpf` alias (#10169)'. This reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\" The commit involved 6 additions, 11 deletions, and 2 changed files.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 2,
+        "category": 1
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Sure, here are the details of the commits between May 27th, 2018, and May 31st, 2018:\n\n1. Commit ID: ebda8af870acc295388ed187f0139a8bffa83196\n   - Committed Date: 2018-05-28T15:09:53Z\n   - Additions: 2\n   - Deletions: 0\n   - Changed Files: 1\n   - Comments Count: 0\n   - Message: \"Clarify ssh-agent settings position\"\n\n2. Commit ID: ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72\n   - Committed Date: 2018-05-28T09:23:05Z\n   - Additions: 1\n   - Deletions: 1\n   - Changed Files: 1\n   - Comments Count: 0\n   - Message: \"[plugins/vundle] Use HTTPS to clone repository. (#6857)\\n\\nThe git protocol is likely to be blocked in some networks while HTTPS usually works.\"\n\nWould you like to know anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-28T15:09:53Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                    "type": "Commit",
+                    "message": "\"Clarify ssh-agent settings position\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-28T09:23:05Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                    "type": "Commit",
+                    "message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\""
+                }
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 3,
+        "category": 1
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 4,
+        "category": 1
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "Here are the changes for the `install.sh` file:\n\n1. **Commit Date:** 2024-07-03T06:51:20Z\n   - **Additions:** 3\n   - **Deletions:** 3\n   - **Changed Files:** 2\n   - **Message:** \"chore: replace all instances of twitter with X\\n\\nCloses #12536\"\n\n2. **Commit Date:** 2024-03-07T08:54:43Z\n   - **Additions:** 24\n   - **Deletions:** 9\n   - **Changed Files:** 3\n   - **Message:** \"feat(tools): update `supports_hyperlinks` (#12258)\\n\\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"\n\n3. **Commit Date:** 2023-12-01T16:03:15Z\n   - **Additions:** 3\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Message:** \"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"\n\n4. **Commit Date:** 2023-04-03T20:21:49Z\n   - **Additions:** 1\n   - **Deletions:** 2\n   - **Changed Files:** 1\n   - **Message:** \"chore(installer): remove words triggering false positives in antiviruses\"\n\n5. **Commit Date:** 2023-03-31T05:37:01Z\n   - **Additions:** 5\n   - **Deletions:** 0\n   - **Changed Files:** 1\n   - **Message:** \"fix(installer): dont use `sudo` when user is in Termux (#11591)\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n\n6. **Commit Date:** 2023-02-02T07:53:44Z\n   - **Additions:** 5\n   - **Deletions:** 0\n   - **Changed Files:** 1\n   - **Message:** \"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"\n\n7. **Commit Date:** 2023-02-02T07:53:44Z\n   - **Additions:** 5\n   - **Deletions:** 3\n   - **Changed Files:** 1\n   - **Message:** \"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\\n\\nFixes #11471\"\n\n8. **Commit Date:** 2023-01-29T11:39:22Z\n   - **Additions:** 30\n   - **Deletions:** 15\n   - **Changed Files:** 1\n   - **Message:** \"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\\n\\nFixes #9001\\nFixes #10479\\n\\nCloses #9376\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n\n9. **Commit Date:** 2022-10-14T18:31:33Z\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Message:** \"fix(installer): detect newer Git for Windows version errors (#11157)\\n\\nFixes #11157\"\n\n10. **Commit Date:** 2022-10-12T08:55:02Z\n    - **Additions:** 16\n    - **Deletions:** 4\n    - **Changed Files:** 2\n    - **Message:** \"fix: show full hyperlinks in Konsole (#10964)\\n\\nFixes #10964\"",
+        "query": "cypher\nMATCH (f:File {name: \"install.sh\"})<-[:changed]-(c:Commit)\nRETURN c.additions, c.deletions, c.changedFiles, c.message, c.committedDate\n",
+        "result": [
+            {
+                "c.additions": 3,
+                "c.deletions": 3,
+                "c.changedFiles": 2,
+                "c.message": "\"chore: replace all instances of twitter with X\n\nCloses #12536\"",
+                "c.committedDate": "2024-07-03T06:51:20Z"
+            },
+            {
+                "c.additions": 24,
+                "c.deletions": 9,
+                "c.changedFiles": 3,
+                "c.message": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"",
+                "c.committedDate": "2024-03-07T08:54:43Z"
+            },
+            {
+                "c.additions": 3,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.message": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"",
+                "c.committedDate": "2023-12-01T16:03:15Z"
+            },
+            {
+                "c.additions": 1,
+                "c.deletions": 2,
+                "c.changedFiles": 1,
+                "c.message": "\"chore(installer): remove words triggering false positives in antiviruses\"",
+                "c.committedDate": "2023-04-03T20:21:49Z"
+            },
+            {
+                "c.additions": 5,
+                "c.deletions": 0,
+                "c.changedFiles": 1,
+                "c.message": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "c.committedDate": "2023-03-31T05:37:01Z"
+            },
+            {
+                "c.additions": 5,
+                "c.deletions": 0,
+                "c.changedFiles": 1,
+                "c.message": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"",
+                "c.committedDate": "2023-02-02T07:53:44Z"
+            },
+            {
+                "c.additions": 5,
+                "c.deletions": 3,
+                "c.changedFiles": 1,
+                "c.message": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\"",
+                "c.committedDate": "2023-02-02T07:53:44Z"
+            },
+            {
+                "c.additions": 30,
+                "c.deletions": 15,
+                "c.changedFiles": 1,
+                "c.message": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "c.committedDate": "2023-01-29T11:39:22Z"
+            },
+            {
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.message": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\"",
+                "c.committedDate": "2022-10-14T18:31:33Z"
+            },
+            {
+                "c.additions": 16,
+                "c.deletions": 4,
+                "c.changedFiles": 2,
+                "c.message": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\"",
+                "c.committedDate": "2022-10-12T08:55:02Z"
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 5,
+        "category": 2
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "Here are all the commits for the `README.md` file:\n\n1. Commit ID: 2056aeeeaddd977eb205619c6f236b94dac896be\n   - Additions: 6\n   - Deletions: 11\n   - Committed Date: 2024-08-18T09:22:30Z\n   - Changed Files: 2\n   - Comments Count: 0\n   - Message: \"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\\n\\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\"\n\n2. Commit ID: b0204f78394d84771436a7717aafee6cad140319\n   - Additions: 8\n   - Deletions: 0\n   - Committed Date: 2024-08-15T15:53:03Z\n   - Changed Files: 2\n   - Comments Count: 0\n   - Message: \"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\"\n\n3. Commit ID: f30df6c855d1df077adc6b226219629312015ec6\n   - Additions: 9\n   - Deletions: 1\n   - Committed Date: 2024-08-15T15:04:50Z\n   - Changed Files: 1\n   - Comments Count: 0\n   - Message: \"docs: document disclaimer about theme appearance\"\n\n4. Commit ID: c13795d4c40fe075ec8b4450bb78b65ecf8108b2\n   - Additions: 11\n   - Deletions: 6\n   - Committed Date: 2024-08-15T14:48:03Z\n   - Changed Files: 2\n   - Comments Count: 0\n   - Message: \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\\n\\n- Rename `git push --force-with-lease ...` to `gpff`\\r\\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\\r\\n\\r\\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\\r\\nrunning the potentially destructive `git push --force-with-lease` command. If you\\r\\nwant to force-run the command without having to confirm it, run `gpff`.\"\n\n5. Commit ID: d26c4a276610445670fb71d415804625cebd7ccd\n   - Additions: 15\n   - Deletions: 15\n   - Committed Date: 2024-08-15T14:26:46Z\n   - Changed Files: 1\n   - Comments Count: 0\n   - Message: \"chore(tmux): add link to iTerm2 integration docs\"\n\n6. Commit ID: 9ba6daa1b5d0b60c89525d679eb30fe3ed9947de\n   - Additions: 60\n   - Deletions: 0\n   - Committed Date: 2024-08-14T07:18:18Z\n   - Changed Files: 2\n   - Comments Count: 0\n   - Message: \"feat(conda): add `conda` aliases plugin\\n\\nCloses #7318\\nClosed #9691\\n\\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\"\n\n7. Commit ID: d6f84f3e7d2515cee8ba776d05ee2009ffd471d7\n   - Additions: 17\n   - Deletions: 10\n   - Committed Date: 2024-08-12T09:46:16Z\n   - Changed Files: 3\n   - Comments Count: 0\n   - Message: \"fix(catimg): add support to `magick` binary (#12608)\\n\\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\"\n\n8. Commit ID: efafef8495f030501e0df59ccb76a598bbce3ae1\n   - Additions: 123\n   - Deletions: 90\n   - Committed Date: 2024-08-09T07:44:46Z\n   - Changed Files: 23\n   - Comments Count: 0\n   - Message: \"docs: improve several plugin READMEs and add one for `ssh` plugin\"\n\n9. Commit ID: fccaaf2fc60149baab966acaeae35f55325e6f98\n   - Additions: 125\n   - Deletions: 112\n   - Committed Date: 2024-08-08T18:43:20Z\n   - Changed Files: 2\n   - Comments Count: 0\n   - Message: \"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\"\n\n10. Commit ID: ff62d39f023fbe2872078ce82ea9704b1bf09ea6\n    - Additions: 0\n    - Deletions: 411\n    - Committed Date: 2024-08-08T18:43:11Z\n    - Changed Files: 3\n    - Comments Count: 0\n    - Message: \"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\\n\\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\\nand unsupported years ago. Use Docker Desktop instead.\"",
+        "query": "cypher\nMATCH (f:File {name: \"README.md\"})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 0,
+                    "committedDate": "2024-08-15T15:53:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b0204f78394d84771436a7717aafee6cad140319",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 1,
+                    "committedDate": "2024-08-15T15:04:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "f30df6c855d1df077adc6b226219629312015ec6",
+                    "type": "Commit",
+                    "message": "\"docs: document disclaimer about theme appearance\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 6,
+                    "committedDate": "2024-08-15T14:48:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c13795d4c40fe075ec8b4450bb78b65ecf8108b2",
+                    "type": "Commit",
+                    "message": "\"feat(git)!: ask for confirmation in `gpf` alias (#10169)\n\n- Rename `git push --force-with-lease ...` to `gpff`\r\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\r\n\r\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\r\nrunning the potentially destructive `git push --force-with-lease` command. If you\r\nwant to force-run the command without having to confirm it, run `gpff`.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 15,
+                    "committedDate": "2024-08-15T14:26:46Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d26c4a276610445670fb71d415804625cebd7ccd",
+                    "type": "Commit",
+                    "message": "\"chore(tmux): add link to iTerm2 integration docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 60,
+                    "deletions": 0,
+                    "committedDate": "2024-08-14T07:18:18Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9ba6daa1b5d0b60c89525d679eb30fe3ed9947de",
+                    "type": "Commit",
+                    "message": "\"feat(conda): add `conda` aliases plugin\n\nCloses #7318\nClosed #9691\n\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 17,
+                    "deletions": 10,
+                    "committedDate": "2024-08-12T09:46:16Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "d6f84f3e7d2515cee8ba776d05ee2009ffd471d7",
+                    "type": "Commit",
+                    "message": "\"fix(catimg): add support to `magick` binary (#12608)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 90,
+                    "committedDate": "2024-08-09T07:44:46Z",
+                    "changedFiles": 23,
+                    "commentsCount": 0,
+                    "id": "efafef8495f030501e0df59ccb76a598bbce3ae1",
+                    "type": "Commit",
+                    "message": "\"docs: improve several plugin READMEs and add one for `ssh` plugin\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 125,
+                    "deletions": 112,
+                    "committedDate": "2024-08-08T18:43:20Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fccaaf2fc60149baab966acaeae35f55325e6f98",
+                    "type": "Commit",
+                    "message": "\"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 411,
+                    "committedDate": "2024-08-08T18:43:11Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "ff62d39f023fbe2872078ce82ea9704b1bf09ea6",
+                    "type": "Commit",
+                    "message": "\"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\n\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\nand unsupported years ago. Use Docker Desktop instead.\""
+                }
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 6,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.login, COUNT(i) AS unfixed_bugs\nORDER BY unfixed_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 7,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "The developer that fixed the most bugs in README.md is Marc Cornell\u00e0, with 4 bug fixes.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"README.md\"})\nRETURN u.name AS developer, COUNT(i) AS bug_fixes\nORDER BY bug_fixes DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Marc Cornell\u00e0",
+                "bug_fixes": 4
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 9,
+        "category": 3
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "The user who fixed the most bugs in \"cli.zsh\" is \"mcornella\", with a total of 2 fixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"cli.zsh\"})\nRETURN u.login AS user, COUNT(i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "user": "mcornella",
+                "fixed_bugs": 2
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 10,
+        "category": 3
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The files that introduce the most bugs are:\n\n1. `README.md` with 6 bugs.\n2. `cli.zsh` with 2 bugs.\n3. `upgrade.sh` with 2 bugs.\n4. `aws.plugin.zsh` with 2 bugs.\n5. `termsupport.zsh` with 2 bugs.\n6. `azure.plugin.zsh` with 1 bug.\n7. `kubectl.plugin.zsh` with 1 bug.\n8. `check_for_upgrade.sh` with 1 bug.\n9. `git.plugin.zsh` with 1 bug.\n10. `brew.plugin.zsh` with 1 bug.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bug_count": 6
+            },
+            {
+                "f.name": "cli.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "azure.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "kubectl.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "check_for_upgrade.sh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "git.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "brew.plugin.zsh",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 11,
+        "category": 2
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy files are:\n\n1. README.md with 6 bugs\n2. termsupport.zsh with 2 bugs\n3. upgrade.sh with 2 bugs\n4. cli.zsh with 2 bugs\n5. aws.plugin.zsh with 2 bugs\n6. _gradlew with 1 bug\n7. gradle.plugin.zsh with 1 bug\n8. kiwi.zsh-theme with 1 bug\n9. git.zsh with 1 bug\n10. _gradle with 1 bug",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bugCount": 6
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "cli.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "_gradlew",
+                "bugCount": 1
+            },
+            {
+                "f.name": "gradle.plugin.zsh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "kiwi.zsh-theme",
+                "bugCount": 1
+            },
+            {
+                "f.name": "git.zsh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "_gradle",
+                "bugCount": 1
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 12,
+        "category": 2
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "The buggy commit that happened on November 17, 2021, is the commit with the message: \"fix(osx): deprecate `osx` plugin without symlink (#10428)\\n\\nFixes #10428\". This commit has the ID b60b3f184275c39800dd7284d6904fcf295b3956 and was made at 09:53:17Z. It involved 8 additions and 8 deletions, changing 5 files and having 0 comments.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate =~ '2021-11-17T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 8,
+                    "committedDate": "2021-11-17T09:53:17Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "b60b3f184275c39800dd7284d6904fcf295b3956",
+                    "type": "Commit",
+                    "message": "\"fix(osx): deprecate `osx` plugin without symlink (#10428)\n\nFixes #10428\""
+                }
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 13,
+        "category": 2
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE i.created_at =~ '2023-06-08T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 14,
+        "category": 2
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10452?",
+        "response": "I don't know the commit(s) that fixed the bug ticket KAFKA-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"KAFKA-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 15,
+        "category": 2
+    },
+    {
+        "question": "which commit fixed the bug ticket 12273?",
+        "response": "I don't know which commit fixed the bug ticket Kafka-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"Kafka-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 16,
+        "category": 2
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "The bug introduced by the commit hash `b9be3a43b4da579299b4426b1ba9121f746e2555` is described in Issue #12400. The issue is titled \"`omz plugin disable` breaks .zshrc file when disabling common substring\". The problem occurs when running the command `omz plugin disable git`, which results in the `.zshrc` file being incorrectly modified. Specifically, the `git` plugin gets removed, but it also inadvertently affects the `git-open` plugin, leading to a malformed plugins list. For example, the plugins list:\n\n```shell\nplugins=(\n    git\n    git-open\n    autoupdate\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n    autojump\n    brew\n    docker\n    fzf\n    rust\n    thefuck\n    zsh-interactive-cd\n    zsh-bat\n    asdf\n)\n```\n\ngets altered to:\n\n```shell\nplugins=(\n    autoupdate\n-open\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n    autojump\n    brew\n    docker\n    fzf\n    rust\n    thefuck\n    zsh-interactive-cd\n    zsh-bat\n    asdf\n)\n```\n\nThe issue also manifests when the plugins are listed on a single line, leading to similar corruption of the list.",
+        "query": "cypher\nMATCH (c:Commit {id: 'b9be3a43b4da579299b4426b1ba9121f746e2555'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12400,
+                    "closed_at": "2024-05-08T20:20:43Z",
+                    "created_at": "2024-05-07T18:34:05Z",
+                    "id": 12400,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"`omz plugin disable` breaks .zshrc file when disabling common substring\"",
+                    "body": "\"### Describe the bug\r\n\r\n`omz plugin disable git` will break a zshrc file with plugins that look like this:\r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    git-open\r\n    autoupdate\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n### Steps to reproduce\r\n\r\n1. Set up OhMyZsh\r\n2. Set up plugins, for example:\r\n```shell\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\nor \r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    autoupdate\r\n    git-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n3. run `omz plugin disable git` \r\n\r\n### Expected behavior\r\n\r\nThe `git` plugin gets removed, and the `git-open` plugin isnt impacted.  This isnt quite what happens though, the actual result is:\r\n\r\n```shell\r\nplugins=(\r\n    autoupdate\r\n-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\nNote - the same behavior happens when `plugins` is one line:\r\n\r\n```shell\r\n# this:\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n\r\n# gets turned into:\r\nplugins=(autoupdate-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\n### Screenshots and recordings\r\n\r\n_No response_\r\n\r\n### OS / Linux distribution\r\n\r\nmacOS\r\n\r\n### Zsh version\r\n\r\n5.9\r\n\r\n### Oh My Zsh version\r\n\r\nmaster (668ca3a)\r\n\r\n### Terminal emulator\r\n\r\niTerm2\r\n\r\n### If using WSL on Windows, which version of WSL\r\n\r\nNone\r\n\r\n### Additional context\r\n\r\n_No response_\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/12400"
+                }
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 17,
+        "category": 2
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "The bug caused by commit `65393b4bb10de841edbe2026dba29b73625b33d7` is described in issue #7986. The issue is titled `\"parse errors for functions in debian.plugin.zsh\"`. The problem occurs in Debian Buster with zsh 5.7.1 (x86_64-debian-linux-gnu), where the debian plugin in OMZ gives parse errors. Specifically, the errors are related to defining functions based on aliases without the \"function\" keyword, leading to parse errors. The issue was created on July 10, 2019, and closed on September 8, 2019. The full details can be found at [this URL](https://github.com/ohmyzsh/ohmyzsh/issues/7986).",
+        "query": "cypher\nMATCH (c:Commit {id: '65393b4bb10de841edbe2026dba29b73625b33d7'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 7986,
+                    "closed_at": "2019-09-08T12:59:51Z",
+                    "created_at": "2019-07-10T12:26:18Z",
+                    "id": 7986,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"parse errors for functions in debian.plugin.zsh\"",
+                    "body": "\"**Describe the bug**\r\nIn Debian Buster, zsh 5.7.1 (x86_64-debian-linux-gnu), the debian plugin in OMZ gives parse errors:\r\n\r\n```\r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `() \r\n```\r\n\r\nIt appears that it doesnt like the functions being defined here without the \"function\" keyword.  This appears to be able to be fixed by adding \"function\" to all the functions defined in that section, namely:\r\n\r\nline 75: \"function abd() {\"\r\nline 86: \"function ai() {\"\r\nline 91: \"function ap() {\"\r\nline 96: \"function ar() {\"\r\n\r\nIm not sure how to file a pull request or Id just do so myself, sorry.\r\n\r\n**To Reproduce**\r\n1.) Enable \"debian\" plugin in zshrc\r\n2.) source ~/.zshrc\r\n3.) Receive parse error\r\n\r\n**Expected behavior**\r\nPlugin should load without issue rather than parse errors\r\n\r\n**System:**\r\n - OS: Debian Buster\r\n - Zsh version: 5.7.1 (x86_64-debian-linux-gnu)\r\n - Terminal emulator: urxvt (rxvt-unicode 9.22-6) with tmux 2.8-3\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/7986"
+                }
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 18,
+        "category": 2
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "The percentage of fixing commits that introduced bugs in July 2024 is 100%.",
+        "query": "cypher\nMATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c1.committedDate STARTS WITH '2024-07' AND c2.committedDate STARTS WITH '2024-07'\nWITH COUNT(c1) AS fixingCommits, COUNT(c2) AS introducingCommits\nRETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage\n",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 19,
+        "category": 3
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "There was 1 fixing commit that caused bugs in July 2024.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(:Issue)<-[:introduced]-(bug:Commit)\nWHERE c.committedDate =~ '2024-07-.*'\nRETURN COUNT(DISTINCT c) AS fixingCommitsCausingBugs\n",
+        "result": [
+            {
+                "fixingCommitsCausingBugs": 1
+            }
+        ],
+        "iteration": 0,
+        "isCorrect": true,
+        "reason": "",
+        "number": 20,
+        "category": 3
+    },
+    {
+        "question": "how many commits happened in last month?",
+        "response": "In the last month, there were 29 commits.",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-27T00:00:00Z\" AND c.committedDate < \"2024-08-27T00:00:00Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 29
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 1,
+        "category": 1
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit was made on August 18, 2024, at 09:22:30 UTC. The commit ID is 2056aeeeaddd977eb205619c6f236b94dac896be, and the message is \"Revert 'feat(git)!: ask for confirmation in `gpf` alias (#10169)'. This reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\" The commit includes 6 additions, 11 deletions, and changes to 2 files. There are no comments on this commit.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 2,
+        "category": 1
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Certainly! Here are the details of the commits made between May 27th, 2018, and May 31st, 2018:\n\n1. **Commit ID:** ebda8af870acc295388ed187f0139a8bffa83196\n   - **Committed Date:** 2018-05-28T15:09:53Z\n   - **Message:** \"Clarify ssh-agent settings position\"\n   - **Additions:** 2\n   - **Deletions:** 0\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\n2. **Commit ID:** ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72\n   - **Committed Date:** 2018-05-28T09:23:05Z\n   - **Message:** \"[plugins/vundle] Use HTTPS to clone repository. (#6857)\\n\\nThe git protocol is likely to be blocked in some networks while HTTPS usually works.\"\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\nIf you need further assistance, feel free to ask!",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-28T15:09:53Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                    "type": "Commit",
+                    "message": "\"Clarify ssh-agent settings position\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-28T09:23:05Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                    "type": "Commit",
+                    "message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\""
+                }
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 3,
+        "category": 1
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 4,
+        "category": 1
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "Here are the changes for the `install.sh` file:\n\n1. **Commit Date:** 2024-07-03T06:51:20Z\n   - **Message:** \"chore: replace all instances of twitter with X\\n\\nCloses #12536\"\n   - **Additions:** 3\n   - **Deletions:** 3\n   - **Changed Files:** 2\n\n2. **Commit Date:** 2024-03-07T08:54:43Z\n   - **Message:** \"feat(tools): update `supports_hyperlinks` (#12258)\\n\\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"\n   - **Additions:** 24\n   - **Deletions:** 9\n   - **Changed Files:** 3\n\n3. **Commit Date:** 2023-12-01T16:03:15Z\n   - **Message:** \"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"\n   - **Additions:** 3\n   - **Deletions:** 1\n   - **Changed Files:** 1\n\n4. **Commit Date:** 2023-04-03T20:21:49Z\n   - **Message:** \"chore(installer): remove words triggering false positives in antiviruses\"\n   - **Additions:** 1\n   - **Deletions:** 2\n   - **Changed Files:** 1\n\n5. **Commit Date:** 2023-03-31T05:37:01Z\n   - **Message:** \"fix(installer): dont use `sudo` when user is in Termux (#11591)\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n   - **Additions:** 5\n   - **Deletions:** 0\n   - **Changed Files:** 1\n\n6. **Commit Date:** 2023-02-02T07:53:44Z\n   - **Message:** \"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"\n   - **Additions:** 5\n   - **Deletions:** 0\n   - **Changed Files:** 1\n\n7. **Commit Date:** 2023-02-02T07:53:44Z\n   - **Message:** \"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\\n\\nFixes #11471\"\n   - **Additions:** 5\n   - **Deletions:** 3\n   - **Changed Files:** 1\n\n8. **Commit Date:** 2023-01-29T11:39:22Z\n   - **Message:** \"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\\n\\nFixes #9001\\nFixes #10479\\n\\nCloses #9376\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n   - **Additions:** 30\n   - **Deletions:** 15\n   - **Changed Files:** 1\n\n9. **Commit Date:** 2022-10-14T18:31:33Z\n   - **Message:** \"fix(installer): detect newer Git for Windows version errors (#11157)\\n\\nFixes #11157\"\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n\n10. **Commit Date:** 2022-10-12T08:55:02Z\n    - **Message:** \"fix: show full hyperlinks in Konsole (#10964)\\n\\nFixes #10964\"\n    - **Additions:** 16\n    - **Deletions:** 4\n    - **Changed Files:** 2",
+        "query": "cypher\nMATCH (f:File {name: \"install.sh\"})<-[:changed]-(c:Commit)\nRETURN c.additions, c.deletions, c.changedFiles, c.committedDate, c.message\n",
+        "result": [
+            {
+                "c.additions": 3,
+                "c.deletions": 3,
+                "c.changedFiles": 2,
+                "c.committedDate": "2024-07-03T06:51:20Z",
+                "c.message": "\"chore: replace all instances of twitter with X\n\nCloses #12536\""
+            },
+            {
+                "c.additions": 24,
+                "c.deletions": 9,
+                "c.changedFiles": 3,
+                "c.committedDate": "2024-03-07T08:54:43Z",
+                "c.message": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\""
+            },
+            {
+                "c.additions": 3,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2023-12-01T16:03:15Z",
+                "c.message": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\""
+            },
+            {
+                "c.additions": 1,
+                "c.deletions": 2,
+                "c.changedFiles": 1,
+                "c.committedDate": "2023-04-03T20:21:49Z",
+                "c.message": "\"chore(installer): remove words triggering false positives in antiviruses\""
+            },
+            {
+                "c.additions": 5,
+                "c.deletions": 0,
+                "c.changedFiles": 1,
+                "c.committedDate": "2023-03-31T05:37:01Z",
+                "c.message": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\""
+            },
+            {
+                "c.additions": 5,
+                "c.deletions": 0,
+                "c.changedFiles": 1,
+                "c.committedDate": "2023-02-02T07:53:44Z",
+                "c.message": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\""
+            },
+            {
+                "c.additions": 5,
+                "c.deletions": 3,
+                "c.changedFiles": 1,
+                "c.committedDate": "2023-02-02T07:53:44Z",
+                "c.message": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\""
+            },
+            {
+                "c.additions": 30,
+                "c.deletions": 15,
+                "c.changedFiles": 1,
+                "c.committedDate": "2023-01-29T11:39:22Z",
+                "c.message": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\""
+            },
+            {
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2022-10-14T18:31:33Z",
+                "c.message": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\""
+            },
+            {
+                "c.additions": 16,
+                "c.deletions": 4,
+                "c.changedFiles": 2,
+                "c.committedDate": "2022-10-12T08:55:02Z",
+                "c.message": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\""
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 5,
+        "category": 2
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "Here are all the commits for the README.md file:\n\n1. Commit ID: 2056aeeeaddd977eb205619c6f236b94dac896be\n   - Message: \"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n   - Additions: 6\n   - Deletions: 11\n   - Changed Files: 2\n   - Committed Date: 2024-08-18T09:22:30Z\n\n2. Commit ID: b0204f78394d84771436a7717aafee6cad140319\n   - Message: \"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\"\n   - Additions: 8\n   - Deletions: 0\n   - Changed Files: 2\n   - Committed Date: 2024-08-15T15:53:03Z\n\n3. Commit ID: f30df6c855d1df077adc6b226219629312015ec6\n   - Message: \"docs: document disclaimer about theme appearance\"\n   - Additions: 9\n   - Deletions: 1\n   - Changed Files: 1\n   - Committed Date: 2024-08-15T15:04:50Z\n\n4. Commit ID: c13795d4c40fe075ec8b4450bb78b65ecf8108b2\n   - Message: \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n   - Additions: 11\n   - Deletions: 6\n   - Changed Files: 2\n   - Committed Date: 2024-08-15T14:48:03Z\n\n5. Commit ID: d26c4a276610445670fb71d415804625cebd7ccd\n   - Message: \"chore(tmux): add link to iTerm2 integration docs\"\n   - Additions: 15\n   - Deletions: 15\n   - Changed Files: 1\n   - Committed Date: 2024-08-15T14:26:46Z\n\n6. Commit ID: 9ba6daa1b5d0b60c89525d679eb30fe3ed9947de\n   - Message: \"feat(conda): add `conda` aliases plugin\"\n   - Additions: 60\n   - Deletions: 0\n   - Changed Files: 2\n   - Committed Date: 2024-08-14T07:18:18Z\n\n7. Commit ID: d6f84f3e7d2515cee8ba776d05ee2009ffd471d7\n   - Message: \"fix(catimg): add support to `magick` binary (#12608)\"\n   - Additions: 17\n   - Deletions: 10\n   - Changed Files: 3\n   - Committed Date: 2024-08-12T09:46:16Z\n\n8. Commit ID: efafef8495f030501e0df59ccb76a598bbce3ae1\n   - Message: \"docs: improve several plugin READMEs and add one for `ssh` plugin\"\n   - Additions: 123\n   - Deletions: 90\n   - Changed Files: 23\n   - Committed Date: 2024-08-09T07:44:46Z\n\n9. Commit ID: fccaaf2fc60149baab966acaeae35f55325e6f98\n   - Message: \"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\"\n   - Additions: 125\n   - Deletions: 112\n   - Changed Files: 2\n   - Committed Date: 2024-08-08T18:43:20Z\n\n10. Commit ID: ff62d39f023fbe2872078ce82ea9704b1bf09ea6\n    - Message: \"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\"\n    - Additions: 0\n    - Deletions: 411\n    - Changed Files: 3\n    - Committed Date: 2024-08-08T18:43:11Z\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (f:File {name: \"README.md\"})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 0,
+                    "committedDate": "2024-08-15T15:53:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b0204f78394d84771436a7717aafee6cad140319",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 1,
+                    "committedDate": "2024-08-15T15:04:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "f30df6c855d1df077adc6b226219629312015ec6",
+                    "type": "Commit",
+                    "message": "\"docs: document disclaimer about theme appearance\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 6,
+                    "committedDate": "2024-08-15T14:48:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c13795d4c40fe075ec8b4450bb78b65ecf8108b2",
+                    "type": "Commit",
+                    "message": "\"feat(git)!: ask for confirmation in `gpf` alias (#10169)\n\n- Rename `git push --force-with-lease ...` to `gpff`\r\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\r\n\r\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\r\nrunning the potentially destructive `git push --force-with-lease` command. If you\r\nwant to force-run the command without having to confirm it, run `gpff`.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 15,
+                    "committedDate": "2024-08-15T14:26:46Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d26c4a276610445670fb71d415804625cebd7ccd",
+                    "type": "Commit",
+                    "message": "\"chore(tmux): add link to iTerm2 integration docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 60,
+                    "deletions": 0,
+                    "committedDate": "2024-08-14T07:18:18Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9ba6daa1b5d0b60c89525d679eb30fe3ed9947de",
+                    "type": "Commit",
+                    "message": "\"feat(conda): add `conda` aliases plugin\n\nCloses #7318\nClosed #9691\n\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 17,
+                    "deletions": 10,
+                    "committedDate": "2024-08-12T09:46:16Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "d6f84f3e7d2515cee8ba776d05ee2009ffd471d7",
+                    "type": "Commit",
+                    "message": "\"fix(catimg): add support to `magick` binary (#12608)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 90,
+                    "committedDate": "2024-08-09T07:44:46Z",
+                    "changedFiles": 23,
+                    "commentsCount": 0,
+                    "id": "efafef8495f030501e0df59ccb76a598bbce3ae1",
+                    "type": "Commit",
+                    "message": "\"docs: improve several plugin READMEs and add one for `ssh` plugin\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 125,
+                    "deletions": 112,
+                    "committedDate": "2024-08-08T18:43:20Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fccaaf2fc60149baab966acaeae35f55325e6f98",
+                    "type": "Commit",
+                    "message": "\"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 411,
+                    "committedDate": "2024-08-08T18:43:11Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "ff62d39f023fbe2872078ce82ea9704b1bf09ea6",
+                    "type": "Commit",
+                    "message": "\"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\n\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\nand unsupported years ago. Use Docker Desktop instead.\""
+                }
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 6,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.name AS Developer, COUNT(i) AS UnfixedBugs\nORDER BY UnfixedBugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 7,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "The developer who fixed the most bugs in README.md is Marc Cornell\u00e0, with a total of 4 bug fixes.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"README.md\"})\nRETURN u.name AS developer, COUNT(i) AS bug_fixes\nORDER BY bug_fixes DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Marc Cornell\u00e0",
+                "bug_fixes": 4
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 9,
+        "category": 3
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "Marc Cornell\u00e0 fixed the most bugs in cli.zsh, with a total of 2 fixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"cli.zsh\"})\nRETURN u.name AS user, COUNT(i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "user": "Marc Cornell\u00e0",
+                "fixed_bugs": 2
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 10,
+        "category": 3
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The file that introduces the most bugs is `README.md` with 6 bugs. Other files that introduce a significant number of bugs include `cli.zsh`, `upgrade.sh`, `aws.plugin.zsh`, and `termsupport.zsh`, each with 2 bugs. Additionally, several files such as `azure.plugin.zsh`, `kubectl.plugin.zsh`, `check_for_upgrade.sh`, `git.plugin.zsh`, and `brew.plugin.zsh` each introduce 1 bug.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bug_count": 6
+            },
+            {
+                "f.name": "cli.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "azure.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "kubectl.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "check_for_upgrade.sh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "git.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "brew.plugin.zsh",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 11,
+        "category": 2
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy file is `README.md` with 6 reported issues. Other files with multiple issues include `termsupport.zsh`, `upgrade.sh`, `aws.plugin.zsh`, and `cli.zsh`, each with 2 reported issues.",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bugCount": 6
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "cli.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "candy-kingdom.zsh-theme",
+                "bugCount": 1
+            },
+            {
+                "f.name": "kiwi.zsh-theme",
+                "bugCount": 1
+            },
+            {
+                "f.name": "_gradle",
+                "bugCount": 1
+            },
+            {
+                "f.name": "gradle.plugin.zsh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "_gradlew",
+                "bugCount": 1
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 12,
+        "category": 2
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "The buggy commit that happened on November 17, 2021, is identified by the message: \"fix(osx): deprecate `osx` plugin without symlink (#10428)\\n\\nFixes #10428\". The commit ID is b60b3f184275c39800dd7284d6904fcf295b3956.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(:Issue)\nWHERE c.committedDate =~ '2021-11-17T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 8,
+                    "committedDate": "2021-11-17T09:53:17Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "b60b3f184275c39800dd7284d6904fcf295b3956",
+                    "type": "Commit",
+                    "message": "\"fix(osx): deprecate `osx` plugin without symlink (#10428)\n\nFixes #10428\""
+                }
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 13,
+        "category": 2
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "I don't know which commits were buggy on June 08, 2023. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE i.created_at =~ '2023-06-08T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 14,
+        "category": 2
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10452?",
+        "response": "I don't know the commit(s) that fixed the bug ticket KAFKA-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"KAFKA-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 15,
+        "category": 2
+    },
+    {
+        "question": "which commit fixed the bug ticket 12273?",
+        "response": "I don't know which commit fixed the bug ticket Kafka-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"Kafka-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 16,
+        "category": 2
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "The bug that was introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555 is described in Issue #12400. The issue is titled `\"omz plugin disable` breaks .zshrc file when disabling common substring.\" The problem occurs when the command `omz plugin disable git` is run, which breaks the zshrc file by incorrectly removing the `git` plugin, leading to malformed plugin lists. For example, it results in entries like `autoupdate-open` instead of properly retaining separate plugins. The issue has been closed and more details can be found at the following URL: [Issue 12400](https://github.com/ohmyzsh/ohmyzsh/issues/12400).",
+        "query": "cypher\nMATCH (c:Commit {id: 'b9be3a43b4da579299b4426b1ba9121f746e2555'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12400,
+                    "closed_at": "2024-05-08T20:20:43Z",
+                    "created_at": "2024-05-07T18:34:05Z",
+                    "id": 12400,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"`omz plugin disable` breaks .zshrc file when disabling common substring\"",
+                    "body": "\"### Describe the bug\r\n\r\n`omz plugin disable git` will break a zshrc file with plugins that look like this:\r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    git-open\r\n    autoupdate\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n### Steps to reproduce\r\n\r\n1. Set up OhMyZsh\r\n2. Set up plugins, for example:\r\n```shell\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\nor \r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    autoupdate\r\n    git-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n3. run `omz plugin disable git` \r\n\r\n### Expected behavior\r\n\r\nThe `git` plugin gets removed, and the `git-open` plugin isnt impacted.  This isnt quite what happens though, the actual result is:\r\n\r\n```shell\r\nplugins=(\r\n    autoupdate\r\n-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\nNote - the same behavior happens when `plugins` is one line:\r\n\r\n```shell\r\n# this:\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n\r\n# gets turned into:\r\nplugins=(autoupdate-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\n### Screenshots and recordings\r\n\r\n_No response_\r\n\r\n### OS / Linux distribution\r\n\r\nmacOS\r\n\r\n### Zsh version\r\n\r\n5.9\r\n\r\n### Oh My Zsh version\r\n\r\nmaster (668ca3a)\r\n\r\n### Terminal emulator\r\n\r\niTerm2\r\n\r\n### If using WSL on Windows, which version of WSL\r\n\r\nNone\r\n\r\n### Additional context\r\n\r\n_No response_\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/12400"
+                }
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 17,
+        "category": 2
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "The bug caused by commit `65393b4bb10de841edbe2026dba29b73625b33d7` is described in Issue #7986. The issue, titled \"parse errors for functions in debian.plugin.zsh,\" reports that the debian plugin in OMZ gives parse errors in Debian Buster, zsh 5.7.1 (x86_64-debian-linux-gnu). The errors occur because the functions in the debian plugin are being defined without the \"function\" keyword, leading to parse errors. The issue includes details on how to reproduce the error and suggests adding the \"function\" keyword to fix it. The issue was created on July 10, 2019, and was closed on September 8, 2019. For more details, you can visit the following URL: [Issue #7986](https://github.com/ohmyzsh/ohmyzsh/issues/7986).",
+        "query": "cypher\nMATCH (c:Commit {id: '65393b4bb10de841edbe2026dba29b73625b33d7'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 7986,
+                    "closed_at": "2019-09-08T12:59:51Z",
+                    "created_at": "2019-07-10T12:26:18Z",
+                    "id": 7986,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"parse errors for functions in debian.plugin.zsh\"",
+                    "body": "\"**Describe the bug**\r\nIn Debian Buster, zsh 5.7.1 (x86_64-debian-linux-gnu), the debian plugin in OMZ gives parse errors:\r\n\r\n```\r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `() \r\n```\r\n\r\nIt appears that it doesnt like the functions being defined here without the \"function\" keyword.  This appears to be able to be fixed by adding \"function\" to all the functions defined in that section, namely:\r\n\r\nline 75: \"function abd() {\"\r\nline 86: \"function ai() {\"\r\nline 91: \"function ap() {\"\r\nline 96: \"function ar() {\"\r\n\r\nIm not sure how to file a pull request or Id just do so myself, sorry.\r\n\r\n**To Reproduce**\r\n1.) Enable \"debian\" plugin in zshrc\r\n2.) source ~/.zshrc\r\n3.) Receive parse error\r\n\r\n**Expected behavior**\r\nPlugin should load without issue rather than parse errors\r\n\r\n**System:**\r\n - OS: Debian Buster\r\n - Zsh version: 5.7.1 (x86_64-debian-linux-gnu)\r\n - Terminal emulator: urxvt (rxvt-unicode 9.22-6) with tmux 2.8-3\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/7986"
+                }
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": true,
+        "reason": "",
+        "number": 18,
+        "category": 2
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "The percentage of the fixing commits that introduced bugs in July 2024 is 100%.",
+        "query": "cypher\nMATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c1.committedDate =~ '2024-07-..T..:..:..Z' AND c2.committedDate =~ '2024-07-..T..:..:..Z'\nWITH count(c1) AS fixingCommits, count(c2) AS introducingCommits\nRETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage\n",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 19,
+        "category": 3
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "In July 2024, there were 4 fixing commits that caused bugs.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ '2024-07-..T..:..:..Z' AND i.created_at =~ '2024-07-..T..:..:..Z'\nRETURN COUNT(c) AS fixingCommitsCausedBugs\n",
+        "result": [
+            {
+                "fixingCommitsCausedBugs": 4
+            }
+        ],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 20,
+        "category": 3
+    },
+    {
+        "question": "how many commits happened in last month?",
+        "response": "In the past month, there were 29 commits.",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-27T00:00:00Z\" AND c.committedDate < \"2024-08-27T00:00:00Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 29
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 1,
+        "category": 1
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit was made on August 18, 2024. The commit ID is `2056aeeeaddd977eb205619c6f236b94dac896be` and the commit message is:\n\n\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\"\n\nThe commit includes 6 additions and 11 deletions, affecting 2 files, and has no comments.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 2,
+        "category": 1
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Between May 27th, 2018, and May 31st, 2018, there were two commits:\n\n1. **Commit ID:** ebda8af870acc295388ed187f0139a8bffa83196\n   - **Committed Date:** May 28th, 2018 at 15:09:53 UTC\n   - **Message:** \"Clarify ssh-agent settings position\"\n   - **Additions:** 2\n   - **Deletions:** 0\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\n2. **Commit ID:** ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72\n   - **Committed Date:** May 28th, 2018 at 09:23:05 UTC\n   - **Message:** \"[plugins/vundle] Use HTTPS to clone repository. (#6857)\\n\\nThe git protocol is likely to be blocked in some networks while HTTPS usually works.\"\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\nWould you like to know anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-28T15:09:53Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                    "type": "Commit",
+                    "message": "\"Clarify ssh-agent settings position\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-28T09:23:05Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                    "type": "Commit",
+                    "message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\""
+                }
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 3,
+        "category": 1
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 4,
+        "category": 1
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "Here are the changes for the `install.sh` file:\n\n1. **Date**: 2024-07-03\n   - **Message**: \"chore: replace all instances of twitter with X\\n\\nCloses #12536\"\n   - **Additions**: 3\n   - **Deletions**: 3\n   - **Changed Files**: 2\n   - **Comments Count**: 0\n\n2. **Date**: 2024-03-07\n   - **Message**: \"feat(tools): update `supports_hyperlinks` (#12258)\\n\\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"\n   - **Additions**: 24\n   - **Deletions**: 9\n   - **Changed Files**: 3\n   - **Comments Count**: 0\n\n3. **Date**: 2023-12-01\n   - **Message**: \"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"\n   - **Additions**: 3\n   - **Deletions**: 1\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n4. **Date**: 2023-04-03\n   - **Message**: \"chore(installer): remove words triggering false positives in antiviruses\"\n   - **Additions**: 1\n   - **Deletions**: 2\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n5. **Date**: 2023-03-31\n   - **Message**: \"fix(installer): dont use `sudo` when user is in Termux (#11591)\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n   - **Additions**: 5\n   - **Deletions**: 0\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n6. **Date**: 2023-02-02\n   - **Message**: \"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"\n   - **Additions**: 5\n   - **Deletions**: 0\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n7. **Date**: 2023-02-02\n   - **Message**: \"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\\n\\nFixes #11471\"\n   - **Additions**: 5\n   - **Deletions**: 3\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n8. **Date**: 2023-01-29\n   - **Message**: \"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\\n\\nFixes #9001\\nFixes #10479\\n\\nCloses #9376\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n   - **Additions**: 30\n   - **Deletions**: 15\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n9. **Date**: 2022-10-14\n   - **Message**: \"fix(installer): detect newer Git for Windows version errors (#11157)\\n\\nFixes #11157\"\n   - **Additions**: 1\n   - **Deletions**: 1\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n10. **Date**: 2022-10-12\n    - **Message**: \"fix: show full hyperlinks in Konsole (#10964)\\n\\nFixes #10964\"\n    - **Additions**: 16\n    - **Deletions**: 4\n    - **Changed Files**: 2\n    - **Comments Count**: 0",
+        "query": "cypher\nMATCH (f:File {name: 'install.sh'})<-[:changed]-(c:Commit)\nRETURN c.abbreviatedOid AS commit, c.message AS message, c.committedDate AS date, c.additions AS additions, c.deletions AS deletions, c.changedFiles AS changedFiles, c.commentsCount AS commentsCount\n",
+        "result": [
+            {
+                "commit": null,
+                "message": "\"chore: replace all instances of twitter with X\n\nCloses #12536\"",
+                "date": "2024-07-03T06:51:20Z",
+                "additions": 3,
+                "deletions": 3,
+                "changedFiles": 2,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"",
+                "date": "2024-03-07T08:54:43Z",
+                "additions": 24,
+                "deletions": 9,
+                "changedFiles": 3,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"",
+                "date": "2023-12-01T16:03:15Z",
+                "additions": 3,
+                "deletions": 1,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"chore(installer): remove words triggering false positives in antiviruses\"",
+                "date": "2023-04-03T20:21:49Z",
+                "additions": 1,
+                "deletions": 2,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "date": "2023-03-31T05:37:01Z",
+                "additions": 5,
+                "deletions": 0,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"",
+                "date": "2023-02-02T07:53:44Z",
+                "additions": 5,
+                "deletions": 0,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\"",
+                "date": "2023-02-02T07:53:44Z",
+                "additions": 5,
+                "deletions": 3,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "date": "2023-01-29T11:39:22Z",
+                "additions": 30,
+                "deletions": 15,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\"",
+                "date": "2022-10-14T18:31:33Z",
+                "additions": 1,
+                "deletions": 1,
+                "changedFiles": 1,
+                "commentsCount": 0
+            },
+            {
+                "commit": null,
+                "message": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\"",
+                "date": "2022-10-12T08:55:02Z",
+                "additions": 16,
+                "deletions": 4,
+                "changedFiles": 2,
+                "commentsCount": 0
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 5,
+        "category": 2
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "Here are all the commits for the `README.md` file:\n\n1. Commit ID: 2056aeeeaddd977eb205619c6f236b94dac896be\n   - Message: \"Revert feat(git)!: ask for confirmation in `gpf` alias (#10169)\\n\\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\"\n   - Additions: 6\n   - Deletions: 11\n   - Committed Date: 2024-08-18T09:22:30Z\n   - Changed Files: 2\n   - Comments Count: 0\n\n2. Commit ID: b0204f78394d84771436a7717aafee6cad140319\n   - Message: \"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\"\n   - Additions: 8\n   - Deletions: 0\n   - Committed Date: 2024-08-15T15:53:03Z\n   - Changed Files: 2\n   - Comments Count: 0\n\n3. Commit ID: f30df6c855d1df077adc6b226219629312015ec6\n   - Message: \"docs: document disclaimer about theme appearance\"\n   - Additions: 9\n   - Deletions: 1\n   - Committed Date: 2024-08-15T15:04:50Z\n   - Changed Files: 1\n   - Comments Count: 0\n\n4. Commit ID: c13795d4c40fe075ec8b4450bb78b65ecf8108b2\n   - Message: \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\\n\\n- Rename `git push --force-with-lease ...` to `gpff`\\r\\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\\r\\n\\r\\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\\r\\nrunning the potentially destructive `git push --force-with-lease` command. If you\\r\\nwant to force-run the command without having to confirm it, run `gpff`.\"\n   - Additions: 11\n   - Deletions: 6\n   - Committed Date: 2024-08-15T14:48:03Z\n   - Changed Files: 2\n   - Comments Count: 0\n\n5. Commit ID: d26c4a276610445670fb71d415804625cebd7ccd\n   - Message: \"chore(tmux): add link to iTerm2 integration docs\"\n   - Additions: 15\n   - Deletions: 15\n   - Committed Date: 2024-08-15T14:26:46Z\n   - Changed Files: 1\n   - Comments Count: 0\n\n6. Commit ID: 9ba6daa1b5d0b60c89525d679eb30fe3ed9947de\n   - Message: \"feat(conda): add `conda` aliases plugin\\n\\nCloses #7318\\nClosed #9691\\n\\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\"\n   - Additions: 60\n   - Deletions: 0\n   - Committed Date: 2024-08-14T07:18:18Z\n   - Changed Files: 2\n   - Comments Count: 0\n\n7. Commit ID: d6f84f3e7d2515cee8ba776d05ee2009ffd471d7\n   - Message: \"fix(catimg): add support to `magick` binary (#12608)\\n\\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\"\n   - Additions: 17\n   - Deletions: 10\n   - Committed Date: 2024-08-12T09:46:16Z\n   - Changed Files: 3\n   - Comments Count: 0\n\n8. Commit ID: efafef8495f030501e0df59ccb76a598bbce3ae1\n   - Message: \"docs: improve several plugin READMEs and add one for `ssh` plugin\"\n   - Additions: 123\n   - Deletions: 90\n   - Committed Date: 2024-08-09T07:44:46Z\n   - Changed Files: 23\n   - Comments Count: 0\n\n9. Commit ID: fccaaf2fc60149baab966acaeae35f55325e6f98\n   - Message: \"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\"\n   - Additions: 125\n   - Deletions: 112\n   - Committed Date: 2024-08-08T18:43:20Z\n   - Changed Files: 2\n   - Comments Count: 0\n\n10. Commit ID: ff62d39f023fbe2872078ce82ea9704b1bf09ea6\n    - Message: \"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\\n\\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\\nand unsupported years ago. Use Docker Desktop instead.\"\n    - Additions: 0\n    - Deletions: 411\n    - Committed Date: 2024-08-08T18:43:11Z\n    - Changed Files: 3\n    - Comments Count: 0\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (f:File {name: \"README.md\"})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 0,
+                    "committedDate": "2024-08-15T15:53:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b0204f78394d84771436a7717aafee6cad140319",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 1,
+                    "committedDate": "2024-08-15T15:04:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "f30df6c855d1df077adc6b226219629312015ec6",
+                    "type": "Commit",
+                    "message": "\"docs: document disclaimer about theme appearance\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 6,
+                    "committedDate": "2024-08-15T14:48:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c13795d4c40fe075ec8b4450bb78b65ecf8108b2",
+                    "type": "Commit",
+                    "message": "\"feat(git)!: ask for confirmation in `gpf` alias (#10169)\n\n- Rename `git push --force-with-lease ...` to `gpff`\r\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\r\n\r\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\r\nrunning the potentially destructive `git push --force-with-lease` command. If you\r\nwant to force-run the command without having to confirm it, run `gpff`.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 15,
+                    "committedDate": "2024-08-15T14:26:46Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d26c4a276610445670fb71d415804625cebd7ccd",
+                    "type": "Commit",
+                    "message": "\"chore(tmux): add link to iTerm2 integration docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 60,
+                    "deletions": 0,
+                    "committedDate": "2024-08-14T07:18:18Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9ba6daa1b5d0b60c89525d679eb30fe3ed9947de",
+                    "type": "Commit",
+                    "message": "\"feat(conda): add `conda` aliases plugin\n\nCloses #7318\nClosed #9691\n\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 17,
+                    "deletions": 10,
+                    "committedDate": "2024-08-12T09:46:16Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "d6f84f3e7d2515cee8ba776d05ee2009ffd471d7",
+                    "type": "Commit",
+                    "message": "\"fix(catimg): add support to `magick` binary (#12608)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 90,
+                    "committedDate": "2024-08-09T07:44:46Z",
+                    "changedFiles": 23,
+                    "commentsCount": 0,
+                    "id": "efafef8495f030501e0df59ccb76a598bbce3ae1",
+                    "type": "Commit",
+                    "message": "\"docs: improve several plugin READMEs and add one for `ssh` plugin\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 125,
+                    "deletions": 112,
+                    "committedDate": "2024-08-08T18:43:20Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fccaaf2fc60149baab966acaeae35f55325e6f98",
+                    "type": "Commit",
+                    "message": "\"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 411,
+                    "committedDate": "2024-08-08T18:43:11Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "ff62d39f023fbe2872078ce82ea9704b1bf09ea6",
+                    "type": "Commit",
+                    "message": "\"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\n\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\nand unsupported years ago. Use Docker Desktop instead.\""
+                }
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 6,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.name AS Developer, COUNT(i) AS UnfixedBugs\nORDER BY UnfixedBugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 7,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "The developer who fixed the most bugs in README.md is Marc Cornell\u00e0, with a total of 4 bugs fixed.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"README.md\"})\nRETURN u.name AS developer, COUNT(i) AS bugs_fixed\nORDER BY bugs_fixed DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Marc Cornell\u00e0",
+                "bugs_fixed": 4
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 9,
+        "category": 3
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "The user who fixed the most bugs in \"cli.zsh\" is Marc Cornell\u00e0, with a total of 2 bug fixes.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"cli.zsh\"})\nRETURN u.name, COUNT(i) AS bugFixes\nORDER BY bugFixes DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "u.name": "Marc Cornell\u00e0",
+                "bugFixes": 2
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 10,
+        "category": 3
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The files that introduce the most bugs are:\n1. README.md with 6 bugs\n2. cli.zsh with 2 bugs\n3. upgrade.sh with 2 bugs\n4. aws.plugin.zsh with 2 bugs\n5. termsupport.zsh with 2 bugs",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bug_count": 6
+            },
+            {
+                "f.name": "cli.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "azure.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "kubectl.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "check_for_upgrade.sh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "git.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "brew.plugin.zsh",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 11,
+        "category": 2
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy files are:\n\n1. README.md with 6 bugs.\n2. termsupport.zsh with 2 bugs.\n3. upgrade.sh with 2 bugs.\n4. cli.zsh with 2 bugs.\n5. aws.plugin.zsh with 2 bugs.\n6. _gradlew with 1 bug.\n7. gradle.plugin.zsh with 1 bug.\n8. kiwi.zsh-theme with 1 bug.\n9. git.zsh with 1 bug.\n10. _gradle with 1 bug.",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bugCount": 6
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "cli.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "_gradlew",
+                "bugCount": 1
+            },
+            {
+                "f.name": "gradle.plugin.zsh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "kiwi.zsh-theme",
+                "bugCount": 1
+            },
+            {
+                "f.name": "git.zsh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "_gradle",
+                "bugCount": 1
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 12,
+        "category": 2
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "The buggy commit that happened on November 17, 2021, has the following details:\n- Commit ID: b60b3f184275c39800dd7284d6904fcf295b3956\n- Committed Date: 2021-11-17T09:53:17Z\n- Message: \"fix(osx): deprecate `osx` plugin without symlink (#10428)\\n\\nFixes #10428\"\n- Additions: 8\n- Deletions: 8\n- Changed Files: 5\n- Comments Count: 0\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(:Issue)\nWHERE c.committedDate =~ '2021-11-17T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 8,
+                    "committedDate": "2021-11-17T09:53:17Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "b60b3f184275c39800dd7284d6904fcf295b3956",
+                    "type": "Commit",
+                    "message": "\"fix(osx): deprecate `osx` plugin without symlink (#10428)\n\nFixes #10428\""
+                }
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 13,
+        "category": 2
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE i.created_at =~ '2023-06-08T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 14,
+        "category": 2
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10452?",
+        "response": "I don't know the commit(s) that fixed the bug ticket KAFKA-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"KAFKA-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 15,
+        "category": 2
+    },
+    {
+        "question": "which commit fixed the bug ticket 12273?",
+        "response": "I don't know which commit fixed the bug ticket Kafka-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"Kafka-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 16,
+        "category": 2
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "The bug introduced by commit hash `b9be3a43b4da579299b4426b1ba9121f746e2555` is described in Issue #12400. The issue is titled `\"omz plugin disable\" breaks .zshrc file when disabling common substring\"`. \n\nThe problem occurs when running the command `omz plugin disable git`, which is expected to remove the `git` plugin without affecting other plugins. However, the actual result is that it incorrectly modifies the `.zshrc` file by breaking the plugin list, such as turning:\n```shell\nplugins=(\n    git\n    autoupdate\n    git-open\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n    autojump\n    brew\n    docker\n    fzf\n    rust\n    thefuck\n    zsh-interactive-cd\n    zsh-bat\n    asdf\n)\n```\ninto:\n```shell\nplugins=(\n    autoupdate\n-open\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n    autojump\n    brew\n    docker\n    fzf\n    rust\n    thefuck\n    zsh-interactive-cd\n    zsh-bat\n    asdf\n)\n```\n\nThis behavior occurs both when the plugins are listed on multiple lines or on a single line. The issue has been closed as of May 8, 2024. For more details, you can visit the issue page: [Issue #12400](https://github.com/ohmyzsh/ohmyzsh/issues/12400).",
+        "query": "\nMATCH (c:Commit {id: 'b9be3a43b4da579299b4426b1ba9121f746e2555'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12400,
+                    "closed_at": "2024-05-08T20:20:43Z",
+                    "created_at": "2024-05-07T18:34:05Z",
+                    "id": 12400,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"`omz plugin disable` breaks .zshrc file when disabling common substring\"",
+                    "body": "\"### Describe the bug\r\n\r\n`omz plugin disable git` will break a zshrc file with plugins that look like this:\r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    git-open\r\n    autoupdate\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n### Steps to reproduce\r\n\r\n1. Set up OhMyZsh\r\n2. Set up plugins, for example:\r\n```shell\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\nor \r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    autoupdate\r\n    git-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n3. run `omz plugin disable git` \r\n\r\n### Expected behavior\r\n\r\nThe `git` plugin gets removed, and the `git-open` plugin isnt impacted.  This isnt quite what happens though, the actual result is:\r\n\r\n```shell\r\nplugins=(\r\n    autoupdate\r\n-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\nNote - the same behavior happens when `plugins` is one line:\r\n\r\n```shell\r\n# this:\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n\r\n# gets turned into:\r\nplugins=(autoupdate-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\n### Screenshots and recordings\r\n\r\n_No response_\r\n\r\n### OS / Linux distribution\r\n\r\nmacOS\r\n\r\n### Zsh version\r\n\r\n5.9\r\n\r\n### Oh My Zsh version\r\n\r\nmaster (668ca3a)\r\n\r\n### Terminal emulator\r\n\r\niTerm2\r\n\r\n### If using WSL on Windows, which version of WSL\r\n\r\nNone\r\n\r\n### Additional context\r\n\r\n_No response_\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/12400"
+                }
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 17,
+        "category": 2
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "The bug caused by commit `65393b4bb10de841edbe2026dba29b73625b33d7` is described in issue number 7986. The issue, titled \"parse errors for functions in debian.plugin.zsh,\" was created on 2019-07-10 and closed on 2019-09-08. The problem occurs in Debian Buster with zsh version 5.7.1, where the debian plugin in OMZ gives parse errors when defining functions based on aliases without the \"function\" keyword. The specific parse error message is:\n\n```\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `()\n```\n\nThis issue can be fixed by adding the \"function\" keyword to all the functions defined in the section, specifically on lines 75, 86, 91, and 96. The steps to reproduce the error include enabling the \"debian\" plugin in zshrc, sourcing ~/.zshrc, and receiving the parse error. The expected behavior is that the plugin should load without issue rather than causing parse errors.\n\nFor more details, you can view the issue [here](https://github.com/ohmyzsh/ohmyzsh/issues/7986).",
+        "query": "cypher\nMATCH (c:Commit {id: '65393b4bb10de841edbe2026dba29b73625b33d7'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 7986,
+                    "closed_at": "2019-09-08T12:59:51Z",
+                    "created_at": "2019-07-10T12:26:18Z",
+                    "id": 7986,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"parse errors for functions in debian.plugin.zsh\"",
+                    "body": "\"**Describe the bug**\r\nIn Debian Buster, zsh 5.7.1 (x86_64-debian-linux-gnu), the debian plugin in OMZ gives parse errors:\r\n\r\n```\r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `() \r\n```\r\n\r\nIt appears that it doesnt like the functions being defined here without the \"function\" keyword.  This appears to be able to be fixed by adding \"function\" to all the functions defined in that section, namely:\r\n\r\nline 75: \"function abd() {\"\r\nline 86: \"function ai() {\"\r\nline 91: \"function ap() {\"\r\nline 96: \"function ar() {\"\r\n\r\nIm not sure how to file a pull request or Id just do so myself, sorry.\r\n\r\n**To Reproduce**\r\n1.) Enable \"debian\" plugin in zshrc\r\n2.) source ~/.zshrc\r\n3.) Receive parse error\r\n\r\n**Expected behavior**\r\nPlugin should load without issue rather than parse errors\r\n\r\n**System:**\r\n - OS: Debian Buster\r\n - Zsh version: 5.7.1 (x86_64-debian-linux-gnu)\r\n - Terminal emulator: urxvt (rxvt-unicode 9.22-6) with tmux 2.8-3\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/7986"
+                }
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": true,
+        "reason": "",
+        "number": 18,
+        "category": 2
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "The percentage of the fixing commits that introduced bugs in July 2024 is 100%.",
+        "query": "cypher\nMATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c1.committedDate =~ '2024-07.*' AND c2.committedDate =~ '2024-07.*'\nWITH count(c1) AS fixingCommits, count(c2) AS introducingCommits\nRETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage\n",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 19,
+        "category": 3
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "There were 8 fixing commits that caused bugs in July 2024.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ '2024-07-.*'\nRETURN count(c) AS fixingCommits\n",
+        "result": [
+            {
+                "fixingCommits": 8
+            }
+        ],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 20,
+        "category": 3
+    },
+    {
+        "question": "how many commits happened in last month?",
+        "response": "In the last month, there were 29 commits. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-27T01:15:48Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 29
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 1,
+        "category": 1
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit was made on August 18, 2024, with the commit message: \"Revert 'feat(git)!: ask for confirmation in `gpf` alias (#10169)'. This reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\" The commit involved 6 additions, 11 deletions, and changes to 2 files.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 2,
+        "category": 1
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Certainly! Here are the details of the commits between May 27th, 2018, and May 31st, 2018:\n\n1. **Commit ID:** ebda8af870acc295388ed187f0139a8bffa83196\n   - **Committed Date:** 2018-05-28T15:09:53Z\n   - **Message:** \"Clarify ssh-agent settings position\"\n   - **Additions:** 2\n   - **Deletions:** 0\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\n2. **Commit ID:** ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72\n   - **Committed Date:** 2018-05-28T09:23:05Z\n   - **Message:** \"[plugins/vundle] Use HTTPS to clone repository. (#6857)\\n\\nThe git protocol is likely to be blocked in some networks while HTTPS usually works.\"\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\nIs there anything else you would like to know?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-28T15:09:53Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                    "type": "Commit",
+                    "message": "\"Clarify ssh-agent settings position\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-28T09:23:05Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                    "type": "Commit",
+                    "message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\""
+                }
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 3,
+        "category": 1
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 3,
+        "isCorrect": false,
+        "reason": "",
+        "number": 4,
+        "category": 1
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "Here are the changes for the `install.sh` file:\n\n1. **Date:** 2024-07-03T06:51:20Z\n   - **Message:** chore: replace all instances of twitter with X\n   - **Additions:** 3\n   - **Deletions:** 3\n\n2. **Date:** 2024-03-07T08:54:43Z\n   - **Message:** feat(tools): update `supports_hyperlinks` (#12258)\n   - **Additions:** 24\n   - **Deletions:** 9\n\n3. **Date:** 2023-12-01T16:03:15Z\n   - **Message:** fix(installer): fix path logic and improve clarity on ZDOTDIR use\n   - **Additions:** 3\n   - **Deletions:** 1\n\n4. **Date:** 2023-04-03T20:21:49Z\n   - **Message:** chore(installer): remove words triggering false positives in antiviruses\n   - **Additions:** 1\n   - **Deletions:** 2\n\n5. **Date:** 2023-03-31T05:37:01Z\n   - **Message:** fix(installer): dont use `sudo` when user is in Termux (#11591)\n   - **Additions:** 5\n   - **Deletions:** 0\n\n6. **Date:** 2023-02-02T07:53:44Z\n   - **Message:** fix(installer): automatically create ZDOTDIR path if it doesnt exist\n   - **Additions:** 5\n   - **Deletions:** 0\n\n7. **Date:** 2023-02-02T07:53:44Z\n   - **Message:** fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n   - **Additions:** 5\n   - **Deletions:** 3\n\n8. **Date:** 2023-01-29T11:39:22Z\n   - **Message:** feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n   - **Additions:** 30\n   - **Deletions:** 15\n\n9. **Date:** 2022-10-14T18:31:33Z\n   - **Message:** fix(installer): detect newer Git for Windows version errors (#11157)\n   - **Additions:** 1\n   - **Deletions:** 1\n\n10. **Date:** 2022-10-12T08:55:02Z\n    - **Message:** fix: show full hyperlinks in Konsole (#10964)\n    - **Additions:** 16\n    - **Deletions:** 4\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (f:File {name: 'install.sh'})<-[:changed]-(c:Commit)\nRETURN c.abbreviatedOid AS commit, c.message AS message, c.additions AS additions, c.deletions AS deletions, c.committedDate AS date\n",
+        "result": [
+            {
+                "commit": null,
+                "message": "\"chore: replace all instances of twitter with X\n\nCloses #12536\"",
+                "additions": 3,
+                "deletions": 3,
+                "date": "2024-07-03T06:51:20Z"
+            },
+            {
+                "commit": null,
+                "message": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"",
+                "additions": 24,
+                "deletions": 9,
+                "date": "2024-03-07T08:54:43Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"",
+                "additions": 3,
+                "deletions": 1,
+                "date": "2023-12-01T16:03:15Z"
+            },
+            {
+                "commit": null,
+                "message": "\"chore(installer): remove words triggering false positives in antiviruses\"",
+                "additions": 1,
+                "deletions": 2,
+                "date": "2023-04-03T20:21:49Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "additions": 5,
+                "deletions": 0,
+                "date": "2023-03-31T05:37:01Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"",
+                "additions": 5,
+                "deletions": 0,
+                "date": "2023-02-02T07:53:44Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\"",
+                "additions": 5,
+                "deletions": 3,
+                "date": "2023-02-02T07:53:44Z"
+            },
+            {
+                "commit": null,
+                "message": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "additions": 30,
+                "deletions": 15,
+                "date": "2023-01-29T11:39:22Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\"",
+                "additions": 1,
+                "deletions": 1,
+                "date": "2022-10-14T18:31:33Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\"",
+                "additions": 16,
+                "deletions": 4,
+                "date": "2022-10-12T08:55:02Z"
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 5,
+        "category": 2
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "Here are all the commits for the `README.md` file:\n\n1. **Commit ID**: 2056aeeeaddd977eb205619c6f236b94dac896be\n   - **Message**: \"Revert 'feat(git)!: ask for confirmation in `gpf` alias (#10169)'\\n\\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\"\n   - **Additions**: 6\n   - **Deletions**: 11\n   - **Committed Date**: 2024-08-18T09:22:30Z\n   - **Changed Files**: 2\n   - **Comments Count**: 0\n\n2. **Commit ID**: b0204f78394d84771436a7717aafee6cad140319\n   - **Message**: \"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\"\n   - **Additions**: 8\n   - **Deletions**: 0\n   - **Committed Date**: 2024-08-15T15:53:03Z\n   - **Changed Files**: 2\n   - **Comments Count**: 0\n\n3. **Commit ID**: f30df6c855d1df077adc6b226219629312015ec6\n   - **Message**: \"docs: document disclaimer about theme appearance\"\n   - **Additions**: 9\n   - **Deletions**: 1\n   - **Committed Date**: 2024-08-15T15:04:50Z\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n4. **Commit ID**: c13795d4c40fe075ec8b4450bb78b65ecf8108b2\n   - **Message**: \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\\n\\n- Rename `git push --force-with-lease ...` to `gpff`\\r\\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\\r\\n\\r\\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\\r\\nrunning the potentially destructive `git push --force-with-lease` command. If you\\r\\nwant to force-run the command without having to confirm it, run `gpff`.\"\n   - **Additions**: 11\n   - **Deletions**: 6\n   - **Committed Date**: 2024-08-15T14:48:03Z\n   - **Changed Files**: 2\n   - **Comments Count**: 0\n\n5. **Commit ID**: d26c4a276610445670fb71d415804625cebd7ccd\n   - **Message**: \"chore(tmux): add link to iTerm2 integration docs\"\n   - **Additions**: 15\n   - **Deletions**: 15\n   - **Committed Date**: 2024-08-15T14:26:46Z\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n6. **Commit ID**: 9ba6daa1b5d0b60c89525d679eb30fe3ed9947de\n   - **Message**: \"feat(conda): add `conda` aliases plugin\\n\\nCloses #7318\\nClosed #9691\\n\\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\"\n   - **Additions**: 60\n   - **Deletions**: 0\n   - **Committed Date**: 2024-08-14T07:18:18Z\n   - **Changed Files**: 2\n   - **Comments Count**: 0\n\n7. **Commit ID**: d6f84f3e7d2515cee8ba776d05ee2009ffd471d7\n   - **Message**: \"fix(catimg): add support to `magick` binary (#12608)\\n\\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\"\n   - **Additions**: 17\n   - **Deletions**: 10\n   - **Committed Date**: 2024-08-12T09:46:16Z\n   - **Changed Files**: 3\n   - **Comments Count**: 0\n\n8. **Commit ID**: efafef8495f030501e0df59ccb76a598bbce3ae1\n   - **Message**: \"docs: improve several plugin READMEs and add one for `ssh` plugin\"\n   - **Additions**: 123\n   - **Deletions**: 90\n   - **Committed Date**: 2024-08-09T07:44:46Z\n   - **Changed Files**: 23\n   - **Comments Count**: 0\n\n9. **Commit ID**: fccaaf2fc60149baab966acaeae35f55325e6f98\n   - **Message**: \"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\"\n   - **Additions**: 125\n   - **Deletions**: 112\n   - **Committed Date**: 2024-08-08T18:43:20Z\n   - **Changed Files**: 2\n   - **Comments Count**: 0\n\n10. **Commit ID**: ff62d39f023fbe2872078ce82ea9704b1bf09ea6\n    - **Message**: \"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\\n\\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\\nand unsupported years ago. Use Docker Desktop instead.\"\n    - **Additions**: 0\n    - **Deletions**: 411\n    - **Committed Date**: 2024-08-08T18:43:11Z\n    - **Changed Files**: 3\n    - **Comments Count**: 0\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (f:File {name: 'README.md'})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 0,
+                    "committedDate": "2024-08-15T15:53:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b0204f78394d84771436a7717aafee6cad140319",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 1,
+                    "committedDate": "2024-08-15T15:04:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "f30df6c855d1df077adc6b226219629312015ec6",
+                    "type": "Commit",
+                    "message": "\"docs: document disclaimer about theme appearance\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 6,
+                    "committedDate": "2024-08-15T14:48:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c13795d4c40fe075ec8b4450bb78b65ecf8108b2",
+                    "type": "Commit",
+                    "message": "\"feat(git)!: ask for confirmation in `gpf` alias (#10169)\n\n- Rename `git push --force-with-lease ...` to `gpff`\r\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\r\n\r\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\r\nrunning the potentially destructive `git push --force-with-lease` command. If you\r\nwant to force-run the command without having to confirm it, run `gpff`.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 15,
+                    "committedDate": "2024-08-15T14:26:46Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d26c4a276610445670fb71d415804625cebd7ccd",
+                    "type": "Commit",
+                    "message": "\"chore(tmux): add link to iTerm2 integration docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 60,
+                    "deletions": 0,
+                    "committedDate": "2024-08-14T07:18:18Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9ba6daa1b5d0b60c89525d679eb30fe3ed9947de",
+                    "type": "Commit",
+                    "message": "\"feat(conda): add `conda` aliases plugin\n\nCloses #7318\nClosed #9691\n\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 17,
+                    "deletions": 10,
+                    "committedDate": "2024-08-12T09:46:16Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "d6f84f3e7d2515cee8ba776d05ee2009ffd471d7",
+                    "type": "Commit",
+                    "message": "\"fix(catimg): add support to `magick` binary (#12608)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 90,
+                    "committedDate": "2024-08-09T07:44:46Z",
+                    "changedFiles": 23,
+                    "commentsCount": 0,
+                    "id": "efafef8495f030501e0df59ccb76a598bbce3ae1",
+                    "type": "Commit",
+                    "message": "\"docs: improve several plugin READMEs and add one for `ssh` plugin\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 125,
+                    "deletions": 112,
+                    "committedDate": "2024-08-08T18:43:20Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fccaaf2fc60149baab966acaeae35f55325e6f98",
+                    "type": "Commit",
+                    "message": "\"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 411,
+                    "committedDate": "2024-08-08T18:43:11Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "ff62d39f023fbe2872078ce82ea9704b1bf09ea6",
+                    "type": "Commit",
+                    "message": "\"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\n\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\nand unsupported years ago. Use Docker Desktop instead.\""
+                }
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 6,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.name, COUNT(i) AS unfixed_bugs\nORDER BY unfixed_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 3,
+        "isCorrect": false,
+        "reason": "",
+        "number": 7,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "The developer who fixed the most bugs in README.md is Marc Cornell\u00e0, with a total of 4 bugs fixed.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"README.md\"})\nRETURN u.name AS developer, COUNT(i) AS bugs_fixed\nORDER BY bugs_fixed DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Marc Cornell\u00e0",
+                "bugs_fixed": 4
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 9,
+        "category": 3
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "The user who fixed the most bugs in cli.zsh is mcornella, with a total of 2 fixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"cli.zsh\"})\nRETURN u.login AS user, COUNT(i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "user": "mcornella",
+                "fixed_bugs": 2
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 10,
+        "category": 3
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The files that introduce the most bugs are:\n\n1. `README.md` with 6 bugs\n2. `cli.zsh` with 2 bugs\n3. `upgrade.sh` with 2 bugs\n4. `aws.plugin.zsh` with 2 bugs\n5. `termsupport.zsh` with 2 bugs",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bug_count": 6
+            },
+            {
+                "f.name": "cli.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "azure.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "kubectl.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "check_for_upgrade.sh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "git.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "brew.plugin.zsh",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 11,
+        "category": 2
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy file is `README.md` with 6 bugs. Other files with notable bug counts include `termsupport.zsh`, `upgrade.sh`, `aws.plugin.zsh`, and `cli.zsh`, each with 2 bugs.",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bugCount": 6
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "cli.zsh",
+                "bugCount": 2
+            },
+            {
+                "f.name": "candy-kingdom.zsh-theme",
+                "bugCount": 1
+            },
+            {
+                "f.name": "kiwi.zsh-theme",
+                "bugCount": 1
+            },
+            {
+                "f.name": "_gradle",
+                "bugCount": 1
+            },
+            {
+                "f.name": "gradle.plugin.zsh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "_gradlew",
+                "bugCount": 1
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 12,
+        "category": 2
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "The buggy commit that happened on November 17, 2021, is identified by the ID `b60b3f184275c39800dd7284d6904fcf295b3956`. The commit message is `\"fix(osx): deprecate `osx` plugin without symlink (#10428)\\n\\nFixes #10428\"`, and it involved 8 additions, 8 deletions, and 5 changed files.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate =~ '2021-11-17T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 8,
+                    "committedDate": "2021-11-17T09:53:17Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "b60b3f184275c39800dd7284d6904fcf295b3956",
+                    "type": "Commit",
+                    "message": "\"fix(osx): deprecate `osx` plugin without symlink (#10428)\n\nFixes #10428\""
+                }
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 13,
+        "category": 2
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE i.created_at =~ '2023-06-08T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 3,
+        "isCorrect": false,
+        "reason": "",
+        "number": 14,
+        "category": 2
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10452?",
+        "response": "I don't know the commit(s) that fixed the bug ticket KAFKA-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"KAFKA-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 15,
+        "category": 2
+    },
+    {
+        "question": "which commit fixed the bug ticket 12273?",
+        "response": "I don't know which commit fixed the bug ticket Kafka-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"Kafka-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 3,
+        "isCorrect": false,
+        "reason": "",
+        "number": 16,
+        "category": 2
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "The bug introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555 is described in Issue #12400. The issue, titled \"`omz plugin disable` breaks .zshrc file when disabling common substring,\" details a problem where running the command `omz plugin disable git` breaks a .zshrc file by incorrectly modifying the plugins list. Specifically, the bug causes the `git` plugin to be removed in a way that also affects the `git-open` plugin, resulting in a malformed plugins list. The issue has been closed and more details can be found at [this link](https://github.com/ohmyzsh/ohmyzsh/issues/12400).",
+        "query": "cypher\nMATCH (c:Commit {id: 'b9be3a43b4da579299b4426b1ba9121f746e2555'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12400,
+                    "closed_at": "2024-05-08T20:20:43Z",
+                    "created_at": "2024-05-07T18:34:05Z",
+                    "id": 12400,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"`omz plugin disable` breaks .zshrc file when disabling common substring\"",
+                    "body": "\"### Describe the bug\r\n\r\n`omz plugin disable git` will break a zshrc file with plugins that look like this:\r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    git-open\r\n    autoupdate\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n### Steps to reproduce\r\n\r\n1. Set up OhMyZsh\r\n2. Set up plugins, for example:\r\n```shell\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\nor \r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    autoupdate\r\n    git-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n3. run `omz plugin disable git` \r\n\r\n### Expected behavior\r\n\r\nThe `git` plugin gets removed, and the `git-open` plugin isnt impacted.  This isnt quite what happens though, the actual result is:\r\n\r\n```shell\r\nplugins=(\r\n    autoupdate\r\n-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\nNote - the same behavior happens when `plugins` is one line:\r\n\r\n```shell\r\n# this:\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n\r\n# gets turned into:\r\nplugins=(autoupdate-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\n### Screenshots and recordings\r\n\r\n_No response_\r\n\r\n### OS / Linux distribution\r\n\r\nmacOS\r\n\r\n### Zsh version\r\n\r\n5.9\r\n\r\n### Oh My Zsh version\r\n\r\nmaster (668ca3a)\r\n\r\n### Terminal emulator\r\n\r\niTerm2\r\n\r\n### If using WSL on Windows, which version of WSL\r\n\r\nNone\r\n\r\n### Additional context\r\n\r\n_No response_\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/12400"
+                }
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 17,
+        "category": 2
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "The bug caused by commit `65393b4bb10de841edbe2026dba29b73625b33d7` is detailed in issue number 7986. The issue, titled `\"parse errors for functions in debian.plugin.zsh\"`, was created on `2019-07-10` and closed on `2019-09-08`. The problem described involves parse errors in the debian plugin in OMZ (Oh My Zsh) for Debian Buster, zsh 5.7.1. Specifically, the errors occur because functions are being defined without the \"function\" keyword, leading to parse errors like:\n\n```\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `()\n```\n\nTo fix this, the \"function\" keyword needs to be added to all the functions defined in that section. The issue includes steps to reproduce the bug and the expected behavior. The full details can be found [here](https://github.com/ohmyzsh/ohmyzsh/issues/7986).",
+        "query": "cypher\nMATCH (c:Commit {id: '65393b4bb10de841edbe2026dba29b73625b33d7'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 7986,
+                    "closed_at": "2019-09-08T12:59:51Z",
+                    "created_at": "2019-07-10T12:26:18Z",
+                    "id": 7986,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"parse errors for functions in debian.plugin.zsh\"",
+                    "body": "\"**Describe the bug**\r\nIn Debian Buster, zsh 5.7.1 (x86_64-debian-linux-gnu), the debian plugin in OMZ gives parse errors:\r\n\r\n```\r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `() \r\n```\r\n\r\nIt appears that it doesnt like the functions being defined here without the \"function\" keyword.  This appears to be able to be fixed by adding \"function\" to all the functions defined in that section, namely:\r\n\r\nline 75: \"function abd() {\"\r\nline 86: \"function ai() {\"\r\nline 91: \"function ap() {\"\r\nline 96: \"function ar() {\"\r\n\r\nIm not sure how to file a pull request or Id just do so myself, sorry.\r\n\r\n**To Reproduce**\r\n1.) Enable \"debian\" plugin in zshrc\r\n2.) source ~/.zshrc\r\n3.) Receive parse error\r\n\r\n**Expected behavior**\r\nPlugin should load without issue rather than parse errors\r\n\r\n**System:**\r\n - OS: Debian Buster\r\n - Zsh version: 5.7.1 (x86_64-debian-linux-gnu)\r\n - Terminal emulator: urxvt (rxvt-unicode 9.22-6) with tmux 2.8-3\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/7986"
+                }
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 18,
+        "category": 2
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "The percentage of the fixing commits that introduced bugs in July 2024 is 100.0%. Can I help with anything else?",
+        "query": "cypher\nMATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c1.committedDate =~ '2024-07-.*' AND c2.committedDate =~ '2024-07-.*'\nWITH count(c1) AS fixingCommits, count(c2) AS introducingCommits\nRETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage\n",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": false,
+        "reason": "",
+        "number": 19,
+        "category": 3
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "There was 1 fixing commit that caused bugs in July 2024. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(:Issue)-[:introduced]-(bug:Commit)\nWHERE c.committedDate =~ '2024-07-..T..:..:..Z'\nRETURN COUNT(DISTINCT c) AS fixingCommits\n",
+        "result": [
+            {
+                "fixingCommits": 1
+            }
+        ],
+        "iteration": 3,
+        "isCorrect": true,
+        "reason": "",
+        "number": 20,
+        "category": 3
+    },
+    {
+        "question": "how many commits happened in last month?",
+        "response": "In the last month, there were 29 commits.",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-27T00:00:00Z\" AND c.committedDate < \"2024-08-27T00:00:00Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 29
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 1,
+        "category": 1
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit was made on August 18, 2024, with the message: \"Revert 'feat(git)!: ask for confirmation in `gpf` alias (#10169)'. This reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\" The commit involved 6 additions and 11 deletions across 2 files.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 2,
+        "category": 1
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Certainly! Here are the details of the commits between May 27th, 2018, and May 31st, 2018:\n\n1. **Commit ID**: ebda8af870acc295388ed187f0139a8bffa83196\n   - **Committed Date**: May 28, 2018, at 15:09:53 UTC\n   - **Message**: \"Clarify ssh-agent settings position\"\n   - **Additions**: 2\n   - **Deletions**: 0\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\n2. **Commit ID**: ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72\n   - **Committed Date**: May 28, 2018, at 09:23:05 UTC\n   - **Message**: \"[plugins/vundle] Use HTTPS to clone repository. (#6857)\\n\\nThe git protocol is likely to be blocked in some networks while HTTPS usually\\nworks.\"\n   - **Additions**: 1\n   - **Deletions**: 1\n   - **Changed Files**: 1\n   - **Comments Count**: 0\n\nIs there anything else you would like to know?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-28T15:09:53Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                    "type": "Commit",
+                    "message": "\"Clarify ssh-agent settings position\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-28T09:23:05Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                    "type": "Commit",
+                    "message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\""
+                }
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 3,
+        "category": 1
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 4,
+        "category": 1
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "Here are the changes for the `install.sh` file:\n\n1. **Commit Date:** 2024-07-03T06:51:20Z\n   - **Message:** \"chore: replace all instances of twitter with X\\n\\nCloses #12536\"\n   - **Additions:** 3\n   - **Deletions:** 3\n   - **Changed Files:** 2\n\n2. **Commit Date:** 2024-03-07T08:54:43Z\n   - **Message:** \"feat(tools): update `supports_hyperlinks` (#12258)\\n\\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"\n   - **Additions:** 24\n   - **Deletions:** 9\n   - **Changed Files:** 3\n\n3. **Commit Date:** 2023-12-01T16:03:15Z\n   - **Message:** \"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"\n   - **Additions:** 3\n   - **Deletions:** 1\n   - **Changed Files:** 1\n\n4. **Commit Date:** 2023-04-03T20:21:49Z\n   - **Message:** \"chore(installer): remove words triggering false positives in antiviruses\"\n   - **Additions:** 1\n   - **Deletions:** 2\n   - **Changed Files:** 1\n\n5. **Commit Date:** 2023-03-31T05:37:01Z\n   - **Message:** \"fix(installer): dont use `sudo` when user is in Termux (#11591)\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n   - **Additions:** 5\n   - **Deletions:** 0\n   - **Changed Files:** 1\n\n6. **Commit Date:** 2023-02-02T07:53:44Z\n   - **Message:** \"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"\n   - **Additions:** 5\n   - **Deletions:** 0\n   - **Changed Files:** 1\n\n7. **Commit Date:** 2023-02-02T07:53:44Z\n   - **Message:** \"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\\n\\nFixes #11471\"\n   - **Additions:** 5\n   - **Deletions:** 3\n   - **Changed Files:** 1\n\n8. **Commit Date:** 2023-01-29T11:39:22Z\n   - **Message:** \"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\\n\\nFixes #9001\\nFixes #10479\\n\\nCloses #9376\\n\\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"\n   - **Additions:** 30\n   - **Deletions:** 15\n   - **Changed Files:** 1\n\n9. **Commit Date:** 2022-10-14T18:31:33Z\n   - **Message:** \"fix(installer): detect newer Git for Windows version errors (#11157)\\n\\nFixes #11157\"\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n\n10. **Commit Date:** 2022-10-12T08:55:02Z\n    - **Message:** \"fix: show full hyperlinks in Konsole (#10964)\\n\\nFixes #10964\"\n    - **Additions:** 16\n    - **Deletions:** 4\n    - **Changed Files:** 2\n\nWould you like to know more details about any specific change?",
+        "query": "cypher\nMATCH (f:File {name: 'install.sh'})<-[:changed]-(c:Commit)\nRETURN c.abbreviatedOid AS commit, c.message AS message, c.additions AS additions, c.deletions AS deletions, c.changedFiles AS changedFiles, c.committedDate AS committedDate\n",
+        "result": [
+            {
+                "commit": null,
+                "message": "\"chore: replace all instances of twitter with X\n\nCloses #12536\"",
+                "additions": 3,
+                "deletions": 3,
+                "changedFiles": 2,
+                "committedDate": "2024-07-03T06:51:20Z"
+            },
+            {
+                "commit": null,
+                "message": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"",
+                "additions": 24,
+                "deletions": 9,
+                "changedFiles": 3,
+                "committedDate": "2024-03-07T08:54:43Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"",
+                "additions": 3,
+                "deletions": 1,
+                "changedFiles": 1,
+                "committedDate": "2023-12-01T16:03:15Z"
+            },
+            {
+                "commit": null,
+                "message": "\"chore(installer): remove words triggering false positives in antiviruses\"",
+                "additions": 1,
+                "deletions": 2,
+                "changedFiles": 1,
+                "committedDate": "2023-04-03T20:21:49Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "additions": 5,
+                "deletions": 0,
+                "changedFiles": 1,
+                "committedDate": "2023-03-31T05:37:01Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"",
+                "additions": 5,
+                "deletions": 0,
+                "changedFiles": 1,
+                "committedDate": "2023-02-02T07:53:44Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\"",
+                "additions": 5,
+                "deletions": 3,
+                "changedFiles": 1,
+                "committedDate": "2023-02-02T07:53:44Z"
+            },
+            {
+                "commit": null,
+                "message": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornell\u00e0 <hello@mcornella.com>\"",
+                "additions": 30,
+                "deletions": 15,
+                "changedFiles": 1,
+                "committedDate": "2023-01-29T11:39:22Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\"",
+                "additions": 1,
+                "deletions": 1,
+                "changedFiles": 1,
+                "committedDate": "2022-10-14T18:31:33Z"
+            },
+            {
+                "commit": null,
+                "message": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\"",
+                "additions": 16,
+                "deletions": 4,
+                "changedFiles": 2,
+                "committedDate": "2022-10-12T08:55:02Z"
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 5,
+        "category": 2
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "Here are all the commits for the `README.md` file:\n\n1. **Commit ID:** 2056aeeeaddd977eb205619c6f236b94dac896be\n   - **Message:** \"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n   - **Committed Date:** 2024-08-18T09:22:30Z\n   - **Additions:** 6\n   - **Deletions:** 11\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n\n2. **Commit ID:** b0204f78394d84771436a7717aafee6cad140319\n   - **Message:** \"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\"\n   - **Committed Date:** 2024-08-15T15:53:03Z\n   - **Additions:** 8\n   - **Deletions:** 0\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n\n3. **Commit ID:** f30df6c855d1df077adc6b226219629312015ec6\n   - **Message:** \"docs: document disclaimer about theme appearance\"\n   - **Committed Date:** 2024-08-15T15:04:50Z\n   - **Additions:** 9\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\n4. **Commit ID:** c13795d4c40fe075ec8b4450bb78b65ecf8108b2\n   - **Message:** \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n   - **Committed Date:** 2024-08-15T14:48:03Z\n   - **Additions:** 11\n   - **Deletions:** 6\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n\n5. **Commit ID:** d26c4a276610445670fb71d415804625cebd7ccd\n   - **Message:** \"chore(tmux): add link to iTerm2 integration docs\"\n   - **Committed Date:** 2024-08-15T14:26:46Z\n   - **Additions:** 15\n   - **Deletions:** 15\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n\n6. **Commit ID:** 9ba6daa1b5d0b60c89525d679eb30fe3ed9947de\n   - **Message:** \"feat(conda): add `conda` aliases plugin\"\n   - **Committed Date:** 2024-08-14T07:18:18Z\n   - **Additions:** 60\n   - **Deletions:** 0\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n\n7. **Commit ID:** d6f84f3e7d2515cee8ba776d05ee2009ffd471d7\n   - **Message:** \"fix(catimg): add support to `magick` binary (#12608)\"\n   - **Committed Date:** 2024-08-12T09:46:16Z\n   - **Additions:** 17\n   - **Deletions:** 10\n   - **Changed Files:** 3\n   - **Comments Count:** 0\n\n8. **Commit ID:** efafef8495f030501e0df59ccb76a598bbce3ae1\n   - **Message:** \"docs: improve several plugin READMEs and add one for `ssh` plugin\"\n   - **Committed Date:** 2024-08-09T07:44:46Z\n   - **Additions:** 123\n   - **Deletions:** 90\n   - **Changed Files:** 23\n   - **Comments Count:** 0\n\n9. **Commit ID:** fccaaf2fc60149baab966acaeae35f55325e6f98\n   - **Message:** \"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\"\n   - **Committed Date:** 2024-08-08T18:43:20Z\n   - **Additions:** 125\n   - **Deletions:** 112\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n\n10. **Commit ID:** ff62d39f023fbe2872078ce82ea9704b1bf09ea6\n    - **Message:** \"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\"\n    - **Committed Date:** 2024-08-08T18:43:11Z\n    - **Additions:** 0\n    - **Deletions:** 411\n    - **Changed Files:** 3\n    - **Comments Count:** 0\n\nWould you like any further information?",
+        "query": "cypher\nMATCH (f:File {name: 'README.md'})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 0,
+                    "committedDate": "2024-08-15T15:53:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b0204f78394d84771436a7717aafee6cad140319",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 1,
+                    "committedDate": "2024-08-15T15:04:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "f30df6c855d1df077adc6b226219629312015ec6",
+                    "type": "Commit",
+                    "message": "\"docs: document disclaimer about theme appearance\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 6,
+                    "committedDate": "2024-08-15T14:48:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c13795d4c40fe075ec8b4450bb78b65ecf8108b2",
+                    "type": "Commit",
+                    "message": "\"feat(git)!: ask for confirmation in `gpf` alias (#10169)\n\n- Rename `git push --force-with-lease ...` to `gpff`\r\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\r\n\r\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\r\nrunning the potentially destructive `git push --force-with-lease` command. If you\r\nwant to force-run the command without having to confirm it, run `gpff`.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 15,
+                    "committedDate": "2024-08-15T14:26:46Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d26c4a276610445670fb71d415804625cebd7ccd",
+                    "type": "Commit",
+                    "message": "\"chore(tmux): add link to iTerm2 integration docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 60,
+                    "deletions": 0,
+                    "committedDate": "2024-08-14T07:18:18Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9ba6daa1b5d0b60c89525d679eb30fe3ed9947de",
+                    "type": "Commit",
+                    "message": "\"feat(conda): add `conda` aliases plugin\n\nCloses #7318\nClosed #9691\n\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\nCo-authored-by: Marc Cornell\u00e0 <marc@mcornella.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 17,
+                    "deletions": 10,
+                    "committedDate": "2024-08-12T09:46:16Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "d6f84f3e7d2515cee8ba776d05ee2009ffd471d7",
+                    "type": "Commit",
+                    "message": "\"fix(catimg): add support to `magick` binary (#12608)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 90,
+                    "committedDate": "2024-08-09T07:44:46Z",
+                    "changedFiles": 23,
+                    "commentsCount": 0,
+                    "id": "efafef8495f030501e0df59ccb76a598bbce3ae1",
+                    "type": "Commit",
+                    "message": "\"docs: improve several plugin READMEs and add one for `ssh` plugin\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 125,
+                    "deletions": 112,
+                    "committedDate": "2024-08-08T18:43:20Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fccaaf2fc60149baab966acaeae35f55325e6f98",
+                    "type": "Commit",
+                    "message": "\"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 411,
+                    "committedDate": "2024-08-08T18:43:11Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "ff62d39f023fbe2872078ce82ea9704b1bf09ea6",
+                    "type": "Commit",
+                    "message": "\"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\n\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\nand unsupported years ago. Use Docker Desktop instead.\""
+                }
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 6,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "I don't know the answer to this question. Can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.login AS developer, COUNT(i) AS unfixed_bugs\nORDER BY unfixed_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 7,
+        "category": 2
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "The developer that fixed the most bugs in README.md is mcornella, with a total of 4 bugs fixed.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"README.md\"})\nRETURN u.login AS developer, COUNT(i) AS bugs_fixed\nORDER BY bugs_fixed DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "mcornella",
+                "bugs_fixed": 4
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 9,
+        "category": 3
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "The user who fixed the most bugs in \"cli.zsh\" is mcornella, with a total of 2 fixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"cli.zsh\"})\nRETURN u.login, COUNT(i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "u.login": "mcornella",
+                "fixed_bugs": 2
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 10,
+        "category": 3
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The file that introduces the most bugs is `README.md`, with a total of 6 bugs. Other files with notable bug counts include `termsupport.zsh`, `aws.plugin.zsh`, `cli.zsh`, and `upgrade.sh`, each with 2 bugs.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bug_count": 6
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "cli.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "brew.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "git.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "azure.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "check_for_upgrade.sh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "kubectl.plugin.zsh",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 11,
+        "category": 2
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy files are:\n\n1. `README.md` with 6 bugs\n2. `termsupport.zsh` with 2 bugs\n3. `upgrade.sh` with 2 bugs\n4. `cli.zsh` with 2 bugs\n5. `aws.plugin.zsh` with 2 bugs\n6. `_gradlew` with 1 bug\n7. `gradle.plugin.zsh` with 1 bug\n8. `kiwi.zsh-theme` with 1 bug\n9. `git.zsh` with 1 bug\n10. `_gradle` with 1 bug",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "README.md",
+                "bug_count": 6
+            },
+            {
+                "f.name": "termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "cli.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "f.name": "_gradlew",
+                "bug_count": 1
+            },
+            {
+                "f.name": "gradle.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "kiwi.zsh-theme",
+                "bug_count": 1
+            },
+            {
+                "f.name": "git.zsh",
+                "bug_count": 1
+            },
+            {
+                "f.name": "_gradle",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 12,
+        "category": 2
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "The buggy commit that happened on November 17, 2021, is identified by the ID `b60b3f184275c39800dd7284d6904fcf295b3956`. The commit message is `\"fix(osx): deprecate `osx` plugin without symlink (#10428)\\n\\nFixes #10428\"`. This commit involved 8 additions, 8 deletions, and changed 5 files. The commit was made at 09:53:17Z.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(:Issue)\nWHERE c.committedDate =~ '2021-11-17T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 8,
+                    "committedDate": "2021-11-17T09:53:17Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "b60b3f184275c39800dd7284d6904fcf295b3956",
+                    "type": "Commit",
+                    "message": "\"fix(osx): deprecate `osx` plugin without symlink (#10428)\n\nFixes #10428\""
+                }
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 13,
+        "category": 2
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE i.created_at =~ '2023-06-08T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 14,
+        "category": 2
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10452?",
+        "response": "I don't know the commit(s) that fixed the bug ticket KAFKA-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"KAFKA-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 15,
+        "category": 2
+    },
+    {
+        "question": "which commit fixed the bug ticket 12273?",
+        "response": "I don't know which commit fixed the bug ticket Kafka-7354. Can I help with anything else?",
+        "query": "cypher\nMATCH (i:Issue {title: \"Kafka-7354\"})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 16,
+        "category": 2
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "The bug introduced by the commit hash `b9be3a43b4da579299b4426b1ba9121f746e2555` is detailed in Issue number 12400. The issue is titled \"`omz plugin disable` breaks .zshrc file when disabling common substring.\" The bug occurs when using the command `omz plugin disable git`, which breaks the `.zshrc` file by incorrectly modifying the `plugins` array. Instead of only removing the `git` plugin, it also affects the `git-open` plugin and other plugins in the array, leading to an incorrect configuration. For example, the `plugins` array may be transformed from:\n\n```shell\nplugins=(\n    git\n    autoupdate\n    git-open\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n    autojump\n    brew\n    docker\n    fzf\n    rust\n    thefuck\n    zsh-interactive-cd\n    zsh-bat\n    asdf\n)\n```\n\nto:\n\n```shell\nplugins=(\n    autoupdate\n-open\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n    autojump\n    brew\n    docker\n    fzf\n    rust\n    thefuck\n    zsh-interactive-cd\n    zsh-bat\n    asdf\n)\n```\n\nThis issue was created on May 7, 2024, and was closed on May 8, 2024. The full details of the issue can be found [here](https://github.com/ohmyzsh/ohmyzsh/issues/12400).",
+        "query": "cypher\nMATCH (c:Commit {id: 'b9be3a43b4da579299b4426b1ba9121f746e2555'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12400,
+                    "closed_at": "2024-05-08T20:20:43Z",
+                    "created_at": "2024-05-07T18:34:05Z",
+                    "id": 12400,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"`omz plugin disable` breaks .zshrc file when disabling common substring\"",
+                    "body": "\"### Describe the bug\r\n\r\n`omz plugin disable git` will break a zshrc file with plugins that look like this:\r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    git-open\r\n    autoupdate\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n### Steps to reproduce\r\n\r\n1. Set up OhMyZsh\r\n2. Set up plugins, for example:\r\n```shell\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\nor \r\n\r\n```shell\r\nplugins=(\r\n    git\r\n    autoupdate\r\n    git-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\n3. run `omz plugin disable git` \r\n\r\n### Expected behavior\r\n\r\nThe `git` plugin gets removed, and the `git-open` plugin isnt impacted.  This isnt quite what happens though, the actual result is:\r\n\r\n```shell\r\nplugins=(\r\n    autoupdate\r\n-open\r\n    zsh-syntax-highlighting\r\n    zsh-autosuggestions\r\n    autojump\r\n    brew\r\n    docker\r\n    fzf\r\n    rust\r\n    thefuck\r\n    zsh-interactive-cd\r\n    zsh-bat\r\n    asdf\r\n)\r\n```\r\n\r\nNote - the same behavior happens when `plugins` is one line:\r\n\r\n```shell\r\n# this:\r\nplugins=(git autoupdate git-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n\r\n# gets turned into:\r\nplugins=(autoupdate-open zsh-syntax-highlighting zsh-autosuggestions autojump brew docker fzf rust thefuck zsh-interactive-cd zsh-bat asdf)\r\n```\r\n\r\n### Screenshots and recordings\r\n\r\n_No response_\r\n\r\n### OS / Linux distribution\r\n\r\nmacOS\r\n\r\n### Zsh version\r\n\r\n5.9\r\n\r\n### Oh My Zsh version\r\n\r\nmaster (668ca3a)\r\n\r\n### Terminal emulator\r\n\r\niTerm2\r\n\r\n### If using WSL on Windows, which version of WSL\r\n\r\nNone\r\n\r\n### Additional context\r\n\r\n_No response_\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/12400"
+                }
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 17,
+        "category": 2
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "The bug caused by commit `65393b4bb10de841edbe2026dba29b73625b33d7` is described in Issue #7986. The issue, titled \"parse errors for functions in debian.plugin.zsh,\" reports that in Debian Buster with zsh 5.7.1, the debian plugin in Oh My Zsh gives parse errors. Specifically, there are errors related to defining functions based on aliases without the \"function\" keyword, which can be fixed by adding \"function\" to all the functions defined in that section. The issue was created on July 10, 2019, and closed on September 8, 2019. You can view the full details of the issue [here](https://github.com/ohmyzsh/ohmyzsh/issues/7986).",
+        "query": "cypher\nMATCH (c:Commit {id: '65393b4bb10de841edbe2026dba29b73625b33d7'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 7986,
+                    "closed_at": "2019-09-08T12:59:51Z",
+                    "created_at": "2019-07-10T12:26:18Z",
+                    "id": 7986,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"parse errors for functions in debian.plugin.zsh\"",
+                    "body": "\"**Describe the bug**\r\nIn Debian Buster, zsh 5.7.1 (x86_64-debian-linux-gnu), the debian plugin in OMZ gives parse errors:\r\n\r\n```\r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: defining function based on alias `abd  \r\n/home/username/.oh-my-zsh/plugins/debian/debian.plugin.zsh:75: parse error near `() \r\n```\r\n\r\nIt appears that it doesnt like the functions being defined here without the \"function\" keyword.  This appears to be able to be fixed by adding \"function\" to all the functions defined in that section, namely:\r\n\r\nline 75: \"function abd() {\"\r\nline 86: \"function ai() {\"\r\nline 91: \"function ap() {\"\r\nline 96: \"function ar() {\"\r\n\r\nIm not sure how to file a pull request or Id just do so myself, sorry.\r\n\r\n**To Reproduce**\r\n1.) Enable \"debian\" plugin in zshrc\r\n2.) source ~/.zshrc\r\n3.) Receive parse error\r\n\r\n**Expected behavior**\r\nPlugin should load without issue rather than parse errors\r\n\r\n**System:**\r\n - OS: Debian Buster\r\n - Zsh version: 5.7.1 (x86_64-debian-linux-gnu)\r\n - Terminal emulator: urxvt (rxvt-unicode 9.22-6) with tmux 2.8-3\"",
+                    "url": "https://github.com/ohmyzsh/ohmyzsh/issues/7986"
+                }
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": true,
+        "reason": "",
+        "number": 18,
+        "category": 2
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "The percentage of the fixing commits that introduced bugs in July 2024 is 100.0%.",
+        "query": "cypher\nMATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c1.committedDate =~ '2024-07-..T..:..:..Z' AND c2.committedDate =~ '2024-07-..T..:..:..Z'\nWITH count(c1) AS fixingCommits, count(c2) AS introducingCommits\nRETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage\n",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 19,
+        "category": 3
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "In July 2024, there were 7 fixing commits that caused bugs.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ '2024-07-..T..:..:..Z' AND i.state = 'closed'\nRETURN COUNT(c) AS fixingCommits\n",
+        "result": [
+            {
+                "fixingCommits": 7
+            }
+        ],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 20,
+        "category": 3
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nRETURN u.name AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 0,
+        "isCorrect": false,
+        "reason": "",
+        "number": 8,
+        "category": 2
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})\nRETURN u.login AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 1,
+        "isCorrect": false,
+        "reason": "",
+        "number": 8,
+        "category": 2
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.name AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 2,
+        "isCorrect": false,
+        "reason": "",
+        "number": 8,
+        "category": 2
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})\nRETURN u.login AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 3,
+        "isCorrect": false,
+        "reason": "",
+        "number": 8,
+        "category": 2
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nRETURN u.login AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [],
+        "iteration": 4,
+        "isCorrect": false,
+        "reason": "",
+        "number": 8,
+        "category": 2
+    }
+]

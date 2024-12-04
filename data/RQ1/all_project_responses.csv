@@ -1,0 +1,101 @@
+number,repository,question,complexity,final_decision
+1,AutoGPT,how many commits happened in last month?,1,CORRECT
+2,AutoGPT,what is the latest commit?,1,CORRECT
+3,AutoGPT,can you tell me the details of the commits between May 27th 2023 and May 31st 2023?,1,CORRECT
+4,AutoGPT,return a commit message on July 31?,1,CORRECT
+5,AutoGPT,show me the changes for challenge.py file?,2,CORRECT
+6,AutoGPT,give me all the commits for multi.py file?,2,CORRECT
+7,AutoGPT,Determine the developers that had the most unfixed bugs?,2,INCORRECT
+8,AutoGPT,which developer has most number of bugs yet to be fixed?,2,INCORRECT
+9,AutoGPT,Determine the developers that fixed the most bugs in challenge.py?,3,CORRECT
+10,AutoGPT,who did most fixed bugs in test.py?,3,CORRECT
+11,AutoGPT,Determine the files that introduce the most bugs?,2,CORRECT
+12,AutoGPT,What are the most buggy files?,2,INCORRECT
+13,AutoGPT,"what are the buggy commits that happened on August 11, 2023?",2,CORRECT
+14,AutoGPT,"what commits were buggy on Dec 5, 2023?",2,CORRECT
+15,AutoGPT,commit(s) that fixed the bug ticket 349?,2,CORRECT
+16,AutoGPT,which commit fixed the bug ticket 3455?,2,CORRECT
+17,AutoGPT,Determine the bug(s) that were introduced because of commit hash 78f5ff17e695f2e5b8ed31f729fa47ae05c19822?,2,CORRECT
+18,AutoGPT,what are the bugs caused by commit 0a73e391d974996908fb517920cf6c2f62fbf33d?,2,CORRECT
+19,AutoGPT,Determine the percentage of the fixing commits that introduced bugs on July 2023?,3,INCORRECT
+20,AutoGPT,How many fixing commits caused bugs on July 2023?,3,INCORRECT
+1,bootstrap,how many commits happened in last month?,1,CORRECT
+2,bootstrap,what is the latest commit?,1,CORRECT
+3,bootstrap,can you tell me the details of the commits between May 27th 2018 and May 31st 2018?,1,CORRECT
+4,bootstrap,return a commit message on July 31?,1,NOT ANSWERED
+5,bootstrap,show me the changes for bootstrap-grid.scss file?,2,CORRECT
+6,bootstrap,give me all the commits for patterns.less file?,2,CORRECT
+7,bootstrap,Determine the developers that had the most unfixed bugs?,2,NOT ANSWERED
+8,bootstrap,Determine the developers that fixed the most bugs in bootstrap-grid.scss?,3,CORRECT
+9,bootstrap,who did most fixed bugs in browser-bugs.yml?,3,CORRECT
+10,bootstrap,Determine the files that introduce the most bugs?,2,INCORRECT
+11,bootstrap,What are the most buggy files?,2,INCORRECT
+12,bootstrap,"what are the buggy commits that happened on March 12, 2018?",2,CORRECT
+13,bootstrap,"what commits were buggy on Dec 26, 2017?",2,CORRECT
+14,bootstrap,commit(s) that fixed the bug ticket 11266?,2,CORRECT
+15,bootstrap,which commit fixed the bug ticket 25166?,2,CORRECT
+16,bootstrap,Determine the bug(s) that were introduced because of commit hash 9a3d72f659669e20ccff8baa4426fe0f24413a39?,2,CORRECT
+17,bootstrap,what are the bugs caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14?,2,CORRECT
+18,bootstrap,Determine the percentage of the fixing commits that introduced bugs on December 2013?,3,NOT ANSWERED
+19,bootstrap,How many fixing commits caused bugs on December 2013?,3,INCORRECT
+20,bootstrap,which developer has most number of bugs yet to be fixed?,2,INCORRECT
+1,ohmyzsh,how many commits happened in last month?,1,CORRECT
+2,ohmyzsh,what is the latest commit?,1,CORRECT
+3,ohmyzsh,can you tell me the details of the commits between May 27th 2018 and May 31st 2018?,1,CORRECT
+4,ohmyzsh,return a commit message on July 31?,1,NOT ANSWERED
+5,ohmyzsh,show me the changes for install.sh file?,2,CORRECT
+6,ohmyzsh,give me all the commits for README.md file?,2,CORRECT
+7,ohmyzsh,Determine the developers that had the most unfixed bugs?,2,NOT ANSWERED
+8,ohmyzsh,Determine the developers that fixed the most bugs in README.md?,3,CORRECT
+9,ohmyzsh,who did most fixed bugs in cli.zsh?,3,CORRECT
+10,ohmyzsh,Determine the files that introduce the most bugs?,2,CORRECT
+11,ohmyzsh,What are the most buggy files?,2,CORRECT
+12,ohmyzsh,"what are the buggy commits that happened on Nov 17, 2021?",2,CORRECT
+13,ohmyzsh,"what commits were buggy on June 08, 2023?",2,NOT ANSWERED
+14,ohmyzsh,commit(s) that fixed the bug ticket 10452?,2,NOT ANSWERED
+15,ohmyzsh,which commit fixed the bug ticket 12273?,2,NOT ANSWERED
+16,ohmyzsh,Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?,2,CORRECT
+17,ohmyzsh,what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?,2,CORRECT
+18,ohmyzsh,Determine the percentage of the fixing commits that introduced bugs on July 2024?,3,INCORRECT
+19,ohmyzsh,How many fixing commits caused bugs on July 2024?,3,INCORRECT
+20,ohmyzsh,which developer has most number of bugs yet to be fixed?,2,NOT ANSWERED
+1,react,how many commits happened in last month?,1,CORRECT
+2,react,what is the latest commit?,1,CORRECT
+3,react,can you tell me the details of the commits between May 27th 2018 and May 31st 2018?,1,CORRECT
+4,react,return a commit message on July 31?,1,CORRECT
+5,react,show me the changes for BeforeInputEventPlugin.js file?,2,CORRECT
+6,react,give me all the commits for React.js file?,2,CORRECT
+7,react,Determine the developers that had the most unfixed bugs?,2,INCORRECT
+8,react,Determine the developers that fixed the most bugs in ReactDOMInput.js?,3,CORRECT
+9,react,who did most fixed bugs in TapEventPlugin.js?,3,CORRECT
+10,react,Determine the files that introduce the most bugs?,2,INCORRECT
+11,react,What are the most buggy files?,2,CORRECT
+12,react,"what are the buggy commits that happened on March 1, 2022?",2,NOT ANSWERED
+13,react,"what commits were buggy on April 9, 2021?",2,NOT ANSWERED
+14,react,commit(s) that fixed the bug ticket 10217?,2,CORRECT
+15,react,which commit fixed the bug ticket 21442?,2,CORRECT
+16,react,Determine the bug(s) that were introduced because of commit hash f912186012f17858b9d25466c658a46e25093941?,2,CORRECT
+17,react,what are the bugs caused by commit 2e757790751ab8d165fc4df37e90a59d914c4527?,2,CORRECT
+18,react,Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?,3,INCORRECT
+19,react,which developer has most number of bugs yet to be fixed?,2,INCORRECT
+20,react,How many fixing commits caused bugs on Nov. 2013?,3,INCORRECT
+1,vue,how many commits happened in last month?,1,CORRECT
+2,vue,what is the latest commit?,1,CORRECT
+3,vue,can you tell me the details of the commits between Dec 1st 2023 and Dec 7th 2023?,1,NOT ANSWERED
+4,vue,return a commit message on July 31?,1,NOT ANSWERED
+5,vue,show me the changes for render.js file?,2,CORRECT
+6,vue,give me all the commits for vnode.js file?,2,CORRECT
+7,vue,Determine the developers that had the most unfixed bugs?,2,INCORRECT
+8,vue,which developer has most number of bugs yet to be fixed?,2,INCORRECT
+9,vue,Determine the developers that fixed the most bugs in helpers.js?,3,CORRECT
+10,vue,who did most fixed bugs in client.js?,3,CORRECT
+11,vue,Determine the files that introduce the most bugs?,2,INCORRECT
+12,vue,What are the most buggy files?,2,CORRECT
+13,vue,"what are the buggy commits that happened on August 18, 2022?",2,CORRECT
+14,vue,"what commits were buggy on May 24, 2022?",2,NOT ANSWERED
+15,vue,commit(s) that fixed the bug ticket 12892?,2,CORRECT
+16,vue,which commit fixed the bug ticket 11575?,2,CORRECT
+17,vue,Determine the bug(s) that were introduced because of commit hash fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be?,2,CORRECT
+18,vue,what are the bugs caused by commit c678e3134b927645f79270b52d4d660a7e3654ce?,2,CORRECT
+19,vue,Determine the percentage of the fixing commits that introduced bugs on Oct 2017?,3,INCORRECT
+20,vue,How many fixing commits caused bugs on Oct 2017?,3,INCORRECT

@@ -1,0 +1,27 @@
+Node properties are the following:
+User {id: STRING, name: STRING, type: STRING, login: STRING, email: STRING},
+Commit {id: STRING, type: STRING, additions: INTEGER, deletions: INTEGER, committedDate: STRING, changedFiles: INTEGER, commentsCount: INTEGER, message: STRING},
+File {id: STRING, name: STRING, type: STRING, path: STRING},
+Issue {id: INTEGER, type: STRING, url: STRING, number: INTEGER, closed_at: STRING, created_at: STRING, label: STRING, state: STRING, title: STRING, body: STRING}
+
+Relationship properties are the following:
+author {label: INTEGER, relation: STRING},
+participates_in {label: INTEGER, relation: STRING},
+creates {label: INTEGER, relation: STRING},
+assigned {label: INTEGER, relation: STRING},
+changed {additions: INTEGER, deletions: INTEGER, label: INTEGER, relation: STRING, patch: STRING, changes: INTEGER, change_type: STRING},
+parent_of {label: INTEGER, relation: STRING},
+introduced {label: INTEGER, relation: STRING},
+fixed {label: INTEGER, relation: STRING},
+impacted {label: INTEGER, relation: STRING}
+
+The relationships are the following (Explanation of the relationship is after //):
+(:User)-[:author]->(:Commit), // User authors a commit
+(:User)-[:participates_in]->(:Issue), // user participated in the issue discussion
+(:User)-[:creates]->(:Issue), // user created the issue
+(:User)-[:assigned]->(:Issue), //user assigned to solve issue
+(:Commit)-[:parent_of]->(:Commit), //this is the parent commit of a commit
+(:Commit)-[:changed]->(:File), //Commit modified (added, deleted, renameed, etc) the File
+(:Commit)-[:introduced]->(:Issue), //the commit introduced the bug
+(:Commit)-[:fixed]->(:Issue), //the commit fixed the bug
+(:Issue)-[:impacted]->(:File) //the changes in the file is the bug

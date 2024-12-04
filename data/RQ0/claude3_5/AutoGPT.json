@@ -1,0 +1,685 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(:Repository)\nWHERE c.committedDate >= '2024-07-28T03:00:18Z' AND c.committedDate <= '2024-08-28T03:00:18Z'\nRETURN COUNT(c) AS commitCount",
+        "result": [
+            {
+                "commitCount": 96
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate IS NOT NULL\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1",
+        "result": [
+            {
+                "c": {
+                    "additions": 14,
+                    "committedDate": "2024-08-16T15:13:10Z",
+                    "deletions": 22,
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "526364297c9dc7bd3242c6bac19dee9ee61916da",
+                    "type": "Commit",
+                    "message": "\"feat(rnd): Add staticOutput field on block API (#7802)\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2023 and May 31st 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= '2023-05-27T00:00:00Z' AND c.committedDate <= '2023-05-31T23:59:59Z'\nRETURN c.id, c.message, c.additions, c.deletions, c.changedFiles, c.commentsCount, c.committedDate, r.name AS repository_name\nORDER BY c.committedDate ASC",
+        "result": [
+            {
+                "c.id": "4b7fa7f49dab11b0d00ef9b44633e2a9ae52b525",
+                "c.message": "\"Fix typo and links in documentation (#4440)\"",
+                "c.additions": 4,
+                "c.deletions": 4,
+                "c.changedFiles": 2,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-27T09:52:38Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "03036c1bd6ec18247fc212def434742cfb1f57e8",
+                "c.message": "\"Added three more tests to check for edge cases in URL validation (#4441)\n\nCo-authored-by: Ryan Johns <rkjohns@verisk.com>\r\nCo-authored-by: k-boikov <64261260+k-boikov@users.noreply.github.com>\"",
+                "c.additions": 19,
+                "c.deletions": 0,
+                "c.changedFiles": 2,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-27T15:58:38Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "44f6d946f5ab8c7fae132a534f1e4730639499a9",
+                "c.message": "\"fix information retrieval challenge (#4448)\"",
+                "c.additions": 8,
+                "c.deletions": 29,
+                "c.changedFiles": 6,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-28T01:26:30Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "78774526f42025ebd1949e841d475f3b3d5229bc",
+                "c.message": "\"Update submodule reference\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-28T01:30:02Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "ee9f10a8d8138a0fc5c352d5950f3da3d8c24c57",
+                "c.message": "\"remove unused imports automatically (#4449)\n\n* remove unused imports automatically\r\n\r\n* add linters to pr template\r\n\r\n* remove useless try statement\"",
+                "c.additions": 28,
+                "c.deletions": 70,
+                "c.changedFiles": 33,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-28T12:50:50Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "daafda320b41ffaf8157fdbec8ee705cf22c8922",
+                "c.message": "\"Update README.md\n\nRemove outdated reference to En_GPT\"",
+                "c.additions": 0,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-29T03:28:57Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "31cd836530871637847fa79064a99992d0181509",
+                "c.message": "\"\"Beat Challenges\" Mode (#4447)\n\nCo-authored-by: Richard Beales <rich@richbeales.net>\"",
+                "c.additions": 400,
+                "c.deletions": 82,
+                "c.changedFiles": 17,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-29T07:47:06Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "1127d9c5f57c7a7e66900e7bbb95e943842097e9",
+                "c.message": "\"Master doesnt beat memory challenge b level 1 in a consistent manner (#4460)\"",
+                "c.additions": 2,
+                "c.deletions": 2,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-29T15:25:45Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "b5d78a48a7cfa221b355416f6ef8a0bdcd4b928f",
+                "c.message": "\"Update submodule reference\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-29T15:29:31Z",
+                "repository_name": "AutoGPT"
+            },
+            {
+                "c.id": "1ddf2324ff514e39df82724350fec05c6ec4e22a",
+                "c.message": "\"Improve the steps for running docker compose in the setup documentation (#4462)\n\nCo-authored-by: k-boikov <64261260+k-boikov@users.noreply.github.com>\"",
+                "c.additions": 10,
+                "c.deletions": 5,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.committedDate": "2023-05-29T16:24:38Z",
+                "repository_name": "AutoGPT"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH \"2024-07-31\"\nRETURN c.message\nLIMIT 1",
+        "result": [
+            {
+                "c.message": "\"fix(server): enable other methods of setting configs outside of the config.json file (#7645)\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for file challenge.py file?",
+        "response": "",
+        "query": "MATCH (f:File {name: 'challenge.py'})<-[c:changed]-(commit:Commit)\nRETURN f.path AS filePath, commit.committedDate AS commitDate, c.additions AS additions, c.deletions AS deletions, c.changes AS totalChanges, c.change_type AS changeType, commit.message AS commitMessage\nORDER BY commit.committedDate DESC",
+        "result": [
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2024-01-18T14:19:06Z",
+                "additions": 0,
+                "deletions": 284,
+                "totalChanges": 284,
+                "changeType": "removed",
+                "commitMessage": "\"refactor(benchmark): Interface & type consoledation, and arch change, to allow adding challenge providers\n\nSquashed commit of the following:\n\ncommit 7d6476d3297860f74c276d571da995d958a8cc1a\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 18:10:45 2024 +0100\n\n    refactor(benchmark/challenge): Set up structure to support more challenge providers\n\n    - Move `Challenge`, `ChallengeData`, `load_challenges` to `challenges/builtin.py` and rename to `BuiltinChallenge`, `BuiltinChallengeSpec`, `load_builtin_challenges`\n    - Create `BaseChallenge` to serve as interface and base class for different challenge implementations\n    - Create `ChallengeInfo` model to serve as universal challenge info object\n    - Create `get_challenge_from_source_uri` function in `challenges/__init__.py`\n    - Replace `ChallengeData` by `ChallengeInfo` everywhere except in `BuiltinChallenge`\n    - Add strong typing to `task_informations` store in app.py\n    - Use `call.duration` in `finalize_test_report` and remove `timer` fixture\n    - Update docstring on `challenges/__init__.py:get_unique_categories`\n    - Add docstring to `generate_test.py`\n\ncommit 5df2aa7939b45d85a2c2b5de9ac0522330d1502a\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 16:58:01 2024 +0100\n\n    refactor(benchmark): Refactor & rename functions in agent_interface.py and agent_api_interface.py\n\n    - `copy_artifacts_into_temp_folder` -> `copy_challenge_artifacts_into_workspace`\n    - `copy_agent_artifacts_into_folder` -> `download_agent_artifacts_into_folder`\n    - Reorder parameters of `run_api_agent`, `copy_challenge_artifacts_into_workspace`; use `Path` instead of `str`\n\ncommit 6a256fef4c7950b7ee82fb801e70c83afe6b6f8b\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 16:02:25 2024 +0100\n\n    refactor(benchmark): Refactor & typefix report generation and handling logic\n\n    - Rename functions in reports.py and ReportManager.py to better reflect what they do\n       - `get_previous_test_results` -> `get_and_update_success_history`\n       - `generate_single_call_report` -> `initialize_test_report`\n       - `finalize_reports` -> `finalize_test_report`\n       - `ReportManager.end_info_report` -> `SessionReportManager.finalize_session_report`\n    - Modify `pytest_runtest_makereport` hook in conftest.py to finalize the report immediately after the challenge finishes running instead of after teardown\n       - Move result processing logic from `initialize_test_report` to `finalize_test_report` in reports.py\n    - Use `Test` and `Report` types from report_types.py where possible instead of untyped dicts: reports.py, utils.py, ReportManager.py\n    - Differentiate `ReportManager` into `SessionReportManager`, `RegressionTestsTracker`, `SuccessRateTracker`\n    - Move filtering of optional challenge categories from challenge.py (`Challenge.skip_optional_categories`) to conftest.py (`pytest_collection_modifyitems`)\n    - Remove unused `scores` fixture in conftest.py\n\ncommit 370d6dbf5df75d78e3878877968e8cd309d6d7fb\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 15:16:43 2024 +0100\n\n    refactor(benchmark): Simplify models in report_types.py\n\n    - Removed ForbidOptionalMeta and BaseModelBenchmark classes.\n    - Changed model attributes to optional: `Metrics.difficulty`, `Metrics.success`, `Metrics.success_percentage`, `Metrics.run_time`, and `Test.reached_cutoff`.\n    - Added validator to `Metrics` model to require `success` and `run_time` fields if `attempted=True`.\n    - Added default values to all optional model fields.\n    - Removed duplicate imports.\n    - Added condition in process_report.py to prevent null lookups if `metrics.difficulty` is not set.\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2024-01-16T14:49:46Z",
+                "additions": 4,
+                "deletions": 4,
+                "totalChanges": 8,
+                "changeType": "modified",
+                "commitMessage": "\"chore(benchmark): Upgrade OpenAI client lib from v0 to v1\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2024-01-16T14:38:47Z",
+                "additions": 3,
+                "deletions": 3,
+                "totalChanges": 6,
+                "changeType": "modified",
+                "commitMessage": "\"refactor(benchmark): Disable Helicone integrations\n\nWe want to upgrade the OpenAI library, but `helicone` does not support `openai@^1.0.0`, so were disabling the Helicone integration for now.\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2024-01-02T21:23:09Z",
+                "additions": 109,
+                "deletions": 61,
+                "totalChanges": 170,
+                "changeType": "modified",
+                "commitMessage": "\"AGBenchmark codebase clean-up (#6650)\n\n* refactor(benchmark): Deduplicate configuration loading logic\r\n\r\n   - Move the configuration loading logic to a separate `load_agbenchmark_config` function in `agbenchmark/config.py` module.\r\n   - Replace the duplicate loading logic in `conftest.py`, `generate_test.py`, `ReportManager.py`, `reports.py`, and `__main__.py` with calls to `load_agbenchmark_config` function.\r\n\r\n* fix(benchmark): Fix type errors, linting errors, and clean up CLI validation in __main__.py\r\n\r\n   - Fixed type errors and linting errors in `__main__.py`\r\n   - Improved the readability of CLI argument validation by introducing a separate function for it\r\n\r\n* refactor(benchmark): Lint and typefix app.py\r\n\r\n   - Rearranged and cleaned up import statements\r\n   - Fixed type errors caused by improper use of `psutil` objects\r\n   - Simplified a number of `os.path` usages by converting to `pathlib`\r\n   - Use `Task` and `TaskRequestBody` classes from `agent_protocol_client` instead of `.schema`\r\n\r\n* refactor(benchmark): Replace `.agent_protocol_client` by `agent-protcol-client`, clean up schema.py\r\n\r\n   - Remove `agbenchmark.agent_protocol_client` (an offline copy of `agent-protocol-client`).\r\n      - Add `agent-protocol-client` as a dependency and change imports to `agent_protocol_client`.\r\n   - Fix type annotation on `agent_api_interface.py::upload_artifacts` (`ApiClient` -> `AgentApi`).\r\n   - Remove all unused types from schema.py (= most of them).\r\n\r\n* refactor(benchmark): Use pathlib in agent_interface.py and agent_api_interface.py\r\n\r\n* refactor(benchmark): Improve typing, response validation, and readability in app.py\r\n\r\n   - Simplified response generation by leveraging type checking and conversion by FastAPI.\r\n   - Introduced use of `HTTPException` for error responses.\r\n   - Improved naming, formatting, and typing in `app.py::create_evaluation`.\r\n   - Updated the docstring on `app.py::create_agent_task`.\r\n   - Fixed return type annotations of `create_single_test` and `create_challenge` in generate_test.py.\r\n   - Added default values to optional attributes on models in report_types_v2.py.\r\n   - Removed unused imports in `generate_test.py`\r\n\r\n* refactor(benchmark): Clean up logging and print statements\r\n\r\n   - Introduced use of the `logging` library for unified logging and better readability.\r\n   - Converted most print statements to use `logger.debug`, `logger.warning`, and `logger.error`.\r\n   - Improved descriptiveness of log statements.\r\n   - Removed unnecessary print statements.\r\n   - Added log statements to unspecific and non-verbose `except` blocks.\r\n   - Added `--debug` flag, which sets the log level to `DEBUG` and enables a more comprehensive log format.\r\n   - Added `.utils.logging` module with `configure_logging` function to easily configure the logging library.\r\n   - Converted raw escape sequences in `.utils.challenge` to use `colorama`.\r\n   - Renamed `generate_test.py::generate_tests` to `load_challenges`.\r\n\r\n* refactor(benchmark): Remove unused server.py and agent_interface.py::run_agent\r\n\r\n   - Remove unused server.py file\r\n   - Remove unused run_agent function from agent_interface.py\r\n\r\n* refactor(benchmark): Clean up conftest.py\r\n\r\n   - Fix and add type annotations\r\n   - Rewrite docstrings\r\n   - Disable or remove unused code\r\n   - Fix definition of arguments and their types in `pytest_addoption`\r\n\r\n* refactor(benchmark): Clean up generate_test.py file\r\n\r\n   - Refactored the `create_single_test` function for clarity and readability\r\n      - Removed unused variables\r\n      - Made creation of `Challenge` subclasses more straightforward\r\n      - Made bare `except` more specific\r\n   - Renamed `Challenge.setup_challenge` method to `run_challenge`\r\n   - Updated type hints and annotations\r\n   - Made minor code/readability improvements in `load_challenges`\r\n   - Added a helper function `_add_challenge_to_module` for attaching a Challenge class to the current module\r\n\r\n* fix(benchmark): Fix and add type annotations in execute_sub_process.py\r\n\r\n* refactor(benchmark): Simplify const determination in agent_interface.py\r\n\r\n   - Simplify the logic that determines the value of `HELICONE_GRAPHQL_LOGS`\r\n\r\n* fix(benchmark): Register category markers to prevent warnings\r\n\r\n   - Use the `pytest_configure` hook to register the known challenge categories as markers. Otherwise, Pytest will raise \"unknown marker\" warnings at runtime.\r\n\r\n* refactor(benchmark/challenges): Fix indentation in 4_revenue_retrieval_2/data.json\r\n\r\n* refactor(benchmark): Update agent_api_interface.py\r\n\r\n   - Add type annotations to `copy_agent_artifacts_into_temp_folder` function\r\n   - Add note about broken endpoint in the `agent_protocol_client` library\r\n   - Remove unused variable in `run_api_agent` function\r\n   - Improve readability and resolve linting error\r\n\r\n* feat(benchmark): Improve and centralize pathfinding\r\n\r\n   - Search path hierarchy for applicable `agbenchmark_config`, rather than assuming its in the current folder.\r\n   - Create `agbenchmark.utils.path_manager` with `AGBenchmarkPathManager` and exporting a `PATH_MANAGER` const.\r\n   - Replace path constants defined in __main__.py with usages of `PATH_MANAGER`.\r\n\r\n* feat(benchmark/cli): Clean up and improve CLI\r\n\r\n   - Updated commands, options, and their descriptions to be more intuitive and consistent\r\n   - Moved slow imports into the entrypoints that use them to speed up application startup\r\n   - Fixed type hints to match output types of Click options\r\n   - Hid deprecated `agbenchmark start` command\r\n   - Refactored code to improve readability and maintainability\r\n   - Moved main entrypoint into `run` subcommand\r\n   - Fixed `version` and `serve` subcommands\r\n   - Added `click-default-group` package to allow using `run` implicitly (for backwards compatibility)\r\n   - Renamed `--no_dep` to `--no-dep` for consistency\r\n   - Fixed string formatting issues in log statements\r\n\r\n* refactor(benchmark/config): Move AgentBenchmarkConfig and related functions to config.py\r\n\r\n   - Move the `AgentBenchmarkConfig` class from `utils/data_types.py` to `config.py`.\r\n   - Extract the `calculate_info_test_path` function from `utils/data_types.py` and move it to `config.py` as a private helper function `_calculate_info_test_path`.\r\n   - Move `load_agent_benchmark_config()` to `AgentBenchmarkConfig.load()`.\r\n   - Changed simple getter methods on `AgentBenchmarkConfig` to calculated properties.\r\n   - Update all code references according to the changes mentioned above.\r\n\r\n* refactor(benchmark): Fix ReportManager init parameter types and use pathlib\r\n\r\n   - Fix the type annotation of the `benchmark_start_time` parameter in `ReportManager.__init__`, was mistyped as `str` instead of `datetime`.\r\n   - Change the type of the `filename` parameter in the `ReportManager.__init__` method from `str` to `Path`.\r\n   - Rename `self.filename` with `self.report_file` in `ReportManager`.\r\n   - Change the way the report file is created, opened and saved to use the `Path` object.\r\n\r\n* refactor(benchmark): Improve typing surrounding ChallengeData and clean up its implementation\r\n\r\n   - Use `ChallengeData` objects instead of untyped `dict` in  app.py, generate_test.py, reports.py.\r\n   - Remove unnecessary methods `serialize`, `get_data`, `get_json_from_path`, `deserialize` from `ChallengeData` class.\r\n   - Remove unused methods `challenge_from_datum` and `challenge_from_test_data` from `ChallengeData class.\r\n   - Update function signatures and annotations of `create_challenge` and `generate_single_test` functions in generate_test.py.\r\n   - Add types to function signatures of `generate_single_call_report` and `finalize_reports` in reports.py.\r\n   - Remove unnecessary `challenge_data` parameter (in generate_test.py) and fixture (in conftest.py).\r\n\r\n* refactor(benchmark): Clean up generate_test.py, conftest.py and __main__.py\r\n\r\n   - Cleaned up generate_test.py and conftest.py\r\n      - Consolidated challenge creation logic in the `Challenge` class itself, most notably the new `Challenge.from_challenge_spec` method.\r\n      - Moved challenge selection logic from generate_test.py to the `pytest_collection_modifyitems` hook in conftest.py.\r\n   - Converted methods in the `Challenge` class to class methods where appropriate.\r\n   - Improved argument handling in the `run_benchmark` function in `__main__.py`.\r\n\r\n* refactor(benchmark/config): Merge AGBenchmarkPathManager into AgentBenchmarkConfig and reduce fragmented/global state\r\n\r\n   - Merge the functionality of `AGBenchmarkPathManager` into `AgentBenchmarkConfig` to consolidate the configuration management.\r\n   - Remove the `.path_manager` module containing `AGBenchmarkPathManager`.\r\n   - Pass the `AgentBenchmarkConfig` and its attributes through function arguments to reduce global state and improve code clarity.\r\n\r\n* feat(benchmark/serve): Configurable port for `serve` subcommand\r\n\r\n   - Added `--port` option to `serve` subcommand to allow for specifying the port to run the API on.\r\n   - If no `--port` option is provided, the port will default to the value specified in the `PORT` environment variable, or 8080 if not set.\r\n\r\n* feat(benchmark/cli): Add `config` subcommand\r\n\r\n   - Added a new subcommand `config` to the AGBenchmark CLI, to display information about the present AGBenchmark config.\r\n\r\n* fix(benchmark): Gracefully handle incompatible challenge spec files in app.py\r\n\r\n   - Added a check to skip deprecated challenges\r\n   - Added logging to allow debugging of the loading process\r\n   - Added handling of validation errors when parsing challenge spec files\r\n   - Added missing `spec_file` attribute to `ChallengeData`\r\n\r\n* refactor(benchmark): Move `run_benchmark` entrypoint to main.py, use it in `/reports` endpoint\r\n\r\n   - Move `run_benchmark` and `validate_args` from __main__.py to main.py\r\n   - Replace agbenchmark subprocess in `app.py:run_single_test` with `run_benchmark`\r\n   - Move `get_unique_categories` from __main__.py to challenges/__init__.py\r\n   - Move `OPTIONAL_CATEGORIES` from __main__.py to challenge.py\r\n   - Reduce operations on updates.json (including `initialize_updates_file`) outside of API\r\n\r\n* refactor(benchmark): Remove unused `/updates` endpoint and all related code\r\n\r\n   - Remove `updates_json_file` attribute from `AgentBenchmarkConfig`\r\n   - Remove `get_updates` and `_initialize_updates_file` in app.py\r\n   - Remove `append_updates_file` and `create_update_json` functions in agent_api_interface.py\r\n   - Remove call to `append_updates_file` in challenge.py\r\n\r\n* refactor(benchmark/config): Clean up and update docstrings on `AgentBenchmarkConfig`\r\n\r\n   - Add and update docstrings\r\n   - Change base class from `BaseModel` to `BaseSettings`, allow extras for backwards compatibility\r\n   - Make naming of path attributes on `AgentBenchmarkConfig` more consistent\r\n   - Remove unused `agent_home_directory` attribute\r\n   - Remove unused `workspace` attribute\r\n\r\n* fix(benchmark): Restore mechanism to select (optional) categories in agent benchmark config\r\n\r\n* fix(benchmark): Update agent-protocol-client to v1.1.0\r\n\r\n   - Fixes issue with fetching task artifact listings\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2023-11-21T09:58:54Z",
+                "additions": 2,
+                "deletions": 2,
+                "totalChanges": 4,
+                "changeType": "modified",
+                "commitMessage": "\"Clean up & fix GitHub workflows (#6313)\n\n* ci: Mitigate security issues in autogpt-ci.yml\r\n\r\n- Remove unnecessary pull_request_target paths and related variables and config\r\n- Set permissions for contents to read only\r\n\r\n* ci: Simplify steps in autogpt-ci.yml workflow using GitHub CLI\r\n\r\n- Simplify step in autogpt-ci.yml by using GitHub CLI instead of API for adding label and comment functionality\r\n- Replace curl command with gh issue edit to add \"behaviour change\" label to the pull request\r\n- Replace gh api command with gh issue comment to leave a comment about the changed behavior of AutoGPT in the pull request\r\n\r\n* ci: Fix issues in workflows\r\n\r\n- Move environment variable definition to top level in benchmark-ci.yml (because the other job also needs it)\r\n- Removed invalid branches: [hackathon] restriction in hackathon.yml workflow\r\n- Removed redundant ref and repository fields in the checkout step of both workflows.\r\n\r\n* ci: Delete legacy benchmarks.yml workflow\r\n\r\n* ci: Add triggers for CI workflows\r\n\r\n- Add triggers to run CI workflows when they are edited.\r\n- Update the paths for the CI workflows in the trigger configuration.\r\n\r\n* fix: Fix benchmark lint error\r\n\r\n- Removed unnecessary blank lines in report_types.py\r\n- Fixed string quotes in challenge.py to maintain consistency\r\n\r\n* fix: Update task description in password generator data.json\r\n\r\n- Update task description in `data.json` file for the password generator challenge to clarify the input requirements and error handling.\r\n- This change is made in an attempt to make the Benchmark CI pass.\r\n\r\n* fix: Fix PasswordGenerator challenge in CI\r\n\r\n- Fix the behavior of the reference password_generator.py to align with the task description\r\n- Use default password length 8 instead of a random length in the generate_password function\r\n- Retrieve the password length from the command line arguments if \"--length\" is provided, else set it to 8\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2023-10-20T15:26:29Z",
+                "additions": 6,
+                "deletions": 0,
+                "totalChanges": 6,
+                "changeType": "modified",
+                "commitMessage": "\"case sensitivity, updating challenges\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2023-10-18T00:43:55Z",
+                "additions": 0,
+                "deletions": 24,
+                "totalChanges": 24,
+                "changeType": "removed",
+                "commitMessage": "\"AutoGPT: Implement Agent Protocol (#5612)\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2023-10-18T00:06:15Z",
+                "additions": 0,
+                "deletions": 24,
+                "totalChanges": 24,
+                "changeType": "removed",
+                "commitMessage": "\"Abandon tests/challenges in favor of benchmark\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2023-10-07T22:13:56Z",
+                "additions": 4,
+                "deletions": 5,
+                "totalChanges": 9,
+                "changeType": "modified",
+                "commitMessage": "\"Merge branch master into autogpt/agent-protocol\""
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "commitDate": "2023-10-03T18:24:16Z",
+                "additions": 4,
+                "deletions": 5,
+                "totalChanges": 9,
+                "changeType": "modified",
+                "commitMessage": "\"Fix custom_python not being copied (#5512)\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for multi.py file?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[r:changed]->(f:File {name: 'multi.py'})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 30,
+                    "deletions": 20,
+                    "committedDate": "2024-07-23T20:36:04Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "e7885f943bc7665c1faf25158454b7b5c43b5b44",
+                    "type": "Commit",
+                    "message": "\"fix(agent): Unbreak LLM status check on start-up\n\nFixes #7508\n\n- Amend `app/configurator.py:check_model(..)` to check multiple models at once and save duplicate API calls\n- Amend `MultiProvider.get_available_providers()` to verify availability by fetching models and handle failure\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 680,
+                    "deletions": 10,
+                    "committedDate": "2024-07-17T13:56:55Z",
+                    "changedFiles": 10,
+                    "commentsCount": 0,
+                    "id": "62c420e26f6cc4e980347ca1eb73252989c3394b",
+                    "type": "Commit",
+                    "message": "\"feat(forge/llm): Add `LlamafileProvider` (#7091)\n\n* Add minimal implementation of `LlamafileProvider`, a new `ChatModelProvider` for llamafiles. It extends `BaseOpenAIProvider` and only overrides methods that are necessary to get the system to work at a basic level.\r\n\r\n* Add support for `mistral-7b-instruct-v0.2`. This is the only model currently supported by `LlamafileProvider` because this is the only model I tested anything with.\r\n\r\n* Add instructions to use AutoGPT with llamafile in the docs at `autogpt/setup/index.md`\r\n* Add helper script to get it running quickly at `scripts/llamafile/serve.py`\r\n\r\n---------\r\n\r\nCo-authored-by: Reinier van der Leer <pwuts@agpt.co>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 993,
+                    "deletions": 605,
+                    "committedDate": "2024-07-02T18:45:32Z",
+                    "changedFiles": 54,
+                    "commentsCount": 0,
+                    "id": "7cb4d4a903007e89959044e72b822291c1d795e1",
+                    "type": "Commit",
+                    "message": "\"feat(forge, agent, benchmark): Upgrade to Pydantic v2 (#7280)\n\nUpdate Pydantic dependency of `autogpt`, `forge` and `benchmark` to `^2.7`\r\n[Pydantic Migration Guide](https://docs.pydantic.dev/2.7/migration/)\r\n\r\n- Migrate usages of now-deprecated functions to their replacements\r\n- Update `Field` definitions\r\n  - Ellipsis `...` for required fields is deprecated\r\n  - `Field` no longer supports extra `kwargs`, replace use of this feature with field metadata\r\n- Replace `Config` class for specifying model configuration with `model_config = ConfigDict(..)`\r\n- Removed `ModelContainer` in `BaseAgent`, component configuration dict is now directly serialized using Pydantic v2 helper functions\r\n- Forked `agent-protocol` and updated `packages/client/python` for Pydantic v2 support: https://github.com/Significant-Gravitas/agent-protocol\r\n\r\n---------\r\n\r\nCo-authored-by: Reinier van der Leer <pwuts@agpt.co>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 640,
+                    "deletions": 732,
+                    "committedDate": "2024-06-02T23:29:24Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "4e76768bc9b79b0e53f1fd24c8bbcddddc1a1cbd",
+                    "type": "Commit",
+                    "message": "\"refactor(forge/llm): Create `BaseOpenAIProvider` -> deduplicate `GroqProvider` & `OpenAIProvider` implementation (#7178)\n\n- Add `_BaseOpenAIProvider`, `BaseOpenAIChatProvider`, and `BaseOpenAIEmbeddingProvider`, which implement the shared functionality of OpenAI-like providers, e.g. `GroqProvider` and `OpenAIProvider`\r\n- (Re)move as much code as possible from `GroqProvider` and `OpenAIProvider` by rebasing them on `BaseOpenAI(Chat|Embedding)Provider`\r\n\r\nAlso:\r\n- Rename `get_available_models()` to `get_available_chat_models()` on `BaseChatModelProvider`\r\n- Add `get_available_models()` to `BaseModelProvider`\r\n- Add `get_available_embedding_models()` to `BaseEmbeddingModelProvider`\r\n- Move common `fix_failed_parse_tries` config attribute into base `ModelProviderConfiguration`\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2905,
+                    "deletions": 2433,
+                    "committedDate": "2024-05-28T03:04:21Z",
+                    "changedFiles": 147,
+                    "commentsCount": 0,
+                    "id": "f107ff8cf04941bac28c96e7b20a27b91e5ed6e1",
+                    "type": "Commit",
+                    "message": "\"Set up unified pre-commit + CI w/ linting + type checking & FIX EVERYTHING (#7171)\n\n- **FIX ALL LINT/TYPE ERRORS IN AUTOGPT, FORGE, AND BENCHMARK**\r\n\r\n### Linting\r\n- Clean up linter configs for `autogpt`, `forge`, and `benchmark`\r\n- Add type checking with Pyright\r\n- Create unified pre-commit config\r\n- Create unified linting and type checking CI workflow\r\n\r\n### Testing\r\n- Synchronize CI test setups for `autogpt`, `forge`, and `benchmark`\r\n   - Add missing pytest-cov to benchmark dependencies\r\n- Mark GCS tests as slow to speed up pre-commit test runs\r\n- Repair `forge` test suite\r\n  - Add `AgentDB.close()` method for test DB teardown in db_test.py\r\n  - Use actual temporary dir instead of forge/test_workspace/\r\n- Move left-behind dependencies for moved `forge`-code to from autogpt to forge\r\n\r\n### Notable type changes\r\n- Replace uses of `ChatModelProvider` by `MultiProvider`\r\n- Removed unnecessary exports from various __init__.py\r\n- Simplify `FileStorage.open_file` signature by removing `IOBase` from return type union\r\n  - Implement `S3BinaryIOWrapper(BinaryIO)` type interposer for `S3FileStorage`\r\n\r\n- Expand overloads of `GCSFileStorage.open_file` for improved typing of read and write modes\r\n\r\n  Had to silence type checking for the extra overloads, because (I think) Pyright is reporting a false-positive:\r\n  https://github.com/microsoft/pyright/issues/8007\r\n\r\n- Change `count_tokens`, `get_tokenizer`, `count_message_tokens` methods on `ModelProvider`s from class methods to instance methods\r\n\r\n- Move `CompletionModelFunction.schema` method -> helper function `format_function_def_for_openai` in `forge.llm.providers.openai`\r\n\r\n- Rename `ModelProvider` -> `BaseModelProvider`\r\n- Rename `ChatModelProvider` -> `BaseChatModelProvider`\r\n- Add type `ChatModelProvider` which is a union of all subclasses of `BaseChatModelProvider`\r\n\r\n### Removed rather than fixed\r\n- Remove deprecated and broken autogpt/agbenchmark_config/benchmarks.py\r\n- Various base classes and properties on base classes in `forge.llm.providers.schema` and `forge.models.providers`\r\n\r\n### Fixes for other issues that came to light\r\n- Clean up `forge.agent_protocol.api_router`, `forge.agent_protocol.database`, and `forge.agent.agent`\r\n\r\n- Add fallback behavior to `ImageGeneratorComponent`\r\n   - Remove test for deprecated failure behavior\r\n\r\n- Fix `agbenchmark.challenges.builtin` challenge exclusion mechanism on Windows\r\n\r\n- Fix `_tool_calls_compat_extract_calls` in `forge.llm.providers.openai`\r\n\r\n- Add support for `any` (= no type specified) in `JSONSchema.typescript_type`\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 479,
+                    "deletions": 8,
+                    "committedDate": "2024-05-24T14:34:51Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "edcbbbce257c29de69f41a348efad14cc46eb3dc",
+                    "type": "Commit",
+                    "message": "\"feat(forge/llm): Add `GroqProvider` (#7130)\n\n* Add `GroqProvider` in `forge.llm.providers.groq`\r\n  * Add to `llm.providers.multi`\r\n  * Add `groq` dependency (v0.8.0)\r\n\r\n* Update AutoGPT docs & config template\r\n  * Update .env.template\r\n  * Update docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 84,
+                    "deletions": 87,
+                    "committedDate": "2024-05-22T12:08:54Z",
+                    "changedFiles": 229,
+                    "commentsCount": 0,
+                    "id": "4c325724ec89cf4f1729198454a2038f294a15b9",
+                    "type": "Commit",
+                    "message": "\"refactor(autogpt, forge): Remove `autogpts` directory (#7163)\n\n- Moved `autogpt` and `forge` to project root\r\n- Removed `autogpts` directory\r\n- Moved and renamed submodule `autogpts/autogpt/tests/vcr_cassettes` to `autogpt/tests/vcr_cassettes`\r\n- When using CLI agents will be created in `agents` directory (instead of `autogpts`)\r\n- Renamed relevant docs, code and config references from `autogpts/[forge|autogpt]` to `[forge|autogpt]` and from `*../../*` to `*../*`\r\n- Updated `CODEOWNERS`, GitHub Actions and Docker `*.yml` configs\r\n- Updated symbolic links in `docs`\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2053,
+                    "deletions": 1207,
+                    "committedDate": "2024-05-15T22:37:53Z",
+                    "changedFiles": 188,
+                    "commentsCount": 0,
+                    "id": "e8d7dfa386f9e104bdb0b42aaedbf537318544ba",
+                    "type": "Commit",
+                    "message": "\"refactor(agent, forge): Move library code from `autogpt` to `forge` (#7106)\n\nMoved from `autogpt` to `forge`:\r\n- `autogpt.config`          -> `forge.config`\r\n- `autogpt.processing`      -> `forge.content_processing`\r\n- `autogpt.file_storage`    -> `forge.file_storage`\r\n- `autogpt.logs`            -> `forge.logging`\r\n- `autogpt.speech`          -> `forge.speech`\r\n- `autogpt.agents.(base|components|protocols)`  -> `forge.agent.*`\r\n- `autogpt.command_decorator`                   -> `forge.command.decorator`\r\n- `autogpt.models.(command|command_parameter)`  -> `forge.command.(command|parameter)`\r\n- `autogpt.(commands|components|features)`      -> `forge.components`\r\n- `autogpt.core.utils.json_utils`           -> `forge.json.parsing`\r\n- `autogpt.prompts.utils`                   -> `forge.llm.prompting.utils`\r\n- `autogpt.core.prompting.(base|schema|utils)`    -> `forge.llm.prompting.*`\r\n- `autogpt.core.resource.model_providers`   -> `forge.llm.providers`\r\n- `autogpt.llm.providers.openai` + `autogpt.core.resource.model_providers.utils`\r\n                                            -> `forge.llm.providers.utils`\r\n- `autogpt.models.action_history:Action*`   -> `forge.models.action`\r\n- `autogpt.core.configuration.schema`       -> `forge.models.config`\r\n- `autogpt.core.utils.json_schema`          -> `forge.models.json_schema`\r\n- `autogpt.core.resource.schema`            -> `forge.models.providers`\r\n- `autogpt.models.utils`                    -> `forge.models.utils`\r\n- `forge.sdk.(errors|utils)` + `autogpt.utils.(exceptions|file_operations_utils|validators)`\r\n                        -> `forge.utils.(exceptions|file_operations|url_validator)`\r\n- `autogpt.utils.utils` -> `forge.utils.const` + `forge.utils.yaml_validator`\r\n\r\nMoved within `forge`:\r\n- forge/prompts/* -> forge/llm/prompting/*\r\n\r\nThe rest are mostly import updates, and some sporadic removals and necessary updates (for example to fix circular deps):\r\n- Changed `CommandOutput = Any` to remove coupling with `ContextItem` (no longer needed)\r\n- Removed unused `Singleton` class\r\n- Reluctantly moved `speech` to forge due to coupling (tts needs to be changed into component)\r\n- Moved `function_specs_from_commands` and `core/resource/model_providers` to `llm/providers` (resources were a `core` thing and are no longer relevant)\r\n- Keep tests in `autogpt` to reduce changes in this PR\r\n- Removed unused memory-related code from tests\r\n- Removed duplicated classes: `FancyConsoleFormatter`, `BelowLevelFilter`\r\n- `prompt_settings.yaml` is in both `autogpt` and `forge` because for some reason doesnt work when placed in just one dir (need to be taken care of)\r\n- Removed `config` param from `clean_input`, it wasnt used and caused circular dependency\r\n- Renamed `BaseAgentActionProposal` to `ActionProposal`\r\n- Updated `pyproject.toml` in `forge` and `autogpt`\r\n- Moved `Action*` models from `forge/components/action_history/model.py` to `forge/models/action.py` as those are relevant to the entire agent and not just `EventHistoryComponent` + to reduce coupling\r\n- Renamed `DEFAULT_ASK_COMMAND` to `ASK_COMMAND` and `DEFAULT_FINISH_COMMAND` to `FINISH_COMMAND`\r\n- Renamed `AutoGptFormatter` to `ForgeFormatter` and moved to `forge`\r\n\r\nIncludes changes from PR https://github.com/Significant-Gravitas/AutoGPT/pull/7148\r\n---------\r\n\r\nCo-authored-by: Reinier van der Leer <pwuts@agpt.co>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 923,
+                    "deletions": 149,
+                    "committedDate": "2024-05-04T18:33:25Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "39c46ef6be4e7772bc2a39e8b5b72066391ec689",
+                    "type": "Commit",
+                    "message": "\"feat(agent/core): Add Anthropic Claude 3 support (#7085)\n\n- feat(agent/core): Add `AnthropicProvider`\r\n  - Add `ANTHROPIC_API_KEY` to .env.template and docs\r\n\r\n  Notable differences in logic compared to `OpenAIProvider`:\r\n  - Merges subsequent user messages in `AnthropicProvider._get_chat_completion_args`\r\n  - Merges and extracts all system messages into `system` parameter in `AnthropicProvider._get_chat_completion_args`\r\n  - Supports prefill; merges prefill content (if any) into generated response\r\n\r\n- Prompt changes to improve compatibility with `AnthropicProvider`\r\n  Anthropic has a slightly different API compared to OpenAI, and has much stricter input validation. E.g. Anthropic only supports a single `system` prompt, where OpenAI allows multiple `system` messages. Anthropic also forbids sequences of multiple `user` or `assistant` messages and requires that messages alternate between roles.\r\n  - Move response format instruction from separate message into main system prompt\r\n  - Fix clock message format\r\n  - Add pre-fill to `OneShot` generated prompt\r\n\r\n- refactor(agent/core): Tweak `model_providers.schema`\r\n  - Simplify `ModelProviderUsage`\r\n     - Remove attribute `total_tokens` as it is always equal to `prompt_tokens + completion_tokens`\r\n     - Modify signature of `update_usage(..)`; no longer requires a full `ModelResponse` object as input\r\n  - Improve `ModelProviderBudget`\r\n     - Change type of attribute `usage` to `defaultdict[str, ModelProviderUsage]` -> allow per-model usage tracking\r\n     - Modify signature of `update_usage_and_cost(..)`; no longer requires a full `ModelResponse` object as input\r\n     - Allow `ModelProviderBudget` zero-argument instantiation\r\n  - Fix type of `AssistantChatMessage.role` to match `ChatMessage.role` (str -> `ChatMessage.Role`)\r\n  - Add shared attributes and constructor to `ModelProvider` base class\r\n  - Add `max_output_tokens` parameter to `create_chat_completion` interface\r\n  - Add pre-filling as a global feature\r\n    - Add `prefill_response` field to `ChatPrompt` model\r\n    - Add `prefill_response` parameter to `create_chat_completion` interface\r\n  - Add `ChatModelProvider.get_available_models()` and remove `ApiManager`\r\n  - Remove unused `OpenAIChatParser` typedef in openai.py\r\n  - Remove redundant `budget` attribute definition on `OpenAISettings`\r\n  - Remove unnecessary `usage` in `OpenAIProvider` > `default_settings` > `budget`\r\n\r\n- feat(agent): Allow use of any available LLM provider through `MultiProvider`\r\n  - Add `MultiProvider` (`model_providers.multi`)\r\n  - Replace all references to / uses of `OpenAIProvider` with `MultiProvider`\r\n  - Change type of `Config.smart_llm` and `Config.fast_llm` from `str` to `ModelName`\r\n\r\n- feat(agent/core): Validate function call arguments in `create_chat_completion`\r\n    - Add `validate_call` method to `CompletionModelFunction` in `model_providers.schema`\r\n    - Add `validate_tool_calls` utility function in `model_providers.utils`\r\n    - Add tool call validation step to `create_chat_completion` in `OpenAIProvider` and `AnthropicProvider`\r\n    - Remove (now redundant) command argument validation logic in agent.py and models/command.py\r\n\r\n- refactor(agent): Rename `get_openai_command_specs` to `function_specs_from_commands`\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(DISTINCT i) AS unfixedBugs\nRETURN u.name AS developer, unfixedBugs\nORDER BY unfixedBugs DESC\nLIMIT 10",
+        "result": [
+            {
+                "developer": "Swifty",
+                "unfixedBugs": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (u:User)-[:creates]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(i) AS openIssueCount\nORDER BY openIssueCount DESC\nLIMIT 1\nRETURN u.name AS developer, openIssueCount AS unfixedBugsCount",
+        "result": [
+            {
+                "developer": "Aarushi",
+                "unfixedBugsCount": 37
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in challenge.py?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: 'challenge.py'})\nWITH u, COUNT(DISTINCT i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 5\nRETURN u.name AS developer, bugCount",
+        "result": [
+            {
+                "developer": "wayne@bluewind",
+                "bugCount": 8
+            },
+            {
+                "developer": "Silen Naihin",
+                "bugCount": 7
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in test.py?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)\nWHERE EXISTS((c)-[:changed]->(:File {name: 'test.py'}))\nRETURN u.name AS user, COUNT(DISTINCT i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1",
+        "result": [
+            {
+                "user": "wayne@bluewind",
+                "fixed_bugs": 5
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[i:introduced]->(issue:Issue)\nMATCH (c)-[ch:changed]->(f:File)\nWITH f, COUNT(DISTINCT issue) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\nRETURN f.path AS filePath, bugCount",
+        "result": [
+            {
+                "filePath": "pyproject.toml",
+                "bugCount": 38
+            },
+            {
+                "filePath": "tests/conftest.py",
+                "bugCount": 35
+            },
+            {
+                "filePath": ".github/workflows/ci.yml",
+                "bugCount": 34
+            },
+            {
+                "filePath": "agbenchmark/start_benchmark.py",
+                "bugCount": 31
+            },
+            {
+                "filePath": "agbenchmark/tests/regression/regression_tests.json",
+                "bugCount": 30
+            },
+            {
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "bugCount": 27
+            },
+            {
+                "filePath": "scripts/auto_gpt/__init__.py",
+                "bugCount": 27
+            },
+            {
+                "filePath": "README.md",
+                "bugCount": 26
+            },
+            {
+                "filePath": "agbenchmark/agent_interface.py",
+                "bugCount": 24
+            },
+            {
+                "filePath": "poetry.lock",
+                "bugCount": 24
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)<-[:impacted]-(i:Issue)\nWHERE i.state = 'closed'\nWITH f, COUNT(i) AS issueCount\nORDER BY issueCount DESC\nLIMIT 10\nRETURN f.name AS fileName, f.path AS filePath, issueCount\nORDER BY issueCount DESC",
+        "result": [
+            {
+                "fileName": "ci.yml",
+                "filePath": ".github/workflows/ci.yml",
+                "issueCount": 27
+            },
+            {
+                "fileName": "start_benchmark.py",
+                "filePath": "agbenchmark/start_benchmark.py",
+                "issueCount": 20
+            },
+            {
+                "fileName": "poetry.lock",
+                "filePath": "poetry.lock",
+                "issueCount": 16
+            },
+            {
+                "fileName": "pyproject.toml",
+                "filePath": "pyproject.toml",
+                "issueCount": 16
+            },
+            {
+                "fileName": "challenge.py",
+                "filePath": "tests/integration/challenges/challenge_decorator/challenge.py",
+                "issueCount": 15
+            },
+            {
+                "fileName": "conftest.py",
+                "filePath": "tests/conftest.py",
+                "issueCount": 14
+            },
+            {
+                "fileName": "Auto-GPT",
+                "filePath": "auto_gpt_benchmarking/Auto-GPT",
+                "issueCount": 13
+            },
+            {
+                "fileName": "utils.py",
+                "filePath": "scripts/utils.py",
+                "issueCount": 13
+            },
+            {
+                "fileName": "challenges",
+                "filePath": "agbenchmark/challenges",
+                "issueCount": 11
+            },
+            {
+                "fileName": "README.md",
+                "filePath": "README.md",
+                "issueCount": 10
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on August 11, 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH '2023-08-11' AND\n      c.message CONTAINS 'bug' OR c.message CONTAINS 'fix'\nRETURN c.id, c.message, c.committedDate",
+        "result": [
+            {
+                "c.id": "1a61c66898cfa903504963528949d562ae9388b9",
+                "c.message": "\"mock flag, workspace io fixes, mark fixes\"",
+                "c.committedDate": "2023-08-11T12:22:21Z"
+            },
+            {
+                "c.id": "653eb4964fd5150c538cf7f072b44a8a0297d1f6",
+                "c.message": "\"fix(rnd): Fix graph validation error message (#7797)\"",
+                "c.committedDate": "2024-08-16T10:10:11Z"
+            },
+            {
+                "c.id": "848637bfebd78826e9dae8ab8edf59953413c04b",
+                "c.message": "\"feat(builder): Visualise data beads on connections (#7791)\n\n* Visualise data beads on edges\r\n\r\n* Add `useBezierPath` hook\r\n\r\n* Fix edge color on load\r\n\r\n* Updates\r\n\r\n* Merge branch master into kpczerwinski/open-1580-visualise-data-coming-down-connections\r\n\r\n* Add `visualizeBeads` state in `FlowEditor`\r\n\r\n* Add `FlowContext`\r\n\r\nAllow disabling beads animation\r\n\r\n* fix(builder): linting\r\n\r\n---------\r\n\r\nCo-authored-by: Nicholas Tindle <nicholas.tindle@agpt.co>\"",
+                "c.committedDate": "2024-08-14T18:29:19Z"
+            },
+            {
+                "c.id": "1e92c284d98464f55d8fbe75fd7416996e43407c",
+                "c.message": "\"fix(rnd): Fix text blocks, make outbound links on ValueBlock static (#7796)\"",
+                "c.committedDate": "2024-08-14T09:03:43Z"
+            },
+            {
+                "c.id": "58dc8296db5e91722ad76461ed3df7097e23b932",
+                "c.message": "\"fix(rnd): Fix unparsed string on HTTP block (#7795)\"",
+                "c.committedDate": "2024-08-14T04:19:46Z"
+            },
+            {
+                "c.id": "4782f4383c89357e2bcdef5e53fff466897ab2f7",
+                "c.message": "\"fix(rnd): string to list auto-conversion\"",
+                "c.committedDate": "2024-08-13T16:08:24Z"
+            },
+            {
+                "c.id": "2b60a392fb13797a37b0d0db21d31114e1b435d2",
+                "c.message": "\"fix(rnd): Fix broken test\"",
+                "c.committedDate": "2024-08-13T15:51:59Z"
+            },
+            {
+                "c.id": "9084c3166254eccd57b7c6f3babb70920f337163",
+                "c.message": "\"fix(rnd): Make discord bot continuously running (#7792)\"",
+                "c.committedDate": "2024-08-13T15:39:39Z"
+            },
+            {
+                "c.id": "183c72b2d0c592d79295c6508eb8b57a68417caa",
+                "c.message": "\"fix typo\"",
+                "c.committedDate": "2024-08-13T13:07:57Z"
+            },
+            {
+                "c.id": "f0ab7952487d157db0e79d4f6dedadf9a416de46",
+                "c.message": "\"fix(builder,server) Add missing create user calls (#7784)\n\n* fix missing create user calls\r\n\r\n* formating and linting\"",
+                "c.committedDate": "2024-08-09T15:49:21Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 349?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 349\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 869,
+                    "deletions": 77,
+                    "committedDate": "2023-09-03T05:28:47Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "cd7c6139c18dc3b1bb777774fbb76f9878cb163b",
+                    "type": "Commit",
+                    "message": "\"combined reports with json (#349)\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 3455?",
+        "response": "",
+        "query": "MATCH (i:Issue {number: 3455})<-[:fixed]-(c:Commit)\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2023-04-30T21:24:07Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "c317cf0e75d70c3b38eebe4b1a4855f9a28789d9",
+                    "type": "Commit",
+                    "message": "\"fix bug #3455 (#3591)\n\nCo-authored-by: Nicholas Tindle <nick@ntindle.com>\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash 78f5ff17e695f2e5b8ed31f729fa47ae05c19822?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: '78f5ff17e695f2e5b8ed31f729fa47ae05c19822'})-[:introduced]->(i:Issue)\nRETURN i.id, i.title, i.state, i.created_at",
+        "result": [
+            {
+                "i.id": 6537,
+                "i.title": "\"Error occurred while registering abilities: No module named forge.sdk.abilities\"",
+                "i.state": "closed",
+                "i.created_at": "2023-12-09T15:40:41Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit 0a73e391d974996908fb517920cf6c2f62fbf33d?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: '0a73e391d974996908fb517920cf6c2f62fbf33d'})\nMATCH (c)-[:introduced]->(i:Issue)\nRETURN i.title, i.url, i.state",
+        "result": [
+            {
+                "i.title": "\"Continuos mode cut off\"",
+                "i.url": "https://github.com/Significant-Gravitas/AutoGPT/issues/299",
+                "i.state": "closed"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate STARTS WITH '2023-07'\nWITH count(DISTINCT c) AS fixing_commits\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate STARTS WITH '2023-07'\nWITH fixing_commits, count(DISTINCT c) AS bug_introducing_commits\nRETURN (toFloat(bug_introducing_commits) / fixing_commits) * 100 AS percentage_bug_introducing_fixes",
+        "result": [
+            {
+                "percentage_bug_introducing_fixes": 60.9375
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(:Issue)\nWHERE c.committedDate >= '2023-07-01T00:00:00Z' AND c.committedDate < '2023-08-01T00:00:00Z'\nWITH c\nMATCH (c)-[:introduced]->(:Issue)\nRETURN COUNT(DISTINCT c) as fixingCommitsCausingBugs",
+        "result": [
+            {
+                "fixingCommitsCausingBugs": 18
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on Dec 5, 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate >= '2023-12-05T00:00:00Z' AND c.committedDate < '2023-12-06T00:00:00Z'\nRETURN c.id, c.message, i.title, i.number",
+        "result": [
+            {
+                "c.id": "775a27eea0f92482be6853ec841d811b1feec38d",
+                "c.message": "\"refactor: Modify instruction in prompt for increased JSON output reliability\n\n- Update the instruction in the prompt strategy to ensure the response is pure JSON.\n- Remove unnecessary text and make the instruction clearer.\n- Also update the error logging to include the received JSON content.\n\nThis commit refactors the code in the `one_shot.py` file and the `utilities.py` file.\"",
+                "i.title": "\"Amalgam of INVALID JSON issues\"",
+                "i.number": 1407
+            }
+        ],
+        "iteration": 0
+    }
+]

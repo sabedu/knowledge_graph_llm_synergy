@@ -1,0 +1,275 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE datetime(c.committedDate) >= datetime(\"2024-07-28T00:00:00Z\")\nAND datetime(c.committedDate) <= datetime(\"2024-08-28T23:59:59Z\")\nRETURN count(c) AS commitsCount",
+        "result": [
+            {
+                "commitsCount": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit) WHERE c.createdAt = (SELECT MAX(createdAt) FROM (MATCH (c:Commit) RETURN c.createdAt AS createdAt)) RETURN c;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)<-[:participates_in]-(i:Issue)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c.id, c.message, i.title, i.state, i.url",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue) WHERE c.committedDate = datetime(\"2024-07-31T00:00:00Z\") RETURN c.message AS message;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for render.js file?",
+        "response": "",
+        "query": "MATCH (f:File {name: \"render.js\"})-[:belongs_to]->(r:Repository)-[:contains]->(c:Commit) \nWHERE c.committedDate =~ \"2024-08-28T19:35:20+00:00Z\" \nWITH f, COLLECT(c) AS commits \nUNWIND commits AS commit \nRETURN f.name, commit.additions, commit.deletions, commit.message;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for vnode.js file?",
+        "response": "",
+        "query": "MATCH (f:File)-[:belongs_to]->(r:Repository)<-[:contains]-(c:Commit) WHERE f.name = \"vnode.js\" RETURN c;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (user:User)-[:assigned]->(issue:Issue)<-[:fixed]-(fixCommit:Commit)\nWHERE NOT exists((fixCommit)-[:fixed]->())\nWITH collect(DISTINCT user) as users\nORDER BY size((users)-[:participates_in]->()) DESC\nRETURN users LIMIT 1;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (u:User)-[:assigned]->(i:Issue)<-[:impacted]-(n:Node)\nWHERE i.state = 'open'\nRETURN u.name AS Developer, COUNT(i) AS UnfixedBugs",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in helpers.js?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)<-[:fixed]-(i:Issue)\nWHERE i.title CONTAINS \"helpers.js\"\nWITH u, COUNT(DISTINCT i) AS bug_fixes\nORDER BY bug_fixes DESC\nRETURN u.name, bug_fixes",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in client.js?",
+        "response": "",
+        "query": "MATCH (n:Node)-[:introduced]->(i:Issue)-[:impacted]->(f:File) \nWHERE f.name = \"client.js\" \nWITH i, COLLECT(n) AS nodes \nUNWIND nodes as node \nMATCH (node)<-[:fixed]-(user:User) \nRETURN user.login AS username, COUNT(*) AS fixedBugs",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (n:Node)-[:introduced]->(i:Issue)<-[:impacted]-(f:File)\nRETURN f.name AS file, COUNT(*) AS bug_count\nORDER BY bug_count DESC;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)-[:belongs_to]->(r:Repository)<-[:changed]-(c:Commit) \nWHERE c.committedDate <= datetime(\"2024-08-28T19:37:10+00:00Z\") \nWITH f, COUNT(c) as bugCount ORDER BY bugCount DESC LIMIT 5",
+        "result": [
+            {
+                "file_name": "index.js",
+                "change_count": 626
+            },
+            {
+                "file_name": "package.json",
+                "change_count": 519
+            },
+            {
+                "file_name": "README.md",
+                "change_count": 269
+            },
+            {
+                "file_name": "render.js",
+                "change_count": 249
+            },
+            {
+                "file_name": "BACKERS.md",
+                "change_count": 216
+            },
+            {
+                "file_name": "build.js",
+                "change_count": 163
+            },
+            {
+                "file_name": "patch.js",
+                "change_count": 149
+            },
+            {
+                "file_name": "transition.js",
+                "change_count": 144
+            },
+            {
+                "file_name": "events.js",
+                "change_count": 125
+            },
+            {
+                "file_name": "lifecycle.js",
+                "change_count": 120
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on August 18, 2022?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File) \nWHERE c.committedDate =~ '2022-08-18T.*Z' \nAND f.name =~ 'buggy' \nRETURN c.id AS commitHash, c.abbreviatedOid AS abbreviatedOid;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on May 24, 2022?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed {change_type: \"BUG\"}]->(f:File) \nWHERE c.committedDate =~ '2022-05-24T' + '*Z'\nRETURN c.id AS commitId, f.name AS fileName;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 12892?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue {number: 12892}) RETURN c;",
+        "result": [
+            {
+                "c": {
+                    "additions": 79,
+                    "deletions": 7,
+                    "committedDate": "2023-12-06T09:25:12Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "25f97a5033187372e7b8c591c79336197ee5c833",
+                    "type": "Commit",
+                    "message": "\"fix(compiler-sfc): fix rewriteDefault edge cases\n\nclose #13060\nclose #12892\nclose #12906\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 11575?",
+        "response": "",
+        "query": "MATCH p=(c:Commit)-[:fixed]->(i:Issue) WHERE i.number=11575 RETURN c.id, c.abbreviatedOid;",
+        "result": [
+            {
+                "c.id": "af5e05d87ecd218f73302a1b08dcaedd2b46814a",
+                "c.abbreviatedOid": null
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be?",
+        "response": "",
+        "query": "MATCH p=(commit:Commit {hash:\"fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be\"})-[:introduced]->(issue:Issue)-[:impacted]->(file:File)\nWHERE issue.state = \"open\"\nRETURN DISTINCT issue.title AS bugTitle",
+        "result": [
+            {
+                "i": {
+                    "number": 12608,
+                    "closed_at": "2022-07-08T02:55:46Z",
+                    "created_at": "2022-07-04T14:18:14Z",
+                    "id": 12608,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### What problem does this feature solve?\r\n1. Allows to drop `@vue/composition-api` plugin after migrating from `vue@^2.6.x` into `^2.7.x`. \r\n1. It makes migration from `2.x` to `3.x` one step easier.\r\n\r\n> If you were previously using @vue/composition-api, update imports from it to vue instead. Note that some APIs exported by the plugin, e.g. createApp, are not ported in 2.7.\r\n> — https://blog.vuejs.org/posts/vue-2-7-naruto.html\r\n\r\nThe release notes do mention that some APIs are not ported to `2.7`, thats why this is not a bug report because it might be intentional. \r\n\r\n `defineAsyncComponent` looks like something that would be a nice addition to this final `2.x` version, since async components already exist in vue2 land: the syntax just slightly changed ([v2](https://v2.vuejs.org/v2/guide/components-dynamic-async.html#Async-Components) vs [v3](https://vuejs.org/guide/components/async.html)).\r\n\r\nAlso [`@vue/composition-api`](https://github.com/vuejs/composition-api/blob/main/src/component/defineAsyncComponent.ts) version does it and it does not appear to use any vue3 internals, so it seems technically achievable.\r\n\r\n### What does the proposed API look like?\r\nimplement and export a `defineAsyncComponent` using prior art (`@vue/composition-api` plugin version as base).\r\n\r\n```diff\r\n- import { defineAsyncComponent } from @vue/composition-api\r\n+ import { defineAsyncComponent } from vue\r\n```\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"implement and export defineAsyncComponent compatible version in 2.7.x\"",
+                    "url": "https://github.com/vuejs/vue/issues/12608"
+                }
+            },
+            {
+                "i": {
+                    "number": 12622,
+                    "closed_at": "2022-07-08T02:40:18Z",
+                    "created_at": "2022-07-06T10:09:10Z",
+                    "id": 12622,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### Version\r\n2.7.2\r\n\r\n### Steps to reproduce\r\n\r\n```\r\nconst ConfigProvider = defineComponent({});\r\nfunction install(app: VueConstructor) {\r\n  app.component(ConfigProvider, ConfigProvider);\r\n}\r\n```\r\nThis will throw Error:\r\n\r\n```\r\nerror TS2345: Argument of type DefineComponent<{ getContainer: { type: FunctionConstructor; }; }, Data, Data, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, Readonly<...>, {}> is not assignable to parameter of type VueConstructor<Vue>.\r\n  Type ComponentPublicInstanceConstructor<{ $data: Data; $props: Readonly<Partial<{}> & Omit<Readonly<ExtractPropTypes<{ getContainer: { type: FunctionConstructor; }; }>>, never>>; ... 10 more ...; $watch(source: string | Function, cb: Function, options?: WatchOptions<...>): WatchStopHandle; } & ... 5 more ... & Readonly<.... is missing the following properties from type VueConstructor<Vue>: extend, nextTick, set, delete, and 10 more.\r\n```\r\n\r\n### What is expected?\r\n`defineComponent({})` return type should match `Vue.component(id, component)` second params\r\n\r\n### What is actually happening?\r\nmismatch\r\n\r\n### Additional comments\r\n\r\nVue2.7.0 works well because of `defineComponent` which returns `VueProxy<{}, RawBindings, D, C, M, Mixin, Extends, Emits>`\r\n\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"Vue.component(id, component) mismatch type of DefineComponent\"",
+                    "url": "https://github.com/vuejs/vue/issues/12622"
+                }
+            },
+            {
+                "i": {
+                    "number": 12748,
+                    "closed_at": "2022-08-18T07:23:59Z",
+                    "created_at": "2022-08-16T09:39:23Z",
+                    "id": 12748,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### What problem does this feature solve?\r\nMost Vue 2 third-party libraries do not provide types for components. Therefore, they cannot profit type checking and intellisense provided by Volar. It may be good to export type `DefineComponent` just like in Vue 3, so that users can manually shim component types or create PR to add TypeScript support for those Vue2 libraries without changing source code written in Vue <= 2.6.\r\n\r\n### What does the proposed API look like?\r\nTo manually define type of a component in Vue 2.7, we can:\r\n```ts\r\nimport type { DefineComponent, VNode } from vue\r\n\r\ndeclare module @vue/runtime-dom {\r\n  export interface GlobalComponents {\r\n    MyComponent: DefineComponent<\r\n      Props,\r\n      {\r\n        $scopedSlots: {\r\n          slotName: ({args: {propName: propType}}) => VNode[]\r\n        }\r\n      },\r\n      {},\r\n      {},\r\n      Methods\r\n    >\r\n  }\r\n}\r\n\r\n```\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"Export type `DefineComponent`\"",
+                    "url": "https://github.com/vuejs/vue/issues/12748"
+                }
+            },
+            {
+                "i": {
+                    "number": 13078,
+                    "closed_at": "2023-12-14T00:41:58Z",
+                    "created_at": "2023-09-04T23:31:55Z",
+                    "id": 13078,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### What problem does this feature solve?\r\nvue3\r\nimport type { CSSProperties } from vue is correct\r\n\r\nvue2.7\r\nimport type { CSSProperties } from vue is error\r\n\r\n\r\n### What does the proposed API look like?\r\nimport type { CSSProperties } from vue  in 2.7 is correct\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"import type { CSSProperties } from vue is error\"",
+                    "url": "https://github.com/vuejs/vue/issues/13078"
+                }
+            },
+            {
+                "i": {
+                    "number": 13128,
+                    "closed_at": "2023-12-14T00:41:58Z",
+                    "created_at": "2023-12-08T03:48:02Z",
+                    "id": 13128,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### Version\r\n2.7.16-beta.1\r\n\r\n\r\n### Steps to reproduce\r\n\r\n```ts\r\nimport type { ImgHTMLAttributes, ComponentOptionsMixin } from vue;\r\n```\r\n\r\nin Vue 2\r\n<img width=\"549\" alt=\"image\" src=\"https://github.com/vuejs/vue/assets/8111351/6eb9888d-6a60-43e5-a625-3f4d81288a9d\">\r\n\r\nin Vue 3\r\n<img width=\"552\" alt=\"image\" src=\"https://github.com/vuejs/vue/assets/8111351/0fd2a0d6-4226-42c8-ac55-454814be0bdb\">\r\n\r\n\r\n\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"Vue 2.7.16 bug: Some types has not export\"",
+                    "url": "https://github.com/vuejs/vue/issues/13128"
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit c678e3134b927645f79270b52d4d660a7e3654ce?",
+        "response": "",
+        "query": "MATCH (n:Commit {id: \"c678e3134b927645f79270b52d4d660a7e3654ce\"})-[:changed]->(m:File) WHERE NOT m.name =~ '.*' AND NOT m.path =~ '.*' WITH n, COLLECT(m) AS files MATCH (n)-[:impacted]->(i:Issue) RETURN i;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on Oct 2017?",
+        "response": "",
+        "query": "MATCH (n:Commit)-[:fixed]->(i:Issue)-[:introduced]->(m:Node)\nWHERE i.closed_at =~ \"2017-10.*\"\nWITH n, count(*) AS totalFixingCommits\nMATCH (n)-[:changed]->(f:File)\nWHERE f.name STARTS WITH \"fix-\"\nWITH n, totalFixingCommits, count(*) AS bugIntroducingCommits\nRETURN 100 * bugIntroducingCommits / totalFixingCommits AS percentage",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on Oct 2017?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:impacted]-(f:File) \nWHERE c.committedDate CONTAINS \"2017-10\" AND i.state = \"closed\" \nRETURN COUNT(c);",
+        "result": [
+            {
+                "COUNT(c)": 0
+            }
+        ],
+        "iteration": 0
+    }
+]

@@ -1,0 +1,1014 @@
+number,Repository,question,response,query,label_1,label_2
+6,AutoGPT,Determine the developers that fixed the most bugs in challenge.py?,I don't know the answer to that question. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""challenge.py""})
+RETURN u.name AS developer, COUNT(i) AS bugs_fixed
+ORDER BY bugs_fixed DESC
+LIMIT 1
+",Hallucination,
+13,AutoGPT,Determine the developers that fixed the most bugs in challenge.py?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""challenge.py""})
+RETURN u.name AS developer, COUNT(i) AS bugs_fixed
+ORDER BY bugs_fixed DESC
+LIMIT 1
+",hallucination,
+1,AutoGPT,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Swifty, with a total of 1 unfixed bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+21,AutoGPT,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Swifty, who has 1 unfixed bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+4,AutoGPT,Determine the developers that had the most unfixed bugs?,"The developer that had the most unfixed bugs is Swifty, with a total of 1 unfixed bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+16,AutoGPT,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Swifty, with a total of 1 unfixed bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+11,AutoGPT,Determine the developers that had the most unfixed bugs?,"The developer that had the most unfixed bugs is Swifty, with a total of 1 unfixed bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+3,AutoGPT,Determine the percentage of the fixing commits that introduced bugs on July 2023?,The percentage of the fixing commits that introduced bugs in July 2023 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2023-07.*' AND c2.committedDate =~ '2023-07.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+19,AutoGPT,Determine the percentage of the fixing commits that introduced bugs on July 2023?,The percentage of the fixing commits that introduced bugs in July 2023 is 100.0%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2023-07.*' AND c2.committedDate =~ '2023-07.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+9,AutoGPT,Determine the percentage of the fixing commits that introduced bugs on July 2023?,The percentage of fixing commits that introduced bugs in July 2023 is 100.0%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2023-07.*' AND c2.committedDate =~ '2023-07.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+23,AutoGPT,Determine the percentage of the fixing commits that introduced bugs on July 2023?,The percentage of the fixing commits that introduced bugs in July 2023 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2023-07.*' AND c2.committedDate =~ '2023-07.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+14,AutoGPT,Determine the percentage of the fixing commits that introduced bugs on July 2023?,The percentage of the fixing commits that introduced bugs in July 2023 is 100%.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c.committedDate =~ '2023-07.*'
+WITH count(c) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+20,AutoGPT,How many fixing commits caused bugs on July 2023?,None of the fixing commits caused bugs in July 2023. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2023-07-..T..:..:..Z' AND (c)-[:introduced]->(i)
+RETURN COUNT(c) AS fixingCommitsCausedBugs
+",Incorrect relationship modelling,Misapplied date formatting
+15,AutoGPT,How many fixing commits caused bugs on July 2023?,There were no fixing commits that caused bugs in July 2023. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(bug:Issue)
+WHERE c.committedDate =~ '2023-07-..T..:..:..Z'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,Misapplied date formatting
+24,AutoGPT,How many fixing commits caused bugs on July 2023?,"In July 2023, there were no fixing commits that caused bugs. Can I help with anything else?","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2023-07-..T..:..:..Z' AND i.created_at =~ '2023-07-..T..:..:..Z'
+RETURN COUNT(c) AS fixingCommitsCausedBugs
+",Incorrect relationship modelling,Misapplied date formatting
+10,AutoGPT,How many fixing commits caused bugs on July 2023?,"In July 2023, there were 64 fixing commits that addressed bugs.","cypher
+MATCH (c:Commit)-[:fixed]->(:Issue)
+WHERE c.committedDate =~ '2023-07-..T..:..:..Z'
+RETURN count(c) AS fixingCommits
+",Incorrect relationship modelling,Misapplied date formatting
+18,AutoGPT,What are the most buggy files?,"The most buggy files are:
+
+1. `pyproject.toml` with 38 bugs
+2. `conftest.py` with 35 bugs
+3. `ci.yml` with 34 bugs
+4. `start_benchmark.py` with 31 bugs
+5. `regression_tests.json` with 30 bugs
+6. `challenge.py` with 27 bugs
+7. `__init__.py` with 27 bugs
+8. `README.md` with 26 bugs
+9. `agent_interface.py` with 24 bugs
+10. `poetry.lock` with 24 bugs","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+7,AutoGPT,What are the most buggy files?,"The most buggy files are:
+
+1. `pyproject.toml` with 38 bugs
+2. `conftest.py` with 35 bugs
+3. `ci.yml` with 34 bugs
+4. `start_benchmark.py` with 31 bugs
+5. `regression_tests.json` with 30 bugs
+6. `challenge.py` with 27 bugs
+7. `__init__.py` with 27 bugs
+8. `README.md` with 26 bugs
+9. `agent_interface.py` with 24 bugs
+10. `poetry.lock` with 24 bugs","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+8,AutoGPT,what are the bugs caused by commit 0a73e391d974996908fb517920cf6c2f62fbf33d?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit {id: '0a73e391d974996908fb517920cf6c2f62fbf33d'})-[:introduced]->(i:Issue {type: 'bug'})
+RETURN i
+",Misapplied attribute filtering,
+17,AutoGPT,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Swifty, with 1 open bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+5,AutoGPT,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Swifty, with 1 open bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+2,AutoGPT,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Swifty, with 1 open bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+22,AutoGPT,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Swifty, with 1 open bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+12,AutoGPT,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Swifty, with 1 open bug.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+16,Bootstrap,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is XhmikosR, who has 10 open issues.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_issues
+ORDER BY open_issues DESC
+LIMIT 1
+",Incorrect relationship modelling,
+2,Bootstrap,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is XhmikosR, with a total of 10 unfixed bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+6,Bootstrap,Determine the developers that had the most unfixed bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+20,Bootstrap,Determine the developers that had the most unfixed bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+11,Bootstrap,Determine the developers that had the most unfixed bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+21,Bootstrap,Determine the files that introduce the most bugs?,"The files that introduce the most bugs are:
+
+- `package-lock.json` with 14 bugs
+- `package.json` with 14 bugs
+- `CONTRIBUTING.md` with 14 bugs
+- `_functions.scss` with 14 bugs
+- `_variables.scss` with 14 bugs
+- `_visually-hidden.scss` with 14 bugs
+- `carousel.md` with 14 bugs
+- `accessibility.md` with 14 bugs
+- `migration.md` with 14 bugs
+- `dropdowns.md` with 14 bugs
+
+Can I help with anything else?","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+",Incorrect relationship modelling,
+25,Bootstrap,Determine the percentage of the fixing commits that introduced bugs on December 2013?,The percentage of the fixing commits that introduced bugs in December 2013 is 100.0%.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c2.committedDate =~ '2013-12-.*'
+RETURN (count(c) * 1.0 / count(c2)) * 100 AS fixingCommitPercentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+24,Bootstrap,Determine the percentage of the fixing commits that introduced bugs on December 2013?,The percentage of the fixing commits that introduced bugs in December 2013 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]-(c2:Commit)
+WHERE c2.committedDate =~ '2013-12-..T..:..:..Z'
+RETURN (count(c1) * 1.0 / count(c2)) * 100 AS fixingCommitPercentage
+",Incorrect relationship modelling,Misapplied date formatting
+31,Bootstrap,Determine the percentage of the fixing commits that introduced bugs on December 2013?,I don't know. Can I help with anything else?,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2013-12.*' AND c2.committedDate =~ '2013-12.*'
+RETURN (COUNT(c2) * 100.0 / COUNT(c1)) AS fixingCommitPercentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+32,Bootstrap,Determine the percentage of the fixing commits that introduced bugs on December 2013?,"I don't know, can I help with anything else?","cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2013-12-.*' AND c2.committedDate =~ '2013-12-.*'
+RETURN (COUNT(c1) * 1.0 / COUNT(c2)) * 100 AS fixingCommitPercentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+3,Bootstrap,Determine the percentage of the fixing commits that introduced bugs on December 2013?,I don't know the percentage of the fixing commits that introduced bugs in December 2013. Can I help with anything else?,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate STARTS WITH '2013-12' AND c2.committedDate STARTS WITH '2013-12'
+RETURN (COUNT(c2) * 1.0 / COUNT(c1)) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+9,Bootstrap,How many fixing commits caused bugs on December 2013?,There were no fixing commits that caused bugs in December 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE i.created_at =~ '2013-12-.*'
+RETURN COUNT(DISTINCT c) AS fixing_commits
+",Incorrect relationship modelling,
+4,Bootstrap,How many fixing commits caused bugs on December 2013?,There were no fixing commits that caused bugs in December 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(:Issue)-[:introduced]->(:Commit {committedDate: ""2013-12-.*""})
+RETURN count(c) AS fixingCommits
+",Incorrect relationship modelling,
+14,Bootstrap,How many fixing commits caused bugs on December 2013?,There was 1 fixing commit that addressed bugs introduced in December 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(b:Commit)
+WHERE b.committedDate =~ '2013-12-.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+23,Bootstrap,How many fixing commits caused bugs on December 2013?,There were no fixing commits that caused bugs in December 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE b.committedDate =~ '2013-12-.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+18,Bootstrap,How many fixing commits caused bugs on December 2013?,There were no fixing commits that caused bugs in December 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE b.committedDate =~ '2013-12-.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+22,Bootstrap,What are the most buggy files?,"The most buggy files are:
+
+1. `package.json` with 1339 bugs
+2. `CONTRIBUTING.md` with 1339 bugs
+3. `_functions.scss` with 1339 bugs
+4. `_variables.scss` with 1339 bugs
+5. `_visually-hidden.scss` with 1339 bugs
+6. `carousel.md` with 1339 bugs
+7. `accessibility.md` with 1339 bugs
+8. `migration.md` with 1339 bugs
+9. `dropdowns.md` with 1339 bugs
+10. `package-lock.json` with 1339 bugs","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:fixed]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+7,Bootstrap,What are the most buggy files?,"The most buggy files are:
+
+1. `bootstrap.css` with 176 bugs.
+2. `bootstrap.min.css` with 113 bugs.
+3. `bootstrap.js` with 71 bugs.
+4. `_variables.scss` with 67 bugs.
+5. `bootstrap.min.js` with 65 bugs.
+6. `index.html` with 61 bugs.
+7. `bootstrap.zip` with 59 bugs.
+8. `components.html` with 54 bugs.
+9. `forms.less` with 51 bugs.
+10. `Gruntfile.js` with 49 bugs.
+
+Can I help with anything else?","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:fixed]->(i:Issue)
+RETURN f.name, COUNT(i) AS bugCount
+ORDER BY bugCount DESC
+LIMIT 10
+",Incorrect relationship modelling,
+10,Bootstrap,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+5,Bootstrap,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+15,Bootstrap,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+19,Bootstrap,return a commit message on July 31?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+1,Bootstrap,return a commit message on July 31?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+17,Bootstrap,"what are the buggy commits that happened on March 12, 2018?","The buggy commits that happened on March 12, 2018, are as follows:
+
+1. Commit ID: 5b0e40b62526f576e5f8a3877a7e63a2ed084685
+   - Committed Date: 2018-03-12T17:29:45Z
+   - Message: ""Fix examples issues #25664 and #25388 (#25665)\n\n* Prevent sign-in form from going outside viewport (#25388)\r\n\r\n* Workaround IE centering bug""
+   - Additions: 3
+   - Deletions: 12
+   - Changed Files: 4
+   - Comments Count: 0","cypher
+MATCH (c:Commit)-[:fixed]->(:Issue)
+WHERE c.committedDate =~ '2018-03-12T.*'
+RETURN c
+",Incorrect relationship modelling,
+8,Bootstrap,what are the bugs caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit {id: 'f0c82ab4ec8ca136dad1b50bdef7515090be4f14'})-[:introduced]->(i:Issue {type: 'bug'})
+RETURN i
+",Misapplied attribute filtering,
+13,Bootstrap,what are the bugs caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14?,I don't know which bugs were caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14. Can I help with anything else?,"cypher
+MATCH (c:Commit {id: 'f0c82ab4ec8ca136dad1b50bdef7515090be4f14'})-[:fixed]->(i:Issue)
+RETURN i
+",Incorrect relationship modelling,
+26,Bootstrap,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is XhmikosR, with 12 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+27,Bootstrap,which developer has most number of bugs yet to be fixed?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+28,Bootstrap,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is XhmikosR, with a total of 10 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+29,Bootstrap,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is XhmikosR, with 10 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+30,Bootstrap,which developer has most number of bugs yet to be fixed?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state = 'open'
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+12,Bootstrap,who did most fixed bugs in browser-bugs.yml?,"The user who fixed the most bugs in ""browser-bugs.yml"" is Mark Otto, with a total of 548 fixed bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue),(c)-[:changed]->(f:File {name: ""browser-bugs.yml""})
+RETURN u.name AS user, COUNT(i) AS fixed_bugs
+ORDER BY fixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+2,Ohmyzsh,Determine the developers that had the most unfixed bugs?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.login, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+7,Ohmyzsh,Determine the developers that had the most unfixed bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS Developer, COUNT(i) AS UnfixedBugs
+ORDER BY UnfixedBugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+22,Ohmyzsh,Determine the developers that had the most unfixed bugs?,I don't know the answer to this question. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.login AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+12,Ohmyzsh,Determine the developers that had the most unfixed bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS Developer, COUNT(i) AS UnfixedBugs
+ORDER BY UnfixedBugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+17,Ohmyzsh,Determine the developers that had the most unfixed bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+4,Ohmyzsh,Determine the percentage of the fixing commits that introduced bugs on July 2024?,The percentage of fixing commits that introduced bugs in July 2024 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate STARTS WITH '2024-07' AND c2.committedDate STARTS WITH '2024-07'
+WITH COUNT(c1) AS fixingCommits, COUNT(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+24,Ohmyzsh,Determine the percentage of the fixing commits that introduced bugs on July 2024?,The percentage of the fixing commits that introduced bugs in July 2024 is 100.0%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2024-07-..T..:..:..Z' AND c2.committedDate =~ '2024-07-..T..:..:..Z'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Misapplied date formatting
+9,Ohmyzsh,Determine the percentage of the fixing commits that introduced bugs on July 2024?,The percentage of the fixing commits that introduced bugs in July 2024 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2024-07-..T..:..:..Z' AND c2.committedDate =~ '2024-07-..T..:..:..Z'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Misapplied date formatting
+14,Ohmyzsh,Determine the percentage of the fixing commits that introduced bugs on July 2024?,The percentage of the fixing commits that introduced bugs in July 2024 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2024-07.*' AND c2.committedDate =~ '2024-07.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+19,Ohmyzsh,Determine the percentage of the fixing commits that introduced bugs on July 2024?,The percentage of the fixing commits that introduced bugs in July 2024 is 100.0%. Can I help with anything else?,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2024-07-.*' AND c2.committedDate =~ '2024-07-.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+15,Ohmyzsh,How many fixing commits caused bugs on July 2024?,There were no fixing commits that caused bugs in July 2024. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(bug:Issue)
+WHERE c.committedDate =~ '2024-07-..T..:..:..Z'
+RETURN COUNT(c) AS fixingCommitsCausingBugs
+",Incorrect relationship modelling,
+25,Ohmyzsh,How many fixing commits caused bugs on July 2024?,"In July 2024, there were 7 fixing commits that caused bugs.","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2024-07-..T..:..:..Z' AND i.state = 'closed'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+5,Ohmyzsh,How many fixing commits caused bugs on July 2024?,There were no fixing commits that caused bugs in July 2024. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(bug:Issue)
+WHERE c.committedDate =~ '2024-07.*'
+RETURN COUNT(c) AS fixingCommitsCausingBugs
+",Incorrect relationship modelling,
+10,Ohmyzsh,How many fixing commits caused bugs on July 2024?,"In July 2024, there were 4 fixing commits that caused bugs.","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2024-07-..T..:..:..Z' AND i.created_at =~ '2024-07-..T..:..:..Z'
+RETURN COUNT(c) AS fixingCommitsCausedBugs
+",Incorrect relationship modelling,Misapplied date formatting
+20,Ohmyzsh,How many fixing commits caused bugs on July 2024?,No fixing commits caused bugs in July 2024. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(bug:Issue)
+WHERE c.committedDate =~ '2024-07-..T..:..:..Z'
+RETURN COUNT(c) AS fixingCommitsCausedBugs
+",Incorrect relationship modelling,Misapplied date formatting
+21,Ohmyzsh,return a commit message on July 31?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+1,Ohmyzsh,return a commit message on July 31?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+11,Ohmyzsh,return a commit message on July 31?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+6,Ohmyzsh,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+16,Ohmyzsh,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+18,Ohmyzsh,"what commits were buggy on June 08, 2023?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2023-06-08T.*'
+RETURN c
+",Misapplied attribute filtering,
+13,Ohmyzsh,"what commits were buggy on June 08, 2023?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2023-06-08T.*'
+RETURN c
+",Misapplied attribute filtering,
+8,Ohmyzsh,"what commits were buggy on June 08, 2023?","I don't know which commits were buggy on June 08, 2023. Can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2023-06-08T.*'
+RETURN c
+",Misapplied attribute filtering,
+23,Ohmyzsh,"what commits were buggy on June 08, 2023?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2023-06-08T.*'
+RETURN c
+",Misapplied attribute filtering,
+3,Ohmyzsh,"what commits were buggy on June 08, 2023?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2023-06-08T.*'
+RETURN c
+",Misapplied attribute filtering,
+29,Ohmyzsh,which developer has most number of bugs yet to be fixed?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.login AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+26,Ohmyzsh,which developer has most number of bugs yet to be fixed?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state = 'open'
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+27,Ohmyzsh,which developer has most number of bugs yet to be fixed?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.login AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+28,Ohmyzsh,which developer has most number of bugs yet to be fixed?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+30,Ohmyzsh,which developer has most number of bugs yet to be fixed?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state = 'open'
+RETURN u.login AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+22,React,Determine the developers that fixed the most bugs in ReactDOMInput.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""ReactDOMInput.js""})
+RETURN u.name AS developer, COUNT(i) AS bugs_fixed
+ORDER BY bugs_fixed DESC
+LIMIT 1
+",hallucination,
+2,React,Determine the developers that fixed the most bugs in ReactDOMInput.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""ReactDOMInput.js""})
+RETURN u.name, COUNT(i) AS bugFixes
+ORDER BY bugFixes DESC
+",hallucination,
+28,React,Determine the developers that fixed the most bugs in ReactDOMInput.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""ReactDOMInput.js""})
+RETURN u.name, COUNT(i) AS bugFixes
+ORDER BY bugFixes DESC
+LIMIT 1
+",hallucination,
+15,React,Determine the developers that fixed the most bugs in ReactDOMInput.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""ReactDOMInput.js""})
+RETURN u.name AS developer, COUNT(i) AS bugs_fixed
+ORDER BY bugs_fixed DESC
+",hallucination,
+8,React,Determine the developers that fixed the most bugs in ReactDOMInput.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (f:File {name: ""ReactDOMInput.js""})<-[:impacted]-(i:Issue {type: ""bug""})<-[:fixed]-(c:Commit)<-[:author]-(u:User)
+RETURN u.name AS developer, COUNT(i) AS bug_fixes
+ORDER BY bug_fixes DESC
+LIMIT 1
+",hallucination,
+27,React,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Brian Vaughn, who has 44 open issues.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_issues
+ORDER BY open_issues DESC
+LIMIT 1
+",Incorrect relationship modelling,
+21,React,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Brian Vaughn, who has 44 open issues.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_issues
+ORDER BY open_issues DESC
+LIMIT 1
+",Incorrect relationship modelling,
+14,React,Determine the developers that had the most unfixed bugs?,"The developer that had the most unfixed bugs is Brian Vaughn, with 44 open issues.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_issues
+ORDER BY open_issues DESC
+LIMIT 1
+",Incorrect relationship modelling,
+1,React,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Brian Vaughn, with 44 open issues.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_issues
+ORDER BY open_issues DESC
+LIMIT 1
+",Incorrect relationship modelling,
+7,React,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Brian Vaughn, who has 44 open issues.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_issues
+ORDER BY open_issues DESC
+LIMIT 1
+",Incorrect relationship modelling,
+10,React,Determine the files that introduce the most bugs?,"The files that introduce the most bugs are:
+
+1. ReactDOMComponent-test.js with 1 bug
+2. ChangeEventPlugin.js with 1 bug
+3. ChangeEventPlugin-test.js with 1 bug
+
+Can I help with anything else?","cypher
+MATCH (f:File)<-[:impacted]-(i:Issue)<-[:introduced]-(n:Node)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+17,React,Determine the files that introduce the most bugs?,"The files that introduced the most bugs are:
+
+1. ReactDOMComponent-test.js with 1 bug
+2. ChangeEventPlugin.js with 1 bug
+3. ChangeEventPlugin-test.js with 1 bug
+
+Can I help with anything else?","cypher
+MATCH (f:File)<-[:impacted]-(i:Issue)<-[:introduced]-(n:Node)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+30,React,Determine the files that introduce the most bugs?,"The files that introduce the most bugs are `package.json` and `ReactDOMInput-test.js`, each with 5 bugs.","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+",Incorrect relationship modelling,
+3,React,Determine the files that introduce the most bugs?,"The files that introduce the most bugs are:
+
+1. ReactDOMComponent-test.js with 1 bug
+2. ChangeEventPlugin.js with 1 bug
+3. ChangeEventPlugin-test.js with 1 bug
+
+Can I help with anything else?","cypher
+MATCH (f:File)<-[:impacted]-(i:Issue)<-[:introduced]-(n:Node)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+23,React,Determine the files that introduce the most bugs?,"The file that introduces the most bugs is ""package.json,"" which has introduced 5 bugs.","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 1
+",Incorrect relationship modelling,
+6,React,Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?,"I don't know, can I help with anything else?","cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]->(c2:Commit)
+WHERE c1.committedDate =~ '2013-11-.*'
+RETURN (COUNT(c2) * 1.0 / COUNT(c1)) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+36,React,Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?,I don't know the percentage of the fixing commits that introduced bugs in November 2013. Can I help with anything else?,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2013-11-.*' AND c2.committedDate =~ '2013-11-.*'
+WITH count(c1) AS fixingCommits, count(c2) AS introducingCommits
+RETURN (toFloat(fixingCommits) / introducingCommits) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+20,React,Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?,"I don't know, can I help with anything else?","cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]->(c2:Commit)
+WHERE c1.committedDate =~ '2013-11.*'
+RETURN (count(c2) * 100.0 / count(c1)) AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+43,React,Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?,"I don't know, can I help with anything else?","cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]->(c2:Commit)
+WHERE c1.committedDate =~ '2013-11.*'
+RETURN (count(c2) * 1.0 / count(c1)) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+26,React,Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?,I don't know the percentage of the fixing commits that introduced bugs in November 2013. Can I help with anything else?,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]->(c2:Commit)
+WHERE c1.committedDate =~ '2013-11.*'
+RETURN (count(c2) * 1.0 / count(c1)) * 100 AS percentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+41,React,How many fixing commits caused bugs on Nov. 2013?,There were no fixing commits that caused bugs in November 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE c.committedDate =~ '2013-11-.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+39,React,How many fixing commits caused bugs on Nov. 2013?,There were no fixing commits that caused bugs in November 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE c.committedDate =~ '2013-11-.*'
+RETURN COUNT(DISTINCT c) AS fixingCommits
+",Incorrect relationship modelling,
+37,React,How many fixing commits caused bugs on Nov. 2013?,There were no fixing commits that caused bugs in November 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE c.committedDate =~ '2013-11-..T..:..:..Z'
+RETURN COUNT(DISTINCT c) AS fixingCommits
+",Incorrect relationship modelling,Misapplied date formatting
+34,React,How many fixing commits caused bugs on Nov. 2013?,There were no fixing commits that caused bugs in November 2013. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE c.committedDate =~ '2013-11-.*'
+RETURN COUNT(DISTINCT c) AS fixingCommits
+",Incorrect relationship modelling,
+44,React,How many fixing commits caused bugs on Nov. 2013?,"In November 2013, there were 10 fixing commits that caused bugs.","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2013-11-.*'
+RETURN count(c) AS fixingCommits
+",Incorrect relationship modelling,
+24,React,"what are the buggy commits that happened on March 1, 2022?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2022-03-01T.*'
+RETURN c
+",Incorrect relationship modelling,
+11,React,"what are the buggy commits that happened on March 1, 2022?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2022-03-01T.*'
+RETURN c
+",Incorrect relationship modelling,
+18,React,"what are the buggy commits that happened on March 1, 2022?","I don't know of any buggy commits that happened on March 1, 2022. Can I help with anything else?","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate STARTS WITH ""2022-03-01""
+RETURN c
+",Incorrect relationship modelling,
+31,React,"what are the buggy commits that happened on March 1, 2022?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2022-03-01T.*'
+RETURN c
+",Incorrect relationship modelling,
+4,React,"what are the buggy commits that happened on March 1, 2022?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE c.committedDate =~ '2022-03-01T.*'
+RETURN c
+",Incorrect relationship modelling,
+32,React,"what commits were buggy on April 9, 2021?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE i.closed_at =~ '2021-04-09T.*'
+RETURN c
+",Incorrect relationship modelling,
+25,React,"what commits were buggy on April 9, 2021?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2021-04-09T.*'
+RETURN c
+",Misapplied attribute filtering,
+5,React,"what commits were buggy on April 9, 2021?","I don't know which commits were buggy on April 9, 2021. Can I help with anything else?","cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE i.closed_at =~ '2021-04-09T.*'
+RETURN c
+",Incorrect relationship modelling,
+12,React,"what commits were buggy on April 9, 2021?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)
+WHERE i.closed_at =~ '2021-04-09T.*'
+RETURN c
+",Incorrect relationship modelling,
+19,React,"what commits were buggy on April 9, 2021?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2021-04-09T.*'
+RETURN c
+",Misapplied attribute filtering,
+33,React,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Brian Vaughn, with a total of 44 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+38,React,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Brian Vaughn, with a total of 44 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+40,React,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Brian Vaughn, with 44 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+42,React,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Brian Vaughn, with 44 open bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+35,React,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Loïc Padier, with 1 open bug.","cypher
+MATCH (u:User)-[:creates]->(i:Issue {state: 'open'})<-[:introduced]-(c:Commit)
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+29,React,who did most fixed bugs in TapEventPlugin.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""TapEventPlugin.js""})
+RETURN u.name AS user, COUNT(i) AS fixed_bugs
+ORDER BY fixed_bugs DESC
+LIMIT 1
+",hallucination,
+16,React,who did most fixed bugs in TapEventPlugin.js?,I don't know. Can I help with anything else?,"cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""TapEventPlugin.js""})
+RETURN u.name AS user, COUNT(i) AS fixed_bugs
+ORDER BY fixed_bugs DESC
+LIMIT 1
+",hallucination,
+9,React,who did most fixed bugs in TapEventPlugin.js?,"I don't know, can I help with anything else?","cypher
+MATCH (u:User)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: ""TapEventPlugin.js""})
+RETURN u.name AS user, COUNT(i) AS fixed_bugs
+ORDER BY fixed_bugs DESC
+LIMIT 1
+",hallucination,
+3,Vue,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Evan You, with a total of 2 unfixed bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+34,Vue,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is sqal, with a total of 7 unfixed bugs.","cypher
+MATCH (u:User)-[:creates]->(i:Issue)<-[:introduced]-(c:Commit)
+WHERE NOT (c)-[:fixed]->(:Issue)
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+27,Vue,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Evan You, with a total of 2 unfixed bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+19,Vue,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Evan You, with a total of 2 unfixed bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+11,Vue,Determine the developers that had the most unfixed bugs?,"The developer with the most unfixed bugs is Evan You, with a total of 2 unfixed bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)
+WHERE i.state <> 'closed'
+RETURN u.name AS developer, COUNT(i) AS unfixed_bugs
+ORDER BY unfixed_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+36,Vue,Determine the files that introduce the most bugs?,"I don't know, can I help with anything else?","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 1
+",Incorrect relationship modelling,
+5,Vue,Determine the files that introduce the most bugs?,"The files that introduce the most bugs are:
+
+1. `index.js` with 166 bugs
+2. `render.js` with 88 bugs
+3. `events.js` and `patch.js` with 69 bugs each
+4. `lifecycle.js` with 64 bugs
+5. `model.js` with 61 bugs
+6. `vnode.js` with 58 bugs
+7. `create-component.js` with 50 bugs
+8. `component.js` with 49 bugs
+9. `compiler.js` with 46 bugs","cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 10
+",Incorrect relationship modelling,
+21,Vue,Determine the files that introduce the most bugs?,I don't know. Can I help with anything else?,"cypher
+MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)
+RETURN f.name, COUNT(i) AS bug_count
+ORDER BY bug_count DESC
+LIMIT 1
+",Incorrect relationship modelling,
+30,Vue,Determine the percentage of the fixing commits that introduced bugs on Oct 2017?,The percentage of the fixing commits that introduced bugs in October 2017 is 100.0%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2017-10.*'
+RETURN (count(c2) * 1.0 / count(c1)) * 100 AS percentage_of_fixing_commits_introducing_bugs
+",Incorrect relationship modelling,Faulty arithmetic logic
+23,Vue,Determine the percentage of the fixing commits that introduced bugs on Oct 2017?,The percentage of the fixing commits that introduced bugs in October 2017 is 100%.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c.committedDate =~ '2017-10.*'
+RETURN (count(c2) * 1.0 / count(c)) * 100 AS percentage_of_fixing_commits_introducing_bugs
+",Incorrect relationship modelling,
+15,Vue,Determine the percentage of the fixing commits that introduced bugs on Oct 2017?,The percentage of the fixing commits that introduced bugs in October 2017 is 100%.,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2017-10.*' AND c2.committedDate =~ '2017-10.*'
+RETURN (count(c2) * 1.0 / count(c1)) * 100 AS percentage
+",Incorrect relationship modelling,
+39,Vue,Determine the percentage of the fixing commits that introduced bugs on Oct 2017?,The percentage of the fixing commits that introduced bugs in October 2017 is 100.0%.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c2.committedDate =~ '2017-10.*'
+RETURN (count(c) * 100.0 / count(c2)) AS fixingCommitPercentage
+",Incorrect relationship modelling,Faulty arithmetic logic
+7,Vue,Determine the percentage of the fixing commits that introduced bugs on Oct 2017?,The percentage of the fixing commits that introduced bugs in October 2017 is 100.0%. Can I help with anything else?,"cypher
+MATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c1.committedDate =~ '2017-10.*'
+RETURN (count(c2) * 1.0 / count(c1)) * 100 AS percentage
+",Incorrect relationship modelling,
+24,Vue,How many fixing commits caused bugs on Oct 2017?,There were 33 fixing commits that caused bugs in October 2017.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(b:Commit)
+WHERE c.committedDate =~ '2017-10.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+8,Vue,How many fixing commits caused bugs on Oct 2017?,There were 25 fixing commits that addressed bugs introduced in October 2017.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c2.committedDate =~ '2017-10.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+16,Vue,How many fixing commits caused bugs on Oct 2017?,There were no fixing commits that caused bugs in October 2017. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)-[:introduced]->(b:Commit)
+WHERE c.committedDate =~ '2017-10.*'
+RETURN COUNT(c) AS fixingCommits
+",Incorrect relationship modelling,
+31,Vue,How many fixing commits caused bugs on Oct 2017?,There were 25 fixing commits that addressed bugs introduced in October 2017.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c2.committedDate =~ '2017-10.*'
+RETURN count(c) AS fixingCommits
+",Incorrect relationship modelling,
+40,Vue,How many fixing commits caused bugs on Oct 2017?,There were 25 fixing commits that caused bugs in October 2017.,"cypher
+MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)
+WHERE c2.committedDate =~ '2017-10.*'
+RETURN COUNT(c) AS fixingCommitsCausingBugs
+",Incorrect relationship modelling,
+26,Vue,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+2,Vue,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+33,Vue,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+10,Vue,return a commit message on July 31?,"I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+18,Vue,return a commit message on July 31?,"I don't know the commit message for July 31, 2024. Can I help with anything else?","cypher
+MATCH (c:Commit)
+WHERE c.committedDate =~ '2024-07-31T.*'
+RETURN c.message
+",Invalid assumptions,
+14,Vue,what are the bugs caused by commit c678e3134b927645f79270b52d4d660a7e3654ce?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit {id: 'c678e3134b927645f79270b52d4d660a7e3654ce'})-[:introduced]->(i:Issue {type: 'bug'})
+RETURN i
+",Misapplied attribute filtering,
+38,Vue,what are the bugs caused by commit c678e3134b927645f79270b52d4d660a7e3654ce?,I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit {id: 'c678e3134b927645f79270b52d4d660a7e3654ce'})-[:introduced]->(i:Issue {type: 'bug'})
+RETURN i
+",Misapplied attribute filtering,
+37,Vue,"what commits were buggy on May 24, 2022?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2022-05-24T.*'
+RETURN c
+",Misapplied attribute filtering,
+22,Vue,"what commits were buggy on May 24, 2022?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2022-05-24T.*'
+RETURN c
+",Misapplied attribute filtering,
+29,Vue,"what commits were buggy on May 24, 2022?","I don't know, can I help with anything else?","cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2022-05-24T.*'
+RETURN c
+",Misapplied attribute filtering,
+13,Vue,"what commits were buggy on May 24, 2022?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2022-05-24T.*'
+RETURN c
+",Misapplied attribute filtering,
+6,Vue,"what commits were buggy on May 24, 2022?",I don't know. Can I help with anything else?,"cypher
+MATCH (c:Commit)-[:introduced]->(i:Issue)
+WHERE i.created_at =~ '2022-05-24T.*'
+RETURN c
+",Misapplied attribute filtering,
+4,Vue,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Evan You, with 2 open bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+35,Vue,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Evan You, with 2 open bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+28,Vue,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Evan You, with 2 open bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+12,Vue,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Evan You, with 2 open bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,
+20,Vue,which developer has most number of bugs yet to be fixed?,"The developer with the most number of bugs yet to be fixed is Evan You, with 2 open bugs.","cypher
+MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})
+RETURN u.name AS developer, COUNT(i) AS open_bugs
+ORDER BY open_bugs DESC
+LIMIT 1
+",Incorrect relationship modelling,

@@ -1,0 +1,3959 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "number": 1,
+        "category": 1,
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-26T00:00:00Z\" AND c.committedDate < \"2024-08-26T00:00:00Z\"\nRETURN COUNT(c) AS commitCount",
+        "result": [
+            {
+                "commitCount": 102
+            }
+        ]
+    },
+    {
+        "question": "what is the latest commit?",
+        "number": 2,
+        "category": 1,
+        "query": "MATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1",
+        "result": [
+            {
+                "c": {
+                    "additions": 14,
+                    "deletions": 22,
+                    "committedDate": "2024-08-16T15:13:10Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "526364297c9dc7bd3242c6bac19dee9ee61916da",
+                    "type": "Commit",
+                    "message": "\"feat(rnd): Add staticOutput field on block API (#7802)\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2023 and May 31st 2023?",
+        "number": 3,
+        "category": 1,
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate >= \"2023-05-27T00:00:00Z\" AND c.committedDate <= \"2023-05-31T23:59:59Z\"\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 5,
+                    "committedDate": "2023-05-31T02:02:16Z",
+                    "deletions": 0,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "63b79a88c6d10e23f7b21081ec17651df22033d5",
+                    "type": "Commit",
+                    "message": "\"Adding support for openai_organization env variable (#289)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 6,
+                    "committedDate": "2023-05-31T00:16:49Z",
+                    "deletions": 0,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9e9b128b723bafc14304172927833129a8cef75a",
+                    "type": "Commit",
+                    "message": "\"ignore cassettes and current score for all push events in github action (#4485)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-30T23:33:40Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "64973bfe129c5d7618a31e99cdb492b0f356b800",
+                    "type": "Commit",
+                    "message": "\"Update submodule reference\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 7,
+                    "committedDate": "2023-05-30T23:33:38Z",
+                    "deletions": 7,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "41df0204f36e4ca927dec359bfd99c9f055e7203",
+                    "type": "Commit",
+                    "message": "\"Update current score\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 152,
+                    "committedDate": "2023-05-30T23:28:32Z",
+                    "deletions": 2,
+                    "changedFiles": 7,
+                    "commentsCount": 0,
+                    "id": "f6ee61d6078924301f924504dd63ad0cf339509c",
+                    "type": "Commit",
+                    "message": "\"create debug challenge (#4286)\n\nCo-authored-by: Merwane Hamadi <merwanehamadi@gmail.com>\r\nCo-authored-by: symphony <john.tian31@gmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 83,
+                    "committedDate": "2023-05-30T22:56:58Z",
+                    "deletions": 55,
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "87776b28865b8dd292dc7a293c79437a232c10e6",
+                    "type": "Commit",
+                    "message": "\"Make the information retrieval challenge a harder while still passing (#4468)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-30T19:23:49Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "86b6231f70b6e59cbea9d03e12897a7f0d686659",
+                    "type": "Commit",
+                    "message": "\"ignore push if current score changed (#4482)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-30T19:15:33Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "387f65c16c3f70e789d26041f60ce3994f52f5d3",
+                    "type": "Commit",
+                    "message": "\"Update submodule reference\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-30T19:15:30Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "4c25fabec99e785b9681274e3ffc2763f9707bad",
+                    "type": "Commit",
+                    "message": "\"Update current score\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 112,
+                    "committedDate": "2023-05-30T19:10:49Z",
+                    "deletions": 1,
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "6806b66509cf421134cb2e1b0b807c9c9ada6d8a",
+                    "type": "Commit",
+                    "message": "\"Information retrieval challenge (#4456)\n\n* test: add information retrieval challenge b\r\n\r\n* test: get information retrieval challenge be working.\r\n\r\n* chore: clean up comments and imports.\r\n\r\n* chore: fix incorrect import\r\n\r\n* chore: clean up imports.\r\n\r\n* fix: add web_selenium cmd. resolve missing loop cycle\r\n\r\n* chore: remove commented code and unused imports.\r\n\r\n* fix (4261): use 2 cycles instead of 3\r\n\r\n* chore: fix mypy formatting\r\n\r\n* chore: try 2 for mypy formatting\r\n\r\n* chore: resolve flake8 issues\r\n\r\n* chore: add docs\r\n\r\n* chore: resolve linting flake8\r\n\r\n* chore: correct formatting to black\r\n\r\n* Update challenge_b.md\r\n\r\n* refactored challenge\r\n\r\n---------\r\n\r\nCo-authored-by: PortlandKyGuy <kyleaaron1@gmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 35,
+                    "committedDate": "2023-05-30T14:31:45Z",
+                    "deletions": 11,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b56352e2183dc4eb10b8f54f0d789abe2183e2de",
+                    "type": "Commit",
+                    "message": "\"Fix #4461: Dont record error requests in challenges (#4469)\n\nCo-authored-by: merwanehamadi <merwanehamadi@gmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-30T13:03:41Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d3a1770dc01a2d419e071703bc18b4e91342f9ba",
+                    "type": "Commit",
+                    "message": "\"Update submodule reference\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2023-05-30T13:00:37Z",
+                    "deletions": 4,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "22429c6e98d71b67306f3cb81c2dee4577708e6c",
+                    "type": "Commit",
+                    "message": "\"add vcr to dalle (#4474)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-30T02:33:34Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "56650b60f48f5338f46f4b3cb8e28a9be6a004ab",
+                    "type": "Commit",
+                    "message": "\"Update current score\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 22,
+                    "committedDate": "2023-05-30T02:30:41Z",
+                    "deletions": 6,
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "ba8046753e419a627fcf49a06d9173dccc8a405c",
+                    "type": "Commit",
+                    "message": "\"Update current score when PR merged (#4464)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 4,
+                    "committedDate": "2023-05-30T02:01:46Z",
+                    "deletions": 4,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d34b8a2b61fb5d1f1b2c14856b8a3af895b8aca2",
+                    "type": "Commit",
+                    "message": "\"Replace prompt change with behavior change (#4473)\n\n* Replace prompt change with behavior change\r\n\r\n* replaced behavior by behaviour\r\n\r\n* fixed typo on behaviour\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 105,
+                    "committedDate": "2023-05-29T17:10:51Z",
+                    "deletions": 24,
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "1446ffddb0289f8944ac7a820fa084e8f2f89598",
+                    "type": "Commit",
+                    "message": "\"Fix #942: Respect --gpt4only, --gpt3only cli args (#3144)\n\nCo-authored-by: Luke K <KayLuke@users.noreply.github.com>\r\nCo-authored-by: Nicholas Tindle <nick@ntindle.com>\r\nCo-authored-by: Reinier van der Leer <github@pwuts.nl>\r\nCo-authored-by: k-boikov <64261260+k-boikov@users.noreply.github.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 10,
+                    "committedDate": "2023-05-29T16:24:38Z",
+                    "deletions": 5,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "1ddf2324ff514e39df82724350fec05c6ec4e22a",
+                    "type": "Commit",
+                    "message": "\"Improve the steps for running docker compose in the setup documentation (#4462)\n\nCo-authored-by: k-boikov <64261260+k-boikov@users.noreply.github.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-29T15:29:31Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "b5d78a48a7cfa221b355416f6ef8a0bdcd4b928f",
+                    "type": "Commit",
+                    "message": "\"Update submodule reference\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2023-05-29T15:25:45Z",
+                    "deletions": 2,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "1127d9c5f57c7a7e66900e7bbb95e943842097e9",
+                    "type": "Commit",
+                    "message": "\"Master doesnt beat memory challenge b level 1 in a consistent manner (#4460)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 400,
+                    "committedDate": "2023-05-29T07:47:06Z",
+                    "deletions": 82,
+                    "changedFiles": 17,
+                    "commentsCount": 0,
+                    "id": "31cd836530871637847fa79064a99992d0181509",
+                    "type": "Commit",
+                    "message": "\"\"Beat Challenges\" Mode (#4447)\n\nCo-authored-by: Richard Beales <rich@richbeales.net>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "committedDate": "2023-05-29T03:28:57Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "daafda320b41ffaf8157fdbec8ee705cf22c8922",
+                    "type": "Commit",
+                    "message": "\"Update README.md\n\nRemove outdated reference to En_GPT\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 28,
+                    "committedDate": "2023-05-28T12:50:50Z",
+                    "deletions": 70,
+                    "changedFiles": 33,
+                    "commentsCount": 0,
+                    "id": "ee9f10a8d8138a0fc5c352d5950f3da3d8c24c57",
+                    "type": "Commit",
+                    "message": "\"remove unused imports automatically (#4449)\n\n* remove unused imports automatically\r\n\r\n* add linters to pr template\r\n\r\n* remove useless try statement\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2023-05-28T01:30:02Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "78774526f42025ebd1949e841d475f3b3d5229bc",
+                    "type": "Commit",
+                    "message": "\"Update submodule reference\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "committedDate": "2023-05-28T01:26:30Z",
+                    "deletions": 29,
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "44f6d946f5ab8c7fae132a534f1e4730639499a9",
+                    "type": "Commit",
+                    "message": "\"fix information retrieval challenge (#4448)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 19,
+                    "committedDate": "2023-05-27T15:58:38Z",
+                    "deletions": 0,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "03036c1bd6ec18247fc212def434742cfb1f57e8",
+                    "type": "Commit",
+                    "message": "\"Added three more tests to check for edge cases in URL validation (#4441)\n\nCo-authored-by: Ryan Johns <rkjohns@verisk.com>\r\nCo-authored-by: k-boikov <64261260+k-boikov@users.noreply.github.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 4,
+                    "committedDate": "2023-05-27T09:52:38Z",
+                    "deletions": 4,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "4b7fa7f49dab11b0d00ef9b44633e2a9ae52b525",
+                    "type": "Commit",
+                    "message": "\"Fix typo and links in documentation (#4440)\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "number": 4,
+        "category": 1,
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate =~ \".*-07-31T.*\"\nRETURN c.message",
+        "result": [
+            {
+                "c.message": "\"fix(server): enable other methods of setting configs outside of the config.json file (#7645)\""
+            },
+            {
+                "c.message": "\"fix(rnd): Fix bug caused by different AJV version (#7653)\""
+            },
+            {
+                "c.message": "\"feat(builder): UI / UX upgrade and simplification of tailwind styles (#7647)\n\n* fix(builder): Implementing a basic shadCn theme until color palette is decided upon\r\n\r\n* feat(builder): Separating NavBar into its own component and providing a standard UI/UX Approach\r\n\r\n* feat(builder): Removing old implementation of logo, removing excessive css implementation, updating styles to better support standard desktop views.\r\n\r\n* feature(builder): Addition of UI component Sheet from ShadCn for update\""
+            },
+            {
+                "c.message": "\"Verify model compatibility if OPENAI_FUNCTIONS is set (#5075)\n\nCo-authored-by: Luke <2609441+lc0rp@users.noreply.github.com>\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731231811\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731231616\""
+            },
+            {
+                "c.message": "\"beebot-20230731231609\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731231602\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731231559\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731231544\""
+            },
+            {
+                "c.message": "\"Fix costs helicone (#226)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731210447\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731210400\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731210325\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731210302\""
+            },
+            {
+                "c.message": "\"beebot-20230731210233\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731210209\""
+            },
+            {
+                "c.message": "\"Refactoring for TDD (#222)\""
+            },
+            {
+                "c.message": "\"beebot-20230731195809\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731195206\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731194902\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731194324\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731194247\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731194002\""
+            },
+            {
+                "c.message": "\"Fix send to gdrive and tracking the wrong challenge name (#225)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731192131\""
+            },
+            {
+                "c.message": "\"beebot-20230731192007\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731191728\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731191016\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731190854\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731190706\""
+            },
+            {
+                "c.message": "\"Fix BeeBot link (#224)\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731162425\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731162039\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731161504\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731161325\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731161317\""
+            },
+            {
+                "c.message": "\"beebot-20230731161137\""
+            },
+            {
+                "c.message": "\"Fix f-string get_data_from_helicone.py (#223)\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731132407\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731132343\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731131015\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731130848\""
+            },
+            {
+                "c.message": "\"beebot-20230731130716\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731130710\""
+            },
+            {
+                "c.message": "\"ci ofr auth\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731124818\""
+            },
+            {
+                "c.message": "\"beebot-20230731124600\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731124554\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731124541\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731124455\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731124423\""
+            },
+            {
+                "c.message": "\"removing data that didnt work\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731123517\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731123211\""
+            },
+            {
+                "c.message": "\"beebot-20230731123211\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731123152\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731123112\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731123033\""
+            },
+            {
+                "c.message": "\"linter fixes\""
+            },
+            {
+                "c.message": "\"helicone push 2\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731120124\""
+            },
+            {
+                "c.message": "\"beebot-20230731115844\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731115820\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731115759\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731115729\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731115648\""
+            },
+            {
+                "c.message": "\"handling helicone errors\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731112930\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731112647\""
+            },
+            {
+                "c.message": "\"beebot-20230731112610\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731112601\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731112533\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731112459\""
+            },
+            {
+                "c.message": "\"working bar and radar charts (#221)\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731081823\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731081534\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731081526\""
+            },
+            {
+                "c.message": "\"beebot-20230731081506\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731081411\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731081355\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731043857\""
+            },
+            {
+                "c.message": "\"beebot-20230731043707\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731043641\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731043631\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731043627\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731043517\""
+            },
+            {
+                "c.message": "\"Get helicone costs (#220)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+            },
+            {
+                "c.message": "\"beebot-20230731033044\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731031804\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731031741\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731031107\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731030947\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731030731\""
+            },
+            {
+                "c.message": "\"Update submodule (#219)\""
+            },
+            {
+                "c.message": "\"mini-agi-20230731025221\""
+            },
+            {
+                "c.message": "\"beebot-20230731023209\""
+            },
+            {
+                "c.message": "\"gpt-engineer-20230731021500\""
+            },
+            {
+                "c.message": "\"BabyAGI-20230731021142\""
+            },
+            {
+                "c.message": "\"smol-developer-20230731020904\""
+            },
+            {
+                "c.message": "\"Auto-GPT-20230731020846\""
+            },
+            {
+                "c.message": "\"Fix timeout not working (#218)\""
+            }
+        ]
+    },
+    {
+        "question": "show me the changes for challenge.py file?",
+        "number": 5,
+        "category": 2,
+        "query": "MATCH (f:File {name: \"challenge.py\"})<-[:changed]-(c:Commit)\nRETURN c, f",
+        "result": [
+            {
+                "c": {
+                    "additions": 923,
+                    "deletions": 814,
+                    "committedDate": "2024-01-18T14:19:06Z",
+                    "changedFiles": 16,
+                    "commentsCount": 0,
+                    "id": "9012ff4db29b36632f940c14008cd755bb5ef8b4",
+                    "type": "Commit",
+                    "message": "\"refactor(benchmark): Interface & type consoledation, and arch change, to allow adding challenge providers\n\nSquashed commit of the following:\n\ncommit 7d6476d3297860f74c276d571da995d958a8cc1a\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 18:10:45 2024 +0100\n\n    refactor(benchmark/challenge): Set up structure to support more challenge providers\n\n    - Move `Challenge`, `ChallengeData`, `load_challenges` to `challenges/builtin.py` and rename to `BuiltinChallenge`, `BuiltinChallengeSpec`, `load_builtin_challenges`\n    - Create `BaseChallenge` to serve as interface and base class for different challenge implementations\n    - Create `ChallengeInfo` model to serve as universal challenge info object\n    - Create `get_challenge_from_source_uri` function in `challenges/__init__.py`\n    - Replace `ChallengeData` by `ChallengeInfo` everywhere except in `BuiltinChallenge`\n    - Add strong typing to `task_informations` store in app.py\n    - Use `call.duration` in `finalize_test_report` and remove `timer` fixture\n    - Update docstring on `challenges/__init__.py:get_unique_categories`\n    - Add docstring to `generate_test.py`\n\ncommit 5df2aa7939b45d85a2c2b5de9ac0522330d1502a\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 16:58:01 2024 +0100\n\n    refactor(benchmark): Refactor & rename functions in agent_interface.py and agent_api_interface.py\n\n    - `copy_artifacts_into_temp_folder` -> `copy_challenge_artifacts_into_workspace`\n    - `copy_agent_artifacts_into_folder` -> `download_agent_artifacts_into_folder`\n    - Reorder parameters of `run_api_agent`, `copy_challenge_artifacts_into_workspace`; use `Path` instead of `str`\n\ncommit 6a256fef4c7950b7ee82fb801e70c83afe6b6f8b\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 16:02:25 2024 +0100\n\n    refactor(benchmark): Refactor & typefix report generation and handling logic\n\n    - Rename functions in reports.py and ReportManager.py to better reflect what they do\n       - `get_previous_test_results` -> `get_and_update_success_history`\n       - `generate_single_call_report` -> `initialize_test_report`\n       - `finalize_reports` -> `finalize_test_report`\n       - `ReportManager.end_info_report` -> `SessionReportManager.finalize_session_report`\n    - Modify `pytest_runtest_makereport` hook in conftest.py to finalize the report immediately after the challenge finishes running instead of after teardown\n       - Move result processing logic from `initialize_test_report` to `finalize_test_report` in reports.py\n    - Use `Test` and `Report` types from report_types.py where possible instead of untyped dicts: reports.py, utils.py, ReportManager.py\n    - Differentiate `ReportManager` into `SessionReportManager`, `RegressionTestsTracker`, `SuccessRateTracker`\n    - Move filtering of optional challenge categories from challenge.py (`Challenge.skip_optional_categories`) to conftest.py (`pytest_collection_modifyitems`)\n    - Remove unused `scores` fixture in conftest.py\n\ncommit 370d6dbf5df75d78e3878877968e8cd309d6d7fb\nAuthor: Reinier van der Leer <pwuts@agpt.co>\nDate:   Tue Jan 9 15:16:43 2024 +0100\n\n    refactor(benchmark): Simplify models in report_types.py\n\n    - Removed ForbidOptionalMeta and BaseModelBenchmark classes.\n    - Changed model attributes to optional: `Metrics.difficulty`, `Metrics.success`, `Metrics.success_percentage`, `Metrics.run_time`, and `Test.reached_cutoff`.\n    - Added validator to `Metrics` model to require `success` and `run_time` fields if `attempted=True`.\n    - Added default values to all optional model fields.\n    - Removed duplicate imports.\n    - Added condition in process_report.py to prevent null lookups if `metrics.difficulty` is not set.\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 33,
+                    "deletions": 23,
+                    "committedDate": "2024-01-16T14:49:46Z",
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "0a4185a919f3f9050237eb50258ca8cc2e455c05",
+                    "type": "Commit",
+                    "message": "\"chore(benchmark): Upgrade OpenAI client lib from v0 to v1\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 160,
+                    "committedDate": "2024-01-16T14:38:47Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "056163ee57d8f6374c724df71060cd508ffdaed6",
+                    "type": "Commit",
+                    "message": "\"refactor(benchmark): Disable Helicone integrations\n\nWe want to upgrade the OpenAI library, but `helicone` does not support `openai@^1.0.0`, so were disabling the Helicone integration for now.\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 2120,
+                    "deletions": 7750,
+                    "committedDate": "2024-01-02T21:23:09Z",
+                    "changedFiles": 47,
+                    "commentsCount": 0,
+                    "id": "25cc6ad6ae651c3b925ab9447421337c2f4b68e1",
+                    "type": "Commit",
+                    "message": "\"AGBenchmark codebase clean-up (#6650)\n\n* refactor(benchmark): Deduplicate configuration loading logic\r\n\r\n   - Move the configuration loading logic to a separate `load_agbenchmark_config` function in `agbenchmark/config.py` module.\r\n   - Replace the duplicate loading logic in `conftest.py`, `generate_test.py`, `ReportManager.py`, `reports.py`, and `__main__.py` with calls to `load_agbenchmark_config` function.\r\n\r\n* fix(benchmark): Fix type errors, linting errors, and clean up CLI validation in __main__.py\r\n\r\n   - Fixed type errors and linting errors in `__main__.py`\r\n   - Improved the readability of CLI argument validation by introducing a separate function for it\r\n\r\n* refactor(benchmark): Lint and typefix app.py\r\n\r\n   - Rearranged and cleaned up import statements\r\n   - Fixed type errors caused by improper use of `psutil` objects\r\n   - Simplified a number of `os.path` usages by converting to `pathlib`\r\n   - Use `Task` and `TaskRequestBody` classes from `agent_protocol_client` instead of `.schema`\r\n\r\n* refactor(benchmark): Replace `.agent_protocol_client` by `agent-protcol-client`, clean up schema.py\r\n\r\n   - Remove `agbenchmark.agent_protocol_client` (an offline copy of `agent-protocol-client`).\r\n      - Add `agent-protocol-client` as a dependency and change imports to `agent_protocol_client`.\r\n   - Fix type annotation on `agent_api_interface.py::upload_artifacts` (`ApiClient` -> `AgentApi`).\r\n   - Remove all unused types from schema.py (= most of them).\r\n\r\n* refactor(benchmark): Use pathlib in agent_interface.py and agent_api_interface.py\r\n\r\n* refactor(benchmark): Improve typing, response validation, and readability in app.py\r\n\r\n   - Simplified response generation by leveraging type checking and conversion by FastAPI.\r\n   - Introduced use of `HTTPException` for error responses.\r\n   - Improved naming, formatting, and typing in `app.py::create_evaluation`.\r\n   - Updated the docstring on `app.py::create_agent_task`.\r\n   - Fixed return type annotations of `create_single_test` and `create_challenge` in generate_test.py.\r\n   - Added default values to optional attributes on models in report_types_v2.py.\r\n   - Removed unused imports in `generate_test.py`\r\n\r\n* refactor(benchmark): Clean up logging and print statements\r\n\r\n   - Introduced use of the `logging` library for unified logging and better readability.\r\n   - Converted most print statements to use `logger.debug`, `logger.warning`, and `logger.error`.\r\n   - Improved descriptiveness of log statements.\r\n   - Removed unnecessary print statements.\r\n   - Added log statements to unspecific and non-verbose `except` blocks.\r\n   - Added `--debug` flag, which sets the log level to `DEBUG` and enables a more comprehensive log format.\r\n   - Added `.utils.logging` module with `configure_logging` function to easily configure the logging library.\r\n   - Converted raw escape sequences in `.utils.challenge` to use `colorama`.\r\n   - Renamed `generate_test.py::generate_tests` to `load_challenges`.\r\n\r\n* refactor(benchmark): Remove unused server.py and agent_interface.py::run_agent\r\n\r\n   - Remove unused server.py file\r\n   - Remove unused run_agent function from agent_interface.py\r\n\r\n* refactor(benchmark): Clean up conftest.py\r\n\r\n   - Fix and add type annotations\r\n   - Rewrite docstrings\r\n   - Disable or remove unused code\r\n   - Fix definition of arguments and their types in `pytest_addoption`\r\n\r\n* refactor(benchmark): Clean up generate_test.py file\r\n\r\n   - Refactored the `create_single_test` function for clarity and readability\r\n      - Removed unused variables\r\n      - Made creation of `Challenge` subclasses more straightforward\r\n      - Made bare `except` more specific\r\n   - Renamed `Challenge.setup_challenge` method to `run_challenge`\r\n   - Updated type hints and annotations\r\n   - Made minor code/readability improvements in `load_challenges`\r\n   - Added a helper function `_add_challenge_to_module` for attaching a Challenge class to the current module\r\n\r\n* fix(benchmark): Fix and add type annotations in execute_sub_process.py\r\n\r\n* refactor(benchmark): Simplify const determination in agent_interface.py\r\n\r\n   - Simplify the logic that determines the value of `HELICONE_GRAPHQL_LOGS`\r\n\r\n* fix(benchmark): Register category markers to prevent warnings\r\n\r\n   - Use the `pytest_configure` hook to register the known challenge categories as markers. Otherwise, Pytest will raise \"unknown marker\" warnings at runtime.\r\n\r\n* refactor(benchmark/challenges): Fix indentation in 4_revenue_retrieval_2/data.json\r\n\r\n* refactor(benchmark): Update agent_api_interface.py\r\n\r\n   - Add type annotations to `copy_agent_artifacts_into_temp_folder` function\r\n   - Add note about broken endpoint in the `agent_protocol_client` library\r\n   - Remove unused variable in `run_api_agent` function\r\n   - Improve readability and resolve linting error\r\n\r\n* feat(benchmark): Improve and centralize pathfinding\r\n\r\n   - Search path hierarchy for applicable `agbenchmark_config`, rather than assuming its in the current folder.\r\n   - Create `agbenchmark.utils.path_manager` with `AGBenchmarkPathManager` and exporting a `PATH_MANAGER` const.\r\n   - Replace path constants defined in __main__.py with usages of `PATH_MANAGER`.\r\n\r\n* feat(benchmark/cli): Clean up and improve CLI\r\n\r\n   - Updated commands, options, and their descriptions to be more intuitive and consistent\r\n   - Moved slow imports into the entrypoints that use them to speed up application startup\r\n   - Fixed type hints to match output types of Click options\r\n   - Hid deprecated `agbenchmark start` command\r\n   - Refactored code to improve readability and maintainability\r\n   - Moved main entrypoint into `run` subcommand\r\n   - Fixed `version` and `serve` subcommands\r\n   - Added `click-default-group` package to allow using `run` implicitly (for backwards compatibility)\r\n   - Renamed `--no_dep` to `--no-dep` for consistency\r\n   - Fixed string formatting issues in log statements\r\n\r\n* refactor(benchmark/config): Move AgentBenchmarkConfig and related functions to config.py\r\n\r\n   - Move the `AgentBenchmarkConfig` class from `utils/data_types.py` to `config.py`.\r\n   - Extract the `calculate_info_test_path` function from `utils/data_types.py` and move it to `config.py` as a private helper function `_calculate_info_test_path`.\r\n   - Move `load_agent_benchmark_config()` to `AgentBenchmarkConfig.load()`.\r\n   - Changed simple getter methods on `AgentBenchmarkConfig` to calculated properties.\r\n   - Update all code references according to the changes mentioned above.\r\n\r\n* refactor(benchmark): Fix ReportManager init parameter types and use pathlib\r\n\r\n   - Fix the type annotation of the `benchmark_start_time` parameter in `ReportManager.__init__`, was mistyped as `str` instead of `datetime`.\r\n   - Change the type of the `filename` parameter in the `ReportManager.__init__` method from `str` to `Path`.\r\n   - Rename `self.filename` with `self.report_file` in `ReportManager`.\r\n   - Change the way the report file is created, opened and saved to use the `Path` object.\r\n\r\n* refactor(benchmark): Improve typing surrounding ChallengeData and clean up its implementation\r\n\r\n   - Use `ChallengeData` objects instead of untyped `dict` in  app.py, generate_test.py, reports.py.\r\n   - Remove unnecessary methods `serialize`, `get_data`, `get_json_from_path`, `deserialize` from `ChallengeData` class.\r\n   - Remove unused methods `challenge_from_datum` and `challenge_from_test_data` from `ChallengeData class.\r\n   - Update function signatures and annotations of `create_challenge` and `generate_single_test` functions in generate_test.py.\r\n   - Add types to function signatures of `generate_single_call_report` and `finalize_reports` in reports.py.\r\n   - Remove unnecessary `challenge_data` parameter (in generate_test.py) and fixture (in conftest.py).\r\n\r\n* refactor(benchmark): Clean up generate_test.py, conftest.py and __main__.py\r\n\r\n   - Cleaned up generate_test.py and conftest.py\r\n      - Consolidated challenge creation logic in the `Challenge` class itself, most notably the new `Challenge.from_challenge_spec` method.\r\n      - Moved challenge selection logic from generate_test.py to the `pytest_collection_modifyitems` hook in conftest.py.\r\n   - Converted methods in the `Challenge` class to class methods where appropriate.\r\n   - Improved argument handling in the `run_benchmark` function in `__main__.py`.\r\n\r\n* refactor(benchmark/config): Merge AGBenchmarkPathManager into AgentBenchmarkConfig and reduce fragmented/global state\r\n\r\n   - Merge the functionality of `AGBenchmarkPathManager` into `AgentBenchmarkConfig` to consolidate the configuration management.\r\n   - Remove the `.path_manager` module containing `AGBenchmarkPathManager`.\r\n   - Pass the `AgentBenchmarkConfig` and its attributes through function arguments to reduce global state and improve code clarity.\r\n\r\n* feat(benchmark/serve): Configurable port for `serve` subcommand\r\n\r\n   - Added `--port` option to `serve` subcommand to allow for specifying the port to run the API on.\r\n   - If no `--port` option is provided, the port will default to the value specified in the `PORT` environment variable, or 8080 if not set.\r\n\r\n* feat(benchmark/cli): Add `config` subcommand\r\n\r\n   - Added a new subcommand `config` to the AGBenchmark CLI, to display information about the present AGBenchmark config.\r\n\r\n* fix(benchmark): Gracefully handle incompatible challenge spec files in app.py\r\n\r\n   - Added a check to skip deprecated challenges\r\n   - Added logging to allow debugging of the loading process\r\n   - Added handling of validation errors when parsing challenge spec files\r\n   - Added missing `spec_file` attribute to `ChallengeData`\r\n\r\n* refactor(benchmark): Move `run_benchmark` entrypoint to main.py, use it in `/reports` endpoint\r\n\r\n   - Move `run_benchmark` and `validate_args` from __main__.py to main.py\r\n   - Replace agbenchmark subprocess in `app.py:run_single_test` with `run_benchmark`\r\n   - Move `get_unique_categories` from __main__.py to challenges/__init__.py\r\n   - Move `OPTIONAL_CATEGORIES` from __main__.py to challenge.py\r\n   - Reduce operations on updates.json (including `initialize_updates_file`) outside of API\r\n\r\n* refactor(benchmark): Remove unused `/updates` endpoint and all related code\r\n\r\n   - Remove `updates_json_file` attribute from `AgentBenchmarkConfig`\r\n   - Remove `get_updates` and `_initialize_updates_file` in app.py\r\n   - Remove `append_updates_file` and `create_update_json` functions in agent_api_interface.py\r\n   - Remove call to `append_updates_file` in challenge.py\r\n\r\n* refactor(benchmark/config): Clean up and update docstrings on `AgentBenchmarkConfig`\r\n\r\n   - Add and update docstrings\r\n   - Change base class from `BaseModel` to `BaseSettings`, allow extras for backwards compatibility\r\n   - Make naming of path attributes on `AgentBenchmarkConfig` more consistent\r\n   - Remove unused `agent_home_directory` attribute\r\n   - Remove unused `workspace` attribute\r\n\r\n* fix(benchmark): Restore mechanism to select (optional) categories in agent benchmark config\r\n\r\n* fix(benchmark): Update agent-protocol-client to v1.1.0\r\n\r\n   - Fixes issue with fetching task artifact listings\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 55,
+                    "deletions": 134,
+                    "committedDate": "2023-11-21T09:58:54Z",
+                    "changedFiles": 11,
+                    "commentsCount": 0,
+                    "id": "b106a61352d7a9f85bbaa693fed7fc114c5277f7",
+                    "type": "Commit",
+                    "message": "\"Clean up & fix GitHub workflows (#6313)\n\n* ci: Mitigate security issues in autogpt-ci.yml\r\n\r\n- Remove unnecessary pull_request_target paths and related variables and config\r\n- Set permissions for contents to read only\r\n\r\n* ci: Simplify steps in autogpt-ci.yml workflow using GitHub CLI\r\n\r\n- Simplify step in autogpt-ci.yml by using GitHub CLI instead of API for adding label and comment functionality\r\n- Replace curl command with gh issue edit to add \"behaviour change\" label to the pull request\r\n- Replace gh api command with gh issue comment to leave a comment about the changed behavior of AutoGPT in the pull request\r\n\r\n* ci: Fix issues in workflows\r\n\r\n- Move environment variable definition to top level in benchmark-ci.yml (because the other job also needs it)\r\n- Removed invalid branches: [hackathon] restriction in hackathon.yml workflow\r\n- Removed redundant ref and repository fields in the checkout step of both workflows.\r\n\r\n* ci: Delete legacy benchmarks.yml workflow\r\n\r\n* ci: Add triggers for CI workflows\r\n\r\n- Add triggers to run CI workflows when they are edited.\r\n- Update the paths for the CI workflows in the trigger configuration.\r\n\r\n* fix: Fix benchmark lint error\r\n\r\n- Removed unnecessary blank lines in report_types.py\r\n- Fixed string quotes in challenge.py to maintain consistency\r\n\r\n* fix: Update task description in password generator data.json\r\n\r\n- Update task description in `data.json` file for the password generator challenge to clarify the input requirements and error handling.\r\n- This change is made in an attempt to make the Benchmark CI pass.\r\n\r\n* fix: Fix PasswordGenerator challenge in CI\r\n\r\n- Fix the behavior of the reference password_generator.py to align with the task description\r\n- Use default password length 8 instead of a random length in the generate_password function\r\n- Retrieve the password length from the command line arguments if \"--length\" is provided, else set it to 8\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 13,
+                    "deletions": 1,
+                    "committedDate": "2023-10-20T15:26:29Z",
+                    "changedFiles": 7,
+                    "commentsCount": 0,
+                    "id": "825c3adf62879fa9f91a19c11010336de5c98bfc",
+                    "type": "Commit",
+                    "message": "\"case sensitivity, updating challenges\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 3723,
+                    "deletions": 2871,
+                    "committedDate": "2023-10-18T00:43:55Z",
+                    "changedFiles": 101,
+                    "commentsCount": 0,
+                    "id": "bceb66f3b040baed210d4be4d3eca222ab9893ec",
+                    "type": "Commit",
+                    "message": "\"AutoGPT: Implement Agent Protocol (#5612)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 1499,
+                    "committedDate": "2023-10-18T00:06:15Z",
+                    "changedFiles": 28,
+                    "commentsCount": 0,
+                    "id": "03992b3232166d64d3b1fb0f655878e802a01e1b",
+                    "type": "Commit",
+                    "message": "\"Abandon tests/challenges in favor of benchmark\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 57743,
+                    "deletions": 55382,
+                    "committedDate": "2023-10-07T22:13:56Z",
+                    "changedFiles": 113,
+                    "commentsCount": 0,
+                    "id": "69de6c0467c3bbe0bdafe5a5e858e19d19ceedb0",
+                    "type": "Commit",
+                    "message": "\"Merge branch master into autogpt/agent-protocol\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 12,
+                    "deletions": 6,
+                    "committedDate": "2023-10-03T18:24:16Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c7a9ac3bf7f1dfb838cc5d2558a47933b903b604",
+                    "type": "Commit",
+                    "message": "\"Fix custom_python not being copied (#5512)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 195,
+                    "deletions": 471,
+                    "committedDate": "2023-09-16T03:04:12Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "295702867a01a393e54ad4a1487ea669ac6eb8db",
+                    "type": "Commit",
+                    "message": "\"Ability to run by categories (#5229)\n\n* Ability to run by categories\r\n\r\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\r\n\r\n* always use Path.cwd()\r\n\r\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\r\n\r\n---------\r\n\r\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 11368,
+                    "deletions": 181,
+                    "committedDate": "2023-09-14T01:50:39Z",
+                    "changedFiles": 124,
+                    "commentsCount": 0,
+                    "id": "4bb86c0cb516d2b0a97e9069e08e7322f0f30144",
+                    "type": "Commit",
+                    "message": "\"Support agent protocol in benchmark (#5213)\n\nBenchmark/Forge/Agent Protocol\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 58,
+                    "committedDate": "2023-09-13T14:30:46Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "52c8b53122f2626abac515d012ba289d4205c45e",
+                    "type": "Commit",
+                    "message": "\"Fix API Mode (#5209)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 429,
+                    "deletions": 719,
+                    "committedDate": "2023-09-12T19:14:03Z",
+                    "changedFiles": 281,
+                    "commentsCount": 0,
+                    "id": "17246ba0868693eaf606ffd8a9eb2f3f31384e9e",
+                    "type": "Commit",
+                    "message": "\"Benchmark fixes (#5201)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 429,
+                    "deletions": 719,
+                    "committedDate": "2023-09-12T19:13:39Z",
+                    "changedFiles": 281,
+                    "commentsCount": 0,
+                    "id": "1b14d304d46c8fc368a099ebda67dabff558e954",
+                    "type": "Commit",
+                    "message": "\"Benchmark changes\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 102,
+                    "deletions": 75,
+                    "committedDate": "2023-09-12T10:47:06Z",
+                    "changedFiles": 7,
+                    "commentsCount": 0,
+                    "id": "1281a264f561142a5138543a899161748e9e3155",
+                    "type": "Commit",
+                    "message": "\"more benchmark fixes\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 13044,
+                    "deletions": 444,
+                    "committedDate": "2023-09-12T02:19:47Z",
+                    "changedFiles": 626,
+                    "commentsCount": 0,
+                    "id": "897d4922355263d88d54a94858b6e93b5490d074",
+                    "type": "Commit",
+                    "message": "\"Merge branch master into fix/readme\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 726,
+                    "deletions": 203,
+                    "committedDate": "2023-09-12T00:42:56Z",
+                    "changedFiles": 276,
+                    "commentsCount": 0,
+                    "id": "91572681a5cb6b0e21cb54b0a292a8aa81f304ee",
+                    "type": "Commit",
+                    "message": "\"Trying to fix the benchmarking (#5194)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 12388,
+                    "deletions": 351,
+                    "committedDate": "2023-09-12T01:21:52Z",
+                    "changedFiles": 621,
+                    "commentsCount": 0,
+                    "id": "f95a285b59bd3b440861e0b90446debc50ce1a50",
+                    "type": "Commit",
+                    "message": "\"Merge branch master into feat/monitor\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 581,
+                    "deletions": 145,
+                    "committedDate": "2023-09-12T00:41:27Z",
+                    "changedFiles": 273,
+                    "commentsCount": 0,
+                    "id": "c73e90c4e6ceef0d5b6e69ba8af2a30bb14dddc9",
+                    "type": "Commit",
+                    "message": "\"Fixing benchmarks\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 585814,
+                    "deletions": 44,
+                    "committedDate": "2023-09-06T01:39:48Z",
+                    "changedFiles": 2283,
+                    "commentsCount": 0,
+                    "id": "e9cc9fdd8a6b7471f4ea3d6c64a5cfa5b67525b0",
+                    "type": "Commit",
+                    "message": "\"Restructure Repo (#5160)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 575572,
+                    "deletions": 0,
+                    "committedDate": "2023-09-05T17:25:59Z",
+                    "changedFiles": 1935,
+                    "commentsCount": 0,
+                    "id": "965a6187acd1889bf3d98016d27d01c2a5c0d8e7",
+                    "type": "Commit",
+                    "message": "\"Merge remote-tracking branch benchmark1/restructure into restructure-repo\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 472,
+                    "deletions": 1,
+                    "committedDate": "2023-09-05T16:40:24Z",
+                    "changedFiles": 324,
+                    "commentsCount": 0,
+                    "id": "84890523586508a89debab836dcb71bdb48983bd",
+                    "type": "Commit",
+                    "message": "\"Move Auto-GPT to autogpts/autogpt\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 1152,
+                    "deletions": 22,
+                    "committedDate": "2023-09-04T21:11:56Z",
+                    "changedFiles": 18,
+                    "commentsCount": 0,
+                    "id": "613dd111f0763541ca67c7b6ce90113bdb368cf4",
+                    "type": "Commit",
+                    "message": "\"Add battleship game (#351)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 463,
+                    "deletions": 382,
+                    "committedDate": "2023-08-31T02:44:39Z",
+                    "changedFiles": 57,
+                    "commentsCount": 0,
+                    "id": "afb59a0778cf511ce6804008db9e77b0165568d3",
+                    "type": "Commit",
+                    "message": "\"Support agent protocol (#337)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 574,
+                    "deletions": 171,
+                    "committedDate": "2023-08-27T07:18:30Z",
+                    "changedFiles": 31,
+                    "commentsCount": 0,
+                    "id": "59655a8d96938a155164b7f96875ea9c054b182f",
+                    "type": "Commit",
+                    "message": "\"adding backend and a basic ui (#309)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 2737,
+                    "deletions": 9,
+                    "committedDate": "2023-08-16T21:57:52Z",
+                    "changedFiles": 211,
+                    "commentsCount": 0,
+                    "id": "82ed4a136a4f42355771fd3a55d57653131c0bb3",
+                    "type": "Commit",
+                    "message": "\"Remove submodule (#314)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 9,
+                    "committedDate": "2023-08-16T15:59:04Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "281d8486df6eb65e079e9cefa4101277cd2a4eb6",
+                    "type": "Commit",
+                    "message": "\"Fixing paths that were preventing artifacts from being copied to workspace (#311)\n\nCo-authored-by: Luke <2609441+lc0rp@user.noreply.github.com>\r\nCo-authored-by: merwanehamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 48834,
+                    "deletions": 100,
+                    "committedDate": "2023-08-14T20:57:12Z",
+                    "changedFiles": 124,
+                    "commentsCount": 0,
+                    "id": "a6b229f4cd3b35921b7a872b4d7762f8fd07e66b",
+                    "type": "Commit",
+                    "message": "\"Merge branch master of https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 2,
+                    "committedDate": "2023-08-13T17:34:45Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d27d17e51b60498c293955152ab69b44936ad0eb",
+                    "type": "Commit",
+                    "message": "\"Fix linter (#302)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 4,
+                    "deletions": 3,
+                    "committedDate": "2023-08-13T17:27:54Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "0da8a2bd998e33128b66cbcaa6489ad72c1aed7e",
+                    "type": "Commit",
+                    "message": "\"Fix agent protocol test (#301)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 5,
+                    "deletions": 3,
+                    "committedDate": "2023-08-13T17:15:58Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "1129e6b426b2627e8fc8d092ec00ede104361b70",
+                    "type": "Commit",
+                    "message": "\"Add safety challenge (#300)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 36,
+                    "deletions": 26,
+                    "committedDate": "2023-08-11T12:22:21Z",
+                    "changedFiles": 11,
+                    "commentsCount": 0,
+                    "id": "1a61c66898cfa903504963528949d562ae9388b9",
+                    "type": "Commit",
+                    "message": "\"mock flag, workspace io fixes, mark fixes\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 188,
+                    "deletions": 48,
+                    "committedDate": "2023-08-11T07:04:08Z",
+                    "changedFiles": 10,
+                    "commentsCount": 0,
+                    "id": "c2269397f16607c27597af9e88d86e8b673c7a61",
+                    "type": "Commit",
+                    "message": "\"Use agent protocol (#278)\n\nSigned-off-by: Jakub Novak <jakub@e2b.dev>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 73,
+                    "deletions": 7,
+                    "committedDate": "2023-08-10T00:59:48Z",
+                    "changedFiles": 7,
+                    "commentsCount": 0,
+                    "id": "1b20e45ec138fd452a5d781fff18fde29ca8d939",
+                    "type": "Commit",
+                    "message": "\"Implement the explore mode (#284)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 239,
+                    "deletions": 126,
+                    "committedDate": "2023-08-08T20:08:51Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "305f3a6138b5e76d2d30337578fd4db37d6ddec4",
+                    "type": "Commit",
+                    "message": "\"Add web app creation challenge (#272)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 32,
+                    "deletions": 2,
+                    "committedDate": "2023-08-07T03:59:53Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "db48e7849beb4366460c08b874249dff78f50b55",
+                    "type": "Commit",
+                    "message": "\"Add product advisor tests (#267)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 1275,
+                    "deletions": 182,
+                    "committedDate": "2023-08-06T21:35:22Z",
+                    "changedFiles": 13,
+                    "commentsCount": 0,
+                    "id": "19848f362d62e037261892409f4181695f03c032",
+                    "type": "Commit",
+                    "message": "\"remove pytest-depends, rerouting functions (#250)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 46,
+                    "deletions": 44,
+                    "committedDate": "2023-08-06T01:00:05Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "530eb61f258c37490fc07457c7adeb5ed69b8253",
+                    "type": "Commit",
+                    "message": "\"Add agent protocol interface test (#259)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 5,
+                    "deletions": 2,
+                    "committedDate": "2023-08-05T16:51:53Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fb13a83d152b8b1a2e64e9b9d619c3e2cec24fd2",
+                    "type": "Commit",
+                    "message": "\"Add more coding challenge (#254)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 2021,
+                    "deletions": 215,
+                    "committedDate": "2023-07-30T22:51:17Z",
+                    "changedFiles": 20,
+                    "commentsCount": 0,
+                    "id": "19db3151dd06b900a6f663714c067df979a6eaa8",
+                    "type": "Commit",
+                    "message": "\"Feature: Visualize Test Results (#211)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 3186,
+                    "deletions": 358,
+                    "committedDate": "2023-07-29T10:43:22Z",
+                    "changedFiles": 9,
+                    "commentsCount": 0,
+                    "id": "ecc386ec7b44f29982d216016a8e0783ffebe3c3",
+                    "type": "Commit",
+                    "message": "\"returning scores (#210)\n\nCo-authored-by: Auto-GPT-Bot <github-bot@agpt.co>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 1805,
+                    "deletions": 25,
+                    "committedDate": "2023-07-29T09:26:19Z",
+                    "changedFiles": 10,
+                    "commentsCount": 0,
+                    "id": "f07e7b60d407c93f2e60d52948aa99e670a9783d",
+                    "type": "Commit",
+                    "message": "\"Advanced LLM Evaluation Implementation (#205)\n\nCo-authored-by: Auto-GPT-Bot <github-bot@agpt.co>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 7,
+                    "deletions": 7,
+                    "committedDate": "2023-07-28T03:50:53Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "80bd0c4260dc06eee62c9dd5212a9cc986838a0c",
+                    "type": "Commit",
+                    "message": "\"Fix tests not being run (#207)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 49,
+                    "deletions": 57,
+                    "committedDate": "2023-07-27T13:07:46Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "0e6be16d0757a1b5230dc5c7b30f5cdac4db92e9",
+                    "type": "Commit",
+                    "message": "\"helicone and llm eval fixes\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 31,
+                    "deletions": 4,
+                    "committedDate": "2023-07-26T21:00:24Z",
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "01b118e590f070bd88dec3c3aa02084e17f84fa2",
+                    "type": "Commit",
+                    "message": "\"Add llm eval (#197)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 56,
+                    "deletions": 1783,
+                    "committedDate": "2023-07-26T12:53:10Z",
+                    "changedFiles": 163,
+                    "commentsCount": 0,
+                    "id": "80506e9a3be389b51a60fc0fa66ab393170ef9ea",
+                    "type": "Commit",
+                    "message": "\"report # bug, adding submodule challenges (#193)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 2289,
+                    "deletions": 486,
+                    "committedDate": "2023-07-24T20:57:44Z",
+                    "changedFiles": 165,
+                    "commentsCount": 0,
+                    "id": "d9b3d7da37b603b7434f63ac4ab458c76065a9b9",
+                    "type": "Commit",
+                    "message": "\"Safety challenges, adaptability challenges, suite same_task (#177)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 39,
+                    "deletions": 9,
+                    "committedDate": "2023-07-21T18:15:42Z",
+                    "changedFiles": 9,
+                    "commentsCount": 0,
+                    "id": "2b3abeff4e3733181b924449265127b970e97b54",
+                    "type": "Commit",
+                    "message": "\"Integrate baby-agi (#168)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\r\nCo-authored-by: merwanehamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 1015,
+                    "deletions": 180,
+                    "committedDate": "2023-07-18T02:41:58Z",
+                    "changedFiles": 104,
+                    "commentsCount": 0,
+                    "id": "12c5d545837b5256f34695820601f1797b489703",
+                    "type": "Commit",
+                    "message": "\"Fixing memory challenges, naming, testing mini-agi, smooth retrieval scaling (#166)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 111,
+                    "deletions": 101,
+                    "committedDate": "2023-07-16T02:10:20Z",
+                    "changedFiles": 33,
+                    "commentsCount": 0,
+                    "id": "9f3a2d4f05702bf44b0b938582c5dd6f9a459ea2",
+                    "type": "Commit",
+                    "message": "\"Dynamic cutoff and other quality of life (#101)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 23,
+                    "deletions": 28,
+                    "committedDate": "2023-07-14T21:39:47Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "7bc7d9213df32cabf8e96f422741c037b7817487",
+                    "type": "Commit",
+                    "message": "\"Replace hidden files with custom python (#99)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 91,
+                    "deletions": 3,
+                    "committedDate": "2023-07-14T17:27:48Z",
+                    "changedFiles": 9,
+                    "commentsCount": 0,
+                    "id": "a9702e4629d4b1d90d118b4dabbbb665f5635e97",
+                    "type": "Commit",
+                    "message": "\"Add basic code generation challenge (#98)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 3,
+                    "committedDate": "2023-07-10T16:19:12Z",
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "30ba51593f277711148da30f465417adb848472c",
+                    "type": "Commit",
+                    "message": "\"Add Helicone (#81)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 158,
+                    "deletions": 220,
+                    "committedDate": "2023-07-10T00:27:21Z",
+                    "changedFiles": 28,
+                    "commentsCount": 0,
+                    "id": "3d43117554034a634f1c39018c6af6c69ed16fc9",
+                    "type": "Commit",
+                    "message": "\"Just json, no test files (#77)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 217,
+                    "deletions": 459,
+                    "committedDate": "2023-07-09T01:43:38Z",
+                    "changedFiles": 50,
+                    "commentsCount": 0,
+                    "id": "69bd41f7414c1028e61affd3a340054355d9249a",
+                    "type": "Commit",
+                    "message": "\"Quality of life improvements & fixes (#75)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 114,
+                    "deletions": 28,
+                    "committedDate": "2023-07-08T07:27:31Z",
+                    "changedFiles": 7,
+                    "commentsCount": 0,
+                    "id": "e56b112aabbd862c97db48dd5d60d09efbedd5b7",
+                    "type": "Commit",
+                    "message": "\"i/o workspace, adding superagi (#60)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 4,
+                    "deletions": 67,
+                    "committedDate": "2023-07-07T20:58:17Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "e61523e59ed1a5582ce4a81699faef5bc36bcd16",
+                    "type": "Commit",
+                    "message": "\"Get rid of get file path by using the data.json convention to store the challenge information (#67)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 288,
+                    "deletions": 85,
+                    "committedDate": "2023-07-07T20:50:53Z",
+                    "changedFiles": 56,
+                    "commentsCount": 0,
+                    "id": "9ede17891bb4a322d51ec2bf1cc9e60e93db0acd",
+                    "type": "Commit",
+                    "message": "\"Add Debug simple typo with guidance challenge (#65)\n\nSigned-off-by: Merwane Hamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 2,
+                    "committedDate": "2023-07-06T04:38:01Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "c76062b0924543e70feb0d6b621cf642c987df51",
+                    "type": "Commit",
+                    "message": "\"Added caching based on file key (#62)\n\nCo-authored-by: merwanehamadi <merwanehamadi@gmail.com>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 121,
+                    "deletions": 38,
+                    "committedDate": "2023-07-06T03:32:28Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "74fc969dd60dd40f6b5ee8806ecc80fea50cb7e2",
+                    "type": "Commit",
+                    "message": "\"Add basic memory challenge (#57)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 515,
+                    "deletions": 221,
+                    "committedDate": "2023-07-02T20:14:49Z",
+                    "changedFiles": 22,
+                    "commentsCount": 0,
+                    "id": "838f72097cc82b9e12dead330632b83056c7b3f6",
+                    "type": "Commit",
+                    "message": "\"Add static linters ci (#45)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 3172,
+                    "deletions": 2549,
+                    "committedDate": "2023-06-19T16:41:40Z",
+                    "changedFiles": 142,
+                    "commentsCount": 0,
+                    "id": "abb397e442e84815876541b12bfcded027e31bab",
+                    "type": "Commit",
+                    "message": "\"Release v0.4.1 (#4686)\n\nCo-authored-by: Reinier van der Leer <github@pwuts.nl>\r\nCo-authored-by: Nicholas Tindle <nick@ntindle.com>\r\nCo-authored-by: Nicholas Tindle <nicktindle@outlook.com>\r\nCo-authored-by: k-boikov <64261260+k-boikov@users.noreply.github.com>\r\nCo-authored-by: merwanehamadi <merwanehamadi@gmail.com>\r\nCo-authored-by: Merwane Hamadi <merwanehamadi@gmail.com>\r\nCo-authored-by: Richard Beales <rich@richbeales.net>\r\nCo-authored-by: Luke K <2609441+lc0rp@users.noreply.github.com>\r\nCo-authored-by: Luke K (pr-0f3t) <2609441+lc0rp@users.noreply.github.com>\r\nCo-authored-by: Erik Peterson <e@eriklp.com>\r\nCo-authored-by: Auto-GPT-Bot <github-bot@agpt.co>\r\nCo-authored-by: Benny van der Lans <49377421+bfalans@users.noreply.github.com>\r\nCo-authored-by: Jan <jan-github@phobia.de>\r\nCo-authored-by: Robin Richtsfeld <robin.richtsfeld@gmail.com>\r\nCo-authored-by: Marc Borntr\u00e4ger <marc.borntraeger@gmail.com>\r\nCo-authored-by: Stefan Ayala <stefanayala3266@gmail.com>\r\nCo-authored-by: javableu <45064273+javableu@users.noreply.github.com>\r\nCo-authored-by: DGdev91 <DGdev91@users.noreply.github.com>\r\nCo-authored-by: Kinance <kinance@gmail.com>\r\nCo-authored-by: digger yu <digger-yu@outlook.com>\r\nCo-authored-by: David <scenaristeur@gmail.com>\r\nCo-authored-by: gravelBridge <john.tian31@gmail.com>\r\nFix Python CI \"update cassettes\" step (#4591)\r\nfix CI (#4596)\r\nFix inverted logic for deny_command (#4563)\r\nfix current_score.json generation (#4601)\r\nFix duckduckgo rate limiting (#4592)\r\nFix debug code challenge (#4632)\r\nFix issues with information retrieval challenge a (#4622)\r\nfix issues with env configuration and .env.template (#4630)\r\nFix prompt issue causing No Command issues and challenge to fail (#4623)\r\nFix benchmark logs (#4653)\r\nFix typo in docs/setup.md (#4613)\r\nFix run.sh shebang (#4561)\r\nFix autogpt docker image not working because missing prompt_settings (#4680)\r\nFix execute_command coming from plugins (#4730)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 5626,
+                    "deletions": 12540,
+                    "committedDate": "2023-06-05T14:05:49Z",
+                    "changedFiles": 196,
+                    "commentsCount": 0,
+                    "id": "25a7957bb801cc2ffd088ac81269fe96c5696b23",
+                    "type": "Commit",
+                    "message": "\"Release v0.4.0 (#4539)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 102,
+                    "deletions": 14,
+                    "committedDate": "2023-06-12T15:03:14Z",
+                    "changedFiles": 16,
+                    "commentsCount": 0,
+                    "id": "d5afbbee26614ab0d5fa6e09af7bafb063ad3bcf",
+                    "type": "Commit",
+                    "message": "\"Add challenge name and level to pytest logs (#4661)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 150,
+                    "deletions": 377,
+                    "committedDate": "2023-06-06T17:48:49Z",
+                    "changedFiles": 59,
+                    "commentsCount": 0,
+                    "id": "dafbd1168624f930caec6e92eada6d7064dc649e",
+                    "type": "Commit",
+                    "message": "\"Rearrange tests & fix CI (#4596)\n\n* Rearrange tests into unit/integration/challenge categories\r\n\r\n* Fix linting + `tests.challenges` imports\r\n\r\n* Fix obscured duplicate test in test_url_validation.py\r\n\r\n* Move VCR conftest to tests.vcr\r\n\r\n* Specify tests to run & their order (unit -> integration -> challenges) in CI\r\n\r\n* Fail Docker CI when tests fail\r\n\r\n* Fix import & linting errors in tests\r\n\r\n* Fix `get_text_summary`\r\n\r\n* Fix linting errors\r\n\r\n* Clean up pytest args in CI\r\n\r\n* Remove bogus tests from GoCodeo\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 22,
+                    "deletions": 6,
+                    "committedDate": "2023-05-30T02:30:41Z",
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "ba8046753e419a627fcf49a06d9173dccc8a405c",
+                    "type": "Commit",
+                    "message": "\"Update current score when PR merged (#4464)\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            },
+            {
+                "c": {
+                    "additions": 400,
+                    "deletions": 82,
+                    "committedDate": "2023-05-29T07:47:06Z",
+                    "changedFiles": 17,
+                    "commentsCount": 0,
+                    "id": "31cd836530871637847fa79064a99992d0181509",
+                    "type": "Commit",
+                    "message": "\"\"Beat Challenges\" Mode (#4447)\n\nCo-authored-by: Richard Beales <rich@richbeales.net>\""
+                },
+                "f": {
+                    "path": "tests/integration/challenges/challenge_decorator/challenge.py",
+                    "name": "challenge.py",
+                    "id": "challenge.py",
+                    "type": "File"
+                }
+            }
+        ]
+    },
+    {
+        "question": "give me all the commits for multi.py file?",
+        "number": 6,
+        "category": 2,
+        "query": "MATCH (f:File {name: \"multi.py\"})<-[:changed]-(c:Commit)\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 30,
+                    "deletions": 20,
+                    "committedDate": "2024-07-23T20:36:04Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "e7885f943bc7665c1faf25158454b7b5c43b5b44",
+                    "type": "Commit",
+                    "message": "\"fix(agent): Unbreak LLM status check on start-up\n\nFixes #7508\n\n- Amend `app/configurator.py:check_model(..)` to check multiple models at once and save duplicate API calls\n- Amend `MultiProvider.get_available_providers()` to verify availability by fetching models and handle failure\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 680,
+                    "deletions": 10,
+                    "committedDate": "2024-07-17T13:56:55Z",
+                    "changedFiles": 10,
+                    "commentsCount": 0,
+                    "id": "62c420e26f6cc4e980347ca1eb73252989c3394b",
+                    "type": "Commit",
+                    "message": "\"feat(forge/llm): Add `LlamafileProvider` (#7091)\n\n* Add minimal implementation of `LlamafileProvider`, a new `ChatModelProvider` for llamafiles. It extends `BaseOpenAIProvider` and only overrides methods that are necessary to get the system to work at a basic level.\r\n\r\n* Add support for `mistral-7b-instruct-v0.2`. This is the only model currently supported by `LlamafileProvider` because this is the only model I tested anything with.\r\n\r\n* Add instructions to use AutoGPT with llamafile in the docs at `autogpt/setup/index.md`\r\n* Add helper script to get it running quickly at `scripts/llamafile/serve.py`\r\n\r\n---------\r\n\r\nCo-authored-by: Reinier van der Leer <pwuts@agpt.co>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 993,
+                    "deletions": 605,
+                    "committedDate": "2024-07-02T18:45:32Z",
+                    "changedFiles": 54,
+                    "commentsCount": 0,
+                    "id": "7cb4d4a903007e89959044e72b822291c1d795e1",
+                    "type": "Commit",
+                    "message": "\"feat(forge, agent, benchmark): Upgrade to Pydantic v2 (#7280)\n\nUpdate Pydantic dependency of `autogpt`, `forge` and `benchmark` to `^2.7`\r\n[Pydantic Migration Guide](https://docs.pydantic.dev/2.7/migration/)\r\n\r\n- Migrate usages of now-deprecated functions to their replacements\r\n- Update `Field` definitions\r\n  - Ellipsis `...` for required fields is deprecated\r\n  - `Field` no longer supports extra `kwargs`, replace use of this feature with field metadata\r\n- Replace `Config` class for specifying model configuration with `model_config = ConfigDict(..)`\r\n- Removed `ModelContainer` in `BaseAgent`, component configuration dict is now directly serialized using Pydantic v2 helper functions\r\n- Forked `agent-protocol` and updated `packages/client/python` for Pydantic v2 support: https://github.com/Significant-Gravitas/agent-protocol\r\n\r\n---------\r\n\r\nCo-authored-by: Reinier van der Leer <pwuts@agpt.co>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 640,
+                    "deletions": 732,
+                    "committedDate": "2024-06-02T23:29:24Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "4e76768bc9b79b0e53f1fd24c8bbcddddc1a1cbd",
+                    "type": "Commit",
+                    "message": "\"refactor(forge/llm): Create `BaseOpenAIProvider` -> deduplicate `GroqProvider` & `OpenAIProvider` implementation (#7178)\n\n- Add `_BaseOpenAIProvider`, `BaseOpenAIChatProvider`, and `BaseOpenAIEmbeddingProvider`, which implement the shared functionality of OpenAI-like providers, e.g. `GroqProvider` and `OpenAIProvider`\r\n- (Re)move as much code as possible from `GroqProvider` and `OpenAIProvider` by rebasing them on `BaseOpenAI(Chat|Embedding)Provider`\r\n\r\nAlso:\r\n- Rename `get_available_models()` to `get_available_chat_models()` on `BaseChatModelProvider`\r\n- Add `get_available_models()` to `BaseModelProvider`\r\n- Add `get_available_embedding_models()` to `BaseEmbeddingModelProvider`\r\n- Move common `fix_failed_parse_tries` config attribute into base `ModelProviderConfiguration`\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2905,
+                    "deletions": 2433,
+                    "committedDate": "2024-05-28T03:04:21Z",
+                    "changedFiles": 147,
+                    "commentsCount": 0,
+                    "id": "f107ff8cf04941bac28c96e7b20a27b91e5ed6e1",
+                    "type": "Commit",
+                    "message": "\"Set up unified pre-commit + CI w/ linting + type checking & FIX EVERYTHING (#7171)\n\n- **FIX ALL LINT/TYPE ERRORS IN AUTOGPT, FORGE, AND BENCHMARK**\r\n\r\n### Linting\r\n- Clean up linter configs for `autogpt`, `forge`, and `benchmark`\r\n- Add type checking with Pyright\r\n- Create unified pre-commit config\r\n- Create unified linting and type checking CI workflow\r\n\r\n### Testing\r\n- Synchronize CI test setups for `autogpt`, `forge`, and `benchmark`\r\n   - Add missing pytest-cov to benchmark dependencies\r\n- Mark GCS tests as slow to speed up pre-commit test runs\r\n- Repair `forge` test suite\r\n  - Add `AgentDB.close()` method for test DB teardown in db_test.py\r\n  - Use actual temporary dir instead of forge/test_workspace/\r\n- Move left-behind dependencies for moved `forge`-code to from autogpt to forge\r\n\r\n### Notable type changes\r\n- Replace uses of `ChatModelProvider` by `MultiProvider`\r\n- Removed unnecessary exports from various __init__.py\r\n- Simplify `FileStorage.open_file` signature by removing `IOBase` from return type union\r\n  - Implement `S3BinaryIOWrapper(BinaryIO)` type interposer for `S3FileStorage`\r\n\r\n- Expand overloads of `GCSFileStorage.open_file` for improved typing of read and write modes\r\n\r\n  Had to silence type checking for the extra overloads, because (I think) Pyright is reporting a false-positive:\r\n  https://github.com/microsoft/pyright/issues/8007\r\n\r\n- Change `count_tokens`, `get_tokenizer`, `count_message_tokens` methods on `ModelProvider`s from class methods to instance methods\r\n\r\n- Move `CompletionModelFunction.schema` method -> helper function `format_function_def_for_openai` in `forge.llm.providers.openai`\r\n\r\n- Rename `ModelProvider` -> `BaseModelProvider`\r\n- Rename `ChatModelProvider` -> `BaseChatModelProvider`\r\n- Add type `ChatModelProvider` which is a union of all subclasses of `BaseChatModelProvider`\r\n\r\n### Removed rather than fixed\r\n- Remove deprecated and broken autogpt/agbenchmark_config/benchmarks.py\r\n- Various base classes and properties on base classes in `forge.llm.providers.schema` and `forge.models.providers`\r\n\r\n### Fixes for other issues that came to light\r\n- Clean up `forge.agent_protocol.api_router`, `forge.agent_protocol.database`, and `forge.agent.agent`\r\n\r\n- Add fallback behavior to `ImageGeneratorComponent`\r\n   - Remove test for deprecated failure behavior\r\n\r\n- Fix `agbenchmark.challenges.builtin` challenge exclusion mechanism on Windows\r\n\r\n- Fix `_tool_calls_compat_extract_calls` in `forge.llm.providers.openai`\r\n\r\n- Add support for `any` (= no type specified) in `JSONSchema.typescript_type`\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 479,
+                    "deletions": 8,
+                    "committedDate": "2024-05-24T14:34:51Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "edcbbbce257c29de69f41a348efad14cc46eb3dc",
+                    "type": "Commit",
+                    "message": "\"feat(forge/llm): Add `GroqProvider` (#7130)\n\n* Add `GroqProvider` in `forge.llm.providers.groq`\r\n  * Add to `llm.providers.multi`\r\n  * Add `groq` dependency (v0.8.0)\r\n\r\n* Update AutoGPT docs & config template\r\n  * Update .env.template\r\n  * Update docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 84,
+                    "deletions": 87,
+                    "committedDate": "2024-05-22T12:08:54Z",
+                    "changedFiles": 229,
+                    "commentsCount": 0,
+                    "id": "4c325724ec89cf4f1729198454a2038f294a15b9",
+                    "type": "Commit",
+                    "message": "\"refactor(autogpt, forge): Remove `autogpts` directory (#7163)\n\n- Moved `autogpt` and `forge` to project root\r\n- Removed `autogpts` directory\r\n- Moved and renamed submodule `autogpts/autogpt/tests/vcr_cassettes` to `autogpt/tests/vcr_cassettes`\r\n- When using CLI agents will be created in `agents` directory (instead of `autogpts`)\r\n- Renamed relevant docs, code and config references from `autogpts/[forge|autogpt]` to `[forge|autogpt]` and from `*../../*` to `*../*`\r\n- Updated `CODEOWNERS`, GitHub Actions and Docker `*.yml` configs\r\n- Updated symbolic links in `docs`\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2053,
+                    "deletions": 1207,
+                    "committedDate": "2024-05-15T22:37:53Z",
+                    "changedFiles": 188,
+                    "commentsCount": 0,
+                    "id": "e8d7dfa386f9e104bdb0b42aaedbf537318544ba",
+                    "type": "Commit",
+                    "message": "\"refactor(agent, forge): Move library code from `autogpt` to `forge` (#7106)\n\nMoved from `autogpt` to `forge`:\r\n- `autogpt.config`          -> `forge.config`\r\n- `autogpt.processing`      -> `forge.content_processing`\r\n- `autogpt.file_storage`    -> `forge.file_storage`\r\n- `autogpt.logs`            -> `forge.logging`\r\n- `autogpt.speech`          -> `forge.speech`\r\n- `autogpt.agents.(base|components|protocols)`  -> `forge.agent.*`\r\n- `autogpt.command_decorator`                   -> `forge.command.decorator`\r\n- `autogpt.models.(command|command_parameter)`  -> `forge.command.(command|parameter)`\r\n- `autogpt.(commands|components|features)`      -> `forge.components`\r\n- `autogpt.core.utils.json_utils`           -> `forge.json.parsing`\r\n- `autogpt.prompts.utils`                   -> `forge.llm.prompting.utils`\r\n- `autogpt.core.prompting.(base|schema|utils)`    -> `forge.llm.prompting.*`\r\n- `autogpt.core.resource.model_providers`   -> `forge.llm.providers`\r\n- `autogpt.llm.providers.openai` + `autogpt.core.resource.model_providers.utils`\r\n                                            -> `forge.llm.providers.utils`\r\n- `autogpt.models.action_history:Action*`   -> `forge.models.action`\r\n- `autogpt.core.configuration.schema`       -> `forge.models.config`\r\n- `autogpt.core.utils.json_schema`          -> `forge.models.json_schema`\r\n- `autogpt.core.resource.schema`            -> `forge.models.providers`\r\n- `autogpt.models.utils`                    -> `forge.models.utils`\r\n- `forge.sdk.(errors|utils)` + `autogpt.utils.(exceptions|file_operations_utils|validators)`\r\n                        -> `forge.utils.(exceptions|file_operations|url_validator)`\r\n- `autogpt.utils.utils` -> `forge.utils.const` + `forge.utils.yaml_validator`\r\n\r\nMoved within `forge`:\r\n- forge/prompts/* -> forge/llm/prompting/*\r\n\r\nThe rest are mostly import updates, and some sporadic removals and necessary updates (for example to fix circular deps):\r\n- Changed `CommandOutput = Any` to remove coupling with `ContextItem` (no longer needed)\r\n- Removed unused `Singleton` class\r\n- Reluctantly moved `speech` to forge due to coupling (tts needs to be changed into component)\r\n- Moved `function_specs_from_commands` and `core/resource/model_providers` to `llm/providers` (resources were a `core` thing and are no longer relevant)\r\n- Keep tests in `autogpt` to reduce changes in this PR\r\n- Removed unused memory-related code from tests\r\n- Removed duplicated classes: `FancyConsoleFormatter`, `BelowLevelFilter`\r\n- `prompt_settings.yaml` is in both `autogpt` and `forge` because for some reason doesnt work when placed in just one dir (need to be taken care of)\r\n- Removed `config` param from `clean_input`, it wasnt used and caused circular dependency\r\n- Renamed `BaseAgentActionProposal` to `ActionProposal`\r\n- Updated `pyproject.toml` in `forge` and `autogpt`\r\n- Moved `Action*` models from `forge/components/action_history/model.py` to `forge/models/action.py` as those are relevant to the entire agent and not just `EventHistoryComponent` + to reduce coupling\r\n- Renamed `DEFAULT_ASK_COMMAND` to `ASK_COMMAND` and `DEFAULT_FINISH_COMMAND` to `FINISH_COMMAND`\r\n- Renamed `AutoGptFormatter` to `ForgeFormatter` and moved to `forge`\r\n\r\nIncludes changes from PR https://github.com/Significant-Gravitas/AutoGPT/pull/7148\r\n---------\r\n\r\nCo-authored-by: Reinier van der Leer <pwuts@agpt.co>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 923,
+                    "deletions": 149,
+                    "committedDate": "2024-05-04T18:33:25Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "39c46ef6be4e7772bc2a39e8b5b72066391ec689",
+                    "type": "Commit",
+                    "message": "\"feat(agent/core): Add Anthropic Claude 3 support (#7085)\n\n- feat(agent/core): Add `AnthropicProvider`\r\n  - Add `ANTHROPIC_API_KEY` to .env.template and docs\r\n\r\n  Notable differences in logic compared to `OpenAIProvider`:\r\n  - Merges subsequent user messages in `AnthropicProvider._get_chat_completion_args`\r\n  - Merges and extracts all system messages into `system` parameter in `AnthropicProvider._get_chat_completion_args`\r\n  - Supports prefill; merges prefill content (if any) into generated response\r\n\r\n- Prompt changes to improve compatibility with `AnthropicProvider`\r\n  Anthropic has a slightly different API compared to OpenAI, and has much stricter input validation. E.g. Anthropic only supports a single `system` prompt, where OpenAI allows multiple `system` messages. Anthropic also forbids sequences of multiple `user` or `assistant` messages and requires that messages alternate between roles.\r\n  - Move response format instruction from separate message into main system prompt\r\n  - Fix clock message format\r\n  - Add pre-fill to `OneShot` generated prompt\r\n\r\n- refactor(agent/core): Tweak `model_providers.schema`\r\n  - Simplify `ModelProviderUsage`\r\n     - Remove attribute `total_tokens` as it is always equal to `prompt_tokens + completion_tokens`\r\n     - Modify signature of `update_usage(..)`; no longer requires a full `ModelResponse` object as input\r\n  - Improve `ModelProviderBudget`\r\n     - Change type of attribute `usage` to `defaultdict[str, ModelProviderUsage]` -> allow per-model usage tracking\r\n     - Modify signature of `update_usage_and_cost(..)`; no longer requires a full `ModelResponse` object as input\r\n     - Allow `ModelProviderBudget` zero-argument instantiation\r\n  - Fix type of `AssistantChatMessage.role` to match `ChatMessage.role` (str -> `ChatMessage.Role`)\r\n  - Add shared attributes and constructor to `ModelProvider` base class\r\n  - Add `max_output_tokens` parameter to `create_chat_completion` interface\r\n  - Add pre-filling as a global feature\r\n    - Add `prefill_response` field to `ChatPrompt` model\r\n    - Add `prefill_response` parameter to `create_chat_completion` interface\r\n  - Add `ChatModelProvider.get_available_models()` and remove `ApiManager`\r\n  - Remove unused `OpenAIChatParser` typedef in openai.py\r\n  - Remove redundant `budget` attribute definition on `OpenAISettings`\r\n  - Remove unnecessary `usage` in `OpenAIProvider` > `default_settings` > `budget`\r\n\r\n- feat(agent): Allow use of any available LLM provider through `MultiProvider`\r\n  - Add `MultiProvider` (`model_providers.multi`)\r\n  - Replace all references to / uses of `OpenAIProvider` with `MultiProvider`\r\n  - Change type of `Config.smart_llm` and `Config.fast_llm` from `str` to `ModelName`\r\n\r\n- feat(agent/core): Validate function call arguments in `create_chat_completion`\r\n    - Add `validate_call` method to `CompletionModelFunction` in `model_providers.schema`\r\n    - Add `validate_tool_calls` utility function in `model_providers.utils`\r\n    - Add tool call validation step to `create_chat_completion` in `OpenAIProvider` and `AnthropicProvider`\r\n    - Remove (now redundant) command argument validation logic in agent.py and models/command.py\r\n\r\n- refactor(agent): Rename `get_openai_command_specs` to `function_specs_from_commands`\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "number": 7,
+        "category": 2,
+        "query": "MATCH (u:User)-[:assigned]->(i:Issue)\nWHERE i.state = \"open\"\nRETURN u, COUNT(i) AS openBugs\nORDER BY openBugs DESC",
+        "result": [
+            {
+                "u": {
+                    "name": "Aarushi",
+                    "id": "MDQ6VXNlcjUwNTc3NTgx",
+                    "type": "User",
+                    "login": "aarushik93",
+                    "email": ""
+                },
+                "openBugs": 11
+            },
+            {
+                "u": {
+                    "name": "Reinier van der Leer",
+                    "id": "MDQ6VXNlcjEyMTg1NTgz",
+                    "type": "User",
+                    "login": "Pwuts",
+                    "email": "github@pwuts.nl"
+                },
+                "openBugs": 9
+            },
+            {
+                "u": {
+                    "name": "Swifty",
+                    "id": "MDQ6VXNlcjEwMzgyMjMz",
+                    "type": "User",
+                    "login": "Swiftyos",
+                    "email": ""
+                },
+                "openBugs": 4
+            },
+            {
+                "u": {
+                    "name": "Nicholas Tindle",
+                    "id": "MDQ6VXNlcjg4NDUzNTM=",
+                    "type": "User",
+                    "login": "ntindle",
+                    "email": ""
+                },
+                "openBugs": 4
+            },
+            {
+                "u": {
+                    "name": "Bently",
+                    "id": "MDQ6VXNlcjI3OTYyNzM3",
+                    "type": "User",
+                    "login": "Bentlybro",
+                    "email": ""
+                },
+                "openBugs": 3
+            },
+            {
+                "u": {
+                    "name": "Andy Hooker",
+                    "id": "MDQ6VXNlcjU4NDQ4NjYz",
+                    "type": "User",
+                    "login": "andrewhooker2",
+                    "email": ""
+                },
+                "openBugs": 2
+            },
+            {
+                "u": {
+                    "name": "Krzysztof Czerwinski",
+                    "id": "MDQ6VXNlcjM0ODYxMzQz",
+                    "type": "User",
+                    "login": "kcze",
+                    "email": ""
+                },
+                "openBugs": 1
+            },
+            {
+                "u": {
+                    "name": "Toran Bruce Richards",
+                    "id": "MDQ6VXNlcjIyOTYzNTUx",
+                    "type": "User",
+                    "login": "Torantulino",
+                    "email": ""
+                },
+                "openBugs": 1
+            }
+        ]
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "number": 8,
+        "category": 2,
+        "query": "MATCH (u:User)-[:assigned]->(i:Issue)\nWHERE i.state = \"open\"\nRETURN u, COUNT(i) AS openBugs\nORDER BY openBugs DESC",
+        "result": [
+            {
+                "u": {
+                    "name": "Aarushi",
+                    "id": "MDQ6VXNlcjUwNTc3NTgx",
+                    "type": "User",
+                    "login": "aarushik93",
+                    "email": ""
+                },
+                "openBugs": 11
+            },
+            {
+                "u": {
+                    "name": "Reinier van der Leer",
+                    "id": "MDQ6VXNlcjEyMTg1NTgz",
+                    "type": "User",
+                    "login": "Pwuts",
+                    "email": "github@pwuts.nl"
+                },
+                "openBugs": 9
+            },
+            {
+                "u": {
+                    "name": "Swifty",
+                    "id": "MDQ6VXNlcjEwMzgyMjMz",
+                    "type": "User",
+                    "login": "Swiftyos",
+                    "email": ""
+                },
+                "openBugs": 4
+            },
+            {
+                "u": {
+                    "name": "Nicholas Tindle",
+                    "id": "MDQ6VXNlcjg4NDUzNTM=",
+                    "type": "User",
+                    "login": "ntindle",
+                    "email": ""
+                },
+                "openBugs": 4
+            },
+            {
+                "u": {
+                    "name": "Bently",
+                    "id": "MDQ6VXNlcjI3OTYyNzM3",
+                    "type": "User",
+                    "login": "Bentlybro",
+                    "email": ""
+                },
+                "openBugs": 3
+            },
+            {
+                "u": {
+                    "name": "Andy Hooker",
+                    "id": "MDQ6VXNlcjU4NDQ4NjYz",
+                    "type": "User",
+                    "login": "andrewhooker2",
+                    "email": ""
+                },
+                "openBugs": 2
+            },
+            {
+                "u": {
+                    "name": "Krzysztof Czerwinski",
+                    "id": "MDQ6VXNlcjM0ODYxMzQz",
+                    "type": "User",
+                    "login": "kcze",
+                    "email": ""
+                },
+                "openBugs": 1
+            },
+            {
+                "u": {
+                    "name": "Toran Bruce Richards",
+                    "id": "MDQ6VXNlcjIyOTYzNTUx",
+                    "type": "User",
+                    "login": "Torantulino",
+                    "email": ""
+                },
+                "openBugs": 1
+            }
+        ]
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in challenge.py?",
+        "number": 9,
+        "category": 3,
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"challenge.py\"})\nRETURN u, COUNT(i) AS fixedBugs\nORDER BY fixedBugs DESC",
+        "result": [
+            {
+                "u": {
+                    "name": "wayne@bluewind",
+                    "id": "MDQ6VXNlcjk2NTI5NzY=",
+                    "type": "User",
+                    "login": "waynehamadi",
+                    "email": "merwanehamadi@gmail.com"
+                },
+                "fixedBugs": 8
+            },
+            {
+                "u": {
+                    "name": "Silen Naihin",
+                    "id": "MDQ6VXNlcjQ0MTI5NjEy",
+                    "type": "User",
+                    "login": "SilenNaihin",
+                    "email": "silen.naihin@gmail.com"
+                },
+                "fixedBugs": 7
+            }
+        ]
+    },
+    {
+        "question": "who did most fixed bugs in test.py?",
+        "number": 10,
+        "category": 3,
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"test.py\"})\nRETURN u, COUNT(i) AS fixedBugs\nORDER BY fixedBugs DESC",
+        "result": [
+            {
+                "u": {
+                    "name": "wayne@bluewind",
+                    "id": "MDQ6VXNlcjk2NTI5NzY=",
+                    "type": "User",
+                    "login": "waynehamadi",
+                    "email": "merwanehamadi@gmail.com"
+                },
+                "fixedBugs": 1
+            },
+            {
+                "u": {
+                    "name": "Swifty",
+                    "id": "MDQ6VXNlcjEwMzgyMjMz",
+                    "type": "User",
+                    "login": "Swiftyos",
+                    "email": ""
+                },
+                "fixedBugs": 1
+            }
+        ]
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "number": 11,
+        "category": 2,
+        "query": "MATCH (i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC",
+        "result": [
+            {
+                "f.name": "ci.yml",
+                "bugCount": 27
+            },
+            {
+                "f.name": "start_benchmark.py",
+                "bugCount": 20
+            },
+            {
+                "f.name": "poetry.lock",
+                "bugCount": 16
+            },
+            {
+                "f.name": "pyproject.toml",
+                "bugCount": 16
+            },
+            {
+                "f.name": "challenge.py",
+                "bugCount": 15
+            },
+            {
+                "f.name": "conftest.py",
+                "bugCount": 14
+            },
+            {
+                "f.name": "utils.py",
+                "bugCount": 13
+            },
+            {
+                "f.name": "Auto-GPT",
+                "bugCount": 13
+            },
+            {
+                "f.name": "challenges",
+                "bugCount": 11
+            },
+            {
+                "f.name": "README.md",
+                "bugCount": 10
+            },
+            {
+                "f.name": "agent_interface.py",
+                "bugCount": 10
+            },
+            {
+                "f.name": "data.json",
+                "bugCount": 10
+            },
+            {
+                "f.name": "agent.py",
+                "bugCount": 9
+            },
+            {
+                "f.name": "mini-agi",
+                "bugCount": 9
+            },
+            {
+                "f.name": "smol-developer",
+                "bugCount": 9
+            },
+            {
+                "f.name": "gpt-engineer",
+                "bugCount": 8
+            },
+            {
+                "f.name": "beebot",
+                "bugCount": 8
+            },
+            {
+                "f.name": "regression_tests.json",
+                "bugCount": 7
+            },
+            {
+                "f.name": "test_all.py",
+                "bugCount": 7
+            },
+            {
+                "f.name": "r1_test.py",
+                "bugCount": 6
+            },
+            {
+                "f.name": ".gitmodules",
+                "bugCount": 6
+            },
+            {
+                "f.name": "__main__.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": "db.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": "config.json",
+                "bugCount": 5
+            },
+            {
+                "f.name": "internal_info.json",
+                "bugCount": 5
+            },
+            {
+                "f.name": "reports.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": "generate_test.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": ".env.example",
+                "bugCount": 4
+            },
+            {
+                "f.name": ".gitignore",
+                "bugCount": 4
+            },
+            {
+                "f.name": "schema.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "r2_test.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "r3_test.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "define_task_types.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "ReportManager.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "report.json",
+                "bugCount": 4
+            },
+            {
+                "f.name": "db_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "agent_protocol.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "read_file_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "write_file_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "m1_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "remember_multiple_ids_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "remember_multiple_ids_with_noise_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "remember_multiple_phrases_with_noise_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "SuperAGI",
+                "bugCount": 3
+            },
+            {
+                "f.name": "get_data_from_helicone.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "send_to_googledrive.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "main.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "requirements.txt",
+                "bugCount": 3
+            },
+            {
+                "f.name": "run",
+                "bugCount": 2
+            },
+            {
+                "f.name": "test.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "benchmark_integration.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": ".flake8",
+                "bugCount": 2
+            },
+            {
+                "f.name": "r1_data.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "basic_mocks.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "mock_manager.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "instructions_5.txt",
+                "bugCount": 2
+            },
+            {
+                "f.name": "RegressionManager.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "debug_simple_typo_with_guidance_test.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "d2_test.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "gpt-engineer.yml",
+                "bugCount": 2
+            },
+            {
+                "f.name": "1.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "__init__.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "graphs.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "app.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "prompt.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "output.txt",
+                "bugCount": 2
+            },
+            {
+                "f.name": "suite.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "match_records.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "Dockerfile",
+                "bugCount": 2
+            },
+            {
+                "f.name": "config.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "benchmarks.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "workspace_test.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent_test.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "forge_log.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "workspace.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "ai_profile.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "Challenge.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "benchmark.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "basic_gpt_agent.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "workspace_manager.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r1_test_data_0.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r1_test_data_1.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file_to_check.txt",
+                "bugCount": 1
+            },
+            {
+                "f.name": "m1_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "remember_multiple_ids_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "remember_multiple_ids_with_noise_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "remember_multiple_phrases_with_noise_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r2_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r3_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r_file_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "w_file_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "debug_simple_typo_with_guidance_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "code.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "memory.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "retrieval.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "basic_challenge.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "autogpt.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "mini-agi.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "smol-developer.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "superagi.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "config_example.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-14-18-54.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-19-21-56.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file2_07-20-08-18.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file3_07-20-20-11.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "PULL_REQUEST_TEMPLATE.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "mypy.ini",
+                "bugCount": 1
+            },
+            {
+                "f.name": "random_file.txt",
+                "bugCount": 1
+            },
+            {
+                "f.name": "BabyAGI",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12.1_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12.2_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12.3_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "11.1_TestRememberMultiplePhrasesWithNoise.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "11_TestRememberMultiplePhrasesWithNoise.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "publish_package.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "goal.txt",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-16-22-52.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-16-22-51.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file58_07-30-01-39.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "PolyGPT",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run_info.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "evaluate_code.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "Turbo",
+                "bugCount": 1
+            },
+            {
+                "f.name": "data_draft.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "draft.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent_api_interface.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "sample_code.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "testfile.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent-protocol",
+                "bugCount": 1
+            },
+            {
+                "f.name": "tic_tac_toe.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "combined_data.ipynb",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent_action_regex.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "text.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "setup.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": ".env.template",
+                "bugCount": 1
+            },
+            {
+                "f.name": "setup.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_image_gen.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_utils.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_setup.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "CONTRIBUTING.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "2.feature.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "check_requirements.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_web_selenium.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "web_selenium.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "validators.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_commands.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "api_manager.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "goal_oriented_tasks.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_browse_website.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_write_file.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_a.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_b.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run.bat",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run.sh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "docker-ci.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "chat.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "logs.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_get_self_feedback.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_llm_utils.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "pinecone.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "redismem.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "summary_memory.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_generate_aiconfig_automatic_default.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_generate_aiconfig_automatic_fallback.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_generate_aiconfig_automatic_typical.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_a.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_b.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_browse_website.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_write_file.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_local_cache.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_management.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "milvus_memory_test.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "base.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "openai.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "json_schema.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "utilities.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_config.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "llm_utils.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "plugin_config.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "plugins_config.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "registry.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "001_getting_started.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "002_blueprint_of_an_agent.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "003_crafting_agent_logic.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "Flow.tsx",
+                "bugCount": 1
+            },
+            {
+                "f.name": "CustomNode.tsx",
+                "bugCount": 1
+            },
+            {
+                "f.name": "page.tsx",
+                "bugCount": 1
+            },
+            {
+                "f.name": "configurator.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "multi.py",
+                "bugCount": 1
+            }
+        ]
+    },
+    {
+        "question": "What are the most buggy files?",
+        "number": 12,
+        "category": 2,
+        "query": "MATCH (i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC",
+        "result": [
+            {
+                "f.name": "ci.yml",
+                "bugCount": 27
+            },
+            {
+                "f.name": "start_benchmark.py",
+                "bugCount": 20
+            },
+            {
+                "f.name": "poetry.lock",
+                "bugCount": 16
+            },
+            {
+                "f.name": "pyproject.toml",
+                "bugCount": 16
+            },
+            {
+                "f.name": "challenge.py",
+                "bugCount": 15
+            },
+            {
+                "f.name": "conftest.py",
+                "bugCount": 14
+            },
+            {
+                "f.name": "utils.py",
+                "bugCount": 13
+            },
+            {
+                "f.name": "Auto-GPT",
+                "bugCount": 13
+            },
+            {
+                "f.name": "challenges",
+                "bugCount": 11
+            },
+            {
+                "f.name": "README.md",
+                "bugCount": 10
+            },
+            {
+                "f.name": "agent_interface.py",
+                "bugCount": 10
+            },
+            {
+                "f.name": "data.json",
+                "bugCount": 10
+            },
+            {
+                "f.name": "agent.py",
+                "bugCount": 9
+            },
+            {
+                "f.name": "mini-agi",
+                "bugCount": 9
+            },
+            {
+                "f.name": "smol-developer",
+                "bugCount": 9
+            },
+            {
+                "f.name": "gpt-engineer",
+                "bugCount": 8
+            },
+            {
+                "f.name": "beebot",
+                "bugCount": 8
+            },
+            {
+                "f.name": "regression_tests.json",
+                "bugCount": 7
+            },
+            {
+                "f.name": "test_all.py",
+                "bugCount": 7
+            },
+            {
+                "f.name": "r1_test.py",
+                "bugCount": 6
+            },
+            {
+                "f.name": ".gitmodules",
+                "bugCount": 6
+            },
+            {
+                "f.name": "__main__.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": "db.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": "config.json",
+                "bugCount": 5
+            },
+            {
+                "f.name": "internal_info.json",
+                "bugCount": 5
+            },
+            {
+                "f.name": "reports.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": "generate_test.py",
+                "bugCount": 5
+            },
+            {
+                "f.name": ".env.example",
+                "bugCount": 4
+            },
+            {
+                "f.name": ".gitignore",
+                "bugCount": 4
+            },
+            {
+                "f.name": "schema.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "r2_test.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "r3_test.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "define_task_types.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "ReportManager.py",
+                "bugCount": 4
+            },
+            {
+                "f.name": "report.json",
+                "bugCount": 4
+            },
+            {
+                "f.name": "db_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "agent_protocol.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "read_file_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "write_file_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "m1_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "remember_multiple_ids_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "remember_multiple_ids_with_noise_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "remember_multiple_phrases_with_noise_test.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "SuperAGI",
+                "bugCount": 3
+            },
+            {
+                "f.name": "get_data_from_helicone.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "send_to_googledrive.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "main.py",
+                "bugCount": 3
+            },
+            {
+                "f.name": "requirements.txt",
+                "bugCount": 3
+            },
+            {
+                "f.name": "run",
+                "bugCount": 2
+            },
+            {
+                "f.name": "test.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "benchmark_integration.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": ".flake8",
+                "bugCount": 2
+            },
+            {
+                "f.name": "r1_data.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "basic_mocks.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "mock_manager.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "instructions_5.txt",
+                "bugCount": 2
+            },
+            {
+                "f.name": "RegressionManager.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "debug_simple_typo_with_guidance_test.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "d2_test.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "gpt-engineer.yml",
+                "bugCount": 2
+            },
+            {
+                "f.name": "1.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "__init__.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "graphs.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "app.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "prompt.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "output.txt",
+                "bugCount": 2
+            },
+            {
+                "f.name": "suite.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "match_records.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "Dockerfile",
+                "bugCount": 2
+            },
+            {
+                "f.name": "config.py",
+                "bugCount": 2
+            },
+            {
+                "f.name": "benchmarks.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "workspace_test.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent_test.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "forge_log.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "workspace.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "ai_profile.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "Challenge.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "benchmark.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "basic_gpt_agent.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "workspace_manager.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r1_test_data_0.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r1_test_data_1.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file_to_check.txt",
+                "bugCount": 1
+            },
+            {
+                "f.name": "m1_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "remember_multiple_ids_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "remember_multiple_ids_with_noise_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "remember_multiple_phrases_with_noise_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r2_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r3_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "r_file_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "w_file_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "debug_simple_typo_with_guidance_data.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "code.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "memory.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "retrieval.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "basic_challenge.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "autogpt.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "mini-agi.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "smol-developer.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "superagi.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "config_example.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-14-18-54.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-19-21-56.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file2_07-20-08-18.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file3_07-20-20-11.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "PULL_REQUEST_TEMPLATE.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "mypy.ini",
+                "bugCount": 1
+            },
+            {
+                "f.name": "random_file.txt",
+                "bugCount": 1
+            },
+            {
+                "f.name": "BabyAGI",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12.1_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12.2_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12.3_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "11.1_TestRememberMultiplePhrasesWithNoise.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "11_TestRememberMultiplePhrasesWithNoise.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "12_TestDebugSimpleTypoWithGuidance.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "publish_package.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "goal.txt",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-16-22-52.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file1_07-16-22-51.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "file58_07-30-01-39.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "PolyGPT",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run_info.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "evaluate_code.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "Turbo",
+                "bugCount": 1
+            },
+            {
+                "f.name": "data_draft.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "draft.json",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent_api_interface.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "sample_code.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "testfile.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent-protocol",
+                "bugCount": 1
+            },
+            {
+                "f.name": "tic_tac_toe.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "combined_data.ipynb",
+                "bugCount": 1
+            },
+            {
+                "f.name": "agent_action_regex.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "text.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "setup.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": ".env.template",
+                "bugCount": 1
+            },
+            {
+                "f.name": "setup.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_image_gen.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_utils.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_setup.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "CONTRIBUTING.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "2.feature.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "check_requirements.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_web_selenium.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "web_selenium.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "validators.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_commands.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "api_manager.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "goal_oriented_tasks.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_browse_website.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_write_file.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_a.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_b.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run.bat",
+                "bugCount": 1
+            },
+            {
+                "f.name": "run.sh",
+                "bugCount": 1
+            },
+            {
+                "f.name": "docker-ci.yml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "chat.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "logs.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_get_self_feedback.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_llm_utils.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "pinecone.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "redismem.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "summary_memory.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_generate_aiconfig_automatic_default.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_generate_aiconfig_automatic_fallback.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_generate_aiconfig_automatic_typical.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_a.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_challenge_b.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_browse_website.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_write_file.yaml",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_local_cache.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_memory_management.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "milvus_memory_test.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "base.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "openai.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "json_schema.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "utilities.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "test_config.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "llm_utils.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "plugin_config.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "plugins_config.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "registry.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "001_getting_started.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "002_blueprint_of_an_agent.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "003_crafting_agent_logic.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "Flow.tsx",
+                "bugCount": 1
+            },
+            {
+                "f.name": "CustomNode.tsx",
+                "bugCount": 1
+            },
+            {
+                "f.name": "page.tsx",
+                "bugCount": 1
+            },
+            {
+                "f.name": "configurator.py",
+                "bugCount": 1
+            },
+            {
+                "f.name": "multi.py",
+                "bugCount": 1
+            }
+        ]
+    },
+    {
+        "question": "what are the buggy commits that happened on August 11, 2023?",
+        "number": 13,
+        "category": 2,
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate =~ \"2023-08-11T.*\"\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2023-08-11T12:59:42Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "a513b449f704de13c43f444dd20773325d7aa9cb",
+                    "type": "Commit",
+                    "message": "\"updating version\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 188,
+                    "deletions": 48,
+                    "committedDate": "2023-08-11T07:04:08Z",
+                    "changedFiles": 10,
+                    "commentsCount": 0,
+                    "id": "c2269397f16607c27597af9e88d86e8b673c7a61",
+                    "type": "Commit",
+                    "message": "\"Use agent protocol (#278)\n\nSigned-off-by: Jakub Novak <jakub@e2b.dev>\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "what commits were buggy on Dec 5, 2023?",
+        "number": 14,
+        "category": 2,
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate =~ \"2023-12-05T.*\"\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 3,
+                    "deletions": 6,
+                    "committedDate": "2023-12-05T14:21:04Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "775a27eea0f92482be6853ec841d811b1feec38d",
+                    "type": "Commit",
+                    "message": "\"refactor: Modify instruction in prompt for increased JSON output reliability\n\n- Update the instruction in the prompt strategy to ensure the response is pure JSON.\n- Remove unnecessary text and make the instruction clearer.\n- Also update the error logging to include the received JSON content.\n\nThis commit refactors the code in the `one_shot.py` file and the `utilities.py` file.\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 349?",
+        "number": 15,
+        "category": 2,
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue {number: 349})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 869,
+                    "deletions": 77,
+                    "committedDate": "2023-09-03T05:28:47Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "cd7c6139c18dc3b1bb777774fbb76f9878cb163b",
+                    "type": "Commit",
+                    "message": "\"combined reports with json (#349)\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "which commit fixed the bug ticket 3455?",
+        "number": 16,
+        "category": 2,
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue {number: 3455})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2023-04-30T21:24:07Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "c317cf0e75d70c3b38eebe4b1a4855f9a28789d9",
+                    "type": "Commit",
+                    "message": "\"fix bug #3455 (#3591)\n\nCo-authored-by: Nicholas Tindle <nick@ntindle.com>\""
+                }
+            }
+        ]
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash 78f5ff17e695f2e5b8ed31f729fa47ae05c19822?",
+        "number": 17,
+        "category": 2,
+        "query": "MATCH (c:Commit {id: \"78f5ff17e695f2e5b8ed31f729fa47ae05c19822\"})-[:introduced]->(i:Issue)\nRETURN i",
+        "result": [
+            {
+                "i": {
+                    "number": 6537,
+                    "closed_at": "2024-02-01T10:23:36Z",
+                    "created_at": "2023-12-09T15:40:41Z",
+                    "id": 6537,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"Error occurred while registering abilities: No module named forge.sdk.abilities\"",
+                    "body": "\"### \u26a0\ufe0f Search for existing issues first \u26a0\ufe0f\n\n- [X] I have searched the existing issues, and there is no existing issue for my problem\n\n### Which Operating System are you using?\n\nMacOS\n\n### Which version of AutoGPT are you using?\n\nLatest Release\n\n### Do you use OpenAI GPT-3 or GPT-4?\n\nGPT-3.5\n\n### Which area covers your issue best?\n\nAgents\n\n### Describe your issue.\n\nI ran into the following errors when starting forge instance.\r\n\r\n```\r\nVibrat@Localhost ~ % ./run agent start forge\r\n...\r\n[2023-12-09 22:25:45,032] [watchfiles.main] [INFO]\t\ud83d\udcdd  4 changes detected\r\nError occurred while registering abilities: No module named forge.sdk.abilities\r\n...\r\n```\r\n\r\nAfter some debugging time, I think the issue is located in **ActionRegister** when it tries to import the `missing` **abilities** module. This currently prevent the forge model to have abilities.\r\n\r\n```\r\nmodule = importlib.import_module(\r\n        f\".{action[:-3]}\", package=\"forge.sdk.abilities\"\r\n)\r\n```\n\n### Upload Activity Log Content\n\n_No response_\n\n### Upload Error Log Content\n\n_No response_\"",
+                    "url": "https://github.com/Significant-Gravitas/AutoGPT/issues/6537"
+                }
+            }
+        ]
+    },
+    {
+        "question": "what are the bugs caused by commit 0a73e391d974996908fb517920cf6c2f62fbf33d?",
+        "number": 18,
+        "category": 2,
+        "query": "MATCH (c:Commit {id: \"0a73e391d974996908fb517920cf6c2f62fbf33d\"})-[:introduced]->(i:Issue)\nRETURN i",
+        "result": [
+            {
+                "i": {
+                    "number": 299,
+                    "closed_at": "2023-04-17T22:26:45Z",
+                    "created_at": "2023-04-06T08:50:13Z",
+                    "id": 299,
+                    "state": "closed",
+                    "type": "Issue",
+                    "title": "\"Continuos mode cut off\"",
+                    "body": "\"### Duplicates\n\n- [X] I have searched the existing issues\n\n### Summary \ud83d\udca1\n\nAs there are concerns about continuous mode running forever (or just longer than is desirable). Could a feature be to allow the user to set an arbitrary number of actions to be done autonomously before asking user for authorisation again? E.g. allow for 50 autonomous actions without approval before stopping to check in with the user\n\n### Examples \ud83c\udf08\n\n_No response_\n\n### Motivation \ud83d\udd26\n\n_No response_\"",
+                    "url": "https://github.com/Significant-Gravitas/AutoGPT/issues/299"
+                }
+            }
+        ]
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2023?",
+        "number": 19,
+        "category": 3,
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ \"2023-07.*\"\nWITH COUNT(c) AS totalFixingCommits\nMATCH (i2:Issue)<-[:introduced]-(c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ \"2023-07.*\"\nWITH totalFixingCommits, COUNT(c) AS fixingAndIntroducingBugs\nRETURN (toFloat(fixingAndIntroducingBugs) / totalFixingCommits) * 100 AS percentage",
+        "result": [
+            {
+                "percentage": 40.625
+            }
+        ]
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2023?",
+        "number": 20,
+        "category": 3,
+        "query": "MATCH (i2:Issue)<-[:introduced]-(c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ \"2023-07.*\"\nRETURN COUNT(c) AS fixingAndIntroducingBugs",
+        "result": [
+            {
+                "fixingAndIntroducingBugs": 26
+            }
+        ]
+    }
+]

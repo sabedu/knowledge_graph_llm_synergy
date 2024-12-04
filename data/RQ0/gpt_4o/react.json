@@ -1,0 +1,568 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "In the last month, there have been 157 commits.",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-26T19:51:20Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 157
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit is identified by the ID `a960b92cb93e7d006e5e8de850f9b8b51f655c90`. It was committed on August 20, 2024, at 02:34:20 UTC. The commit message is:\n\n\"[Flight] model halting as never delivered chunks (#30740)\n\nstacked on: #30731\n\nWe've refined the model of halting a prerender. Now when you abort during a prerender we simply omit the rows that would complete the flight render. This is analogous to prerendering in Fizz where you must resume the prerender to actually result in errors propagating in the postponed holes. We don't have a resume yet for flight and it's not entirely clear how that will work however the key insight here is that deciding whether the never resolving rows are an error or not should really be done on the consuming side rather than in the producer.\n\nThis PR also reintroduces the logs for the abort error/postpone when prerendering which will give you some indication that something wasn't finished when the prerender was aborted.\"\n\nThe commit involved 253 additions, 283 deletions, and changes to 13 files. It has 0 comments.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 253,
+                    "deletions": 283,
+                    "committedDate": "2024-08-20T02:34:20Z",
+                    "changedFiles": 13,
+                    "commentsCount": 0,
+                    "id": "a960b92cb93e7d006e5e8de850f9b8b51f655c90",
+                    "type": "Commit",
+                    "message": "\"[Flight] model halting as never delivered chunks (#30740)\n\nstacked on: #30731\r\n\r\nWeve refined the model of halting a prerender. Now when you abort\r\nduring a prerender we simply omit the rows that would complete the\r\nflight render. This is analagous to prerendering in Fizz where you must\r\nresume the prerender to actually result in errors propagating in the\r\npostponed holes. We dont have a resume yet for flight and its not\r\nentirely clear how that will work however the key insight here is that\r\ndeciding whether the never resolving rows are an error or not should\r\nreally be done on the consuming side rather than in the producer.\r\n\r\nThis PR also reintroduces the logs for the abort error/postpone when\r\nprerendering which will give you some indication that something wasnt\r\nfinished when the prerender was aborted.\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Certainly! Here are the details of the commits made between May 27th, 2018, and May 31st, 2018:\n\n1. **Commit ID:** 36546b5137e9012ebdc62fc9ec11e3518c9e0aab\n   - **Committed Date:** 2018-05-31T21:23:26Z\n   - **Additions:** 36\n   - **Deletions:** 6\n   - **Changed Files:** 3\n   - **Comments Count:** 0\n   - **Message:** \"Set the correct initial value on input range (#12939)\n     - Set the correct initial value on input range\n     - Add description and update value diff check for input range\n     - add isHydrating argument and tests\n     - update node value according to isHydrating\"\n\n2. **Commit ID:** 65ab53694f6edf4437034d5644a602dea162e249\n   - **Committed Date:** 2018-05-31T20:36:55Z\n   - **Additions:** 2\n   - **Deletions:** 2\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"Update token (#12956)\"\n\n3. **Commit ID:** 15767a8f8f798f0d80df4ddbc7cfaebdc29996a8\n   - **Committed Date:** 2018-05-30T22:38:48Z\n   - **Additions:** 624\n   - **Deletions:** 30\n   - **Changed Files:** 3\n   - **Comments Count:** 0\n   - **Message:** \"[scheduler] 5/n Error handling in scheduler (#12920)\n     - Initial failing unit test for error handling in schedule\n     - Add fixture for testing error handling in scheduler\n     - Handle errors in scheduler\n     - Add more tests for error handling in scheduler\n     - callSafely -> callUnsafely\n     - Fix bugs with error handling in schedule\n     - Unit tests for error handling with timed out callbacks\n     - Adds fixture to test timed out callbacks with scheduler\n     - fix rebase problems\n     - make fixture compensate for chrome JS speed\n     - ran prettier\n     - Remove cancelled flag on callbackConfig in scheduler, add test\"\n\n4. **Commit ID:** 3118ed9d640ad28af306de308301f4fcd029ffca\n   - **Committed Date:** 2018-05-30T22:31:59Z\n   - **Additions:** 2\n   - **Deletions:** 0\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"Expose unstable_interactiveUpdates on ReactDOM (#12943)\"\n\n5. **Commit ID:** 524a74331399fd7102037c878f327afbd5e14f53\n   - **Committed Date:** 2018-05-30T22:31:41Z\n   - **Additions:** 42\n   - **Deletions:** 21\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"Fix for Flow issues in SimpleCacheProvider (#12942)\n     - Fix for Flow issues in SimpleCacheProvider\n     - Fix lints\"\n\n6. **Commit ID:** ae57b125c798418fb6846094cfa911530206e074\n   - **Committed Date:** 2018-05-30T20:12:29Z\n   - **Additions:** 153\n   - **Deletions:** 31\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n   - **Message:** \"[simple-cache-provider] Use LRU cache eviction (#12851)\n     - Use LRU cache eviction\n     - Evict PAGE_SIZE records from cache when max limit is reached\"\n\n7. **Commit ID:** e0a03c1b4d84453122c4e9d1a5e0cec52bef9066\n   - **Committed Date:** 2018-05-30T11:08:21Z\n   - **Additions:** 71\n   - **Deletions:** 2\n   - **Changed Files:** 3\n   - **Comments Count:** 0\n   - **Message:** \"Extend input type check in selection capabilities (#12062) (#12135)\n     - Do not set selection when prior selection is undefined (#12062)\n     - Add link to HTML spec for element types and selection\n     - Add reset button to ReplaceEmailInput\"\n\n8. **Commit ID:** 79a740c6e32ca300d4e7ff55ab06de172d4237fd\n   - **Committed Date:** 2018-05-30T00:54:38Z\n   - **Additions:** 10\n   - **Deletions:** 10\n   - **Changed Files:** 2\n   - **Comments Count:** 0\n   - **Message:** \"Rename variables to remove references to global global (#12931)\n     - Remove references to global\"\n\n9. **Commit ID:** ff724d3c286a1753723ea71e8c046498ed1aac98\n   - **Committed Date:** 2018-05-29T20:30:04Z\n   - **Additions:** 64\n   - **Deletions:** 5\n   - **Changed Files:** 8\n   - **Comments Count:** 0\n   - **Message:** \"[scheduler] 4/n Allow splitting out `schedule` in fb-www, prepare to fix polyfill issue internally (#12900)\n     - Use local references to global things inside scheduler\n     - Shim ReactScheduler for www\n     - Generate a bundle for fb-www\n     - Change names of variables used for holding globals\"\n\n10. **Commit ID:** 001f9ef4717a0928b4875cbad3421a17f49f95a5\n    - **Committed Date:** 2018-05-29T19:50:04Z\n    - **Additions:** 48\n    - **Deletions:** 3\n    - **Changed Files:** 6\n    - **Comments Count:** 0\n    - **Message:** \"Release script prompts for NPM 2FA code (#12908)\"\n\nIf you need further details or help with anything else, feel free to ask!",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 36,
+                    "committedDate": "2018-05-31T21:23:26Z",
+                    "deletions": 6,
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "36546b5137e9012ebdc62fc9ec11e3518c9e0aab",
+                    "type": "Commit",
+                    "message": "\"Set the correct initial value on input range (#12939)\n\n* Set the correct initial value on input range\r\n\r\n* Add description and update value diff check for input range\r\n\r\n* add isHydrating argument and tests\r\n\r\n* update node value according to isHydrating\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-31T20:36:55Z",
+                    "deletions": 2,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "65ab53694f6edf4437034d5644a602dea162e249",
+                    "type": "Commit",
+                    "message": "\"Update token (#12956)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 624,
+                    "committedDate": "2018-05-30T22:38:48Z",
+                    "deletions": 30,
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "15767a8f8f798f0d80df4ddbc7cfaebdc29996a8",
+                    "type": "Commit",
+                    "message": "\"[scheduler] 5/n Error handling in scheduler (#12920)\n\n* Initial failing unit test for error handling in schedule\r\n\r\n**what is the change?:**\r\nsee title\r\n\r\n**why make this change?:**\r\nAdding tests for the error handling behavior we are about to add. This\r\ntest is failing, which gives us the chance to make it pass.\r\n\r\nWrote skeletons of some other tests to add.\r\n\r\nUnit testing this way is really hacky, and Im also adding to the\r\nfixture to test this in the real browser environment.\r\n\r\n**test plan:**\r\nRan new test, saw it fail!\r\n\r\n* Add fixture for testing error handling in scheduler\r\n\r\n**what is the change?:**\r\nAdded a fixture which does the following -\r\nlogs in the console to show what happens when you use\r\n`requestAnimationFrame` to schedule a series of callbacks and some of\r\nthem throw errors.\r\n\r\nThen does the same actions with the `scheduler` and verifies that it\r\nbehaves in a similar way.\r\n\r\nHard to really verify the errors get thrown at the proper time without\r\nlooking at the console.\r\n\r\n**why make this change?:**\r\nWe want the most authentic, accurate test of how errors are handled in\r\nthe scheduler. Thats what this fixture should be.\r\n\r\n**test plan:**\r\nManually verified that this test does what I expect - right now its\r\nfailing but follow up commits will fix that.\r\n\r\n* Handle errors in scheduler\r\n\r\n**what is the change?:**\r\nWe set a flag before calling any callback, and then use a try/finally\r\nblock to wrap it. Note that we *do not* catch the error, if one is\r\nthrown. But, we only unset the flag after the callback successfully\r\nfinishes.\r\n\r\nIf we reach the finally block and the flag was not unset, then it\r\nmeans an error was thrown.\r\n\r\nIn that case we start a new postMessage callback, to finish calling any\r\nother pending callbacks if there is time.\r\n\r\n**why make this change?:**\r\nWe need to make sure that an error thrown from one callback doesnt stop\r\nother callbacks from firing, but we also dont want to catch or swallow\r\nthe error because we want engineers to still be able to log and debug\r\nerrors.\r\n\r\n**test plan:**\r\nNew tests added are passing, and we verified that they fail without this\r\nchange.\r\n\r\n* Add more tests for error handling in scheduler\r\n\r\n**what is the change?:**\r\nAdded tests for more situations where error handling may come up.\r\n\r\n**why make this change?:**\r\nTo get additional protection against this being broken in the future.\r\n\r\n**test plan:**\r\nRan new tests and verified that they fail when error handling fails.\r\n\r\n* callSafely -> callUnsafely\r\n\r\n* Fix bugs with error handling in schedule\r\n\r\n**what is the change?:**\r\n- ensure that we properly remove the callback from the linked list, even\r\nif it throws an error and is timed out.\r\n- ensure that you can call cancelScheduledWork more than once and it\r\nis idempotent.\r\n\r\n**why make this change?:**\r\nTo fix bugs :)\r\n\r\n**test plan:**\r\nExisting tests pass, and well add more tests in a follow up commit.\r\n\r\n* Unit tests for error handling with timed out callbacks\r\n\r\n**what is the change?:**\r\nMore unit tests, to cover behavior which we missed; error handling of\r\ntimed out callbacks.\r\n\r\n**why make this change?:**\r\nTo protect the future!~\r\n\r\n**test plan:**\r\nRun the new tests.\r\n\r\n* Adds fixture to test timed out callbacks with scheduler\r\n\r\n**what is the change?:**\r\nSee title\r\n\r\nIn the other error handling fixture we compare scheduleWork error\r\nhandling to requestAnimationFrame and try to get as close as possible.\r\nThere is no timing out feature with requestAnimationFrame but\r\neffectively the timing out feature changes the order in which things\r\nare called. So we just changed the order in the requestAnimationFrame\r\nversion and that works well for illustrating the behavior we expect in\r\nthe scheduleWork test.\r\n\r\n**why make this change?:**\r\nWe need more test coverage of timed out callbacks.\r\n\r\n**test plan:**\r\nExecuted the fixture manually in Firefox and Chrome. Results looked\r\ngood.\r\n\r\n* fix rebase problems\r\n\r\n* make fixture compensate for chrome JS speed\r\n\r\n* ran prettier\r\n\r\n* Remove cancelled flag on callbackConfig in scheduler, add test\r\n\r\n**what is the change?:**\r\n- Instead of using a cancelled flag on the callbackConfig, its easier\r\nto just check the state of the callbackConfig inside\r\ncancelScheduledWork to determine if its already been cancelled. That\r\nway we dont have to remember to set the cancelled flag every time we\r\ncall a callback or cancel it. One less thing to remember.\r\n- We added a test for calling cancelScheduledWork more than once,\r\nwhich would have failed before.\r\n\r\nThanks @acdlite for suggesting this in code review. :)\r\n\r\n**why make this change?:**\r\nTo increase stability of the schedule module, increase test coverage.\r\n\r\n**test plan:**\r\nExisting tests pass and we added a new test to cover this behavior.\r\n\r\n* fix typo\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2,
+                    "committedDate": "2018-05-30T22:31:59Z",
+                    "deletions": 0,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "3118ed9d640ad28af306de308301f4fcd029ffca",
+                    "type": "Commit",
+                    "message": "\"Expose unstable_interactiveUpdates on ReactDOM (#12943)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 42,
+                    "committedDate": "2018-05-30T22:31:41Z",
+                    "deletions": 21,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "524a74331399fd7102037c878f327afbd5e14f53",
+                    "type": "Commit",
+                    "message": "\"Fix for Flow issues in SimpleCacheProvider (#12942)\n\n* Fix for Flow issues in SimpleCacheProvider\r\n\r\n**what is the change?:**\r\n- Fixed some flow errors which were somehow swallowed when CI\r\noriginally\r\n- Loosen flow types to avoid issue with recursive loop in Flow; https://github.com/facebook/flow/issues/5870\r\n\r\n**why make this change?:**\r\nTo unbreak master and unblock other changes we want to make.\r\n\r\n**test plan:**\r\nFlow passes!\r\n\r\n**issue:**\r\nhttps://github.com/facebook/react/issues/12941\r\n\r\n* Fix lints\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 153,
+                    "committedDate": "2018-05-30T20:12:29Z",
+                    "deletions": 31,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "ae57b125c798418fb6846094cfa911530206e074",
+                    "type": "Commit",
+                    "message": "\"[simple-cache-provider] Use LRU cache eviction (#12851)\n\n* [simple-cache-provider] Use LRU cache eviction\r\n\r\nMax size is hard-coded to 500. In the future, we should make this\r\nconfigurable per resource.\r\n\r\n* Evict PAGE_SIZE records from cache when max limit is reached\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 71,
+                    "committedDate": "2018-05-30T11:08:21Z",
+                    "deletions": 2,
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "e0a03c1b4d84453122c4e9d1a5e0cec52bef9066",
+                    "type": "Commit",
+                    "message": "\"Extend input type check in selection capabilities (#12062) (#12135)\n\n* Do not set selection when prior selection is undefined (#12062)\r\n\r\n`restoreSelection` did not account for input elements that have changed\r\ntype after the commit phase. The new `text` input supported selection\r\nbut the old `email` did not and `setSelection` was incorrectly trying to\r\nrestore `null` selection state.\r\n\r\nWe also extend input type check in selection capabilities to cover cases\r\nwhere input type is `search`, `tel`, `url`, or `password`.\r\n\r\n* Add link to HTML spec for element types and selection\r\n\r\n* Add reset button to ReplaceEmailInput\r\n\r\nThis commit adds a button to restore the original state of the\r\nReplaceEmailInput fixture so that it can be run multiple times without\r\nrefreshing the page.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 10,
+                    "committedDate": "2018-05-30T00:54:38Z",
+                    "deletions": 10,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "79a740c6e32ca300d4e7ff55ab06de172d4237fd",
+                    "type": "Commit",
+                    "message": "\"Rename variables to remove references to global global (#12931)\n\n**what is the change?:**\r\nIn a recent PR we were referencing some global variables and storing\r\nlocal references to them.\r\n\r\nTo make things more natural, we co-opted the original name of the global\r\nfor our local reference. To make this work with Flow, we get the\r\noriginal reference from window.requestAnimationFrame and assign it to\r\nconst requestAnimationFrame.\r\n\r\nSometimes React is used in an environment where window is not defined\r\n- in that case we need to use something else, or hide the window\r\nreference somewhere.\r\n\r\nWe opted to use global thinking that Babel transforms would fill that\r\nin with the proper thing.\r\n\r\nBut for some of our fixtures we are not doing that transform on the\r\nbundle.\r\n\r\n**why make this change?:**\r\nI want to unbreak this on master and then investigate more about what we\r\nshould do to fix this.\r\n\r\n**test plan:**\r\nrun `yarn build` and open the fixtures.\r\n\r\n**issue:**\r\nhttps://github.com/facebook/react/issues/12930\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 64,
+                    "committedDate": "2018-05-29T20:30:04Z",
+                    "deletions": 5,
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "ff724d3c286a1753723ea71e8c046498ed1aac98",
+                    "type": "Commit",
+                    "message": "\"[scheduler] 4/n Allow splitting out `schedule` in fb-www, prepare to fix polyfill issue internally (#12900)\n\n* Use local references to global things inside scheduler\r\n\r\n**what is the change?:**\r\nSee title\r\n\r\n**why make this change?:**\r\nWe want to avoid initially calling one version of an API and then later\r\naccessing a polyfilled version.\r\n\r\n**test plan:**\r\nRun existing tests.\r\n\r\n* Shim ReactScheduler for www\r\n\r\n**what is the change?:**\r\nIn www we want to reference the separate build of ReactScheduler,\r\nwhich allows treating it as a separate module internally.\r\n\r\n**why make this change?:**\r\nWe need to require the ReactScheduler before our rAF polyfill activates,\r\nin order to customize which custom behaviors we want.\r\n\r\nThis is also a step towards being able to experiment with using it\r\noutside of React.\r\n\r\n**test plan:**\r\nRan tests, ran the build, and ran `test-build`.\r\n\r\n* Generate a bundle for fb-www\r\n\r\n**what is the change?:**\r\nSee title\r\n\r\n**why make this change?:**\r\nSplitting out the schedule module allows us to load it before\r\npolyfills kick in for rAF and other APIs.\r\n\r\nAnd long term we want to split this into a separate module anyway, this\r\nis a step towards that.\r\n\r\n**test plan:**\r\nIll run the sync next week and verify that this all works. :)\r\n\r\n* ran prettier\r\n\r\n* fix rebase issues\r\n\r\n* Change names of variables used for holding globals\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 48,
+                    "committedDate": "2018-05-29T19:50:04Z",
+                    "deletions": 3,
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "001f9ef4717a0928b4875cbad3421a17f49f95a5",
+                    "type": "Commit",
+                    "message": "\"Release script prompts for NPM 2FA code (#12908)\n\n* Release script prompts for NPM 2fa code\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "On July 31, the commit messages were:\n\n1. \"[compiler] More complete validation against locals being reassigned after render\n\nSummary:\nThis diff extends the existing work on validating against locals being reassigned after render, by propagating the reassignment \"effect\" into the lvalues of instructions when the rvalue operands include values known to cause reassignments. In particular, this \"closes the loop\" for function definitions and function calls: a function that returns a function that reassigns will be considered to also perform reassignments, but previous to this we didnt consider the result of a `Call` of a function that reassigns to itself be a value that reassigns.\n\nThis causes a number of new bailouts in test cases, all of which appear to me to be legit.\n\nghstack-source-id: 770bf02d079ea2480be243a49caa6f69573d8092\nPull Request resolved: https://github.com/facebook/react/pull/30540\"\n\n2. \"[Fizz] Update postpone abort semantics when prerendering (#30541)\n\nWhen aborting with a postpone value in Fizz if any tasks are still\npending in the root while prerendering the prerender will fatally error.\nThis is different from postponing imperatively in a root task and really\nthe semantics should be the same. This change updates React to treat an\nabort with a postpone value as a postponed root rather than a fatal\nerror.\"\n\n3. \"[DevTools] Track the parent DevToolsInstance while mounting a tree (#30542)\n\nThis just tracks the `.parent` field properly and uses DevToolsInstances\nin more places that used to use IDs or Fibers.\n\nI also use this new parent path when looking up a DevToolsInstance from\na DOM node. This should ideally be simple because the `.parent` field\nrepresents only the unfiltered parents and include any virtual parents.\nSo we should be able to just get one from nearest Fiber that has one.\n\nHowever, because we dont currently always clean up the map of\nDevToolsInstances (e.g. updateComponentFilters doesnt recursively clean\nout everything) it can leave matches hanging that shouldnt be there. So\nwe need to run the shouldFilterFiber filter to ignore those.\n\nAnother interesting implication is that without a FiberInstance we dont\nhave a way to get to a VirtualInstance from a HostComponent. Which means\nthat even filtered Fibers need to have a FiberInstance if they have a\nVirtualInstance parent. Even if we dont actually mount them into the\nfront-end.\"\n\n4. \"Build all bundles required by flight fixture with `build-for-flight-dev` (#30534)\"\n\n5. \"[Flight] Enable owner stacks on the client when replaying logs (#30473)\n\nTheres a special case that happens when we replay logs on the client\nbecause this doesnt happen within the context of any particular\nrendered component. So we need to reimplement things that would normally\nbe handled by a full client like Fiber.\n\nThe implementation of `getOwnerStackByComponentInfoInDev` is the\nsimplest version since it doesnt have any client components in it so I\nmove it to `shared/`. Its only used by Flight but both `react-server/`\nand `react-client/` packages. The ReactComponentInfo type is also more\ngeneric than just Flight anyway.\n\nIn a follow up I still need to implement this in React DevTools when\nnative tasks are not available so that it appends it to the console.\"",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [
+            {
+                "c.message": "\"[compiler] More complete validation against locals being reassigned after render\n\nSummary:\nThis diff extends the existing work on validating against locals being reassigned after render, by propagating the reassignment \"effect\" into the lvalues of instructions when the rvalue operands include values known to cause reassignments. In particular, this \"closes the loop\" for function definitions and function calls: a function that returns a function that reassigns will be considered to also perform reassignments, but previous to this we didnt consider the result of a `Call` of a function that reassigns to itself be a value that reassigns.\n\nThis causes a number of new bailouts in test cases, all of which appear to me to be legit.\n\nghstack-source-id: 770bf02d079ea2480be243a49caa6f69573d8092\nPull Request resolved: https://github.com/facebook/react/pull/30540\""
+            },
+            {
+                "c.message": "\"[Fizz] Update postpone abort semantics when prerendering (#30541)\n\nWhen aborting with a postpone value in Fizz if any tasks are still\r\npending in the root while prerendering the prerender will fatally error.\r\nThis is different from postponing imperatively in a root task and really\r\nthe semantics should be the same. This change updates React to treat an\r\nabort with a postpone value as a postponed root rather than a fatal\r\nerror.\""
+            },
+            {
+                "c.message": "\"[DevTools] Track the parent DevToolsInstance while mounting a tree (#30542)\n\nThis just tracks the `.parent` field properly and uses DevToolsInstances\r\nin more places that used to use IDs or Fibers.\r\n\r\nI also use this new parent path when looking up a DevToolsInstance from\r\na DOM node. This should ideally be simple because the `.parent` field\r\nrepresents only the unfiltered parents and include any virtual parents.\r\nSo we should be able to just get one from nearest Fiber that has one.\r\n\r\nHowever, because we dont currently always clean up the map of\r\nDevToolsInstances (e.g. updateComponentFilters doesnt recursively clean\r\nout everything) it can leave matches hanging that shouldnt be there. So\r\nwe need to run the shouldFilterFiber filter to ignore those.\r\n\r\nAnother interesting implication is that without a FiberInstance we dont\r\nhave a way to get to a VirtualInstance from a HostComponent. Which means\r\nthat even filtered Fibers need to have a FiberInstance if they have a\r\nVirtualInstance parent. Even if we dont actually mount them into the\r\nfront-end.\""
+            },
+            {
+                "c.message": "\"Build all bundles required by flight fixture with `build-for-flight-dev` (#30534)\""
+            },
+            {
+                "c.message": "\"[Flight] Enable owner stacks on the client when replaying logs (#30473)\n\nTheres a special case that happens when we replay logs on the client\r\nbecause this doesnt happen within the context of any particular\r\nrendered component. So we need to reimplement things that would normally\r\nbe handled by a full client like Fiber.\r\n\r\nThe implementation of `getOwnerStackByComponentInfoInDev` is the\r\nsimplest version since it doesnt have any client components in it so I\r\nmove it to `shared/`. Its only used by Flight but both `react-server/`\r\nand `react-client/` packages. The ReactComponentInfo type is also more\r\ngeneric than just Flight anyway.\r\n\r\nIn a follow up I still need to implement this in React DevTools when\r\nnative tasks are not available so that it appends it to the console.\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for BeforeInputEventPlugin.js file?",
+        "response": "Here are the changes for the file `BeforeInputEventPlugin.js`:\n\n1. **Commit Date:** 2023-01-09T20:46:48Z\n   - **Additions:** 689\n   - **Deletions:** 371\n   - **Message:** \"[flow] enable enforce_local_inference_annotations (#25921)\\n\\nThis setting is an incremental path to the next Flow version enforcing\\ntype annotations on most functions (except some inline callbacks).\\n\\nUsed\\n```\\nnode_modules/.bin/flow codemod annotate-functions-and-classes --write .\\n```\\nto add a majority of the types with some hand cleanup when for large\\ninferred objects that should just be `Fiber` or weird constructs\\nincluding `any`.\\n\\nSuppressed the remaining issues.\\n\\nBuilds on #25918\"\n\n2. **Commit Date:** 2022-10-04T20:18:12Z\n   - **Additions:** 11\n   - **Deletions:** 113\n   - **Message:** \"Flow: remove unused suppressions (#25424)\\n\\nRemoves $FlowFixMes that are no longer needed.\\n\\nUsed flow/tool from the Flow repo:\\n\\n```\\n ~/Developer/flow/tool update-suppressions .\\n```\"\n\n3. **Commit Date:** 2022-10-04T15:01:50Z\n   - **Additions:** 138\n   - **Deletions:** 10\n   - **Message:** \"Flow upgrade to 0.146\\n\\nThis upgrade made more expressions invalidate refinements. In some\\nplaces this lead to a large number of suppressions that I automatically\\nsuppressed and should be followed up on when the code is touched.\\nI think most of them might require either manual annotations or moving\\na value into a const to allow refinement.\\n\\nghstack-source-id: a45b40abf03474b691a2dc18a4f1f3b06cfbdffd\\nPull Request resolved: https://github.com/facebook/react/pull/25410\"\n\n4. **Commit Date:** 2022-09-28T23:05:50Z\n   - **Additions:** 72\n   - **Deletions:** 104\n   - **Message:** \"Move react-dom implementation files to react-dom-bindings (#25345)\\n\\nThis lets us share it with react-server-dom-webpack while still having a\\ndependency on react-dom. It also makes somewhat sense from a bundling\\nperspective since react-dom is an external to itself.\"\n\n5. **Commit Date:** 2022-09-12T17:44:58Z\n   - **Additions:** 73\n   - **Deletions:** 35\n   - **Message:** \"Flow: fix Fiber typed as any (#25241)\"\n\n6. **Commit Date:** 2020-09-25T12:33:28Z\n   - **Additions:** 118\n   - **Deletions:** 114\n   - **Message:** \"Create Synthetic Events Lazily (#19909)\"\n\n7. **Commit Date:** 2020-09-25T10:31:00Z\n   - **Additions:** 191\n   - **Deletions:** 172\n   - **Message:** \"Separate SyntheticEvent constructors to prevent deopts (#19907)\\n\\n* Remove arguments from hot path\\n\\n* Make SyntheticEvent subtypes monomorphic\\n\\n* Maybe fix Flow?\"\n\n8. **Commit Date:** 2020-08-10T11:54:10Z\n   - **Additions:** 241\n   - **Deletions:** 41\n   - **Message:** \"fix: onFocus/onBlur/onBeforeInput have a matching event type (#19561)\\n\\n* test: Add current behavior for event types of onFocus/onBlur\\n\\n* fix: onFocus/onBlur have a matching event type\\n\\n* fix useFocus\\n\\n* fix: dont compare native event types with react event types\\n\\n* Add FocusIn/FocusOutEventInterface\\n\\n* A simpler alternative fix\\n\\n* Add regression tests\\n\\n* Always pass React event type and fix beforeinput\\n\\nCo-authored-by: Dan Abramov <dan.abramov@me.com>\"\n\n9. **Commit Date:** 2020-07-30T20:52:37Z\n   - **Additions:** 791\n   - **Deletions:** 888\n   - **Message:** \"Remove event constants (#19276)\\n\\n* Remove opaque event type\\n\\n* Rename type and merge files\\n\\n* Use literals where we have Flow coverage\\n\\n* Flowify some plugins\\n\\n* Remove constants except necessary ones\"\n\n10. **Commit Date:** 2020-07-23T00:02:59Z\n    - **Additions:** 140\n    - **Deletions:** 152\n    - **Message:** \"Remove SyntheticEvent subtypes (#19436)\\n\\n* Remove SyntheticEvent subtypes\\n\\n* Code golf\"",
+        "query": "cypher\nMATCH (f:File {name: \"BeforeInputEventPlugin.js\"})<-[:changed]-(c:Commit)\nRETURN c.additions, c.deletions, c.committedDate, c.message\n",
+        "result": [
+            {
+                "c.additions": 689,
+                "c.deletions": 371,
+                "c.committedDate": "2023-01-09T20:46:48Z",
+                "c.message": "\"[flow] enable enforce_local_inference_annotations (#25921)\n\nThis setting is an incremental path to the next Flow version enforcing\r\ntype annotations on most functions (except some inline callbacks).\r\n\r\nUsed\r\n```\r\nnode_modules/.bin/flow codemod annotate-functions-and-classes --write .\r\n```\r\nto add a majority of the types with some hand cleanup when for large\r\ninferred objects that should just be `Fiber` or weird constructs\r\nincluding `any`.\r\n\r\nSuppressed the remaining issues.\r\n\r\nBuilds on #25918\""
+            },
+            {
+                "c.additions": 11,
+                "c.deletions": 113,
+                "c.committedDate": "2022-10-04T20:18:12Z",
+                "c.message": "\"Flow: remove unused suppressions (#25424)\n\nRemoves $FlowFixMes that are no longer needed.\r\n\r\nUsed flow/tool from the Flow repo:\r\n\r\n```\r\n ~/Developer/flow/tool update-suppressions .\r\n```\""
+            },
+            {
+                "c.additions": 138,
+                "c.deletions": 10,
+                "c.committedDate": "2022-10-04T15:01:50Z",
+                "c.message": "\"Flow upgrade to 0.146\n\nThis upgrade made more expressions invalidate refinements. In some\nplaces this lead to a large number of suppressions that I automatically\nsuppressed and should be followed up on when the code is touched.\nI think most of them might require either manual annotations or moving\na value into a const to allow refinement.\n\nghstack-source-id: a45b40abf03474b691a2dc18a4f1f3b06cfbdffd\nPull Request resolved: https://github.com/facebook/react/pull/25410\""
+            },
+            {
+                "c.additions": 72,
+                "c.deletions": 104,
+                "c.committedDate": "2022-09-28T23:05:50Z",
+                "c.message": "\"Move react-dom implementation files to react-dom-bindings (#25345)\n\nThis lets us share it with react-server-dom-webpack while still having a\r\ndependency on react-dom. It also makes somewhat sense from a bundling\r\nperspective since react-dom is an external to itself.\""
+            },
+            {
+                "c.additions": 73,
+                "c.deletions": 35,
+                "c.committedDate": "2022-09-12T17:44:58Z",
+                "c.message": "\"Flow: fix Fiber typed as any (#25241)\""
+            },
+            {
+                "c.additions": 118,
+                "c.deletions": 114,
+                "c.committedDate": "2020-09-25T12:33:28Z",
+                "c.message": "\"Create Synthetic Events Lazily (#19909)\""
+            },
+            {
+                "c.additions": 191,
+                "c.deletions": 172,
+                "c.committedDate": "2020-09-25T10:31:00Z",
+                "c.message": "\"Separate SyntheticEvent constructors to prevent deopts (#19907)\n\n* Remove arguments from hot path\r\n\r\n* Make SyntheticEvent subtypes monomorphic\r\n\r\n* Maybe fix Flow?\""
+            },
+            {
+                "c.additions": 241,
+                "c.deletions": 41,
+                "c.committedDate": "2020-08-10T11:54:10Z",
+                "c.message": "\"fix: onFocus/onBlur/onBeforeInput have a matching event type (#19561)\n\n* test: Add current behavior for event types of onFocus/onBlur\r\n\r\n* fix: onFocus/onBlur have a matching event type\r\n\r\n* fix useFocus\r\n\r\n* fix: dont compare native event types with react event types\r\n\r\n* Add FocusIn/FocusOutEventInterface\r\n\r\n* A simpler alternative fix\r\n\r\n* Add regression tests\r\n\r\n* Always pass React event type and fix beforeinput\r\n\r\nCo-authored-by: Dan Abramov <dan.abramov@me.com>\""
+            },
+            {
+                "c.additions": 791,
+                "c.deletions": 888,
+                "c.committedDate": "2020-07-30T20:52:37Z",
+                "c.message": "\"Remove event constants (#19276)\n\n* Remove opaque event type\r\n\r\n* Rename type and merge files\r\n\r\n* Use literals where we have Flow coverage\r\n\r\n* Flowify some plugins\r\n\r\n* Remove constants except necessary ones\""
+            },
+            {
+                "c.additions": 140,
+                "c.deletions": 152,
+                "c.committedDate": "2020-07-23T00:02:59Z",
+                "c.message": "\"Remove SyntheticEvent subtypes (#19436)\n\n* Remove SyntheticEvent subtypes\r\n\r\n* Code golf\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for React.js file?",
+        "response": "Here are all the commits related to the React.js file:\n\n1. **Commit ID:** ce2bc58a9f6f3b0bfc8c738a0d8e2a5f3a332ff5\n   - **Date:** 2023-11-02T20:13:21Z\n   - **Message:** \"[activity] rename unstable_Offscreen to unstable_Activity (#27640)\\n\\n`Activity` is the current candidate name. This PR starts the rename work\\r\\nby renaming the exported unstable component name.\\r\\n\\r\\nNOTE: downstream consumers need to rename the import when updating to\\r\\nthis commit.\"\n   - **Additions:** 283\n   - **Deletions:** 285\n   - **Changed Files:** 24\n   - **Comments Count:** 0\n\n2. **Commit ID:** bfefb228422f7264a29b3a6b98ec95e05925e80e\n   - **Date:** 2023-10-04T18:51:36Z\n   - **Message:** \"Upgrade Server Actions to canary (#27459)\\n\\nUpgrades the stability of Server Actions from experimental to canary.\\r\\n\\r\\n- Turns on enableAsyncActions and enableFormActions\\r\\n- Removes \\\"experimental_\\\" prefix from useOptimistic, useFormStatus, and\\r\\nuseFormState\"\n   - **Additions:** 40\n   - **Deletions:** 39\n   - **Changed Files:** 28\n   - **Comments Count:** 0\n\n3. **Commit ID:** c7ba8c098889b6dc47fa9c807bbba3975a658584\n   - **Date:** 2023-09-29T22:24:05Z\n   - **Message:** \"Enforce that the \\\"react-server\\\" build of \\\"react\\\" is used (#27436)\\n\\nI do this by simply renaming the secret export name in the \\\"subset\\\"\\r\\nbundle and this renamed version is what the FlightServer uses.\\r\\n\\r\\nThis requires us to be more diligent about always using the correct\\r\\ninstance of \\\"react\\\" in our tests so theres a bunch of clean up for\\r\\nthat.\"\n   - **Additions:** 245\n   - **Deletions:** 1258\n   - **Changed Files:** 30\n   - **Comments Count:** 0\n\n4. **Commit ID:** ac1a16c67e268fcb2c52e91717cbc918c7c24446\n   - **Date:** 2023-08-17T17:26:14Z\n   - **Message:** \"Add Postpone API (#27238)\\n\\nThis adds an experimental `unstable_postpone(reason)` API.\\r\\n\\r\\nCurrently we dont have a way to model effectively an Infinite Promise.\\r\\nI.e. something that suspends but never resolves. The reason this is\\r\\nuseful is because you might have something else that unblocks it later.\\r\\nE.g. by updating in place later, or by client rendering.\\r\\n\\r\\nOn the client this works to model as an Infinite Promise (in fact,\\r\\nthats what this implementation does). However, in Fizz and Flight that\\r\\ndoesnt work because the stream needs to end at some point. We dont\\r\\nhave any way of knowing that were suspended on infinite promises. Its\\r\\nnot enough to tag the promises because you could await those and thus\\r\\ncreating new promises. The only way we really have to signal this\\r\\nthrough a series of indirections like async functions, is by throwing.\\r\\nIts not 100% safe because these values can be caught but its the best\\r\\nwe can do.\\r\\n\\r\\nEffectively `postpone(reason)` behaves like a built-in [Catch\\r\\nBoundary](https://github.com/facebook/react/pull/26854). Its like\\r\\n`raise(Postpone, reason)` except its built-in so it needs to be able to\\r\\nbe encoded and caught by Suspense boundaries.\\r\\n\\r\\nIn Flight and Fizz these behave pretty much the same as errors. Flight\\r\\njust forwards it to retrigger on the client. In Fizz they just trigger\\r\\nclient rendering which itself might just postpone again or fill in the\\r\\nvalue. The difference is how they get logged.\\r\\n\\r\\nIn Flight and Fizz they log to `onPostpone(reason)` instead of\\r\\n`onError(error)`. This log is meant to help find deopts on the server\\r\\nlike finding places where you fall back to client rendering. The reason\\r\\nthat you pass in is for that purpose to help the reason for any deopts.\\r\\n\\r\\nI do track the stack trace in DEV but I dont currently expose it to\\r\\n`onPostpone`. This seems like a limitation. It might be better to expose\\r\\nthe Postpone object which is an Error object but thats more of an\\r\\nimplementation detail. I could also pass it as a second argument.\\r\\n\\r\\nOn the client after hydration they dont get passed to\\r\\n`onRecoverableError`. Theres no global `onPostpone` API to capture\\r\\npostponed things on the client just like theres no `onError`. At that\\r\\npoint its just assumed to be intentional. It doesnt have any `digest`\\r\\nor reason passed to the client since its not logged.\\r\\n\\r\\nThere are some hacky solutions that currently just tries to reuse as\\r\\nmuch of the existing code as possible but should be more properly\\r\\nimplemented.\\r\\n- Fiber is currently just converting it to a fake Promise object so that\\r\\nit behaves like an infinite Promise.\\r\\n- Fizz is encoding the magic digest string \\\"POSTPONE\\\" in the HTML so\\r\\nwe know to ignore it but it should probably just be something neater\\r\\nthat doesnt share namespace with digests.\\r\\n\\r\\nNext I plan on using this in the `/static` entry points for additional\\r\\nfeatures.\\r\\n\\r\\nWhy \\\"postpone\\\"? Its basically a synonym to \\\"defer\\\" but we plan on using\\r\\n\\\"defer\\\" for other purposes and its overloaded anyway.\"\n   - **Additions:** 662\n   - **Deletions:** 231\n   - **Changed Files:** 34\n   - **Comments Count:** 0\n\n5. **Commit ID:** eb2c2f7c2cf2652a168c2b433d2989131c69754b\n   - **Date:** 2023-07-06T18:09:53Z\n   - **Message:** \"rename SuspenseList export to unstable_SuspenseList (#27061)\\n\\n## Summary\\r\\n\\r\\nas we began [discussing\\r\\nyesterday](https://github.com/facebook/react/pull/27056#discussion_r1253282784),\\r\\n`SuspenseList` is not actually stable yet, and should likely be exported\\r\\nwith the `unstable_` prefix.\\r\\n\\r\\nthe conversation yesterday began discussing this in the context of the\\r\\nfb-specific packages, but changing it there without updating everywhere\\r\\nelse leads to test failures, so here the change is made across packages.\\r\\n\\r\\n## How did you test this change?\\r\\n\\r\\n```\\r\\nyarn flow dom-browser\\r\\nyarn test\\r\\n```\"\n   - **Additions:** 24\n   - **Deletions:** 21\n   - **Changed Files:** 18\n   - **Comments Count:** 0\n\n6. **Commit ID:** 80d9a40114bb43c07d021e8254790852f450bd2b\n   - **Date:** 2023-06-27T16:45:46Z\n   - **Message:** \"Remove useMutableSource (#27011)\\n\\n## Summary\\r\\n\\r\\nThis PR cleans up `useMutableSource`. This has been blocked by a\\r\\nremaining dependency internally at Meta, but that has now been deleted.\\r\\n\\r\\n<!--\\r\\nExplain the **motivation** for making this change. What existing problem\\r\\ndoes the pull request solve?\\r\\n-->\\r\\n\\r\\n## How did you test this change?\\r\\n\\r\\n```\\r\\nyarn flow\\r\\nyarn lint\\r\\nyarn test --prod\\r\\n```\\r\\n\\r\\n<!--\\r\\nDemonstrate the code is solid. Example: The exact commands you ran and\\r\\ntheir output, screenshots / videos if the pull request changes the user\\r\\ninterface.\\r\\nHow exactly did you verify that your PR solves the issue you wanted to\\r\\nsolve?\\r\\n  If you leave this empty, your PR will very likely be closed.\\r\\n-->\"\n   - **Additions:** 4\n   - **Deletions:** 3023\n   - **Changed Files:** 30\n   - **Comments Count:** 0\n\n7. **Commit ID:** b7972822b5887d05ae772ef757a453265b4b7aec\n   - **Date:** 2023-05-03T18:26:00Z\n   - **Message:** \"useOptimisticState -> useOptimistic (#26772)\\n\\nDrop the \\\"state\\\". Just \\\"useOptimistic\\\". Its cleaner.\\r\\n\\r\\nThis is still an experimental API. May not be the final name.\"\n   - **Additions:** 65\n   - **Deletions:** 69\n   - **Changed Files:** 11\n   - **Comments Count:** 0\n\n8. **Commit ID:** 491aec5d6113ce5bae7c10966bc38a4a8fc091a8\n   - **Date:** 2023-05-01T17:19:20Z\n   - **Message:** \"Implement experimental_useOptimisticState (#26740)\\n\\nThis adds an experimental hook tentatively called useOptimisticState.\\r\\n(The actual name needs some bikeshedding.)\\r\\n\\r\\nThe headline feature is that you can use it to implement optimistic\\r\\nupdates. If you set some optimistic state during a transition/action,\\r\\nthe state will be automatically reverted once the transition completes.\\r\\n\\r\\nAnother feature is that the optimistic updates will be continually\\r\\nrebased on top of the latest state.\\r\\n\\r\\nIts easiest to explain with examples; well publish documentation as\\r\\nthe API gets closer to stabilizing. See tests for now.\\r\\n\\r\\nTechnically the use cases for this hook are broader than just optimistic\\r\\nupdates; you could use it implement any sort of \\\"pending\\\" state, such as\\r\\nthe ones exposed by useTransition and useFormStatus. But we expect\\r\\npeople will most often reach for this hook to implement the optimistic\\r\\nupdate pattern; simpler cases are covered by those other hooks.\"\n   - **Additions:** 846\n   - **Deletions:** 66\n   - **Changed Files:** 13\n   - **Comments Count:** 0\n\n9. **Commit ID:** 84a0a171ea0ecd25e287bd3d3dd30e932beb4677\n   - **Date:** 2022-12-14T20:08:29Z\n   - **Message:** \"Rename experimental useEvent to useEffectEvent (#25881)\\n\\nWe originally had grand plans for using this Event concept for more but\\r\\nnow its only meant to be used in combination with effects.\\r\\n\\r\\nIts an Event in the FRP terms, that is triggered from an Effect.\\r\\nTechnically it can also be from another function that itself is\\r\\ntriggered from an existing side-effect but thats kind of an advanced\\r\\ncase.\\r\\n\\r\\nThe canonical case is an effect that triggers an event:\\r\\n\\r\\n```js\\r\\nconst onHappened = useEffectEvent(() => ...);\\r\\nuseEffect(() => {\\r\\n  onHappened();\\r\\n}, []);\\r\\n```\"\n   - **Additions:** 176\n   - **Deletions:** 171\n   - **Changed Files:** 26\n   - **Comments Count:** 0\n\n10. **Commit ID:** e7c5af45ceb8fa2b64d39ec68345254ce9abd65e\n    - **Date:** 2022-10-24T03:20:52Z\n    - **Message:** \"Update cache() and use() to the canary aka next channel (#25502)\\n\\nTesting what it would look like to move this to the `next` channel.\"\n    - **Additions:** 325\n    - **Deletions:** 279\n    - **Changed Files:** 51\n    - **Comments Count:** 0",
+        "query": "cypher\nMATCH (f:File {name: \"React.js\"})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 283,
+                    "deletions": 285,
+                    "committedDate": "2023-11-02T20:13:21Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "ce2bc58a9f6f3b0bfc8c738a0d8e2a5f3a332ff5",
+                    "type": "Commit",
+                    "message": "\"[activity] rename unstable_Offscreen to unstable_Activity (#27640)\n\n`Activity` is the current candidate name. This PR starts the rename work\r\nby renaming the exported unstable component name.\r\n\r\nNOTE: downstream consumers need to rename the import when updating to\r\nthis commit.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 40,
+                    "deletions": 39,
+                    "committedDate": "2023-10-04T18:51:36Z",
+                    "changedFiles": 28,
+                    "commentsCount": 0,
+                    "id": "bfefb228422f7264a29b3a6b98ec95e05925e80e",
+                    "type": "Commit",
+                    "message": "\"Upgrade Server Actions to canary (#27459)\n\nUpgrades the stability of Server Actions from experimental to canary.\r\n\r\n- Turns on enableAsyncActions and enableFormActions\r\n- Removes \"experimental_\" prefix from useOptimistic, useFormStatus, and\r\nuseFormState\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 245,
+                    "deletions": 1258,
+                    "committedDate": "2023-09-29T22:24:05Z",
+                    "changedFiles": 30,
+                    "commentsCount": 0,
+                    "id": "c7ba8c098889b6dc47fa9c807bbba3975a658584",
+                    "type": "Commit",
+                    "message": "\"Enforce that the \"react-server\" build of \"react\" is used (#27436)\n\nI do this by simply renaming the secret export name in the \"subset\"\r\nbundle and this renamed version is what the FlightServer uses.\r\n\r\nThis requires us to be more diligent about always using the correct\r\ninstance of \"react\" in our tests so theres a bunch of clean up for\r\nthat.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 662,
+                    "deletions": 231,
+                    "committedDate": "2023-08-17T17:26:14Z",
+                    "changedFiles": 34,
+                    "commentsCount": 0,
+                    "id": "ac1a16c67e268fcb2c52e91717cbc918c7c24446",
+                    "type": "Commit",
+                    "message": "\"Add Postpone API (#27238)\n\nThis adds an experimental `unstable_postpone(reason)` API.\r\n\r\nCurrently we dont have a way to model effectively an Infinite Promise.\r\nI.e. something that suspends but never resolves. The reason this is\r\nuseful is because you might have something else that unblocks it later.\r\nE.g. by updating in place later, or by client rendering.\r\n\r\nOn the client this works to model as an Infinite Promise (in fact,\r\nthats what this implementation does). However, in Fizz and Flight that\r\ndoesnt work because the stream needs to end at some point. We dont\r\nhave any way of knowing that were suspended on infinite promises. Its\r\nnot enough to tag the promises because you could await those and thus\r\ncreating new promises. The only way we really have to signal this\r\nthrough a series of indirections like async functions, is by throwing.\r\nIts not 100% safe because these values can be caught but its the best\r\nwe can do.\r\n\r\nEffectively `postpone(reason)` behaves like a built-in [Catch\r\nBoundary](https://github.com/facebook/react/pull/26854). Its like\r\n`raise(Postpone, reason)` except its built-in so it needs to be able to\r\nbe encoded and caught by Suspense boundaries.\r\n\r\nIn Flight and Fizz these behave pretty much the same as errors. Flight\r\njust forwards it to retrigger on the client. In Fizz they just trigger\r\nclient rendering which itself might just postpone again or fill in the\r\nvalue. The difference is how they get logged.\r\n\r\nIn Flight and Fizz they log to `onPostpone(reason)` instead of\r\n`onError(error)`. This log is meant to help find deopts on the server\r\nlike finding places where you fall back to client rendering. The reason\r\nthat you pass in is for that purpose to help the reason for any deopts.\r\n\r\nI do track the stack trace in DEV but I dont currently expose it to\r\n`onPostpone`. This seems like a limitation. It might be better to expose\r\nthe Postpone object which is an Error object but thats more of an\r\nimplementation detail. I could also pass it as a second argument.\r\n\r\nOn the client after hydration they dont get passed to\r\n`onRecoverableError`. Theres no global `onPostpone` API to capture\r\npostponed things on the client just like theres no `onError`. At that\r\npoint its just assumed to be intentional. It doesnt have any `digest`\r\nor reason passed to the client since its not logged.\r\n\r\nThere are some hacky solutions that currently just tries to reuse as\r\nmuch of the existing code as possible but should be more properly\r\nimplemented.\r\n- Fiber is currently just converting it to a fake Promise object so that\r\nit behaves like an infinite Promise.\r\n- Fizz is encoding the magic digest string `\"POSTPONE\"` in the HTML so\r\nwe know to ignore it but it should probably just be something neater\r\nthat doesnt share namespace with digests.\r\n\r\nNext I plan on using this in the `/static` entry points for additional\r\nfeatures.\r\n\r\nWhy \"postpone\"? Its basically a synonym to \"defer\" but we plan on using\r\n\"defer\" for other purposes and its overloaded anyway.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 24,
+                    "deletions": 21,
+                    "committedDate": "2023-07-06T18:09:53Z",
+                    "changedFiles": 18,
+                    "commentsCount": 0,
+                    "id": "eb2c2f7c2cf2652a168c2b433d2989131c69754b",
+                    "type": "Commit",
+                    "message": "\"rename SuspenseList export to unstable_SuspenseList (#27061)\n\n## Summary\r\n\r\nas we began [discussing\r\nyesterday](https://github.com/facebook/react/pull/27056#discussion_r1253282784),\r\n`SuspenseList` is not actually stable yet, and should likely be exported\r\nwith the `unstable_` prefix.\r\n\r\nthe conversation yesterday began discussing this in the context of the\r\nfb-specific packages, but changing it there without updating everywhere\r\nelse leads to test failures, so here the change is made across packages.\r\n\r\n## How did you test this change?\r\n\r\n```\r\nyarn flow dom-browser\r\nyarn test\r\n```\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 4,
+                    "deletions": 3023,
+                    "committedDate": "2023-06-27T16:45:46Z",
+                    "changedFiles": 30,
+                    "commentsCount": 0,
+                    "id": "80d9a40114bb43c07d021e8254790852f450bd2b",
+                    "type": "Commit",
+                    "message": "\"Remove useMutableSource (#27011)\n\n## Summary\r\n\r\nThis PR cleans up `useMutableSource`. This has been blocked by a\r\nremaining dependency internally at Meta, but that has now been deleted.\r\n\r\n<!--\r\nExplain the **motivation** for making this change. What existing problem\r\ndoes the pull request solve?\r\n-->\r\n\r\n## How did you test this change?\r\n\r\n```\r\nyarn flow\r\nyarn lint\r\nyarn test --prod\r\n```\r\n\r\n<!--\r\nDemonstrate the code is solid. Example: The exact commands you ran and\r\ntheir output, screenshots / videos if the pull request changes the user\r\ninterface.\r\nHow exactly did you verify that your PR solves the issue you wanted to\r\nsolve?\r\n  If you leave this empty, your PR will very likely be closed.\r\n-->\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 65,
+                    "deletions": 69,
+                    "committedDate": "2023-05-03T18:26:00Z",
+                    "changedFiles": 11,
+                    "commentsCount": 0,
+                    "id": "b7972822b5887d05ae772ef757a453265b4b7aec",
+                    "type": "Commit",
+                    "message": "\"useOptimisticState -> useOptimistic (#26772)\n\nDrop the \"state\". Just \"useOptimistic\". Its cleaner.\r\n\r\nThis is still an experimental API. May not be the final name.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 846,
+                    "deletions": 66,
+                    "committedDate": "2023-05-01T17:19:20Z",
+                    "changedFiles": 13,
+                    "commentsCount": 0,
+                    "id": "491aec5d6113ce5bae7c10966bc38a4a8fc091a8",
+                    "type": "Commit",
+                    "message": "\"Implement experimental_useOptimisticState (#26740)\n\nThis adds an experimental hook tentatively called useOptimisticState.\r\n(The actual name needs some bikeshedding.)\r\n\r\nThe headline feature is that you can use it to implement optimistic\r\nupdates. If you set some optimistic state during a transition/action,\r\nthe state will be automatically reverted once the transition completes.\r\n\r\nAnother feature is that the optimistic updates will be continually\r\nrebased on top of the latest state.\r\n\r\nIts easiest to explain with examples; well publish documentation as\r\nthe API gets closer to stabilizing. See tests for now.\r\n\r\nTechnically the use cases for this hook are broader than just optimistic\r\nupdates; you could use it implement any sort of \"pending\" state, such as\r\nthe ones exposed by useTransition and useFormStatus. But we expect\r\npeople will most often reach for this hook to implement the optimistic\r\nupdate pattern; simpler cases are covered by those other hooks.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 176,
+                    "deletions": 171,
+                    "committedDate": "2022-12-14T20:08:29Z",
+                    "changedFiles": 26,
+                    "commentsCount": 0,
+                    "id": "84a0a171ea0ecd25e287bd3d3dd30e932beb4677",
+                    "type": "Commit",
+                    "message": "\"Rename experimental useEvent to useEffectEvent (#25881)\n\nWe originally had grand plans for using this Event concept for more but\r\nnow its only meant to be used in combination with effects.\r\n\r\nIts an Event in the FRP terms, that is triggered from an Effect.\r\nTechnically it can also be from another function that itself is\r\ntriggered from an existing side-effect but thats kind of an advanced\r\ncase.\r\n\r\nThe canonical case is an effect that triggers an event:\r\n\r\n```js\r\nconst onHappened = useEffectEvent(() => ...);\r\nuseEffect(() => {\r\n  onHappened();\r\n}, []);\r\n```\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 325,
+                    "deletions": 279,
+                    "committedDate": "2022-10-24T03:20:52Z",
+                    "changedFiles": 51,
+                    "commentsCount": 0,
+                    "id": "e7c5af45ceb8fa2b64d39ec68345254ce9abd65e",
+                    "type": "Commit",
+                    "message": "\"Update cache() and use() to the canary aka next channel (#25502)\n\nTesting what it would look like to move this to the `next` channel.\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "The developer with the most unfixed bugs is Brian Vaughn, with 44 open issues.",
+        "query": "cypher\nMATCH (u:User)-[:creates]->(i:Issue {state: 'open'})-[:belongs_to]->(:Repository)\nRETURN u.name AS developer, COUNT(i) AS open_issues\nORDER BY open_issues DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Brian Vaughn",
+                "open_issues": 44
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in ReactDOMInput.js?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in TapEventPlugin.js?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The files that introduce the most bugs are:\n\n1. ReactDOMComponent-test.js with 1 bug\n2. ChangeEventPlugin.js with 1 bug\n3. ChangeEventPlugin-test.js with 1 bug\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)<-[:introduced]-(n:Node)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "ReactDOMComponent-test.js",
+                "bug_count": 1
+            },
+            {
+                "f.name": "ChangeEventPlugin.js",
+                "bug_count": 1
+            },
+            {
+                "f.name": "ChangeEventPlugin-test.js",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy files are:\n\n1. ReactDOMInput-test.js with 3 bugs\n2. profilingCache-test.js.snap with 2 bugs\n3. ReactDOMComponent.js with 2 bugs\n4. ChangeEventPlugin.js with 2 bugs\n5. renderer.js with 2 bugs\n6. ExhaustiveDeps.js with 2 bugs\n7. package.json with 2 bugs\n8. ReactDOMInput.js with 2 bugs\n9. 03-interactivity-and-dynamic-uis.zh-CN.md with 1 bug\n10. 03-interactivity-and-dynamic-uis.md with 1 bug",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "ReactDOMInput-test.js",
+                "bugCount": 3
+            },
+            {
+                "f.name": "profilingCache-test.js.snap",
+                "bugCount": 2
+            },
+            {
+                "f.name": "ReactDOMComponent.js",
+                "bugCount": 2
+            },
+            {
+                "f.name": "ChangeEventPlugin.js",
+                "bugCount": 2
+            },
+            {
+                "f.name": "renderer.js",
+                "bugCount": 2
+            },
+            {
+                "f.name": "ExhaustiveDeps.js",
+                "bugCount": 2
+            },
+            {
+                "f.name": "package.json",
+                "bugCount": 2
+            },
+            {
+                "f.name": "ReactDOMInput.js",
+                "bugCount": 2
+            },
+            {
+                "f.name": "03-interactivity-and-dynamic-uis.zh-CN.md",
+                "bugCount": 1
+            },
+            {
+                "f.name": "03-interactivity-and-dynamic-uis.md",
+                "bugCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on March 1, 2022?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate =~ '2022-03-01T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on April 9, 2021?",
+        "response": "I don't know which commits were buggy on April 9, 2021. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.closed_at =~ '2021-04-09T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10217?",
+        "response": "The commit that fixed the bug ticket 10217 has the following details:\n\n- **Commit ID**: 2e757790751ab8d165fc4df37e90a59d914c4527\n- **Message**: \"Fix incorrect data in compositionend event with Korean IME on IE11 (#10217) (#12563)\\n\\n* Add isUsingKoreanIME function to check if a composition event was triggered by Korean IME\\r\\n\\r\\n* Add Korean IME check alongside useFallbackCompositionData and disable fallback mode with Korean IME\"\n- **Committed Date**: 2018-06-14T15:35:05Z\n- **Additions**: 18\n- **Deletions**: 2\n- **Changed Files**: 1\n- **Comments Count**: 0",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue {number: 10217})\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 18,
+                    "deletions": 2,
+                    "committedDate": "2018-06-14T15:35:05Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "2e757790751ab8d165fc4df37e90a59d914c4527",
+                    "type": "Commit",
+                    "message": "\"Fix incorrect data in compositionend event with Korean IME on IE11 (#10217) (#12563)\n\n* Add isUsingKoreanIME function to check if a composition event was triggered by Korean IME\r\n\r\n* Add Korean IME check alongside useFallbackCompositionData and disable fallback mode with Korean IME\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 21442?",
+        "response": "The commit that fixed the bug ticket 21442 has the following details:\n\n- **Commit ID**: 1e3383a41154cb32d8d6b78b2451ee4dabfcb973\n- **Committed Date**: 2021-05-18T15:42:08Z\n- **Additions**: 692\n- **Deletions**: 345\n- **Changed Files**: 4\n- **Comments Count**: 0\n- **Message**: \"DevTools: Reload all roots after Fast Refresh force remount (#21516)\n\nWorks around the corrupted Store state by detecting a broken Fast Refresh remount and forcefully dropping the root and re-mounting the entire tree. This prevents Fibers from getting duplicated in the Store (and in the Components tree). The benefit of this approach is that it doesn't rely on an update or change in behavior to Fast Refresh. (This workaround is pretty dirty, but since it's a DEV-only code path, it's probably okay.)\n\nNote that this change doesn't fix all of the reported issues (see #21442 (comment)) but it does fix some of them.\n\nThis commit also slightly refactors the way DevTools assigns and manages unique IDs for Fibers in the backend by removing the indirection of a \"primary Fiber\" and instead mapping both the primary and alternate.\n\nIt also removes the previous cache-on-read behavior of getFiberID and splits the method into three separate functions for different use cases:\n* getOrGenerateFiberID \u2013 Like the previous function, this method returns an ID or generates and caches a new one if the Fiber hasn't been seen before.\n* getFiberIDUnsafe \u2013 This function returns an ID if one has already been generated or null if not. (It can be used to e.g. log a message about a Fiber without potentially causing it to leak.)\n* getFiberIDThrows \u2013 This function returns an ID if one has already been generated or it throws. (It can be used to guarantee expected behavior rather than to silently cause a leak.)\"\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue {number: 21442})\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 692,
+                    "deletions": 345,
+                    "committedDate": "2021-05-18T15:42:08Z",
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "1e3383a41154cb32d8d6b78b2451ee4dabfcb973",
+                    "type": "Commit",
+                    "message": "\"DevTools: Reload all roots after Fast Refresh force remount (#21516)\n\nWorks around the corrupted Store state by detecting a broken Fast Refresh remount and forcefully dropping the root and re-mounting the entire tree. This prevents Fibers from getting duplicated in the Store (and in the Components tree). The benefit of this approach is that it doesnt rely on an update or change in behavior to Fast Refresh. (This workaround is pretty dirty, but since its a DEV-only code path, its probably okay.)\r\n\r\nNote that this change doesnt fix all of the reported issues (see #21442 (comment)) but it does fix some of them.\r\n\r\nThis commit also slightly refactors the way DevTools assigns and manages unique IDs for Fibers in the backend by removing the indirection of a \"primary Fiber\" and instead mapping both the primary and alternate.\r\n\r\nIt also removes the previous cache-on-read behavior of getFiberID and splits the method into three separate functions for different use cases:\r\n* getOrGenerateFiberID \u2013 Like the previous function, this method returns an ID or generates and caches a new one if the Fiber hasnt been seen before.\r\n* getFiberIDUnsafe \u2013 This function returns an ID if one has already been generated or null if not. (It can be used to e.g. log a message about a Fiber without potentially causing it to leak.)\r\n* getFiberIDThrows \u2013 This function returns an ID if one has already been generated or it throws. (It can be used to guarantee expected behavior rather than to silently cause a leak.)\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash f912186012f17858b9d25466c658a46e25093941?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit 2e757790751ab8d165fc4df37e90a59d914c4527?",
+        "response": "I don't know the bugs caused by commit 2e757790751ab8d165fc4df37e90a59d914c4527. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit {id: '2e757790751ab8d165fc4df37e90a59d914c4527'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "The developer with the most number of bugs yet to be fixed is Brian Vaughn, with a total of 44 open bugs.",
+        "query": "cypher\nMATCH (u:User)-[:creates]->(i:Issue {state: 'open'})-[:belongs_to]->(:Repository)\nRETURN u.name AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Brian Vaughn",
+                "open_bugs": 44
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on Nov. 2013?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "",
+        "result": [],
+        "iteration": 0
+    }
+]

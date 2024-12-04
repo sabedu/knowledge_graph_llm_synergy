@@ -1,0 +1,590 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate >= datetime('2024-07-28T20:00:45Z') AND c.committedDate <= datetime('2024-08-28T20:00:45Z')\nRETURN COUNT(c) AS commitCount",
+        "result": [
+            {
+                "commitCount": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.type = 'Commit'\nWITH c\nORDER BY c.committedDate DESC\nLIMIT 1\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= '2018-05-27T00:00:00Z' AND c.committedDate <= '2018-05-31T23:59:59Z'\nRETURN c.id, c.message, c.additions, c.deletions, c.changedFiles, c.committedDate, r.name\nORDER BY c.committedDate ASC",
+        "result": [
+            {
+                "c.id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                "c.message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-28T09:23:05Z",
+                "r.name": "ohmyzsh"
+            },
+            {
+                "c.id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                "c.message": "\"Clarify ssh-agent settings position\"",
+                "c.additions": 2,
+                "c.deletions": 0,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-28T15:09:53Z",
+                "r.name": "ohmyzsh"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH \"2024-07-31\"\nRETURN c.message\nLIMIT 1",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "",
+        "query": "MATCH (f:File {name: 'install.sh'})<-[c:changed]-(commit:Commit)\nRETURN f.path AS filePath, commit.hash AS commitHash, commit.message AS commitMessage, c.additions AS additions, c.deletions AS deletions, c.patch AS patch\nORDER BY commit.committedDate DESC",
+        "result": [
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"chore: replace all instances of twitter with X\n\nCloses #12536\"",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -482,7 +482,7 @@ print_success() {\n     \"$(fmt_code \"$(fmt_link \".zshrc\" \"file://$zdot/.zshrc\" --text)\")\" \\\n     \"file to select plugins, themes, and options.\"\n   printf '\\n'\n-  printf '%s\\n' \"• Follow us on Twitter: $(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)\"\n+  printf '%s\\n' \"• Follow us on X: $(fmt_link @ohmyzsh https://x.com/ohmyzsh)\"\n   printf '%s\\n' \"• Join our Discord community: $(fmt_link \"Discord server\" https://discord.gg/ohmyzsh)\"\n   printf '%s\\n' \"• Get stickers, t-shirts, coffee mugs and more: $(fmt_link \"Planet Argon Shop\" https://shop.planetargon.com/collections/oh-my-zsh)\"\n   printf '%s\\n' $FMT_RESET"
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\"",
+                "additions": 8,
+                "deletions": 3,
+                "patch": "@@ -166,11 +166,16 @@ supports_hyperlinks() {\n \n   # If $TERM_PROGRAM is set, these terminals support hyperlinks\n   case \"$TERM_PROGRAM\" in\n-  Hyper|iTerm.app|terminology|WezTerm) return 0 ;;\n+  Hyper|iTerm.app|terminology|WezTerm|vscode) return 0 ;;\n   esac\n \n-  # kitty supports hyperlinks\n-  if [ \"$TERM\" = xterm-kitty ]; then\n+  # These termcap entries support hyperlinks\n+  case \"$TERM\" in\n+  xterm-kitty|alacritty|alacritty-direct) return 0 ;;\n+  esac\n+\n+  # xfce4-terminal supports hyperlinks\n+  if [ \"$COLORTERM\" = \"xfce4-terminal\" ]; then\n     return 0\n   fi\n "
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\"",
+                "additions": 3,
+                "deletions": 1,
+                "patch": "@@ -63,7 +63,9 @@ zdot=\"${ZDOTDIR:-$HOME}\"\n # Default value for $ZSH\n # a) if $ZDOTDIR is supplied and not $HOME: $ZDOTDIR/ohmyzsh\n # b) otherwise, $HOME/.oh-my-zsh\n-[ \"$ZDOTDIR\" = \"$HOME\" ] || ZSH=\"${ZSH:-${ZDOTDIR:+$ZDOTDIR/ohmyzsh}}\"\n+if [ -n \"$ZDOTDIR\" ] && [ \"$ZDOTDIR\" != \"$HOME\" ]; then\n+  ZSH=\"${ZSH:-$ZDOTDIR/ohmyzsh}\"\n+fi\n ZSH=\"${ZSH:-$HOME/.oh-my-zsh}\"\n \n # Default settings"
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"chore(installer): remove words triggering false positives in antiviruses\"",
+                "additions": 1,
+                "deletions": 2,
+                "patch": "@@ -84,8 +84,7 @@ command_exists() {\n user_can_sudo() {\n   # Check if sudo is installed\n   command_exists sudo || return 1\n-  # Termux can't run sudo unless the device is rooted. Either way, `chsh` works\n-  # without sudo, so we can detect it and exit the function early.\n+  # Termux can't run sudo, so we can detect it and exit the function early.\n   case \"$PREFIX\" in\n   *com.termux*) return 1 ;;\n   esac"
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornellà <hello@mcornella.com>\"",
+                "additions": 5,
+                "deletions": 0,
+                "patch": "@@ -84,6 +84,11 @@ command_exists() {\n user_can_sudo() {\n   # Check if sudo is installed\n   command_exists sudo || return 1\n+  # Termux can't run sudo unless the device is rooted. Either way, `chsh` works\n+  # without sudo, so we can detect it and exit the function early.\n+  case \"$PREFIX\" in\n+  *com.termux*) return 1 ;;\n+  esac\n   # The following command has 3 parts:\n   #\n   # 1. Run `sudo` with `-v`. Does the following:"
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\"",
+                "additions": 5,
+                "deletions": 0,
+                "patch": "@@ -523,6 +523,11 @@ EOF\n     exit 1\n   fi\n \n+  # Create ZDOTDIR folder structure if it doesn't exist\n+  if [ -n \"$ZDOTDIR\" ]; then\n+    mkdir -p \"$ZDOTDIR\"\n+  fi\n+\n   setup_ohmyzsh\n   setup_zshrc\n   setup_shell"
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\"",
+                "additions": 5,
+                "deletions": 3,
+                "patch": "@@ -61,9 +61,9 @@ custom_zsh=${ZSH:+yes}\n zdot=\"${ZDOTDIR:-$HOME}\"\n \n # Default value for $ZSH\n-# a) if $ZDOTDIR is supplied: $ZDOTDIR/ohmyzsh\n+# a) if $ZDOTDIR is supplied and not $HOME: $ZDOTDIR/ohmyzsh\n # b) otherwise, $HOME/.oh-my-zsh\n-ZSH=\"${ZSH:-${ZDOTDIR:+$ZDOTDIR/ohmyzsh}}\"\n+[ \"$ZDOTDIR\" = \"$HOME\" ] || ZSH=\"${ZSH:-${ZDOTDIR:+$ZDOTDIR/ohmyzsh}}\"\n ZSH=\"${ZSH:-$HOME/.oh-my-zsh}\"\n \n # Default settings\n@@ -350,7 +350,9 @@ setup_zshrc() {\n \n   # Modify $ZSH variable in .zshrc directory to use the literal $ZDOTDIR or $HOME\n   omz=\"$ZSH\"\n-  [ -z \"$ZDOTDIR\" ] || omz=$(echo \"$omz\" | sed \"s|^$ZDOTDIR/|\\$ZDOTDIR/|\")\n+  if [ -n \"$ZDOTDIR\" ] && [ \"$ZDOTDIR\" != \"$HOME\" ]; then\n+    omz=$(echo \"$omz\" | sed \"s|^$ZDOTDIR/|\\$ZDOTDIR/|\")\n+  fi\n   omz=$(echo \"$omz\" | sed \"s|^$HOME/|\\$HOME/|\")\n \n   sed \"s|^export ZSH=.*$|export ZSH=\\\"${omz}\\\"|\" \"$ZSH/templates/zshrc.zsh-template\" > \"$zdot/.zshrc-omztemp\""
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornellà <hello@mcornella.com>\"",
+                "additions": 30,
+                "deletions": 15,
+                "patch": "@@ -16,6 +16,9 @@\n #   ZSH=~/.zsh sh install.sh\n #\n # Respects the following environment variables:\n+#   ZDOTDIR - path to Zsh dotfiles directory (default: unset). See [1][2]\n+#             [1] https://zsh.sourceforge.io/Doc/Release/Parameters.html#index-ZDOTDIR\n+#             [2] https://zsh.sourceforge.io/Doc/Release/Files.html#index-ZDOTDIR_002c-use-of\n #   ZSH     - path to the Oh My Zsh repository folder (default: $HOME/.oh-my-zsh)\n #   REPO    - name of the GitHub repo to install from (default: ohmyzsh/ohmyzsh)\n #   REMOTE  - full remote URL of the git repo to install (default: GitHub via HTTPS)\n@@ -53,8 +56,17 @@ HOME=\"${HOME:-$(eval echo ~$USER)}\"\n # Track if $ZSH was provided\n custom_zsh=${ZSH:+yes}\n \n-# Default settings\n+# Use $zdot to keep track of where the directory is for zsh dotfiles\n+# To check if $ZDOTDIR was provided, explicitly check for $ZDOTDIR\n+zdot=\"${ZDOTDIR:-$HOME}\"\n+\n+# Default value for $ZSH\n+# a) if $ZDOTDIR is supplied: $ZDOTDIR/ohmyzsh\n+# b) otherwise, $HOME/.oh-my-zsh\n+ZSH=\"${ZSH:-${ZDOTDIR:+$ZDOTDIR/ohmyzsh}}\"\n ZSH=\"${ZSH:-$HOME/.oh-my-zsh}\"\n+\n+# Default settings\n REPO=${REPO:-ohmyzsh/ohmyzsh}\n REMOTE=${REMOTE:-https://github.com/${REPO}.git}\n BRANCH=${BRANCH:-master}\n@@ -311,11 +323,11 @@ setup_zshrc() {\n   echo \"${FMT_BLUE}Looking for an existing zsh config...${FMT_RESET}\"\n \n   # Must use this exact name so uninstall.sh can find it\n-  OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh\n-  if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then\n+  OLD_ZSHRC=\"$zdot/.zshrc.pre-oh-my-zsh\"\n+  if [ -f \"$zdot/.zshrc\" ] || [ -h \"$zdot/.zshrc\" ]; then\n     # Skip this if the user doesn't want to replace an existing .zshrc\n     if [ \"$KEEP_ZSHRC\" = yes ]; then\n-      echo \"${FMT_YELLOW}Found ~/.zshrc.${FMT_RESET} ${FMT_GREEN}Keeping...${FMT_RESET}\"\n+      echo \"${FMT_YELLOW}Found ${zdot}/.zshrc.${FMT_RESET} ${FMT_GREEN}Keeping...${FMT_RESET}\"\n       return\n     fi\n     if [ -e \"$OLD_ZSHRC\" ]; then\n@@ -327,19 +339,22 @@ setup_zshrc() {\n       fi\n       mv \"$OLD_ZSHRC\" \"${OLD_OLD_ZSHRC}\"\n \n-      echo \"${FMT_YELLOW}Found old ~/.zshrc.pre-oh-my-zsh.\" \\\n+      echo \"${FMT_YELLOW}Found old .zshrc.pre-oh-my-zsh.\" \\\n         \"${FMT_GREEN}Backing up to ${OLD_OLD_ZSHRC}${FMT_RESET}\"\n     fi\n-    echo \"${FMT_YELLOW}Found ~/.zshrc.${FMT_RESET} ${FMT_GREEN}Backing up to ${OLD_ZSHRC}${FMT_RESET}\"\n-    mv ~/.zshrc \"$OLD_ZSHRC\"\n+    echo \"${FMT_YELLOW}Found ${zdot}/.zshrc.${FMT_RESET} ${FMT_GREEN}Backing up to ${OLD_ZSHRC}${FMT_RESET}\"\n+    mv \"$zdot/.zshrc\" \"$OLD_ZSHRC\"\n   fi\n \n-  echo \"${FMT_GREEN}Using the Oh My Zsh template file and adding it to ~/.zshrc.${FMT_RESET}\"\n+  echo \"${FMT_GREEN}Using the Oh My Zsh template file and adding it to $zdot/.zshrc.${FMT_RESET}\"\n+\n+  # Modify $ZSH variable in .zshrc directory to use the literal $ZDOTDIR or $HOME\n+  omz=\"$ZSH\"\n+  [ -z \"$ZDOTDIR\" ] || omz=$(echo \"$omz\" | sed \"s|^$ZDOTDIR/|\\$ZDOTDIR/|\")\n+  omz=$(echo \"$omz\" | sed \"s|^$HOME/|\\$HOME/|\")\n \n-  # Replace $HOME path with '$HOME' in $ZSH variable in .zshrc file\n-  omz=$(echo \"$ZSH\" | sed \"s|^$HOME/|\\$HOME/|\")\n-  sed \"s|^export ZSH=.*$|export ZSH=\\\"${omz}\\\"|\" \"$ZSH/templates/zshrc.zsh-template\" > ~/.zshrc-omztemp\n-  mv -f ~/.zshrc-omztemp ~/.zshrc\n+  sed \"s|^export ZSH=.*$|export ZSH=\\\"${omz}\\\"|\" \"$ZSH/templates/zshrc.zsh-template\" > \"$zdot/.zshrc-omztemp\"\n+  mv -f \"$zdot/.zshrc-omztemp\" \"$zdot/.zshrc\"\n \n   echo\n }\n@@ -407,9 +422,9 @@ EOF\n \n   # We're going to change the default shell, so back up the current one\n   if [ -n \"$SHELL\" ]; then\n-    echo \"$SHELL\" > ~/.shell.pre-oh-my-zsh\n+    echo \"$SHELL\" > \"$zdot/.shell.pre-oh-my-zsh\"\n   else\n-    grep \"^$USER:\" /etc/passwd | awk -F: '{print $7}' > ~/.shell.pre-oh-my-zsh\n+    grep \"^$USER:\" /etc/passwd | awk -F: '{print $7}' > \"$zdot/.shell.pre-oh-my-zsh\"\n   fi\n \n   echo \"Changing your shell to $zsh...\"\n@@ -451,7 +466,7 @@ print_success() {\n   printf '\\n'\n   printf '\\n'\n   printf \"%s %s %s\\n\" \"Before you scream ${FMT_BOLD}${FMT_YELLOW}Oh My Zsh!${FMT_RESET} look over the\" \\\n-    \"$(fmt_code \"$(fmt_link \".zshrc\" \"file://$HOME/.zshrc\" --text)\")\" \\\n+    \"$(fmt_code \"$(fmt_link \".zshrc\" \"file://$zdot/.zshrc\" --text)\")\" \\\n     \"file to select plugins, themes, and options.\"\n   printf '\\n'\n   printf '%s\\n' \"• Follow us on Twitter: $(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)\""
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\"",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -273,7 +273,7 @@ setup_ohmyzsh() {\n   }\n \n   ostype=$(uname)\n-  if [ -z \"${ostype%CYGWIN*}\" ] && git --version | grep -q msysgit; then\n+  if [ -z \"${ostype%CYGWIN*}\" ] && git --version | grep -Eq 'msysgit|windows'; then\n     fmt_error \"Windows/MSYS Git is not supported on Cygwin\"\n     fmt_error \"Make sure the Cygwin git package is installed and is first on the \\$PATH\"\n     exit 1"
+            },
+            {
+                "filePath": "tools/install.sh",
+                "commitHash": null,
+                "commitMessage": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\"",
+                "additions": 8,
+                "deletions": 2,
+                "patch": "@@ -156,11 +156,17 @@ supports_hyperlinks() {\n     return 0\n   fi\n \n-  # Windows Terminal or Konsole also support hyperlinks\n-  if [ -n \"$WT_SESSION\" ] || [ -n \"$KONSOLE_VERSION\" ]; then\n+  # Windows Terminal also supports hyperlinks\n+  if [ -n \"$WT_SESSION\" ]; then\n     return 0\n   fi\n \n+  # Konsole supports hyperlinks, but it's an opt-in setting that can't be detected\n+  # https://github.com/ohmyzsh/ohmyzsh/issues/10964\n+  # if [ -n \"$KONSOLE_VERSION\" ]; then\n+  #   return 0\n+  # fi\n+\n   return 1\n }\n "
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File {name: 'README.md'})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 11,
+                    "committedDate": "2024-08-18T09:22:30Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "2056aeeeaddd977eb205619c6f236b94dac896be",
+                    "type": "Commit",
+                    "message": "\"Revert \"feat(git)!: ask for confirmation in `gpf` alias (#10169)\"\n\nThis reverts commit c13795d4c40fe075ec8b4450bb78b65ecf8108b2.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 0,
+                    "committedDate": "2024-08-15T15:53:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b0204f78394d84771436a7717aafee6cad140319",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gmff`, `gprum(i)`, `grbum` aliases to work with `upstream` remotes (#11428)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 1,
+                    "committedDate": "2024-08-15T15:04:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "f30df6c855d1df077adc6b226219629312015ec6",
+                    "type": "Commit",
+                    "message": "\"docs: document disclaimer about theme appearance\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 6,
+                    "committedDate": "2024-08-15T14:48:03Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "c13795d4c40fe075ec8b4450bb78b65ecf8108b2",
+                    "type": "Commit",
+                    "message": "\"feat(git)!: ask for confirmation in `gpf` alias (#10169)\n\n- Rename `git push --force-with-lease ...` to `gpff`\r\n- Add a y/n confirmation prompt to `gpf` before running `git push --force-with-lease ...`\r\n\r\nBREAKING CHANGE: this change adds a confirmation prompt to the `gpf` alias before\r\nrunning the potentially destructive `git push --force-with-lease` command. If you\r\nwant to force-run the command without having to confirm it, run `gpff`.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 15,
+                    "committedDate": "2024-08-15T14:26:46Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d26c4a276610445670fb71d415804625cebd7ccd",
+                    "type": "Commit",
+                    "message": "\"chore(tmux): add link to iTerm2 integration docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 60,
+                    "deletions": 0,
+                    "committedDate": "2024-08-14T07:18:18Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "9ba6daa1b5d0b60c89525d679eb30fe3ed9947de",
+                    "type": "Commit",
+                    "message": "\"feat(conda): add `conda` aliases plugin\n\nCloses #7318\nClosed #9691\n\nCo-authored-by: garywei944 <33930674+garywei944@users.noreply.github.com>\nCo-authored-by: Marc Cornellà <marc@mcornella.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 17,
+                    "deletions": 10,
+                    "committedDate": "2024-08-12T09:46:16Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "d6f84f3e7d2515cee8ba776d05ee2009ffd471d7",
+                    "type": "Commit",
+                    "message": "\"fix(catimg): add support to `magick` binary (#12608)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 123,
+                    "deletions": 90,
+                    "committedDate": "2024-08-09T07:44:46Z",
+                    "changedFiles": 23,
+                    "commentsCount": 0,
+                    "id": "efafef8495f030501e0df59ccb76a598bbce3ae1",
+                    "type": "Commit",
+                    "message": "\"docs: improve several plugin READMEs and add one for `ssh` plugin\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 125,
+                    "deletions": 112,
+                    "committedDate": "2024-08-08T18:43:20Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "fccaaf2fc60149baab966acaeae35f55325e6f98",
+                    "type": "Commit",
+                    "message": "\"fix(heroku-alias): fix loading `heroku-alias` plugin and rework docs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "deletions": 411,
+                    "committedDate": "2024-08-08T18:43:11Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "ff62d39f023fbe2872078ce82ea9704b1bf09ea6",
+                    "type": "Commit",
+                    "message": "\"refactor(docker-machine)!: remove plugin for unsupported Docker Machine\n\nBREAKING CHANGE: the `docker-machine` plugin is removed as it was deprecated\nand unsupported years ago. Use Docker Desktop instead.\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(DISTINCT i) AS unfixedBugs\nRETURN u.login AS developer, unfixedBugs\nORDER BY unfixedBugs DESC\nLIMIT 5",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)\nWHERE EXISTS((c)-[:changed]->(:File {name: 'README.md'}))\nWITH u, COUNT(DISTINCT i) AS fixedIssues\nRETURN u.login AS developer, fixedIssues\nORDER BY fixedIssues DESC\nLIMIT 5",
+        "result": [
+            {
+                "developer": "mcornella",
+                "fixedIssues": 40
+            },
+            {
+                "developer": "carlosala",
+                "fixedIssues": 12
+            },
+            {
+                "developer": "apjanke",
+                "fixedIssues": 2
+            },
+            {
+                "developer": "maksyms",
+                "fixedIssues": 2
+            },
+            {
+                "developer": "aleagnelli",
+                "fixedIssues": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)\nWHERE c.message CONTAINS 'cli.zsh'\nWITH u, COUNT(DISTINCT i) AS fixedBugs\nRETURN u.login AS developer, fixedBugs\nORDER BY fixedBugs DESC\nLIMIT 1",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[r:changed]->(f:File)\nWHERE EXISTS((c)-[:introduced]->(:Issue))\nWITH f, COUNT(DISTINCT c) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\nRETURN f.path AS file_path, bug_count",
+        "result": [
+            {
+                "file_path": "plugins/vim-interaction/README.md",
+                "bug_count": 8
+            },
+            {
+                "file_path": "lib/termsupport.zsh",
+                "bug_count": 2
+            },
+            {
+                "file_path": "tools/upgrade.sh",
+                "bug_count": 2
+            },
+            {
+                "file_path": "plugins/aws/aws.plugin.zsh",
+                "bug_count": 2
+            },
+            {
+                "file_path": "tools/install.sh",
+                "bug_count": 2
+            },
+            {
+                "file_path": "tools/check_for_upgrade.sh",
+                "bug_count": 1
+            },
+            {
+                "file_path": "plugins/azure/azure.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "file_path": "core/cli.zsh",
+                "bug_count": 1
+            },
+            {
+                "file_path": "plugins/kubectl/kubectl.plugin.zsh",
+                "bug_count": 1
+            },
+            {
+                "file_path": "plugins/git.plugin.zsh",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)<-[:impacted]-(i:Issue)\nWHERE i.state = 'closed'\nWITH f, COUNT(i) AS issueCount\nORDER BY issueCount DESC\nLIMIT 10\nRETURN f.name AS fileName, f.path AS filePath, issueCount",
+        "result": [
+            {
+                "fileName": "README.md",
+                "filePath": "plugins/vim-interaction/README.md",
+                "issueCount": 6
+            },
+            {
+                "fileName": "termsupport.zsh",
+                "filePath": "lib/termsupport.zsh",
+                "issueCount": 2
+            },
+            {
+                "fileName": "upgrade.sh",
+                "filePath": "tools/upgrade.sh",
+                "issueCount": 2
+            },
+            {
+                "fileName": "cli.zsh",
+                "filePath": "core/cli.zsh",
+                "issueCount": 2
+            },
+            {
+                "fileName": "aws.plugin.zsh",
+                "filePath": "plugins/aws/aws.plugin.zsh",
+                "issueCount": 2
+            },
+            {
+                "fileName": "_gradlew",
+                "filePath": "plugins/gradle/_gradlew",
+                "issueCount": 1
+            },
+            {
+                "fileName": "gradle.plugin.zsh",
+                "filePath": "plugins/gradle/gradle.plugin.zsh",
+                "issueCount": 1
+            },
+            {
+                "fileName": "kiwi.zsh-theme",
+                "filePath": "themes/kiwi.zsh-theme",
+                "issueCount": 1
+            },
+            {
+                "fileName": "git.zsh",
+                "filePath": "git.zsh",
+                "issueCount": 1
+            },
+            {
+                "fileName": "_gradle",
+                "filePath": "plugins/gradle/_gradle",
+                "issueCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate STARTS WITH '2021-11-17'\nRETURN c.id, c.message, c.committedDate, i.title, i.number",
+        "result": [
+            {
+                "c.id": "98b48015486bc638ba8f989af9285b73c413f9e6",
+                "c.message": "\"fix(bundler): use BUNDLE_JOBS in `bi` to avoid config file change\n\nWhen calling `bundle install` with `--jobs=<n>`, bundle persists this\nargument in `.bundle/config`. If we run `BUNDLE_JOBS=<n> bundle install`\ninstead, this is not persisted.\n\nFixes #10425\"",
+                "c.committedDate": "2021-11-17T12:09:25Z",
+                "i.title": "\"`bi` from bundler plugin modifies ./.bundle/config\"",
+                "i.number": 10425
+            },
+            {
+                "c.id": "88e72e8a5482db677a1d07722293a3a4f8f71342",
+                "c.message": "\"fix(docker-compose)!: check for old command instead of calling `docker` (#10409)\n\nBREAKING CHANGE: the plugin now checks for the `docker-compose` command instead\nof trying whether `docker compose` is a valid command. This means that if the\nold command is still installed it will be used instead. To use `docker compose`,\nuninstall any old copies of `docker-compose`.\n\nFixes #10409\"",
+                "c.committedDate": "2021-11-17T10:05:25Z",
+                "i.title": "\"The `docker-compose` plugin started docker.service\"",
+                "i.number": 10409
+            },
+            {
+                "c.id": "b60b3f184275c39800dd7284d6904fcf295b3956",
+                "c.message": "\"fix(osx): deprecate `osx` plugin without symlink (#10428)\n\nFixes #10428\"",
+                "c.committedDate": "2021-11-17T09:53:17Z",
+                "i.title": "\"Error: Updating plugins/osx would lose untracked files in them\"",
+                "i.number": 10428
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket KAFKA-7354?",
+        "response": "",
+        "query": "MATCH (i:Issue {number: 7354})<-[:fixed]-(c:Commit)-[:belongs_to]->(r:Repository {name: 'kafka'})\nRETURN c",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket Kafka-7354?",
+        "response": "",
+        "query": "MATCH (i:Issue {number: 7354})<-[:fixed]-(c:Commit)-[:belongs_to]->(r:Repository {name: \"Kafka\"})\nRETURN c.id, c.message, c.committedDate",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: \"b9be3a43b4da579299b4426b1ba9121f746e2555\"})\nMATCH (c)-[:introduced]->(i:Issue)\nRETURN i.id, i.title, i.url",
+        "result": [
+            {
+                "i.id": 12400,
+                "i.title": "\"`omz plugin disable` breaks .zshrc file when disabling common substring\"",
+                "i.url": "https://github.com/ohmyzsh/ohmyzsh/issues/12400"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: '65393b4bb10de841edbe2026dba29b73625b33d7'})-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nRETURN i.title AS BugTitle, i.url AS BugURL",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate >= '2024-07-01T00:00:00Z' AND c.committedDate < '2024-08-01T00:00:00Z'\nWITH count(DISTINCT c) AS fixingCommits\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate >= '2024-07-01T00:00:00Z' AND c.committedDate < '2024-08-01T00:00:00Z'\nWITH fixingCommits, count(DISTINCT c) AS bugIntroducingCommits\nRETURN CASE WHEN fixingCommits > 0 THEN toFloat(bugIntroducingCommits) / fixingCommits * 100 ELSE 0 END AS percentage",
+        "result": [
+            {
+                "percentage": 12.5
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(:Issue)\nWHERE c.committedDate >= '2024-07-01T00:00:00Z' AND c.committedDate < '2024-08-01T00:00:00Z'\nAND EXISTS((c)-[:introduced]->(:Issue))\nRETURN COUNT(DISTINCT c) AS fixingCommitsCausingBugs",
+        "result": [
+            {
+                "fixingCommitsCausingBugs": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(DISTINCT i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 1\nRETURN u.name AS developer, bugCount",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate <= '2023-06-08T23:59:59Z' AND i.created_at > '2023-06-08T00:00:00Z'\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 0,
+                    "committedDate": "2023-06-05T08:38:54Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "115cee17015e4b5665e16dc4fd15c53e06a22f9a",
+                    "type": "Commit",
+                    "message": "\"feat(git): add `gunwipall` function (#11725)\n\nCo-authored-by: Carlo Sala <carlosalag@protonmail.com>\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2023-01-03T09:02:05Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "3fca9c8933afc5c118a73cedb171a3c7b8e92730",
+                    "type": "Commit",
+                    "message": "\"fix(upgrade): check if git is available and working\n\nmacOS seems to break dev tools when updating the system. This should\nprevent the previous issues. See #11309\n\nCloses #11420\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 8,
+                    "deletions": 8,
+                    "committedDate": "2022-10-12T09:06:29Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "b9be3a43b4da579299b4426b1ba9121f746e2555",
+                    "type": "Commit",
+                    "message": "\"fix(cli): change unrecognized `\\s` in BSD awk (#11146)\n\nIn BSD awk, \\s is not a valid sequence interchangeable with \"space or tab characters\"\nas it is in GNU awk. This fix uses [ \\t] instead, which is all the possibilities that\nwe need to contemplate when reading the .zshrc file.\n\nFixes #11146\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 11,
+                    "deletions": 10,
+                    "committedDate": "2021-12-28T16:06:50Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "56de7c85f34a15a4490f4984e128dba78fcebfd3",
+                    "type": "Commit",
+                    "message": "\"docs(aliases): clarify usage (#9990)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 9,
+                    "deletions": 2,
+                    "committedDate": "2021-09-16T15:01:58Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "b79726b1c33149a429bbade49e9567a08ffa98af",
+                    "type": "Commit",
+                    "message": "\"fix(update): silence `typeset` calls in `upgrade.sh` script (#10048)\n\nCo-authored-by: yyny <6576327+yyny@users.noreply.github.com>\""
+                }
+            }
+        ],
+        "iteration": 0
+    }
+]

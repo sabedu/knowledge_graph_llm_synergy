@@ -1,0 +1,602 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(:Repository)\nWHERE c.committedDate >= datetime('2024-07-28T03:07:30Z') AND c.committedDate <= datetime('2024-08-28T03:07:30Z')\nRETURN COUNT(c) AS commits_in_last_month",
+        "result": [
+            {
+                "commits_in_last_month": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE NOT (:Commit)-[:parent_of]->(c)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1",
+        "result": [
+            {
+                "c": {
+                    "additions": 66060,
+                    "deletions": 0,
+                    "committedDate": "2024-03-25T10:39:47Z",
+                    "changedFiles": 319,
+                    "commentsCount": 0,
+                    "id": "a33c0b897c502f82f59fe283e71323b9cb0503a6",
+                    "type": "Commit",
+                    "message": "\"Initial commit\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= '2018-05-27T00:00:00Z' AND c.committedDate <= '2018-05-31T23:59:59Z'\nRETURN c.id, c.message, c.additions, c.deletions, c.changedFiles, c.committedDate, r.name\nORDER BY c.committedDate ASC",
+        "result": [
+            {
+                "c.id": "a32f857ac78ad1b33c61e6fbd47ccd57f21155c2",
+                "c.message": "\"Use --frozen-lockfile for Yarn in CI build (#12914)\n\nCI builds should always use the `--frozen-lockfile` option. It will fail the build if the lockfile is out-of-date:\r\n\r\n> If you need reproducible dependencies, which is usually the case with the continuous integration systems, you should pass --frozen-lockfile flag.\r\n\r\n(https://yarnpkg.com/en/docs/cli/install/)\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-28T18:52:42Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "aa85b0fd5ffc92de38720c29833a54c67285abfb",
+                "c.message": "\"Upgrade to Jest 23 (#12894)\n\n* Upgrade to Jest 23 beta\r\n\r\n* prefer `.toHaveBeenCalledTimes`\r\n\r\n* 23 stable\"",
+                "c.additions": 602,
+                "c.deletions": 1004,
+                "c.changedFiles": 28,
+                "c.committedDate": "2018-05-28T22:03:15Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "8aeea5afa2d688968545b1cc5a30a48ddc0fa503",
+                "c.message": "\"Do not assign node.value on input creation if no change will occur (#12925)\n\nThis commit fixes an issue where assigning an empty string to required\r\ntext inputs triggers the invalid state in Firefox (~60.0.1).\r\n\r\nIt does this by first comparing the initial state value to the current\r\nvalue property on the text element. This:\r\n\r\n1. Prevents the validation issue\r\n2. Avoids an extra DOM Mutation in some cases\"",
+                "c.additions": 30,
+                "c.deletions": 7,
+                "c.changedFiles": 2,
+                "c.committedDate": "2018-05-29T13:48:58Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "4f1f909b5b5ffe28675eed3fdb645dfaf975c1ef",
+                "c.message": "\"Disable Flow on AppVeyor again\n\nIt runs out of memory.\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-29T14:47:14Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "83f76e4db9a060911774f497b5715bd4d4f42a9c",
+                "c.message": "\"ForwardRefs supports propTypes (#12911)\n\n* Moved some internal forwardRef tests to not be internal\r\n* ForwardRef supports propTypes\"",
+                "c.additions": 194,
+                "c.deletions": 103,
+                "c.changedFiles": 3,
+                "c.committedDate": "2018-05-29T16:50:49Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "001f9ef4717a0928b4875cbad3421a17f49f95a5",
+                "c.message": "\"Release script prompts for NPM 2FA code (#12908)\n\n* Release script prompts for NPM 2fa code\"",
+                "c.additions": 48,
+                "c.deletions": 3,
+                "c.changedFiles": 6,
+                "c.committedDate": "2018-05-29T19:50:04Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "ff724d3c286a1753723ea71e8c046498ed1aac98",
+                "c.message": "\"[scheduler] 4/n Allow splitting out `schedule` in fb-www, prepare to fix polyfill issue internally (#12900)\n\n* Use local references to global things inside scheduler\r\n\r\n**what is the change?:**\r\nSee title\r\n\r\n**why make this change?:**\r\nWe want to avoid initially calling one version of an API and then later\r\naccessing a polyfilled version.\r\n\r\n**test plan:**\r\nRun existing tests.\r\n\r\n* Shim ReactScheduler for www\r\n\r\n**what is the change?:**\r\nIn www we want to reference the separate build of ReactScheduler,\r\nwhich allows treating it as a separate module internally.\r\n\r\n**why make this change?:**\r\nWe need to require the ReactScheduler before our rAF polyfill activates,\r\nin order to customize which custom behaviors we want.\r\n\r\nThis is also a step towards being able to experiment with using it\r\noutside of React.\r\n\r\n**test plan:**\r\nRan tests, ran the build, and ran `test-build`.\r\n\r\n* Generate a bundle for fb-www\r\n\r\n**what is the change?:**\r\nSee title\r\n\r\n**why make this change?:**\r\nSplitting out the schedule module allows us to load it before\r\npolyfills kick in for rAF and other APIs.\r\n\r\nAnd long term we want to split this into a separate module anyway, this\r\nis a step towards that.\r\n\r\n**test plan:**\r\nIll run the sync next week and verify that this all works. :)\r\n\r\n* ran prettier\r\n\r\n* fix rebase issues\r\n\r\n* Change names of variables used for holding globals\"",
+                "c.additions": 64,
+                "c.deletions": 5,
+                "c.changedFiles": 8,
+                "c.committedDate": "2018-05-29T20:30:04Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "79a740c6e32ca300d4e7ff55ab06de172d4237fd",
+                "c.message": "\"Rename variables to remove references to global global (#12931)\n\n**what is the change?:**\r\nIn a recent PR we were referencing some global variables and storing\r\nlocal references to them.\r\n\r\nTo make things more natural, we co-opted the original name of the global\r\nfor our local reference. To make this work with Flow, we get the\r\noriginal reference from window.requestAnimationFrame and assign it to\r\nconst requestAnimationFrame.\r\n\r\nSometimes React is used in an environment where window is not defined\r\n- in that case we need to use something else, or hide the window\r\nreference somewhere.\r\n\r\nWe opted to use global thinking that Babel transforms would fill that\r\nin with the proper thing.\r\n\r\nBut for some of our fixtures we are not doing that transform on the\r\nbundle.\r\n\r\n**why make this change?:**\r\nI want to unbreak this on master and then investigate more about what we\r\nshould do to fix this.\r\n\r\n**test plan:**\r\nrun `yarn build` and open the fixtures.\r\n\r\n**issue:**\r\nhttps://github.com/facebook/react/issues/12930\"",
+                "c.additions": 10,
+                "c.deletions": 10,
+                "c.changedFiles": 2,
+                "c.committedDate": "2018-05-30T00:54:38Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "e0a03c1b4d84453122c4e9d1a5e0cec52bef9066",
+                "c.message": "\"Extend input type check in selection capabilities (#12062) (#12135)\n\n* Do not set selection when prior selection is undefined (#12062)\r\n\r\n`restoreSelection` did not account for input elements that have changed\r\ntype after the commit phase. The new `text` input supported selection\r\nbut the old `email` did not and `setSelection` was incorrectly trying to\r\nrestore `null` selection state.\r\n\r\nWe also extend input type check in selection capabilities to cover cases\r\nwhere input type is `search`, `tel`, `url`, or `password`.\r\n\r\n* Add link to HTML spec for element types and selection\r\n\r\n* Add reset button to ReplaceEmailInput\r\n\r\nThis commit adds a button to restore the original state of the\r\nReplaceEmailInput fixture so that it can be run multiple times without\r\nrefreshing the page.\"",
+                "c.additions": 71,
+                "c.deletions": 2,
+                "c.changedFiles": 3,
+                "c.committedDate": "2018-05-30T11:08:21Z",
+                "r.name": "react"
+            },
+            {
+                "c.id": "ae57b125c798418fb6846094cfa911530206e074",
+                "c.message": "\"[simple-cache-provider] Use LRU cache eviction (#12851)\n\n* [simple-cache-provider] Use LRU cache eviction\r\n\r\nMax size is hard-coded to 500. In the future, we should make this\r\nconfigurable per resource.\r\n\r\n* Evict PAGE_SIZE records from cache when max limit is reached\"",
+                "c.additions": 153,
+                "c.deletions": 31,
+                "c.changedFiles": 2,
+                "c.committedDate": "2018-05-30T20:12:29Z",
+                "r.name": "react"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH \"2024-07-31\"\nRETURN c.message\nLIMIT 1",
+        "result": [
+            {
+                "c.message": "\"[compiler] More complete validation against locals being reassigned after render\n\nSummary:\nThis diff extends the existing work on validating against locals being reassigned after render, by propagating the reassignment \"effect\" into the lvalues of instructions when the rvalue operands include values known to cause reassignments. In particular, this \"closes the loop\" for function definitions and function calls: a function that returns a function that reassigns will be considered to also perform reassignments, but previous to this we didnt consider the result of a `Call` of a function that reassigns to itself be a value that reassigns.\n\nThis causes a number of new bailouts in test cases, all of which appear to me to be legit.\n\nghstack-source-id: 770bf02d079ea2480be243a49caa6f69573d8092\nPull Request resolved: https://github.com/facebook/react/pull/30540\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for BeforeInputEventPlugin.js file?",
+        "response": "",
+        "query": "MATCH (f:File {name: 'BeforeInputEventPlugin.js'})<-[c:changed]-(commit:Commit)\nRETURN f.name AS fileName, commit.message AS commitMessage, c.additions AS additions, c.deletions AS deletions, c.patch AS patch\nORDER BY commit.committedDate DESC",
+        "result": [
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"[flow] enable enforce_local_inference_annotations (#25921)\n\nThis setting is an incremental path to the next Flow version enforcing\r\ntype annotations on most functions (except some inline callbacks).\r\n\r\nUsed\r\n```\r\nnode_modules/.bin/flow codemod annotate-functions-and-classes --write .\r\n```\r\nto add a majority of the types with some hand cleanup when for large\r\ninferred objects that should just be `Fiber` or weird constructs\r\nincluding `any`.\r\n\r\nSuppressed the remaining issues.\r\n\r\nBuilds on #25918\"",
+                "additions": 10,
+                "deletions": 10,
+                "patch": "@@ -192,11 +192,11 @@ let isComposing = false;\n  * @return {?object} A SyntheticCompositionEvent.\n  */\n function extractCompositionEvent(\n-  dispatchQueue,\n-  domEventName,\n-  targetInst,\n-  nativeEvent,\n-  nativeEventTarget,\n+  dispatchQueue: DispatchQueue,\n+  domEventName: DOMEventName,\n+  targetInst: null | Fiber,\n+  nativeEvent: AnyNativeEvent,\n+  nativeEventTarget: null | EventTarget,\n ) {\n   let eventType;\n   let fallbackData;\n@@ -379,11 +379,11 @@ function getFallbackBeforeInputChars(\n  * @return {?object} A SyntheticInputEvent.\n  */\n function extractBeforeInputEvent(\n-  dispatchQueue,\n-  domEventName,\n-  targetInst,\n-  nativeEvent,\n-  nativeEventTarget,\n+  dispatchQueue: DispatchQueue,\n+  domEventName: DOMEventName,\n+  targetInst: null | Fiber,\n+  nativeEvent: AnyNativeEvent,\n+  nativeEventTarget: null | EventTarget,\n ) {\n   let chars;\n "
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Flow: remove unused suppressions (#25424)\n\nRemoves $FlowFixMes that are no longer needed.\r\n\r\nUsed flow/tool from the Flow repo:\r\n\r\n```\r\n ~/Developer/flow/tool update-suppressions .\r\n```\"",
+                "additions": 0,
+                "deletions": 3,
+                "patch": "@@ -227,10 +227,8 @@ function extractCompositionEvent(\n     }\n   }\n \n-  // $FlowFixMe[incompatible-call] found when upgrading Flow\n   const listeners = accumulateTwoPhaseListeners(targetInst, eventType);\n   if (listeners.length > 0) {\n-    // $FlowFixMe[incompatible-type]\n     const event: ReactSyntheticEvent = new SyntheticCompositionEvent(\n       eventType,\n       domEventName,\n@@ -403,7 +401,6 @@ function extractBeforeInputEvent(\n \n   const listeners = accumulateTwoPhaseListeners(targetInst, 'onBeforeInput');\n   if (listeners.length > 0) {\n-    // $FlowFixMe[incompatible-type]\n     const event: ReactSyntheticEvent = new SyntheticInputEvent(\n       'onBeforeInput',\n       'beforeinput',"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Flow upgrade to 0.146\n\nThis upgrade made more expressions invalidate refinements. In some\nplaces this lead to a large number of suppressions that I automatically\nsuppressed and should be followed up on when the code is touched.\nI think most of them might require either manual annotations or moving\na value into a const to allow refinement.\n\nghstack-source-id: a45b40abf03474b691a2dc18a4f1f3b06cfbdffd\nPull Request resolved: https://github.com/facebook/react/pull/25410\"",
+                "additions": 1,
+                "deletions": 0,
+                "patch": "@@ -227,6 +227,7 @@ function extractCompositionEvent(\n     }\n   }\n \n+  // $FlowFixMe[incompatible-call] found when upgrading Flow\n   const listeners = accumulateTwoPhaseListeners(targetInst, eventType);\n   if (listeners.length > 0) {\n     // $FlowFixMe[incompatible-type]"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Move react-dom implementation files to react-dom-bindings (#25345)\n\nThis lets us share it with react-server-dom-webpack while still having a\r\ndependency on react-dom. It also makes somewhat sense from a bundling\r\nperspective since react-dom is an external to itself.\"",
+                "additions": 0,
+                "deletions": 0,
+                "patch": null
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Flow: fix Fiber typed as any (#25241)\"",
+                "additions": 8,
+                "deletions": 2,
+                "patch": "@@ -12,6 +12,7 @@ import type {Fiber} from 'react-reconciler/src/ReactInternalTypes';\n import type {AnyNativeEvent} from '../../events/PluginModuleType';\n import type {DispatchQueue} from '../DOMPluginEventSystem';\n import type {EventSystemFlags} from '../EventSystemFlags';\n+import type {ReactSyntheticEvent} from '../ReactSyntheticEventType';\n \n import {canUseDOM} from 'shared/ExecutionEnvironment';\n \n@@ -228,7 +229,8 @@ function extractCompositionEvent(\n \n   const listeners = accumulateTwoPhaseListeners(targetInst, eventType);\n   if (listeners.length > 0) {\n-    const event = new SyntheticCompositionEvent(\n+    // $FlowFixMe[incompatible-type]\n+    const event: ReactSyntheticEvent = new SyntheticCompositionEvent(\n       eventType,\n       domEventName,\n       null,\n@@ -239,10 +241,12 @@ function extractCompositionEvent(\n     if (fallbackData) {\n       // Inject data generated from fallback path into the synthetic event.\n       // This matches the property of native CompositionEventInterface.\n+      // $FlowFixMe[incompatible-use]\n       event.data = fallbackData;\n     } else {\n       const customData = getDataFromCustomEvent(nativeEvent);\n       if (customData !== null) {\n+        // $FlowFixMe[incompatible-use]\n         event.data = customData;\n       }\n     }\n@@ -398,14 +402,16 @@ function extractBeforeInputEvent(\n \n   const listeners = accumulateTwoPhaseListeners(targetInst, 'onBeforeInput');\n   if (listeners.length > 0) {\n-    const event = new SyntheticInputEvent(\n+    // $FlowFixMe[incompatible-type]\n+    const event: ReactSyntheticEvent = new SyntheticInputEvent(\n       'onBeforeInput',\n       'beforeinput',\n       null,\n       nativeEvent,\n       nativeEventTarget,\n     );\n     dispatchQueue.push({event, listeners});\n+    // $FlowFixMe[incompatible-use]\n     event.data = chars;\n   }\n }"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Create Synthetic Events Lazily (#19909)\"",
+                "additions": 31,
+                "deletions": 26,
+                "patch": "@@ -226,23 +226,25 @@ function extractCompositionEvent(\n     }\n   }\n \n-  const event = new SyntheticCompositionEvent(\n-    eventType,\n-    domEventName,\n-    null,\n-    nativeEvent,\n-    nativeEventTarget,\n-  );\n-  accumulateTwoPhaseListeners(targetInst, dispatchQueue, event);\n-\n-  if (fallbackData) {\n-    // Inject data generated from fallback path into the synthetic event.\n-    // This matches the property of native CompositionEventInterface.\n-    event.data = fallbackData;\n-  } else {\n-    const customData = getDataFromCustomEvent(nativeEvent);\n-    if (customData !== null) {\n-      event.data = customData;\n+  const listeners = accumulateTwoPhaseListeners(targetInst, eventType);\n+  if (listeners.length > 0) {\n+    const event = new SyntheticCompositionEvent(\n+      eventType,\n+      domEventName,\n+      null,\n+      nativeEvent,\n+      nativeEventTarget,\n+    );\n+    dispatchQueue.push({event, listeners});\n+    if (fallbackData) {\n+      // Inject data generated from fallback path into the synthetic event.\n+      // This matches the property of native CompositionEventInterface.\n+      event.data = fallbackData;\n+    } else {\n+      const customData = getDataFromCustomEvent(nativeEvent);\n+      if (customData !== null) {\n+        event.data = customData;\n+      }\n     }\n   }\n }\n@@ -394,15 +396,18 @@ function extractBeforeInputEvent(\n     return null;\n   }\n \n-  const event = new SyntheticInputEvent(\n-    'onBeforeInput',\n-    'beforeinput',\n-    null,\n-    nativeEvent,\n-    nativeEventTarget,\n-  );\n-  accumulateTwoPhaseListeners(targetInst, dispatchQueue, event);\n-  event.data = chars;\n+  const listeners = accumulateTwoPhaseListeners(targetInst, 'onBeforeInput');\n+  if (listeners.length > 0) {\n+    const event = new SyntheticInputEvent(\n+      'onBeforeInput',\n+      'beforeinput',\n+      null,\n+      nativeEvent,\n+      nativeEventTarget,\n+    );\n+    dispatchQueue.push({event, listeners});\n+    event.data = chars;\n+  }\n }\n \n /**"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Separate SyntheticEvent constructors to prevent deopts (#19907)\n\n* Remove arguments from hot path\r\n\r\n* Make SyntheticEvent subtypes monomorphic\r\n\r\n* Maybe fix Flow?\"",
+                "additions": 4,
+                "deletions": 7,
+                "patch": "@@ -22,9 +22,8 @@ import {\n   reset as FallbackCompositionStateReset,\n } from '../FallbackCompositionState';\n import {\n-  CompositionEventInterface,\n-  InputEventInterface,\n-  SyntheticEvent,\n+  SyntheticCompositionEvent,\n+  SyntheticInputEvent,\n } from '../SyntheticEvent';\n import {accumulateTwoPhaseListeners} from '../DOMPluginEventSystem';\n \n@@ -227,13 +226,12 @@ function extractCompositionEvent(\n     }\n   }\n \n-  const event = new SyntheticEvent(\n+  const event = new SyntheticCompositionEvent(\n     eventType,\n     domEventName,\n     null,\n     nativeEvent,\n     nativeEventTarget,\n-    CompositionEventInterface,\n   );\n   accumulateTwoPhaseListeners(targetInst, dispatchQueue, event);\n \n@@ -396,13 +394,12 @@ function extractBeforeInputEvent(\n     return null;\n   }\n \n-  const event = new SyntheticEvent(\n+  const event = new SyntheticInputEvent(\n     'onBeforeInput',\n     'beforeinput',\n     null,\n     nativeEvent,\n     nativeEventTarget,\n-    InputEventInterface,\n   );\n   accumulateTwoPhaseListeners(targetInst, dispatchQueue, event);\n   event.data = chars;"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"fix: onFocus/onBlur/onBeforeInput have a matching event type (#19561)\n\n* test: Add current behavior for event types of onFocus/onBlur\r\n\r\n* fix: onFocus/onBlur have a matching event type\r\n\r\n* fix useFocus\r\n\r\n* fix: dont compare native event types with react event types\r\n\r\n* Add FocusIn/FocusOutEventInterface\r\n\r\n* A simpler alternative fix\r\n\r\n* Add regression tests\r\n\r\n* Always pass React event type and fix beforeinput\r\n\r\nCo-authored-by: Dan Abramov <dan.abramov@me.com>\"",
+                "additions": 2,
+                "deletions": 0,
+                "patch": "@@ -229,6 +229,7 @@ function extractCompositionEvent(\n \n   const event = new SyntheticEvent(\n     eventType,\n+    domEventName,\n     null,\n     nativeEvent,\n     nativeEventTarget,\n@@ -397,6 +398,7 @@ function extractBeforeInputEvent(\n \n   const event = new SyntheticEvent(\n     'onBeforeInput',\n+    'beforeinput',\n     null,\n     nativeEvent,\n     nativeEventTarget,"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Remove event constants (#19276)\n\n* Remove opaque event type\r\n\r\n* Rename type and merge files\r\n\r\n* Use literals where we have Flow coverage\r\n\r\n* Flowify some plugins\r\n\r\n* Remove constants except necessary ones\"",
+                "additions": 87,
+                "deletions": 101,
+                "patch": "@@ -3,25 +3,19 @@\n  *\n  * This source code is licensed under the MIT license found in the\n  * LICENSE file in the root directory of this source tree.\n+ *\n+ * @flow\n  */\n \n-import type {TopLevelType} from '../../events/TopLevelEventTypes';\n+import type {DOMEventName} from '../../events/DOMEventNames';\n+import type {Fiber} from 'react-reconciler/src/ReactInternalTypes';\n+import type {AnyNativeEvent} from '../../events/PluginModuleType';\n+import type {DispatchQueue} from '../DOMPluginEventSystem';\n+import type {EventSystemFlags} from '../EventSystemFlags';\n \n import {canUseDOM} from 'shared/ExecutionEnvironment';\n \n import {registerTwoPhaseEvent} from '../EventRegistry';\n-import {\n-  TOP_FOCUS_OUT,\n-  TOP_COMPOSITION_START,\n-  TOP_COMPOSITION_END,\n-  TOP_COMPOSITION_UPDATE,\n-  TOP_KEY_DOWN,\n-  TOP_KEY_PRESS,\n-  TOP_KEY_UP,\n-  TOP_MOUSE_DOWN,\n-  TOP_TEXT_INPUT,\n-  TOP_PASTE,\n-} from '../DOMTopLevelEventTypes';\n import {\n   getData as FallbackCompositionStateGetData,\n   initialize as FallbackCompositionStateInitialize,\n@@ -63,34 +57,34 @@ const SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE);\n \n function registerEvents() {\n   registerTwoPhaseEvent('onBeforeInput', [\n-    TOP_COMPOSITION_END,\n-    TOP_KEY_PRESS,\n-    TOP_TEXT_INPUT,\n-    TOP_PASTE,\n+    'compositionend',\n+    'keypress',\n+    'textInput',\n+    'paste',\n   ]);\n   registerTwoPhaseEvent('onCompositionEnd', [\n-    TOP_COMPOSITION_END,\n-    TOP_FOCUS_OUT,\n-    TOP_KEY_DOWN,\n-    TOP_KEY_PRESS,\n-    TOP_KEY_UP,\n-    TOP_MOUSE_DOWN,\n+    'compositionend',\n+    'focusout',\n+    'keydown',\n+    'keypress',\n+    'keyup',\n+    'mousedown',\n   ]);\n   registerTwoPhaseEvent('onCompositionStart', [\n-    TOP_COMPOSITION_START,\n-    TOP_FOCUS_OUT,\n-    TOP_KEY_DOWN,\n-    TOP_KEY_PRESS,\n-    TOP_KEY_UP,\n-    TOP_MOUSE_DOWN,\n+    'compositionstart',\n+    'focusout',\n+    'keydown',\n+    'keypress',\n+    'keyup',\n+    'mousedown',\n   ]);\n   registerTwoPhaseEvent('onCompositionUpdate', [\n-    TOP_COMPOSITION_UPDATE,\n-    TOP_FOCUS_OUT,\n-    TOP_KEY_DOWN,\n-    TOP_KEY_PRESS,\n-    TOP_KEY_UP,\n-    TOP_MOUSE_DOWN,\n+    'compositionupdate',\n+    'focusout',\n+    'keydown',\n+    'keypress',\n+    'keyup',\n+    'mousedown',\n   ]);\n }\n \n@@ -102,7 +96,7 @@ let hasSpaceKeypress = false;\n  * This is required because Firefox fires `keypress` events for key commands\n  * (cut, copy, select-all, etc.) even though no character is inserted.\n  */\n-function isKeypressCommand(nativeEvent) {\n+function isKeypressCommand(nativeEvent: any) {\n   return (\n     (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) &&\n     // ctrlKey && altKey is equivalent to AltGr, and is not a command.\n@@ -112,52 +106,47 @@ function isKeypressCommand(nativeEvent) {\n \n /**\n  * Translate native top level events into event types.\n- *\n- * @param {string} topLevelType\n- * @return {object}\n  */\n-function getCompositionEventType(topLevelType) {\n-  switch (topLevelType) {\n-    case TOP_COMPOSITION_START:\n+function getCompositionEventType(domEventName: DOMEventName) {\n+  switch (domEventName) {\n+    case 'compositionstart':\n       return 'onCompositionStart';\n-    case TOP_COMPOSITION_END:\n+    case 'compositionend':\n       return 'onCompositionEnd';\n-    case TOP_COMPOSITION_UPDATE:\n+    case 'compositionupdate':\n       return 'onCompositionUpdate';\n   }\n }\n \n /**\n  * Does our fallback best-guess model think this event signifies that\n  * composition has begun?\n- *\n- * @param {string} topLevelType\n- * @param {object} nativeEvent\n- * @return {boolean}\n  */\n-function isFallbackCompositionStart(topLevelType, nativeEvent) {\n-  return topLevelType === TOP_KEY_DOWN && nativeEvent.keyCode === START_KEYCODE;\n+function isFallbackCompositionStart(\n+  domEventName: DOMEventName,\n+  nativeEvent: any,\n+): boolean {\n+  return domEventName === 'keydown' && nativeEvent.keyCode === START_KEYCODE;\n }\n \n /**\n  * Does our fallback mode think that this event is the end of composition?\n- *\n- * @param {string} topLevelType\n- * @param {object} nativeEvent\n- * @return {boolean}\n  */\n-function isFallbackCompositionEnd(topLevelType, nativeEvent) {\n-  switch (topLevelType) {\n-    case TOP_KEY_UP:\n+function isFallbackCompositionEnd(\n+  domEventName: DOMEventName,\n+  nativeEvent: any,\n+): boolean {\n+  switch (domEventName) {\n+    case 'keyup':\n       // Command keys insert or clear IME input.\n       return END_KEYCODES.indexOf(nativeEvent.keyCode) !== -1;\n-    case TOP_KEY_DOWN:\n+    case 'keydown':\n       // Expect IME keyCode on each keydown. If we get any other\n       // code we must have exited earlier.\n       return nativeEvent.keyCode !== START_KEYCODE;\n-    case TOP_KEY_PRESS:\n-    case TOP_MOUSE_DOWN:\n-    case TOP_FOCUS_OUT:\n+    case 'keypress':\n+    case 'mousedown':\n+    case 'focusout':\n       // Events are not possible without cancelling IME.\n       return true;\n     default:\n@@ -174,7 +163,7 @@ function isFallbackCompositionEnd(topLevelType, nativeEvent) {\n  * @param {object} nativeEvent\n  * @return {?string}\n  */\n-function getDataFromCustomEvent(nativeEvent) {\n+function getDataFromCustomEvent(nativeEvent: any) {\n   const detail = nativeEvent.detail;\n   if (typeof detail === 'object' && 'data' in detail) {\n     return detail.data;\n@@ -192,7 +181,7 @@ function getDataFromCustomEvent(nativeEvent) {\n  * @param {object} nativeEvent\n  * @return {boolean}\n  */\n-function isUsingKoreanIME(nativeEvent) {\n+function isUsingKoreanIME(nativeEvent: any) {\n   return nativeEvent.locale === 'ko';\n }\n \n@@ -204,7 +193,7 @@ let isComposing = false;\n  */\n function extractCompositionEvent(\n   dispatchQueue,\n-  topLevelType,\n+  domEventName,\n   targetInst,\n   nativeEvent,\n   nativeEventTarget,\n@@ -213,12 +202,12 @@ function extractCompositionEvent(\n   let fallbackData;\n \n   if (canUseCompositionEvent) {\n-    eventType = getCompositionEventType(topLevelType);\n+    eventType = getCompositionEventType(domEventName);\n   } else if (!isComposing) {\n-    if (isFallbackCompositionStart(topLevelType, nativeEvent)) {\n+    if (isFallbackCompositionStart(domEventName, nativeEvent)) {\n       eventType = 'onCompositionStart';\n     }\n-  } else if (isFallbackCompositionEnd(topLevelType, nativeEvent)) {\n+  } else if (isFallbackCompositionEnd(domEventName, nativeEvent)) {\n     eventType = 'onCompositionEnd';\n   }\n \n@@ -259,16 +248,14 @@ function extractCompositionEvent(\n   }\n }\n \n-/**\n- * @param {TopLevelType} topLevelType Number from `TopLevelType`.\n- * @param {object} nativeEvent Native browser event.\n- * @return {?string} The string corresponding to this `beforeInput` event.\n- */\n-function getNativeBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n-  switch (topLevelType) {\n-    case TOP_COMPOSITION_END:\n+function getNativeBeforeInputChars(\n+  domEventName: DOMEventName,\n+  nativeEvent: any,\n+): ?string {\n+  switch (domEventName) {\n+    case 'compositionend':\n       return getDataFromCustomEvent(nativeEvent);\n-    case TOP_KEY_PRESS:\n+    case 'keypress':\n       /**\n        * If native `textInput` events are available, our goal is to make\n        * use of them. However, there is a special case: the spacebar key.\n@@ -291,7 +278,7 @@ function getNativeBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n       hasSpaceKeypress = true;\n       return SPACEBAR_CHAR;\n \n-    case TOP_TEXT_INPUT:\n+    case 'textInput':\n       // Record the characters to be added to the DOM.\n       const chars = nativeEvent.data;\n \n@@ -313,21 +300,20 @@ function getNativeBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n /**\n  * For browsers that do not provide the `textInput` event, extract the\n  * appropriate string to use for SyntheticInputEvent.\n- *\n- * @param {number} topLevelType Number from `TopLevelEventTypes`.\n- * @param {object} nativeEvent Native browser event.\n- * @return {?string} The fallback string for this `beforeInput` event.\n  */\n-function getFallbackBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n+function getFallbackBeforeInputChars(\n+  domEventName: DOMEventName,\n+  nativeEvent: any,\n+): ?string {\n   // If we are currently composing (IME) and using a fallback to do so,\n   // try to extract the composed characters from the fallback object.\n   // If composition event is available, we extract a string only at\n   // compositionevent, otherwise extract it at fallback events.\n   if (isComposing) {\n     if (\n-      topLevelType === TOP_COMPOSITION_END ||\n+      domEventName === 'compositionend' ||\n       (!canUseCompositionEvent &&\n-        isFallbackCompositionEnd(topLevelType, nativeEvent))\n+        isFallbackCompositionEnd(domEventName, nativeEvent))\n     ) {\n       const chars = FallbackCompositionStateGetData();\n       FallbackCompositionStateReset();\n@@ -337,12 +323,12 @@ function getFallbackBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n     return null;\n   }\n \n-  switch (topLevelType) {\n-    case TOP_PASTE:\n+  switch (domEventName) {\n+    case 'paste':\n       // If a paste event occurs after a keypress, throw out the input\n       // chars. Paste events should not lead to BeforeInput events.\n       return null;\n-    case TOP_KEY_PRESS:\n+    case 'keypress':\n       /**\n        * As of v27, Firefox may fire keypress events even when no character\n        * will be inserted. A few possibilities:\n@@ -373,7 +359,7 @@ function getFallbackBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n         }\n       }\n       return null;\n-    case TOP_COMPOSITION_END:\n+    case 'compositionend':\n       return useFallbackCompositionData && !isUsingKoreanIME(nativeEvent)\n         ? null\n         : nativeEvent.data;\n@@ -390,17 +376,17 @@ function getFallbackBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {\n  */\n function extractBeforeInputEvent(\n   dispatchQueue,\n-  topLevelType,\n+  domEventName,\n   targetInst,\n   nativeEvent,\n   nativeEventTarget,\n ) {\n   let chars;\n \n   if (canUseTextInputEvent) {\n-    chars = getNativeBeforeInputChars(topLevelType, nativeEvent);\n+    chars = getNativeBeforeInputChars(domEventName, nativeEvent);\n   } else {\n-    chars = getFallbackBeforeInputChars(topLevelType, nativeEvent);\n+    chars = getFallbackBeforeInputChars(domEventName, nativeEvent);\n   }\n \n   // If no characters are being inserted, no BeforeInput event should\n@@ -439,24 +425,24 @@ function extractBeforeInputEvent(\n  * `composition` event types.\n  */\n function extractEvents(\n-  dispatchQueue,\n-  topLevelType,\n-  targetInst,\n-  nativeEvent,\n-  nativeEventTarget,\n-  eventSystemFlags,\n-  targetContainer,\n-) {\n+  dispatchQueue: DispatchQueue,\n+  domEventName: DOMEventName,\n+  targetInst: null | Fiber,\n+  nativeEvent: AnyNativeEvent,\n+  nativeEventTarget: null | EventTarget,\n+  eventSystemFlags: EventSystemFlags,\n+  targetContainer: EventTarget,\n+): void {\n   extractCompositionEvent(\n     dispatchQueue,\n-    topLevelType,\n+    domEventName,\n     targetInst,\n     nativeEvent,\n     nativeEventTarget,\n   );\n   extractBeforeInputEvent(\n     dispatchQueue,\n-    topLevelType,\n+    domEventName,\n     targetInst,\n     nativeEvent,\n     nativeEventTarget,"
+            },
+            {
+                "fileName": "BeforeInputEventPlugin.js",
+                "commitMessage": "\"Remove SyntheticEvent subtypes (#19436)\n\n* Remove SyntheticEvent subtypes\r\n\r\n* Code golf\"",
+                "additions": 7,
+                "deletions": 4,
+                "patch": "@@ -28,8 +28,9 @@ import {\n   reset as FallbackCompositionStateReset,\n } from '../FallbackCompositionState';\n import {\n-  SyntheticCompositionEvent,\n-  SyntheticInputEvent,\n+  CompositionEventInterface,\n+  InputEventInterface,\n+  SyntheticEvent,\n } from '../SyntheticEvent';\n import {accumulateTwoPhaseListeners} from '../DOMPluginEventSystem';\n \n@@ -237,11 +238,12 @@ function extractCompositionEvent(\n     }\n   }\n \n-  const event = new SyntheticCompositionEvent(\n+  const event = new SyntheticEvent(\n     eventType,\n     null,\n     nativeEvent,\n     nativeEventTarget,\n+    CompositionEventInterface,\n   );\n   accumulateTwoPhaseListeners(targetInst, dispatchQueue, event);\n \n@@ -407,11 +409,12 @@ function extractBeforeInputEvent(\n     return null;\n   }\n \n-  const event = new SyntheticInputEvent(\n+  const event = new SyntheticEvent(\n     'onBeforeInput',\n     null,\n     nativeEvent,\n     nativeEventTarget,\n+    InputEventInterface,\n   );\n   accumulateTwoPhaseListeners(targetInst, dispatchQueue, event);\n   event.data = chars;"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for React.js file?",
+        "response": "",
+        "query": "MATCH (r:Repository {name: \"react\"})-[:belongs_to]-(c:Commit)-[:changed]->(f:File {name: \"React.js\"})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 283,
+                    "deletions": 285,
+                    "committedDate": "2023-11-02T20:13:21Z",
+                    "changedFiles": 24,
+                    "commentsCount": 0,
+                    "id": "ce2bc58a9f6f3b0bfc8c738a0d8e2a5f3a332ff5",
+                    "type": "Commit",
+                    "message": "\"[activity] rename unstable_Offscreen to unstable_Activity (#27640)\n\n`Activity` is the current candidate name. This PR starts the rename work\r\nby renaming the exported unstable component name.\r\n\r\nNOTE: downstream consumers need to rename the import when updating to\r\nthis commit.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 40,
+                    "deletions": 39,
+                    "committedDate": "2023-10-04T18:51:36Z",
+                    "changedFiles": 28,
+                    "commentsCount": 0,
+                    "id": "bfefb228422f7264a29b3a6b98ec95e05925e80e",
+                    "type": "Commit",
+                    "message": "\"Upgrade Server Actions to canary (#27459)\n\nUpgrades the stability of Server Actions from experimental to canary.\r\n\r\n- Turns on enableAsyncActions and enableFormActions\r\n- Removes \"experimental_\" prefix from useOptimistic, useFormStatus, and\r\nuseFormState\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 245,
+                    "deletions": 1258,
+                    "committedDate": "2023-09-29T22:24:05Z",
+                    "changedFiles": 30,
+                    "commentsCount": 0,
+                    "id": "c7ba8c098889b6dc47fa9c807bbba3975a658584",
+                    "type": "Commit",
+                    "message": "\"Enforce that the \"react-server\" build of \"react\" is used (#27436)\n\nI do this by simply renaming the secret export name in the \"subset\"\r\nbundle and this renamed version is what the FlightServer uses.\r\n\r\nThis requires us to be more diligent about always using the correct\r\ninstance of \"react\" in our tests so theres a bunch of clean up for\r\nthat.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 662,
+                    "deletions": 231,
+                    "committedDate": "2023-08-17T17:26:14Z",
+                    "changedFiles": 34,
+                    "commentsCount": 0,
+                    "id": "ac1a16c67e268fcb2c52e91717cbc918c7c24446",
+                    "type": "Commit",
+                    "message": "\"Add Postpone API (#27238)\n\nThis adds an experimental `unstable_postpone(reason)` API.\r\n\r\nCurrently we dont have a way to model effectively an Infinite Promise.\r\nI.e. something that suspends but never resolves. The reason this is\r\nuseful is because you might have something else that unblocks it later.\r\nE.g. by updating in place later, or by client rendering.\r\n\r\nOn the client this works to model as an Infinite Promise (in fact,\r\nthats what this implementation does). However, in Fizz and Flight that\r\ndoesnt work because the stream needs to end at some point. We dont\r\nhave any way of knowing that were suspended on infinite promises. Its\r\nnot enough to tag the promises because you could await those and thus\r\ncreating new promises. The only way we really have to signal this\r\nthrough a series of indirections like async functions, is by throwing.\r\nIts not 100% safe because these values can be caught but its the best\r\nwe can do.\r\n\r\nEffectively `postpone(reason)` behaves like a built-in [Catch\r\nBoundary](https://github.com/facebook/react/pull/26854). Its like\r\n`raise(Postpone, reason)` except its built-in so it needs to be able to\r\nbe encoded and caught by Suspense boundaries.\r\n\r\nIn Flight and Fizz these behave pretty much the same as errors. Flight\r\njust forwards it to retrigger on the client. In Fizz they just trigger\r\nclient rendering which itself might just postpone again or fill in the\r\nvalue. The difference is how they get logged.\r\n\r\nIn Flight and Fizz they log to `onPostpone(reason)` instead of\r\n`onError(error)`. This log is meant to help find deopts on the server\r\nlike finding places where you fall back to client rendering. The reason\r\nthat you pass in is for that purpose to help the reason for any deopts.\r\n\r\nI do track the stack trace in DEV but I dont currently expose it to\r\n`onPostpone`. This seems like a limitation. It might be better to expose\r\nthe Postpone object which is an Error object but thats more of an\r\nimplementation detail. I could also pass it as a second argument.\r\n\r\nOn the client after hydration they dont get passed to\r\n`onRecoverableError`. Theres no global `onPostpone` API to capture\r\npostponed things on the client just like theres no `onError`. At that\r\npoint its just assumed to be intentional. It doesnt have any `digest`\r\nor reason passed to the client since its not logged.\r\n\r\nThere are some hacky solutions that currently just tries to reuse as\r\nmuch of the existing code as possible but should be more properly\r\nimplemented.\r\n- Fiber is currently just converting it to a fake Promise object so that\r\nit behaves like an infinite Promise.\r\n- Fizz is encoding the magic digest string `\"POSTPONE\"` in the HTML so\r\nwe know to ignore it but it should probably just be something neater\r\nthat doesnt share namespace with digests.\r\n\r\nNext I plan on using this in the `/static` entry points for additional\r\nfeatures.\r\n\r\nWhy \"postpone\"? Its basically a synonym to \"defer\" but we plan on using\r\n\"defer\" for other purposes and its overloaded anyway.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 24,
+                    "deletions": 21,
+                    "committedDate": "2023-07-06T18:09:53Z",
+                    "changedFiles": 18,
+                    "commentsCount": 0,
+                    "id": "eb2c2f7c2cf2652a168c2b433d2989131c69754b",
+                    "type": "Commit",
+                    "message": "\"rename SuspenseList export to unstable_SuspenseList (#27061)\n\n## Summary\r\n\r\nas we began [discussing\r\nyesterday](https://github.com/facebook/react/pull/27056#discussion_r1253282784),\r\n`SuspenseList` is not actually stable yet, and should likely be exported\r\nwith the `unstable_` prefix.\r\n\r\nthe conversation yesterday began discussing this in the context of the\r\nfb-specific packages, but changing it there without updating everywhere\r\nelse leads to test failures, so here the change is made across packages.\r\n\r\n## How did you test this change?\r\n\r\n```\r\nyarn flow dom-browser\r\nyarn test\r\n```\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 4,
+                    "deletions": 3023,
+                    "committedDate": "2023-06-27T16:45:46Z",
+                    "changedFiles": 30,
+                    "commentsCount": 0,
+                    "id": "80d9a40114bb43c07d021e8254790852f450bd2b",
+                    "type": "Commit",
+                    "message": "\"Remove useMutableSource (#27011)\n\n## Summary\r\n\r\nThis PR cleans up `useMutableSource`. This has been blocked by a\r\nremaining dependency internally at Meta, but that has now been deleted.\r\n\r\n<!--\r\nExplain the **motivation** for making this change. What existing problem\r\ndoes the pull request solve?\r\n-->\r\n\r\n## How did you test this change?\r\n\r\n```\r\nyarn flow\r\nyarn lint\r\nyarn test --prod\r\n```\r\n\r\n<!--\r\nDemonstrate the code is solid. Example: The exact commands you ran and\r\ntheir output, screenshots / videos if the pull request changes the user\r\ninterface.\r\nHow exactly did you verify that your PR solves the issue you wanted to\r\nsolve?\r\n  If you leave this empty, your PR will very likely be closed.\r\n-->\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 65,
+                    "deletions": 69,
+                    "committedDate": "2023-05-03T18:26:00Z",
+                    "changedFiles": 11,
+                    "commentsCount": 0,
+                    "id": "b7972822b5887d05ae772ef757a453265b4b7aec",
+                    "type": "Commit",
+                    "message": "\"useOptimisticState -> useOptimistic (#26772)\n\nDrop the \"state\". Just \"useOptimistic\". Its cleaner.\r\n\r\nThis is still an experimental API. May not be the final name.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 846,
+                    "deletions": 66,
+                    "committedDate": "2023-05-01T17:19:20Z",
+                    "changedFiles": 13,
+                    "commentsCount": 0,
+                    "id": "491aec5d6113ce5bae7c10966bc38a4a8fc091a8",
+                    "type": "Commit",
+                    "message": "\"Implement experimental_useOptimisticState (#26740)\n\nThis adds an experimental hook tentatively called useOptimisticState.\r\n(The actual name needs some bikeshedding.)\r\n\r\nThe headline feature is that you can use it to implement optimistic\r\nupdates. If you set some optimistic state during a transition/action,\r\nthe state will be automatically reverted once the transition completes.\r\n\r\nAnother feature is that the optimistic updates will be continually\r\nrebased on top of the latest state.\r\n\r\nIts easiest to explain with examples; well publish documentation as\r\nthe API gets closer to stabilizing. See tests for now.\r\n\r\nTechnically the use cases for this hook are broader than just optimistic\r\nupdates; you could use it implement any sort of \"pending\" state, such as\r\nthe ones exposed by useTransition and useFormStatus. But we expect\r\npeople will most often reach for this hook to implement the optimistic\r\nupdate pattern; simpler cases are covered by those other hooks.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 176,
+                    "deletions": 171,
+                    "committedDate": "2022-12-14T20:08:29Z",
+                    "changedFiles": 26,
+                    "commentsCount": 0,
+                    "id": "84a0a171ea0ecd25e287bd3d3dd30e932beb4677",
+                    "type": "Commit",
+                    "message": "\"Rename experimental useEvent to useEffectEvent (#25881)\n\nWe originally had grand plans for using this Event concept for more but\r\nnow its only meant to be used in combination with effects.\r\n\r\nIts an Event in the FRP terms, that is triggered from an Effect.\r\nTechnically it can also be from another function that itself is\r\ntriggered from an existing side-effect but thats kind of an advanced\r\ncase.\r\n\r\nThe canonical case is an effect that triggers an event:\r\n\r\n```js\r\nconst onHappened = useEffectEvent(() => ...);\r\nuseEffect(() => {\r\n  onHappened();\r\n}, []);\r\n```\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 325,
+                    "deletions": 279,
+                    "committedDate": "2022-10-24T03:20:52Z",
+                    "changedFiles": 51,
+                    "commentsCount": 0,
+                    "id": "e7c5af45ceb8fa2b64d39ec68345254ce9abd65e",
+                    "type": "Commit",
+                    "message": "\"Update cache() and use() to the canary aka next channel (#25502)\n\nTesting what it would look like to move this to the `next` channel.\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in ReactDOMInput.js?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)\nWHERE EXISTS((c)-[:changed]->(:File {name: 'ReactDOMInput.js'}))\nRETURN u.login AS Developer, COUNT(DISTINCT i) AS BugsFixed\nORDER BY BugsFixed DESC\nLIMIT 5",
+        "result": [
+            {
+                "Developer": "sophiebits",
+                "BugsFixed": 4
+            },
+            {
+                "Developer": "hemakshis",
+                "BugsFixed": 1
+            },
+            {
+                "Developer": "SanderSpies",
+                "BugsFixed": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in TapEventPlugin.js?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: 'TapEventPlugin.js'})\nWITH u, COUNT(DISTINCT i) AS fixedBugs\nRETURN u.name AS Developer, fixedBugs\nORDER BY fixedBugs DESC\nLIMIT 1",
+        "result": [
+            {
+                "Developer": "Sophie Alpert",
+                "fixedBugs": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)\nWITH f, COUNT(DISTINCT i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\nRETURN f.name AS fileName, f.path AS filePath, bugCount",
+        "result": [
+            {
+                "fileName": "package.json",
+                "filePath": "src/package.json",
+                "bugCount": 5
+            },
+            {
+                "fileName": "ReactDOMInput-test.js",
+                "filePath": "src/dom/components/__tests__/ReactDOMInput-test.js",
+                "bugCount": 5
+            },
+            {
+                "fileName": "ReactDOMSelect-test.js",
+                "filePath": "src/dom/components/__tests__/ReactDOMSelect-test.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "ReactCompositeComponentState-test.js",
+                "filePath": "src/core/__tests__/ReactCompositeComponentState-test.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "ReactDOMHooks-test.js",
+                "filePath": "packages/react-dom/src/__tests__/ReactDOMHooks-test.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "ReactUpdates-test.js",
+                "filePath": "src/core/__tests__/ReactUpdates-test.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "ReactDOMComponent-test.js",
+                "filePath": "src/core/__tests__/ReactDOMComponent-test.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "renderer.js",
+                "filePath": "fixtures/dom/public/renderer.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "ReactServerRendering-test.js",
+                "filePath": "src/environment/__tests__/ReactServerRendering-test.js",
+                "bugCount": 3
+            },
+            {
+                "fileName": "EnterLeaveEventPlugin-test.js",
+                "filePath": "src/eventPlugins/__tests__/EnterLeaveEventPlugin-test.js",
+                "bugCount": 3
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)<-[:impacted]-(i:Issue)\nWHERE i.state = 'closed'\nWITH f, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\nRETURN f.name AS fileName, f.path AS filePath, bugCount",
+        "result": [
+            {
+                "fileName": "renderer.js",
+                "filePath": "fixtures/dom/public/renderer.js",
+                "bugCount": 2
+            },
+            {
+                "fileName": "ReactDOMInput-test.js",
+                "filePath": "src/dom/components/__tests__/ReactDOMInput-test.js",
+                "bugCount": 2
+            },
+            {
+                "fileName": "ReactDOMComponent.js",
+                "filePath": "src/core/ReactDOMComponent.js",
+                "bugCount": 2
+            },
+            {
+                "fileName": "ChangeEventPlugin.js",
+                "filePath": "src/eventPlugins/ChangeEventPlugin.js",
+                "bugCount": 2
+            },
+            {
+                "fileName": "profilingCache-test.js.snap",
+                "filePath": "src/__tests__/__snapshots__/profilingCache-test.js.snap",
+                "bugCount": 2
+            },
+            {
+                "fileName": "ExhaustiveDeps.js",
+                "filePath": "packages/eslint-plugin-react-hooks/src/ExhaustiveDeps.js",
+                "bugCount": 2
+            },
+            {
+                "fileName": "package.json",
+                "filePath": "src/package.json",
+                "bugCount": 2
+            },
+            {
+                "fileName": "ReactDOMInput.js",
+                "filePath": "src/dom/components/ReactDOMInput.js",
+                "bugCount": 2
+            },
+            {
+                "fileName": "03-interactivity-and-dynamic-uis.zh-CN.md",
+                "filePath": "docs/docs/03-interactivity-and-dynamic-uis.zh-CN.md",
+                "bugCount": 1
+            },
+            {
+                "fileName": "03-interactivity-and-dynamic-uis.md",
+                "filePath": "docs/docs/refactor/03-interactivity-and-dynamic-uis.md",
+                "bugCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on March 1, 2022?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate >= '2022-03-01T00:00:00Z' AND c.committedDate < '2022-03-02T00:00:00Z'\nRETURN c.id, c.message, c.committedDate",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 10217?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 10217\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 18,
+                    "deletions": 2,
+                    "committedDate": "2018-06-14T15:35:05Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "2e757790751ab8d165fc4df37e90a59d914c4527",
+                    "type": "Commit",
+                    "message": "\"Fix incorrect data in compositionend event with Korean IME on IE11 (#10217) (#12563)\n\n* Add isUsingKoreanIME function to check if a composition event was triggered by Korean IME\r\n\r\n* Add Korean IME check alongside useFallbackCompositionData and disable fallback mode with Korean IME\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 21442?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 21442\nRETURN c.id AS commitHash, c.message AS commitMessage",
+        "result": [
+            {
+                "commitHash": "1e3383a41154cb32d8d6b78b2451ee4dabfcb973",
+                "commitMessage": "\"DevTools: Reload all roots after Fast Refresh force remount (#21516)\n\nWorks around the corrupted Store state by detecting a broken Fast Refresh remount and forcefully dropping the root and re-mounting the entire tree. This prevents Fibers from getting duplicated in the Store (and in the Components tree). The benefit of this approach is that it doesnt rely on an update or change in behavior to Fast Refresh. (This workaround is pretty dirty, but since its a DEV-only code path, its probably okay.)\r\n\r\nNote that this change doesnt fix all of the reported issues (see #21442 (comment)) but it does fix some of them.\r\n\r\nThis commit also slightly refactors the way DevTools assigns and manages unique IDs for Fibers in the backend by removing the indirection of a \"primary Fiber\" and instead mapping both the primary and alternate.\r\n\r\nIt also removes the previous cache-on-read behavior of getFiberID and splits the method into three separate functions for different use cases:\r\n* getOrGenerateFiberID – Like the previous function, this method returns an ID or generates and caches a new one if the Fiber hasnt been seen before.\r\n* getFiberIDUnsafe – This function returns an ID if one has already been generated or null if not. (It can be used to e.g. log a message about a Fiber without potentially causing it to leak.)\r\n* getFiberIDThrows – This function returns an ID if one has already been generated or it throws. (It can be used to guarantee expected behavior rather than to silently cause a leak.)\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash f912186012f17858b9d25466c658a46e25093941?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: 'f912186012f17858b9d25466c658a46e25093941'})\nMATCH (c)-[:introduced]->(i:Issue)\nRETURN i.id, i.title, i.state, i.created_at",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (u:User)-[:creates]->(i:Issue)-[:belongs_to]->(r:Repository)\nWHERE i.state = 'open' AND i.type = 'Issue'\nWITH u, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 1\nRETURN u.login AS developer, bugCount AS unfixedBugs",
+        "result": [
+            {
+                "developer": "bvaughn",
+                "unfixedBugs": 44
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on April 9, 2021?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate <= '2021-04-09T23:59:59Z'\nAND i.created_at > '2021-04-09T00:00:00Z'\nRETURN c",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on Nov. 2013?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(:Issue)\nWHERE c.committedDate >= '2013-11-01T00:00:00Z' AND c.committedDate < '2013-12-01T00:00:00Z'\nAND EXISTS((c)-[:introduced]->(:Issue))\nRETURN COUNT(DISTINCT c)",
+        "result": [
+            {
+                "COUNT(DISTINCT c)": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(DISTINCT i) AS unfixedBugsCount\nORDER BY unfixedBugsCount DESC\nLIMIT 10\nRETURN u.login AS developer, unfixedBugsCount",
+        "result": [
+            {
+                "developer": "bvaughn",
+                "unfixedBugsCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit 2e757790751ab8d165fc4df37e90a59d914c4527?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: '2e757790751ab8d165fc4df37e90a59d914c4527'})-[:introduced]->(i:Issue)\nWHERE i.state = 'closed'\nRETURN i.title AS BugTitle, i.url AS BugURL",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on Nov. 2013?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate >= '2013-11-01T00:00:00Z' AND c.committedDate < '2013-12-01T00:00:00Z'\nWITH COLLECT(c) AS fixingCommits\nMATCH (bugIntroducer:Commit)-[:introduced]->(:Issue)\nWHERE bugIntroducer IN fixingCommits\nRETURN (toFloat(COUNT(DISTINCT bugIntroducer)) / toFloat(COUNT(DISTINCT fixingCommits))) * 100 AS percentage",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 0
+    }
+]

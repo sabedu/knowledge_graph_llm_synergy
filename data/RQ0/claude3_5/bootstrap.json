@@ -1,0 +1,563 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(:Repository)\nWHERE c.committedDate >= '2024-07-28T03:02:48Z' AND c.committedDate <= '2024-08-28T03:02:48Z'\nRETURN COUNT(c) AS commitCount",
+        "result": [
+            {
+                "commitCount": 16
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate IS NOT NULL\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1",
+        "result": [
+            {
+                "c": {
+                    "additions": 5,
+                    "committedDate": "2024-08-13T12:53:44Z",
+                    "deletions": 6,
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "048f56f51460df75e92a2f7b472e1c56baeb68f7",
+                    "type": "Commit",
+                    "message": "\"Build(deps-dev): Bump hugo-bin from 0.127.0 to 0.129.1 (#40723)\n\nBumps [hugo-bin](https://github.com/fenneclab/hugo-bin) from 0.127.0 to 0.129.1.\r\n- [Release notes](https://github.com/fenneclab/hugo-bin/releases)\r\n- [Commits](https://github.com/fenneclab/hugo-bin/compare/v0.127.0...v0.129.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: hugo-bin\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= '2018-05-27T00:00:00Z' AND c.committedDate <= '2018-05-31T23:59:59Z'\nRETURN c.id, c.message, c.additions, c.deletions, c.changedFiles, c.committedDate, r.name\nORDER BY c.committedDate ASC",
+        "result": [
+            {
+                "c.id": "976aad0059a22ec1251646a1b4a9f3454c7aed64",
+                "c.message": "\"Remove the unused docs upload preview stuff. (#26599)\"",
+                "c.additions": 0,
+                "c.deletions": 28,
+                "c.changedFiles": 4,
+                "c.committedDate": "2018-05-27T08:44:29Z",
+                "r.name": "bootstrap"
+            },
+            {
+                "c.id": "89a47c98b937a0c85a4701e8343f33ecdfcdff5c",
+                "c.message": "\"https link to editorconfig.org\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-31T06:43:12Z",
+                "r.name": "bootstrap"
+            },
+            {
+                "c.id": "e163d18b12f862845e520b6fe789e241f2c66561",
+                "c.message": "\"Fix inline labels with a custom select (#26615)\n\nAdd an sr-only class to the label on inline labels with a custom select\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-31T07:02:14Z",
+                "r.name": "bootstrap"
+            },
+            {
+                "c.id": "e3084c3842809ca83aaaba7c8f53ea2b0ffabe0a",
+                "c.message": "\"Changed Node.js download page (#26638)\n\nLink to the more user-friendly Node download page (rather than just the raw directory view)\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.committedDate": "2018-05-31T16:36:50Z",
+                "r.name": "bootstrap"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH \"2024-07-31\"\nRETURN c.message\nLIMIT 1",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for bootstrap-grid.scss file?",
+        "response": "",
+        "query": "MATCH (f:File {name: 'bootstrap-grid.scss'})<-[r:changed]-(c:Commit)\nRETURN f.name AS fileName, c.id AS commitHash, r.additions AS additions, r.deletions AS deletions, r.patch AS patch, c.message AS commitMessage\nORDER BY c.committedDate DESC",
+        "result": [
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "a7e01146e099db6c24fd91bedcd87d57502e71b3",
+                "additions": 0,
+                "deletions": 1,
+                "patch": "@@ -8,7 +8,6 @@ $include-column-box-sizing: true !default;\n @import \"variables-dark\";\n @import \"maps\";\n \n-@import \"mixins/lists\";\n @import \"mixins/breakpoints\";\n @import \"mixins/container\";\n @import \"mixins/grid\";",
+                "commitMessage": "\"Remove useless import\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "60714e32c76c23c407c291e9bdebcdf211d45222",
+                "additions": 1,
+                "deletions": 0,
+                "patch": "@@ -5,6 +5,7 @@ $include-column-box-sizing: true !default;\n \n @import \"functions\";\n @import \"variables\";\n+@import \"variables-dark\";\n @import \"maps\";\n \n @import \"mixins/lists\";",
+                "commitMessage": "\"Add theme maps specific to dark mode (#37843)\n\n* Add theme maps specific to dark mode\r\n\r\n* Fix CSS building\r\n\r\n* Fix other failing test\r\n\r\nCo-authored-by: Mark Otto <markdotto@gmail.com>\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "748702d00f623c9b3700a83b743429beeae85e29",
+                "additions": 0,
+                "deletions": 4,
+                "patch": "@@ -5,20 +5,16 @@ $include-column-box-sizing: true !default;\n \n @import \"functions\";\n @import \"variables\";\n-@import \"variables-dark\";\n @import \"maps\";\n \n @import \"mixins/lists\";\n @import \"mixins/breakpoints\";\n-@import \"mixins/color-mode\";\n @import \"mixins/container\";\n @import \"mixins/grid\";\n @import \"mixins/utilities\";\n \n @import \"vendor/rfs\";\n \n-@import \"root\";\n-\n @import \"containers\";\n @import \"grid\";\n ",
+                "commitMessage": "\"Reduce bootstrap-grid.css content\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "fc3f4b67d65c575daa661ecf31cf59b4ff3cced5",
+                "additions": 2,
+                "deletions": 0,
+                "patch": "@@ -5,10 +5,12 @@ $include-column-box-sizing: true !default;\n \n @import \"functions\";\n @import \"variables\";\n+@import \"variables-dark\";\n @import \"maps\";\n \n @import \"mixins/lists\";\n @import \"mixins/breakpoints\";\n+@import \"mixins/color-mode\";\n @import \"mixins/container\";\n @import \"mixins/grid\";\n @import \"mixins/utilities\";",
+                "commitMessage": "\"Add dark mode support (#35857)\n\n* Add dark mode to docs\r\n\r\n* Minor fix: missing space indentation\r\n\r\n* Minor fix: revert utilities/z-index added-in modification\r\n\r\n* Remove prev: and next: from doc because extracted to another PR\r\n\r\n* Use .bg-body-tertiary in all Utilities > Overflow examples\r\n\r\n* fix example\r\n\r\n* Fix up spacing examples\r\n\r\n* Update box-shadow Sass variables and utilities to auto-adjust to color modes\r\n\r\n* Remove unused docs class\r\n\r\n* Refactor form styles to use CSS variable for background images on .form-check and .form-switch\r\n\r\n* Fix docs selector\r\n\r\n* Rename shortcut for clarity\r\n\r\n* Heading consistency\r\n\r\n* Reintroduce missing 4th grid item in Utilities > Spacing example\r\n\r\n* Fix bundlewatch\r\n\r\n* .bd-callout* rendering is OK so removing comments in the code\r\n\r\n* Update scss/_utilities.scss\r\n\r\nCo-authored-by: Julien Déramond <julien.deramond@orange.com>\r\n\r\n* Fix gutters example styling\r\n\r\n* Fix text colors on background utils docs\r\n\r\n* redesign and fix up position marker example, which doesnt show nicely in darkmode but at least isnt broken\r\n\r\n* fix some color utils examples\r\n\r\n* Deprecate mixin notice\r\n\r\n* Deprecate notice for list-group-item-variant() mixin\r\n\r\n* Revamp new link CSS vars\r\n\r\n* Use map-keys in some each Sass files\r\n\r\n* Remove list-group-item-variant mixin ref in sass loop desc\r\n\r\n* Display CSS vars scoped to our built-in dark mode\r\n\r\n* Revert previous commit\r\n\r\n* Fix list group variant link\r\n\r\n* Fix typo\r\n\r\n* Remove imports of alert/list-group mixins in scss/_mixins.scss\r\n\r\n* Small formatting + comments removal in scss/_content.scss\r\n\r\n* Fix alert links colors\r\n\r\n* fix dropdown border-radius mixin\r\n\r\n* fix link color and underline again, this time using CSS var override for color var and fallback value for the underline\r\n\r\n* fix colors on docs navbar for dark mode\r\n\r\n* remove two changes\r\n\r\n* missing ref\r\n\r\n* another link underline fix, just use sass vars for link decoration for now\r\n\r\n* missing color bg docs, plus move dropdown override to scss\r\n\r\n* more changes from review\r\n\r\n* fix some examples, drop unused docs navbar styles, update docs navbar color mode to use mixin\r\n\r\n* Few fixes around type\r\n\r\n- Restored CSS variable for color on headings, this time with a fallback value\r\n- In conjunction, restored and wrapped the default CSS var with a null value check\r\n- Split headings and paragraphs docs in Reboot, elaborated on them\r\n\r\n* Restyle custom details > summary element in docs\r\n\r\n* Rewrite some migration docs\r\n\r\n* fix form checks\r\n\r\n* Fix up some navbar styling, tweak docs callout\r\n\r\n* Fix select images, mostly for validation styling\r\n\r\n* Clean up some migration notes, document some new form control CSS vars, mention new variables-dark in sass docs\r\n\r\n* Update site/content/docs/5.2/components/scrollspy.md\r\n\r\nCo-authored-by: Julien Déramond <julien.deramond@orange.com>\r\n\r\n* Apply suggestions from code review\r\n\r\nCo-authored-by: Julien Déramond <julien.deramond@orange.com>\r\n\r\n* mention form control css vars in migration guide\r\n\r\n* Tweak grid and flex docs background examples\r\n\r\n* clarify some docs\r\n\r\n* fix some more things\r\n\r\nCo-authored-by: Julien Déramond <juderamond@gmail.com>\r\nCo-authored-by: Julien Déramond <julien.deramond@orange.com>\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "54317bf7c85fd3c6f05c5a059e5247d52d69d02e",
+                "additions": 2,
+                "deletions": 6,
+                "patch": "@@ -1,9 +1,5 @@\n-/*!\n- * Bootstrap Grid v5.2.0-beta1 (https://getbootstrap.com/)\n- * Copyright 2011-2022 The Bootstrap Authors\n- * Copyright 2011-2022 Twitter, Inc.\n- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)\n- */\n+@import \"mixins/banner\";\n+@include bsBanner(Grid);\n \n $include-column-box-sizing: true !default;\n ",
+                "commitMessage": "\"Add a banner mixin, helping future releases and maintenance (#36178)\n\n* Add a banner mixin, helping future releases and maintenance\r\n\r\n* Update scss/bootstrap-reboot.scss\r\n\r\nCo-authored-by: Julien Déramond <julien.deramond@orange.com>\r\n\r\n* Apply suggestions from code review\r\n\r\nCo-authored-by: Julien Déramond <julien.deramond@orange.com>\r\nCo-authored-by: Mark Otto <markd.otto@gmail.com>\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "f7e8ca91e03165abb82d4c82555dc4ef96340cc9",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -1,5 +1,5 @@\n /*!\n- * Bootstrap Grid v5.1.3 (https://getbootstrap.com/)\n+ * Bootstrap Grid v5.2.0-beta1 (https://getbootstrap.com/)\n  * Copyright 2011-2022 The Bootstrap Authors\n  * Copyright 2011-2022 Twitter, Inc.\n  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)",
+                "commitMessage": "\"Prepare v5.2.0-beta1\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "9680e1745672f35f6a63c6670b1668e46d5c575d",
+                "additions": 2,
+                "deletions": 2,
+                "patch": "@@ -1,7 +1,7 @@\n /*!\n  * Bootstrap Grid v5.1.3 (https://getbootstrap.com/)\n- * Copyright 2011-2021 The Bootstrap Authors\n- * Copyright 2011-2021 Twitter, Inc.\n+ * Copyright 2011-2022 The Bootstrap Authors\n+ * Copyright 2011-2022 Twitter, Inc.\n  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)\n  */\n ",
+                "commitMessage": "\"Bump copyright year to 2022 (#35639)\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "9f099d3e4f6fe5b0c5454d2462cc22d06b6f4a1b",
+                "additions": 1,
+                "deletions": 0,
+                "patch": "@@ -9,6 +9,7 @@ $include-column-box-sizing: true !default;\n \n @import \"functions\";\n @import \"variables\";\n+@import \"maps\";\n \n @import \"mixins/lists\";\n @import \"mixins/breakpoints\";",
+                "commitMessage": "\"Move reassigned Sass maps for colors to another stylesheet (#34942)\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "c44d64ed71bd74d322c6023f1cd5a167de126d4f",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -1,5 +1,5 @@\n /*!\n- * Bootstrap Grid v5.1.2 (https://getbootstrap.com/)\n+ * Bootstrap Grid v5.1.3 (https://getbootstrap.com/)\n  * Copyright 2011-2021 The Bootstrap Authors\n  * Copyright 2011-2021 Twitter, Inc.\n  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)",
+                "commitMessage": "\"Merge remote-tracking branch remotes/origin/v513\""
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "commitHash": "1a6fdfae6be09b09eaced8f0e442ca6f7680a61e",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -1,5 +1,5 @@\n /*!\n- * Bootstrap Grid v5.1.2 (https://getbootstrap.com/)\n+ * Bootstrap Grid v5.1.3 (https://getbootstrap.com/)\n  * Copyright 2011-2021 The Bootstrap Authors\n  * Copyright 2011-2021 Twitter, Inc.\n  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)",
+                "commitMessage": "\"Bump version to 5.1.3.\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for patterns.less file?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File {name: 'patterns.less'})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 33,
+                    "committedDate": "2012-02-02T01:06:40Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "5c1527abc560d38e695eb8d643953a83fb37da7a",
+                    "type": "Commit",
+                    "message": "\"remove unused css files and add scaffolding and hero-unit to the builder\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 41444,
+                    "deletions": 9539,
+                    "committedDate": "2012-01-31T21:18:34Z",
+                    "changedFiles": 221,
+                    "commentsCount": 0,
+                    "id": "0bfbe5058d61ae93d82b09f1dff7eb30dc22426e",
+                    "type": "Commit",
+                    "message": "\"Merge branch 2.0-wip\n\nConflicts:\n\t.gitignore\n\tLICENSE\n\tMakefile\n\tbootstrap.css\n\tbootstrap.min.css\n\tdocs/assets/js/application.js\n\tdocs/assets/js/google-code-prettify/prettify.css\n\tdocs/index.html\n\tdocs/javascript.html\n\texamples/container-app.html\n\texamples/fluid.html\n\texamples/hero.html\n\tjs/bootstrap-alerts.js\n\tjs/bootstrap-dropdown.js\n\tjs/bootstrap-modal.js\n\tjs/bootstrap-popover.js\n\tjs/bootstrap-scrollspy.js\n\tjs/bootstrap-tabs.js\n\tjs/bootstrap-twipsy.js\n\tjs/tests/index.html\n\tjs/tests/unit/bootstrap-modal.js\n\tjs/tests/unit/bootstrap-popover.js\n\tjs/tests/unit/bootstrap-tabs.js\n\tlib/forms.less\n\tlib/mixins.less\n\tlib/patterns.less\n\tlib/scaffolding.less\n\tlib/tables.less\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 100,
+                    "deletions": 91,
+                    "committedDate": "2012-01-27T05:48:46Z",
+                    "changedFiles": 47,
+                    "commentsCount": 0,
+                    "id": "dc2deb9a1b1995bbabee91bfd579d9b466fe78f2",
+                    "type": "Commit",
+                    "message": "\"moving structure around + more work on builder...\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 373,
+                    "deletions": 340,
+                    "committedDate": "2012-01-27T04:23:28Z",
+                    "changedFiles": 16,
+                    "commentsCount": 0,
+                    "id": "e0e54d9c6cb39eae53e31117c38ceae0a08a6e0b",
+                    "type": "Commit",
+                    "message": "\"Merge branch 2.0-wip of https://github.com/twitter/bootstrap into 2.0-wip\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 46,
+                    "deletions": 21,
+                    "committedDate": "2012-01-27T00:27:50Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "7d292f5acc82cfc53a68b1452103c2367c0d8020",
+                    "type": "Commit",
+                    "message": "\"Merge pull request #1274 from linrock/patch-2\n\n[2.0 wip] Bring back the hero unit css. Fixes #1185.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 43,
+                    "deletions": 18,
+                    "committedDate": "2012-01-27T00:31:10Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "e7bc2063beb8ab1a36b5001d5847c6995b005a29",
+                    "type": "Commit",
+                    "message": "\"Merge branch 2.0-wip of github.com:twitter/bootstrap into 2.0-wip\n\nConflicts:\n\tbootstrap.css\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 46,
+                    "deletions": 21,
+                    "committedDate": "2012-01-26T23:51:11Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "ef4e3bc0f7549e327c45792884a264faab402400",
+                    "type": "Commit",
+                    "message": "\"Move hero-unit css out of pattern.less and include it. Fixes #1185.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2054,
+                    "deletions": 2105,
+                    "committedDate": "2012-01-05T18:01:42Z",
+                    "changedFiles": 18,
+                    "commentsCount": 0,
+                    "id": "20add59de3f2b69aaa9c9b325dab20b13c75eaa1",
+                    "type": "Commit",
+                    "message": "\"breaking out patterns.less even more, removing unnecessary div from checkbox and radio lists--now just labels and inputs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 49,
+                    "deletions": 25,
+                    "committedDate": "2012-01-05T22:11:41Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "23e5fc2133dd748ba4a7df52b598a24a2915811a",
+                    "type": "Commit",
+                    "message": "\"Tweak the docs and address the new forms list of controls: radios and checkboxes are now hanging controls to wrap text properly\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 6,
+                    "committedDate": "2012-01-04T18:03:11Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "3237047ac30fe4905dc515258bac050cdf811426",
+                    "type": "Commit",
+                    "message": "\"Merge branch master of https://github.com/twitter/bootstrap\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(DISTINCT i) AS unfixedBugs\nRETURN u.name AS developer, unfixedBugs\nORDER BY unfixedBugs DESC\nLIMIT 5",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in bootstrap-grid.scss?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: 'bootstrap-grid.scss'})\nWITH u, COUNT(DISTINCT i) AS bugFixCount\nORDER BY bugFixCount DESC\nLIMIT 5\nRETURN u.name AS Developer, bugFixCount AS BugsFixed",
+        "result": [
+            {
+                "Developer": "Patrick H. Lauke",
+                "BugsFixed": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in browser-bugs.yml?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)\nWHERE exists((c)-[:changed]->(:File {name: 'browser-bugs.yml'}))\nWITH u, count(DISTINCT i) AS fixedBugs\nRETURN u.login AS user, fixedBugs\nORDER BY fixedBugs DESC\nLIMIT 1",
+        "result": [
+            {
+                "user": "cvrebert",
+                "fixedBugs": 21
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[r:changed]->(f:File)\nWHERE EXISTS((c)-[:introduced]->(:Issue))\nWITH f, COUNT(DISTINCT c) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\nRETURN f.name AS file_name, f.path AS file_path, bug_count",
+        "result": [
+            {
+                "file_name": "browser-bugs.yml",
+                "file_path": "docs/_data/browser-bugs.yml",
+                "bug_count": 8
+            },
+            {
+                "file_name": "_carousel.scss",
+                "file_path": "scss/_carousel.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_nav-divider.scss",
+                "file_path": "scss/mixins/_nav-divider.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_list-group.scss",
+                "file_path": "scss/mixins/_list-group.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_gradients.scss",
+                "file_path": "scss/mixins/_gradients.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_text.scss",
+                "file_path": "scss/utilities/_text.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_forms.scss",
+                "file_path": "scss/mixins/_forms.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_print.scss",
+                "file_path": "scss/_print.scss",
+                "bug_count": 1
+            },
+            {
+                "file_name": "carousel.md",
+                "file_path": "docs/javascript/carousel.md",
+                "bug_count": 1
+            },
+            {
+                "file_name": "_reboot.scss",
+                "file_path": "scss/_reboot.scss",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)<-[:impacted]-(i:Issue)\nWHERE i.state = 'closed'\nWITH f, COUNT(i) AS issueCount\nORDER BY issueCount DESC\nLIMIT 10\nRETURN f.name AS fileName, f.path AS filePath, issueCount\nORDER BY issueCount DESC",
+        "result": [
+            {
+                "fileName": "browser-bugs.yml",
+                "filePath": "docs/_data/browser-bugs.yml",
+                "issueCount": 16
+            },
+            {
+                "fileName": "_reboot.scss",
+                "filePath": "scss/_reboot.scss",
+                "issueCount": 1
+            },
+            {
+                "fileName": "_breakpoints.scss",
+                "filePath": "scss/mixins/_breakpoints.scss",
+                "issueCount": 1
+            },
+            {
+                "fileName": "overview.md",
+                "filePath": "docs/_includes/css/overview.md",
+                "issueCount": 1
+            },
+            {
+                "fileName": "tables.md",
+                "filePath": "docs/components/tables.md",
+                "issueCount": 1
+            },
+            {
+                "fileName": "offcanvas.css",
+                "filePath": "offcanvas/offcanvas.css",
+                "issueCount": 1
+            },
+            {
+                "fileName": "bootstrap-grid.scss",
+                "filePath": "scss/bootstrap-grid.scss",
+                "issueCount": 1
+            },
+            {
+                "fileName": "_variables.scss",
+                "filePath": "scss/_variables.scss",
+                "issueCount": 1
+            },
+            {
+                "fileName": "browsers-devices.md",
+                "filePath": "docs/getting-started/browsers-devices.md",
+                "issueCount": 1
+            },
+            {
+                "fileName": "_modal.scss",
+                "filePath": "scss/_modal.scss",
+                "issueCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on March 12, 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate STARTS WITH \"2018-03-12\"\nRETURN c.id, c.message, i.title, i.number",
+        "result": [
+            {
+                "c.id": "27f553c9651dbe81a8aaf821aa2bf15670d9adb8",
+                "c.message": "\"Replace \"loose\" HEX values with their respective variables (#25672)\"",
+                "i.title": "\"Scrollbar bug on Windows 10 with IE 11, HiDPI Monitor\"",
+                "i.number": 21780
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on Dec 26, 2017?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate >= '2017-12-26T00:00:00Z' AND c.committedDate < '2017-12-27T00:00:00Z'\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 52,
+                    "committedDate": "2017-12-26T21:18:19Z",
+                    "deletions": 52,
+                    "changedFiles": 9,
+                    "commentsCount": 0,
+                    "id": "2435afe4e6f329ca567759f7d00890f6d523b35e",
+                    "type": "Commit",
+                    "message": "\"Move from h4s and misc to h5s so headings from example snippets dont show in our table of contents\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 11266?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 11266\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2015-01-10T03:04:42Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "4576dbae95e74bd1b2cfa849757b9774bcde7ade",
+                    "type": "Commit",
+                    "message": "\"Filed http://openradar.appspot.com/19434878\n\nRefs #11266, #13098\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 25166?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 25166\nRETURN c.id AS commitId, c.message AS commitMessage",
+        "result": [
+            {
+                "commitId": "7044ea82c17853c4d6d3483114b860ce4a5cf7b1",
+                "commitMessage": "\"Patch fractional viewport widths to work around Safari rounding bug (#25177)\n\nIncludes simplifying the prose in `tables.md` and adding the bug to the list of browser bugs.\r\n\r\nCloses https://github.com/twbs/bootstrap/issues/25166\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash 9a3d72f659669e20ccff8baa4426fe0f24413a39?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: \"9a3d72f659669e20ccff8baa4426fe0f24413a39\"})\nMATCH (c)-[:introduced]->(i:Issue)\nRETURN i.id, i.title, i.state, i.created_at",
+        "result": [
+            {
+                "i.id": 14975,
+                "i.title": "\"iPad modal <select> bug\"",
+                "i.state": "closed",
+                "i.created_at": "2014-11-03T10:05:30Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: 'f0c82ab4ec8ca136dad1b50bdef7515090be4f14'})-[:introduced]->(i:Issue)\nWHERE i.state = 'OPEN'\nRETURN i.title AS BugTitle, i.url AS BugURL, i.created_at AS CreatedAt",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on December 2013?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate STARTS WITH '2013-12'\nWITH COUNT(DISTINCT c) AS fixingCommits\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate STARTS WITH '2013-12'\nWITH fixingCommits, COUNT(DISTINCT c) AS bugIntroducingCommits\nRETURN (bugIntroducingCommits * 100.0 / fixingCommits) AS percentage",
+        "result": [
+            {
+                "percentage": 3.225806451612903
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on December 2013?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(:Issue)\nWHERE c.committedDate >= '2013-12-01T00:00:00Z' AND c.committedDate < '2014-01-01T00:00:00Z'\nWITH c\nMATCH (c)-[:introduced]->(:Issue)\nRETURN COUNT(DISTINCT c) AS fixingCommitsCausingBugs",
+        "result": [
+            {
+                "fixingCommitsCausingBugs": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (u:User)-[:creates]->(i:Issue)\nWHERE i.state = 'OPEN' AND i.type = 'BUG'\nWITH u, COUNT(i) AS bugCount\nRETURN u.login AS developer, bugCount\nORDER BY bugCount DESC\nLIMIT 1",
+        "result": [],
+        "iteration": 0
+    }
+]

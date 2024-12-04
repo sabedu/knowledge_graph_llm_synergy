@@ -1,0 +1,257 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate >= date(\"2024-07-28T00:00:00Z\") AND c.committedDate <= date(\"2024-08-28T23:59:59Z\")\nRETURN count(c) AS commitsCount",
+        "result": [
+            {
+                "num_commits": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository) \nWHERE c.committedDate = (SELECT MAX(committedDate) FROM (MATCH (c:Commit)-[:belongs_to]->(r:Repository) RETURN c.committedDate)) \nRETURN c;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c.id, c.message, c.additions, c.deletions, c.committedDate",
+        "result": [
+            {
+                "c.id": "ebda8af870acc295388ed187f0139a8bffa83196",
+                "c.message": "\"Clarify ssh-agent settings position\"",
+                "c.additions": 2,
+                "c.deletions": 0,
+                "c.committedDate": "2018-05-28T15:09:53Z"
+            },
+            {
+                "c.id": "ce2890bef95b4b0a5b14ed8dd50ad2f78f8dee72",
+                "c.message": "\"[plugins/vundle] Use HTTPS to clone repository. (#6857)\n\nThe git protocol is likely to be blocked in some networks while HTTPS usually\r\nworks.\"",
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.committedDate": "2018-05-28T09:23:05Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)-[:contributes_to]->(u:User)\nWHERE c.committedDate = datetime(\"2024-07-31T00:00:00Z\")\nRETURN c.message AS CommitMessage;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for install.sh file?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[changed:changed]->(f:File {name: \"install.sh\"}) \nRETURN changed.additions AS additions, changed.deletions AS deletions, c.message AS message;",
+        "result": [
+            {
+                "additions": 1,
+                "deletions": 1,
+                "message": "\"chore: replace all instances of twitter with X\n\nCloses #12536\""
+            },
+            {
+                "additions": 8,
+                "deletions": 3,
+                "message": "\"feat(tools): update `supports_hyperlinks` (#12258)\n\nUpdate to https://github.com/zkat/supports-hyperlinks/releases/tag/v3.0.0\""
+            },
+            {
+                "additions": 3,
+                "deletions": 1,
+                "message": "\"fix(installer): fix path logic and improve clarity on ZDOTDIR use\""
+            },
+            {
+                "additions": 1,
+                "deletions": 2,
+                "message": "\"chore(installer): remove words triggering false positives in antiviruses\""
+            },
+            {
+                "additions": 5,
+                "deletions": 0,
+                "message": "\"fix(installer): dont use `sudo` when user is in Termux (#11591)\n\nCo-authored-by: Marc Cornellà <hello@mcornella.com>\""
+            },
+            {
+                "additions": 5,
+                "deletions": 0,
+                "message": "\"fix(installer): automatically create ZDOTDIR path if it doesnt exist\""
+            },
+            {
+                "additions": 5,
+                "deletions": 3,
+                "message": "\"fix(installer): dont use `$ZDOTDIR` in zshrc file if same as `$HOME`\n\nFixes #11471\""
+            },
+            {
+                "additions": 30,
+                "deletions": 15,
+                "message": "\"feat(installer): respect and install in `$ZDOTDIR` if set (#9376)\n\nFixes #9001\nFixes #10479\n\nCloses #9376\n\nCo-authored-by: Marc Cornellà <hello@mcornella.com>\""
+            },
+            {
+                "additions": 1,
+                "deletions": 1,
+                "message": "\"fix(installer): detect newer Git for Windows version errors (#11157)\n\nFixes #11157\""
+            },
+            {
+                "additions": 8,
+                "deletions": 2,
+                "message": "\"fix: show full hyperlinks in Konsole (#10964)\n\nFixes #10964\""
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for README.md file?",
+        "response": "",
+        "query": "MATCH (f:File {name: \"README.md\"})-[:belongs_to]->(r:Repository)-[:contains]->(c:Commit) RETURN c;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:participates_in]->(i:Issue)<-[:fixed]-(c:Commit)\nWITH u, COUNT(*) AS unfixed_issues\nORDER BY unfixed_issues DESC\nRETURN u.name AS developer, unfixed_issues AS count",
+        "result": [
+            {
+                "developer": "Marc Cornellà",
+                "count": 308
+            },
+            {
+                "developer": "Carlo Sala",
+                "count": 74
+            },
+            {
+                "developer": "Robby Russell",
+                "count": 48
+            },
+            {
+                "developer": "Andrew Janke",
+                "count": 23
+            },
+            {
+                "developer": "Nicolas Canceill",
+                "count": 15
+            },
+            {
+                "developer": "Richard Mitchell",
+                "count": 14
+            },
+            {
+                "developer": "Daniel Hahler",
+                "count": 7
+            },
+            {
+                "developer": "Sorin Ionescu",
+                "count": 5
+            },
+            {
+                "developer": "Gareth Owen",
+                "count": 4
+            },
+            {
+                "developer": "mlibbey",
+                "count": 4
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in README.md?",
+        "response": "",
+        "query": "MATCH (user:User)-[:author]->(commit:Commit)-[:fixed]->(issue:Issue)-[:impacted]->(file:File {name: \"README.md\"}) \nWHERE commit.additions + commit.deletions > 0 \nRETURN DISTINCT user.login AS developer ORDER BY COUNT(DISTINCT issue) DESC;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in cli.zsh?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)<-[:belongs_to]-(r:Repository {name:\"cli.zsh\"}) \nWHERE c.abbreviatedOid IS NOT NULL \nRETURN u.name AS Fixer, COUNT(*) AS BugCount ORDER BY BugCount DESC LIMIT 1",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(f:File) \nWHERE c.committedDate <= datetime(\"2024-08-28T19:47:40+00:00Z\") \nWITH collect(c) as commits, f \nORDER BY size((commits)-[:changed]->(f)) DESC \nRETURN f.name AS file, size((commits)-[:changed]->(f)) AS bug_count;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)-[:belongs_to]->(r:Repository)-[:contributes_to]->(u:User)-[:fixed {change_type: \"bug\"}]->(:Issue)<-[:impacted]-(f) RETURN f.name AS file, COUNT(*) AS bug_count ORDER BY bug_count DESC;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on Nov 17, 2021?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File) \nWHERE c.committedDate =~ \"2021-11-17T00:00:00Z\" \nRETURN c.id AS commitId, f.name AS fileName;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on June 08, 2023?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue) WHERE c.committedDate =~ '2023-06-08T00:00:00Z' OR i.closed_at =~ '2023-06-08T00:00:00Z' RETURN c;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket KAFKA-7354?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:number]-(n:Integer {value: \"KAFKA-7354\"}) RETURN c.id;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket Kafka-7354?",
+        "response": "",
+        "query": "MATCH p=(commit:Commit)-[:fixed]->(:Issue {number:\"Kafka-7354\"}) RETURN p;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash b9be3a43b4da579299b4426b1ba9121f746e2555?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: \"b9be3a43b4da579299b4426b1ba9121f746e2555\"})-[:introduced]->(i:Issue)<-[:impacted]-(f:File) RETURN i, f;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit 65393b4bb10de841edbe2026dba29b73625b33d7?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: \"65393b4bb10de841edbe2026dba29b73625b33d7\"})-[:fixed]->(i:Issue)-[:impacted]->(f:File) RETURN f.name AS BugName;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on July 2024?",
+        "response": "",
+        "query": "MATCH (commit:Commit)-[:fixed]->(issue:Issue)-[:introduced]->(file:File)\nWHERE date(commit.committedDate) = datetime(\"2024-07-01T00:00:00Z\")\nWITH commit, issue, file\nMATCH (commit)<-[:changed]-(fileChanged:File)\nWHERE NOT fileChanged.name STARTS WITH \"test\"\nRETURN COUNT(*) AS fixingCommitsIntroducedBugs\nWITH fixingCommitsIntroducedBugs\nCALL apoc.agg.group([fixingCommitsIntroducedBugs], {perc: (fixingCommitsIntroducedBugs / (SELECT COUNT(*) FROM Commit WHERE date(committedDate) = datetime(\"2024-07-01T00:00:00Z\")) * 100)}) YIELD value AS percentage\nRETURN percentage AS \"percentage of the fixing commits that introduced bugs on July 2024\";",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on July 2024?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File) \nWHERE c.committedDate =~ \"2024-07-[0-9]{01}T00:00:00Z\" \nRETURN COUNT(c) AS fixingCommits",
+        "result": [
+            {
+                "fixingCommits": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (user:User)-[:participates_in]->(issue:Issue)<-[:fixed]-(commit:Commit)\nWHERE NOT exists((commit)-[:fixed]->(other_issue:Issue))\nWITH user, count(*) AS bug_count\nORDER BY bug_count DESC\nRETURN user.name AS developer, bug_count AS total_bugs",
+        "result": [],
+        "iteration": 0
+    }
+]

@@ -1,0 +1,223 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(repo:Repository)\nWHERE c.committedDate > DATE_SUB(currentDateTime(), interval 1 MONTH)\nRETURN COUNT(c) AS count",
+        "result": [
+            {
+                "commitsCount": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (commit:Commit) \nWHERE EXISTS(commit.committedDate) \nAND DATE_FORMAT(toDateTime(commit.committedDate), \"YYYY-MM-DD\") = date(\"2024-08-28\") \nRETURN commit ORDER BY toDateTime(commit.committedDate) DESC LIMIT 1;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed {change_type: \"C\", additions:gt(0), deletions:gt(0)}]-(:File)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c.id, c.message, collect({file: f.name} INBOUND c-[:changed {additions:gt(0), deletions:gt(0)}]-(f:File)) AS files",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File) WHERE c.committedDate = datetime(\"2024-07-31T00:00:00Z\") RETURN c.message;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for bootstrap-grid.scss file?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed {label: 1}]->(f:File) WHERE f.name = \"bootstrap-grid.scss\" RETURN c.additions, c.deletions;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for patterns.less file?",
+        "response": "",
+        "query": "MATCH (file:File)-[:belongs_to]->(repo:Repository)-[:contains]->(:Commit) WHERE file.name = \"patterns.less\" RETURN commit;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:contributes_to]->(r:Repository)-[:belongs_to]->(:Branch)-[:points_to]->(c:Commit)<-[:fixed]-(i:Issue) WHERE c.abbreviatedOid = '0e6edd9' OR c.commitHash = '0e6edd9f01edbbdc1dafad64d982e7074ae299b9' RETURN u.name AS developer ORDER BY size((u)-[:contributes_to]->(r)-[:belongs_to]->(:Branch)-[:points_to]->(c)<-[:fixed]-(i)) DESC LIMIT 1;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in bootstrap-grid.scss?",
+        "response": "",
+        "query": "MATCH (d:User)-[:contributes_to]->(r:Repository)<-[:fixed]-(i:Issue)-[:impacted]->(f:File)<-[:belongs_to]-(rf:Repository) \nWHERE f.name = \"bootstrap-grid.scss\" AND rf.name = \"repository-name\" \nWITH collect(d) AS developers \nORDER BY size((developers)-[:contributes_to]->(r)) DESC \nRETURN developers[0..1];",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in browser-bugs.yml?",
+        "response": "",
+        "query": "MATCH (u:User)-[:contributes_to]->(r:Repository)<-[:belongs_to]-(i:Issue)-[:fixed]->(c:Commit)\nWHERE i.url = \"browser-bugs.yml\"\nWITH u, count(c) as fixed_count\nORDER BY fixed_count DESC\nRETURN u.name AS user, fixed_count AS total_fixed",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File)<-[:fixed]-(i:Issue) \nWHERE i.state = \"open\" \nRETURN f.path AS file_path, COUNT(*) as bug_introduces ORDER BY bug_introduces DESC;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (file:File)-[:belongs_to]->(repo:Repository)<-[:changed]-(:Commit {isLatest: true})<-[:impacted]-(issue:Issue)\nWHERE issue.state = 'open'\nWITH file, COUNT(DISTINCT issue) AS bug_count\nORDER BY bug_count DESC\nRETURN file.name AS name, bug_count AS bug_count;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on March 12, 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[r:changed]->(f:File) \nWHERE c.committedDate =~ \"2018-03-12T*\" AND r.additions + r.deletions > 0\nRETURN c.id AS hash, f.name AS file_name, r.additions AS additions, r.deletions AS deletions",
+        "result": [
+            {
+                "commitId": "87065772b1054a8198caddbf1e8e856c8202c7c7",
+                "fileName": "tables.md"
+            },
+            {
+                "commitId": "b9628d064225eb703ea200fe170748c0942b3261",
+                "fileName": "browser-bugs.md"
+            },
+            {
+                "commitId": "b9628d064225eb703ea200fe170748c0942b3261",
+                "fileName": "bugify.html"
+            },
+            {
+                "commitId": "b9628d064225eb703ea200fe170748c0942b3261",
+                "fileName": "bugify.rb"
+            },
+            {
+                "commitId": "836de9ccfa201eefb02c97c61a2f3a50e2f2f219",
+                "fileName": "callout.html"
+            },
+            {
+                "commitId": "b5e6eb22a6da98c489c00e6266daa4599e3ce097",
+                "fileName": "carousel.md"
+            },
+            {
+                "commitId": "b5e6eb22a6da98c489c00e6266daa4599e3ce097",
+                "fileName": "dropdowns.md"
+            },
+            {
+                "commitId": "b5e6eb22a6da98c489c00e6266daa4599e3ce097",
+                "fileName": "popovers.md"
+            },
+            {
+                "commitId": "b5e6eb22a6da98c489c00e6266daa4599e3ce097",
+                "fileName": "tooltips.md"
+            },
+            {
+                "commitId": "b5e6eb22a6da98c489c00e6266daa4599e3ce097",
+                "fileName": "alerts.md"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on Dec 26, 2017?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File) \nWHERE c.committedDate =~ \"2017-12-26T00:00:00Z\" AND EXISTS((c)<-[:fixed]-(i:Issue)) \nRETURN c.id AS commitId, f.name AS fileName",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 11266?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue {number: 11266}) RETURN c;",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2015-01-10T03:04:42Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "4576dbae95e74bd1b2cfa849757b9774bcde7ade",
+                    "type": "Commit",
+                    "message": "\"Filed http://openradar.appspot.com/19434878\n\nRefs #11266, #13098\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 25166?",
+        "response": "",
+        "query": "MATCH (i:Issue {number: 25166})-[:fixed]->(c:Commit) RETURN c.id AS id, c.message AS message;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash 9a3d72f659669e20ccff8baa4426fe0f24413a39?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: \"9a3d72f659669e20ccff8baa4426fe0f24413a39\"})-[:introduced]->(i:Issue) RETURN i;",
+        "result": [
+            {
+                "i": {
+                    "number": 14975,
+                    "closed_at": "2015-10-13T02:13:32Z",
+                    "created_at": "2014-11-03T10:05:30Z",
+                    "id": 14975,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"When popping up a modal on a page that is scrolled down, then opening a `<select>` within the modal, the page jumps up. All elements on the modal are shifted in a way that they no longer line up with the actual visuals. Its tough to explain, so I put together a demo:\n\nhttps://github.com/CaptSaltyJack/bootstrap-select-bug\n\nOnce its broken and the modal button and dropdown no longer work, try tapping slightly above them. Youll see what I mean about the touch areas being displaced. Once you scroll to the top of the page, the modal elements work again as expected.\n\"",
+                    "title": "\"iPad modal <select> bug\"",
+                    "url": "https://github.com/twbs/bootstrap/issues/14975"
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14?",
+        "response": "",
+        "query": "MATCH p=(commit:Commit {id: \"f0c82ab4ec8ca136dad1b50bdef7515090be4f14\"})-[:changed]->(file:File)-[:impacted]->(issue:Issue) WHERE commit.id = \"f0c82ab4ec8ca136dad1b50bdef7515090be4f14\" RETURN issue.title AS bug, file.name AS affected_file;",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on December 2013?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:impacted]-(f:File) \nWHERE c.committedDate =~ '2013-12.*' \nWITH COUNT(*) AS totalFixingCommits, \n       SUM(CASE WHEN i.state = 'open' THEN 1 ELSE 0 END) AS bugsIntroduced \nRETURN ROUND((bugsIntroduced / totalFixingCommits) * 100,2) AS percentage",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on December 2013?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)<-[:impacted]-(f:File) \nWHERE c.committedDate CONTAINS \"2013-12\" AND i.state = 'open' \nRETURN COUNT(c) AS fixingCommitsCausedBugs",
+        "result": [
+            {
+                "fixingCommitsCausedBugs": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (d:User)-[:assigned]->(i:Issue)<-[:fixed]-(c:Commit) \nWHERE c.committedDate <= \"2024-08-29T02:39:41Z\" AND i.state = \"open\" \nRETURN d.name AS developer, COUNT(i) AS open_issues",
+        "result": [
+            {
+                "developer": "Patrick H. Lauke",
+                "open_issues": 1
+            }
+        ],
+        "iteration": 0
+    }
+]

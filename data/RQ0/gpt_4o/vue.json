@@ -1,0 +1,627 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "There were no commits in the last month. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-26T18:52:51Z\" AND c.committedDate <= \"2024-08-26T18:52:51Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit has the ID '73486cb5f5862a443b42c2aff68b82320218cbcd' and was made on June 14, 2024, at 12:52:12 UTC. The commit message is:\n\n```\n\"chore: fix link broken (#13192)\n\n* chore: fix link broken\nSigned-off-by: snoppy <michaleli@foxmail.com>\n\n* Update packages/template-compiler/README.md [skip ci]\n\n---------\nSigned-off-by: snoppy <michaleli@foxmail.com>\nCo-authored-by: Eduardo San Martin Morote <posva@users.noreply.github.com>\"\n```\n\nThis commit involved 1 addition, 1 deletion, and 1 changed file, and it has 0 comments.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2024-06-14T12:52:12Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "73486cb5f5862a443b42c2aff68b82320218cbcd",
+                    "type": "Commit",
+                    "message": "\"chore: fix link broken (#13192)\n\n* chore: fix link broken\r\n\r\nSigned-off-by: snoppy <michaleli@foxmail.com>\r\n\r\n* Update packages/template-compiler/README.md [skip ci]\r\n\r\n---------\r\n\r\nSigned-off-by: snoppy <michaleli@foxmail.com>\r\nCo-authored-by: Eduardo San Martin Morote <posva@users.noreply.github.com>\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know, can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for render.js file?",
+        "response": "Here are the changes for the `render.js` file:\n\n1. **Commit Message:** \"chore(typo): fix comment typo (#10101)\"\n   - Additions: 1\n   - Deletions: 1\n   - Changed Files: 1\n   - Comments Count: 0\n   - Committed Date: 2019-06-04T09:51:19Z\n\n2. **Commit Message:** \"perf: skip scoped slots normalization when possible\"\n   - Additions: 13\n   - Deletions: 4\n   - Changed Files: 2\n   - Comments Count: 0\n   - Committed Date: 2019-02-08T19:36:36Z\n\n3. **Commit Message:** \"fix: async component should use render owner as force update context\\n\\nPreviously, an async component uses its lexical owner as the force\\nupdate context. This works when the async component is rendered in a\\nscoped slot because in the past parent components always force update\\nchild components with any type of slots. After the optimization in\\nf219bed though, child components with only scoped slots are no longer\\nforce-updated, and this cause async components inside scoped slots to\\nnot trigger the proper update. Turns out they should have used the\\nactual render owner (the component that invokes the scoped slot) as the\\nforce update context all along.\\n\\nfix #9432\"\n   - Additions: 66\n   - Deletions: 13\n   - Changed Files: 5\n   - Comments Count: 0\n   - Committed Date: 2019-02-06T03:18:05Z\n\n4. **Commit Message:** \"refactor: ssrPrefetch -> serverPrefetch for more consistent naming\"\n   - Additions: 21\n   - Deletions: 21\n   - Changed Files: 5\n   - Comments Count: 0\n   - Committed Date: 2019-01-18T21:43:17Z\n\n5. **Commit Message:** \"chore: merge branch 2.6 into dev\"\n   - Additions: 4100\n   - Deletions: 1841\n   - Changed Files: 109\n   - Comments Count: 0\n   - Committed Date: 2019-01-11T23:26:32Z\n\n6. **Commit Message:** \"feat(core): expose all slots on $scopedSlots as functions\\n\\nAfter this change, users using render functions can always make use\\nof slots via `this.$scopedSlots` without worrying about whether the\\nslot is being passed in as scoped or not.\\n\\nThis should also make it easier to migrate to 3.0 where all slots are\\nexposed as functions that return Array of VNodes on `this.$slots`.\"\n   - Additions: 43\n   - Deletions: 9\n   - Changed Files: 5\n   - Comments Count: 0\n   - Committed Date: 2019-01-09T20:35:57Z\n\n7. **Commit Message:** \"fix(scoped-slots): ensure $scopedSlots calls always return Arrays\\n\\nAlso allow render functions to return an Array of a single element.\\nClose #8056\"\n   - Additions: 67\n   - Deletions: 15\n   - Changed Files: 6\n   - Comments Count: 0\n   - Committed Date: 2018-12-26T22:17:42Z\n\n8. **Commit Message:** \"feat(ssr): allow opting-out of caching by returning false in serverCacheKey\\n\\nclose #8790\"\n   - Additions: 7\n   - Deletions: 2\n   - Changed Files: 1\n   - Comments Count: 0\n   - Committed Date: 2018-12-20T20:47:15Z\n\n9. **Commit Message:** \"feat(ssr): ssrPrefetch option + context.rendered hook (#9017)\"\n   - Additions: 349\n   - Deletions: 9\n   - Changed Files: 10\n   - Comments Count: 0\n   - Committed Date: 2018-12-20T20:26:12Z\n\n10. **Commit Message:** \"fix(ssr): should not warn for custom directives that do not have ssr implementation\\n\\nfix #9167\"\n    - Additions: 17\n    - Deletions: 18\n    - Changed Files: 2\n    - Comments Count: 0\n    - Committed Date: 2018-12-09T20:47:43Z\n\nWould you like more details or information on something else?",
+        "query": "cypher\nMATCH (f:File {name: \"render.js\"})<-[:changed]-(c:Commit)\nRETURN c.additions, c.deletions, c.changedFiles, c.commentsCount, c.message, c.committedDate\n",
+        "result": [
+            {
+                "c.additions": 1,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.message": "\"chore(typo): fix comment typo (#10101)\"",
+                "c.committedDate": "2019-06-04T09:51:19Z"
+            },
+            {
+                "c.additions": 13,
+                "c.deletions": 4,
+                "c.changedFiles": 2,
+                "c.commentsCount": 0,
+                "c.message": "\"perf: skip scoped slots normalization when possible\"",
+                "c.committedDate": "2019-02-08T19:36:36Z"
+            },
+            {
+                "c.additions": 66,
+                "c.deletions": 13,
+                "c.changedFiles": 5,
+                "c.commentsCount": 0,
+                "c.message": "\"fix: async component should use render owner as force update context\n\nPreviously, an async component uses its lexical owner as the force\nupdate context. This works when the async component is rendered in a\nscoped slot because in the past parent components always force update\nchild components with any type of slots. After the optimization in\nf219bed though, child components with only scoped slots are no longer\nforce-updated, and this cause async components inside scoped slots to\nnot trigger the proper update. Turns out they should have used the\nactual render owner (the component that invokes the scoped slot) as the\nforce update context all along.\n\nfix #9432\"",
+                "c.committedDate": "2019-02-06T03:18:05Z"
+            },
+            {
+                "c.additions": 21,
+                "c.deletions": 21,
+                "c.changedFiles": 5,
+                "c.commentsCount": 0,
+                "c.message": "\"refactor: ssrPrefetch -> serverPrefetch for more consistent naming\"",
+                "c.committedDate": "2019-01-18T21:43:17Z"
+            },
+            {
+                "c.additions": 4100,
+                "c.deletions": 1841,
+                "c.changedFiles": 109,
+                "c.commentsCount": 0,
+                "c.message": "\"chore: merge branch 2.6 into dev\"",
+                "c.committedDate": "2019-01-11T23:26:32Z"
+            },
+            {
+                "c.additions": 43,
+                "c.deletions": 9,
+                "c.changedFiles": 5,
+                "c.commentsCount": 0,
+                "c.message": "\"feat(core): expose all slots on $scopedSlots as functions\n\nAfter this change, users using render functions can always make use\nof slots via `this.$scopedSlots` without worrying about whether the\nslot is being passed in as scoped or not.\n\nThis should also make it easier to migrate to 3.0 where all slots are\nexposed as functions that return Array of VNodes on `this.$slots`.\"",
+                "c.committedDate": "2019-01-09T20:35:57Z"
+            },
+            {
+                "c.additions": 67,
+                "c.deletions": 15,
+                "c.changedFiles": 6,
+                "c.commentsCount": 0,
+                "c.message": "\"fix(scoped-slots): ensure $scopedSlots calls always return Arrays\n\nAlso allow render functions to return an Array of a single element.\nClose #8056\"",
+                "c.committedDate": "2018-12-26T22:17:42Z"
+            },
+            {
+                "c.additions": 7,
+                "c.deletions": 2,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.message": "\"feat(ssr): allow opting-out of caching by returning false in serverCacheKey\n\nclose #8790\"",
+                "c.committedDate": "2018-12-20T20:47:15Z"
+            },
+            {
+                "c.additions": 349,
+                "c.deletions": 9,
+                "c.changedFiles": 10,
+                "c.commentsCount": 0,
+                "c.message": "\"feat(ssr): ssrPrefetch option + context.rendered hook (#9017)\"",
+                "c.committedDate": "2018-12-20T20:26:12Z"
+            },
+            {
+                "c.additions": 17,
+                "c.deletions": 18,
+                "c.changedFiles": 2,
+                "c.commentsCount": 0,
+                "c.message": "\"fix(ssr): should not warn for custom directives that do not have ssr implementation\n\nfix #9167\"",
+                "c.committedDate": "2018-12-09T20:47:43Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for vnode.js file?",
+        "response": "Here are all the commits for the `vnode.js` file:\n\n1. Commit ID: 9949ab5d14e3620f40b876cffbc710a33d0237b2\n   - Message: \"Merge pull request #3 from dwelch2344/move_to_typescript\\n\\nWIP: typescript love on the tests\"\n   - Additions: 63,420\n   - Deletions: 64,566\n   - Changed Files: 224\n   - Committed Date: 2022-05-04T21:25:34Z\n\n2. Commit ID: 40dccfedd1d92ef9d61ee350ed8fbd7fc525b5b9\n   - Message: \"chore: fix test harness; most of the tooling + test harness is happy; coverage still needs fixing\"\n   - Additions: 86,967\n   - Deletions: 87,657\n   - Changed Files: 52\n   - Committed Date: 2022-05-03T17:04:55Z\n\n3. Commit ID: 982d5a492fb95577217e2dacaa044eabe78a8601\n   - Message: \"fix(types): support string type for style in VNode data (#9728)\\n\\nfix #9727\"\n   - Additions: 27\n   - Deletions: 2\n   - Changed Files: 3\n   - Committed Date: 2019-03-18T07:47:43Z\n\n4. Commit ID: dbc0582587f90e78867809bb6ae683301cd0626b\n   - Message: \"feat: dynamic directive arguments for v-on, v-bind and custom directives (#9373)\"\n   - Additions: 459\n   - Deletions: 68\n   - Changed Files: 15\n   - Committed Date: 2019-01-26T04:22:44Z\n\n5. Commit ID: 097f6229dffc34af452b106ad2a3b58845588807\n   - Message: \"fix(core): avoid mutating original children when cloning vnode\\n\\nThe on-demand clone strategy introduced in 956756b mutates the owner\\narray of the cloned vnode. This causes the newly cloned vnode to be\\ndestroyed when the parent node is destroyed. This is fixed by cloning\\nthe children array when cloning a vnode.\\n\\nfix #7975\"\n   - Additions: 58\n   - Deletions: 1\n   - Changed Files: 2\n   - Committed Date: 2018-12-01T22:05:36Z\n\n6. Commit ID: 4ecc21c29ec12bb33d3b426cb4d42c579e9b0f2d\n   - Message: \"feat(devtools): store functional render context on vnode in development (#8586)\"\n   - Additions: 7\n   - Deletions: 3\n   - Changed Files: 2\n   - Committed Date: 2018-11-30T22:31:44Z\n\n7. Commit ID: 8227fb35240ab1f301c30a6ad5d4d25071fa7996\n   - Message: \"fix: add missing `asyncMeta` during VNode cloning (#7861)\"\n   - Additions: 1\n   - Deletions: 0\n   - Changed Files: 1\n   - Committed Date: 2018-03-23T23:13:10Z\n\n8. Commit ID: d7d9b002fd60d246b1ef65f71b55b45f46563b4d\n   - Message: \"chore: fix typo (#7781)\"\n   - Additions: 1\n   - Deletions: 1\n   - Changed Files: 1\n   - Committed Date: 2018-03-09T13:54:55Z\n\n9. Commit ID: 956756b1be7084daf8b6afb92ac0da7c24cde2a5\n   - Message: \"refactor: use more efficient on-demand clone to handle reused node edge cases\\n\\nremoves unnecessary slot/static node clones, fix #7292\"\n   - Additions: 107\n   - Deletions: 55\n   - Changed Files: 8\n   - Committed Date: 2017-12-21T00:44:24Z\n\n10. Commit ID: 604e081d0456ed136b24b5f759c608d153dfae93\n    - Message: \"fix: ensure functionalContext is cloned during slot clones\\n\\nfix #7106\"\n    - Additions: 63\n    - Deletions: 15\n    - Changed Files: 6\n    - Committed Date: 2017-11-22T21:37:24Z",
+        "query": "cypher\nMATCH (f:File {name: 'vnode.js'})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 63420,
+                    "deletions": 64566,
+                    "committedDate": "2022-05-04T21:25:34Z",
+                    "changedFiles": 224,
+                    "commentsCount": 0,
+                    "id": "9949ab5d14e3620f40b876cffbc710a33d0237b2",
+                    "type": "Commit",
+                    "message": "\"Merge pull request #3 from dwelch2344/move_to_typescript\n\nWIP: typescript love on the tests\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 86967,
+                    "deletions": 87657,
+                    "committedDate": "2022-05-03T17:04:55Z",
+                    "changedFiles": 52,
+                    "commentsCount": 0,
+                    "id": "40dccfedd1d92ef9d61ee350ed8fbd7fc525b5b9",
+                    "type": "Commit",
+                    "message": "\"chore: fix test harness; most of the tooling + test harness is happy; coverage still needs fixing\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 27,
+                    "deletions": 2,
+                    "committedDate": "2019-03-18T07:47:43Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "982d5a492fb95577217e2dacaa044eabe78a8601",
+                    "type": "Commit",
+                    "message": "\"fix(types): support string type for style in VNode data (#9728)\n\nfix #9727\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 459,
+                    "deletions": 68,
+                    "committedDate": "2019-01-26T04:22:44Z",
+                    "changedFiles": 15,
+                    "commentsCount": 0,
+                    "id": "dbc0582587f90e78867809bb6ae683301cd0626b",
+                    "type": "Commit",
+                    "message": "\"feat: dynamic directive arguments for v-on, v-bind and custom directives (#9373)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 58,
+                    "deletions": 1,
+                    "committedDate": "2018-12-01T22:05:36Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "097f6229dffc34af452b106ad2a3b58845588807",
+                    "type": "Commit",
+                    "message": "\"fix(core): avoid mutating original children when cloning vnode\n\nThe on-demand clone strategy introduced in 956756b mutates the owner\narray of the cloned vnode. This causes the newly cloned vnode to be\ndestroyed when the parent node is destroyed. This is fixed by cloning\nthe children array when cloning a vnode.\n\nfix #7975\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 7,
+                    "deletions": 3,
+                    "committedDate": "2018-11-30T22:31:44Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "4ecc21c29ec12bb33d3b426cb4d42c579e9b0f2d",
+                    "type": "Commit",
+                    "message": "\"feat(devtools): store functional render context on vnode in development (#8586)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 0,
+                    "committedDate": "2018-03-23T23:13:10Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "8227fb35240ab1f301c30a6ad5d4d25071fa7996",
+                    "type": "Commit",
+                    "message": "\"fix: add missing `asyncMeta` during VNode cloning (#7861)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2018-03-09T13:54:55Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d7d9b002fd60d246b1ef65f71b55b45f46563b4d",
+                    "type": "Commit",
+                    "message": "\"chore: fix typo (#7781)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 107,
+                    "deletions": 55,
+                    "committedDate": "2017-12-21T00:44:24Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "956756b1be7084daf8b6afb92ac0da7c24cde2a5",
+                    "type": "Commit",
+                    "message": "\"refactor: use more efficient on-demand clone to handle reused node edge cases\n\nremoves unnecessary slot/static node clones, fix #7292\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 63,
+                    "deletions": 15,
+                    "committedDate": "2017-11-22T21:37:24Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "604e081d0456ed136b24b5f759c608d153dfae93",
+                    "type": "Commit",
+                    "message": "\"fix: ensure functionalContext is cloned during slot clones\n\nfix #7106\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "The developer with the most unfixed bugs is Evan You, with a total of 2 unfixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state <> 'closed'\nRETURN u.name AS developer, COUNT(i) AS unfixed_bugs\nORDER BY unfixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Evan You",
+                "unfixed_bugs": 2
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "The developer with the most number of bugs yet to be fixed is Evan You, with 2 open bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue {state: 'open'})\nRETURN u.name AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Evan You",
+                "open_bugs": 2
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in helpers.js?",
+        "response": "The developer who fixed the most bugs in helpers.js is Evan You, with a total of 11 bugs fixed.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"helpers.js\"})\nRETURN u.name AS developer, COUNT(i) AS bugs_fixed\nORDER BY bugs_fixed DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "Evan You",
+                "bugs_fixed": 11
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in client.js?",
+        "response": "The user who fixed the most bugs in \"client.js\" is Xin Du (Clark), with a total of 1 fixed bug.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"client.js\"})\nRETURN u.name AS user, COUNT(i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "user": "Xin Du (Clark)",
+                "fixed_bugs": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The files that introduce the most bugs are:\n\n1. `index.js` with 166 bugs\n2. `render.js` with 88 bugs\n3. `events.js` and `patch.js` with 69 bugs each\n4. `lifecycle.js` with 64 bugs\n5. `model.js` with 61 bugs\n6. `vnode.js` with 58 bugs\n7. `create-component.js` with 50 bugs\n8. `component.js` with 49 bugs\n9. `compiler.js` with 46 bugs",
+        "query": "cypher\nMATCH (f:File)<-[:changed]-(c:Commit)-[:introduced]->(i:Issue)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "index.js",
+                "bug_count": 166
+            },
+            {
+                "f.name": "render.js",
+                "bug_count": 88
+            },
+            {
+                "f.name": "events.js",
+                "bug_count": 69
+            },
+            {
+                "f.name": "patch.js",
+                "bug_count": 69
+            },
+            {
+                "f.name": "lifecycle.js",
+                "bug_count": 64
+            },
+            {
+                "f.name": "model.js",
+                "bug_count": 61
+            },
+            {
+                "f.name": "vnode.js",
+                "bug_count": 58
+            },
+            {
+                "f.name": "create-component.js",
+                "bug_count": 50
+            },
+            {
+                "f.name": "component.js",
+                "bug_count": 49
+            },
+            {
+                "f.name": "compiler.js",
+                "bug_count": 46
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy files are:\n\n1. `index.js` with 105 bugs\n2. `model.js` with 46 bugs\n3. `render.js` with 42 bugs\n4. `events.js` with 38 bugs\n5. `lifecycle.js` with 37 bugs\n6. `patch.js` with 32 bugs\n7. `transition.js` with 32 bugs\n8. `component.js` with 29 bugs\n9. `codegen.spec.js` with 24 bugs\n10. `options.js` with 24 bugs\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (f:File)<-[:impacted]-(i:Issue)\nRETURN f.name, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "index.js",
+                "bugCount": 105
+            },
+            {
+                "f.name": "model.js",
+                "bugCount": 46
+            },
+            {
+                "f.name": "render.js",
+                "bugCount": 42
+            },
+            {
+                "f.name": "events.js",
+                "bugCount": 38
+            },
+            {
+                "f.name": "lifecycle.js",
+                "bugCount": 37
+            },
+            {
+                "f.name": "patch.js",
+                "bugCount": 32
+            },
+            {
+                "f.name": "transition.js",
+                "bugCount": 32
+            },
+            {
+                "f.name": "component.js",
+                "bugCount": 29
+            },
+            {
+                "f.name": "codegen.spec.js",
+                "bugCount": 24
+            },
+            {
+                "f.name": "options.js",
+                "bugCount": 24
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on August 18, 2022?",
+        "response": "The buggy commits that happened on August 18, 2022 are:\n\n1. Commit ID: 5221d4d3b6049c87d196d99dbb64bcd3f3b07279\n   - Message: \"fix(compiler-sfc): rewriteDefault for class with decorators (#12747)\"\n   - Additions: 251\n   - Deletions: 1\n   - Changed Files: 2\n   - Comments Count: 0\n   - Committed Date: 2022-08-18T08:01:00Z\n\n2. Commit ID: b4bf4c52ad31e02307cfd4d643dc5610c893e3ba\n   - Message: \"fix(types): allow attaching unknown options to defined component\\n\\nfix #12742\"\n   - Additions: 7\n   - Deletions: 0\n   - Changed Files: 2\n   - Comments Count: 0\n   - Committed Date: 2022-08-18T07:32:12Z",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate =~ '2022-08-18T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 251,
+                    "deletions": 1,
+                    "committedDate": "2022-08-18T08:01:00Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "5221d4d3b6049c87d196d99dbb64bcd3f3b07279",
+                    "type": "Commit",
+                    "message": "\"fix(compiler-sfc): rewriteDefault for class with decorators (#12747)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 251,
+                    "deletions": 1,
+                    "committedDate": "2022-08-18T08:01:00Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "5221d4d3b6049c87d196d99dbb64bcd3f3b07279",
+                    "type": "Commit",
+                    "message": "\"fix(compiler-sfc): rewriteDefault for class with decorators (#12747)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 7,
+                    "deletions": 0,
+                    "committedDate": "2022-08-18T07:32:12Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "b4bf4c52ad31e02307cfd4d643dc5610c893e3ba",
+                    "type": "Commit",
+                    "message": "\"fix(types): allow attaching unknown options to defined component\n\nfix #12742\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on May 24, 2022?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE i.created_at =~ '2022-05-24T.*'\nRETURN c\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 12892?",
+        "response": "The commit that fixed the bug ticket 12892 is identified by the ID 25f97a5033187372e7b8c591c79336197ee5c833. This commit was made on 2023-12-06 at 09:25:12 UTC, with the message: \"fix(compiler-sfc): fix rewriteDefault edge cases\\n\\nclose #13060\\nclose #12892\\nclose #12906\". The commit included 79 additions and 7 deletions across 3 files, and it has 0 comments.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue {number: 12892})\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 79,
+                    "deletions": 7,
+                    "committedDate": "2023-12-06T09:25:12Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "25f97a5033187372e7b8c591c79336197ee5c833",
+                    "type": "Commit",
+                    "message": "\"fix(compiler-sfc): fix rewriteDefault edge cases\n\nclose #13060\nclose #12892\nclose #12906\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 11575?",
+        "response": "The commit that fixed the bug ticket 11575 is identified by the ID af5e05d87ecd218f73302a1b08dcaedd2b46814a. The commit message is: \"fix: give correct namespace in foreignObject (#11576)\\n\\nFix #11575\". This commit was made on 2021-03-30 at 10:11:55 UTC, and it involved 1 addition, 1 deletion, and 1 changed file.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue {number: 11575})\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2021-03-30T10:11:55Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "af5e05d87ecd218f73302a1b08dcaedd2b46814a",
+                    "type": "Commit",
+                    "message": "\"fix: give correct namespace in foreignObject (#11576)\n\nFix #11575\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be?",
+        "response": "The commit hash `fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be` introduced the following bugs:\n\n1. **Issue #12608**: \n   - **Title**: \"implement and export defineAsyncComponent compatible version in 2.7.x\"\n   - **Description**: This issue addresses the need to drop the `@vue/composition-api` plugin after migrating from `vue@^2.6.x` to `^2.7.x`, making the migration from `2.x` to `3.x` easier. The issue involves implementing and exporting a `defineAsyncComponent` using the prior art from the `@vue/composition-api` plugin.\n\n2. **Issue #12622**: \n   - **Title**: \"Vue.component(id, component) mismatch type of DefineComponent\"\n   - **Description**: This issue involves a type mismatch error where `defineComponent({})` return type does not match the `Vue.component(id, component)` second parameter, leading to a type error.\n\n3. **Issue #12748**: \n   - **Title**: \"Export type `DefineComponent`\"\n   - **Description**: This issue highlights the need to export the type `DefineComponent` in Vue 2.7 to provide type-checking and IntelliSense support for third-party libraries that do not provide component types.\n\n4. **Issue #13078**: \n   - **Title**: \"import type { CSSProperties } from vue is error\"\n   - **Description**: This issue addresses an error when importing `CSSProperties` from `vue` in version 2.7, while it works correctly in Vue 3.\n\n5. **Issue #13128**: \n   - **Title**: \"Vue 2.7.16 bug: Some types has not export\"\n   - **Description**: This issue deals with missing type exports in Vue 2.7.16, specifically for `ImgHTMLAttributes` and `ComponentOptionsMixin`.\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit {id: 'fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12608,
+                    "closed_at": "2022-07-08T02:55:46Z",
+                    "created_at": "2022-07-04T14:18:14Z",
+                    "id": 12608,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### What problem does this feature solve?\r\n1. Allows to drop `@vue/composition-api` plugin after migrating from `vue@^2.6.x` into `^2.7.x`. \r\n1. It makes migration from `2.x` to `3.x` one step easier.\r\n\r\n> If you were previously using @vue/composition-api, update imports from it to vue instead. Note that some APIs exported by the plugin, e.g. createApp, are not ported in 2.7.\r\n> \u2014 https://blog.vuejs.org/posts/vue-2-7-naruto.html\r\n\r\nThe release notes do mention that some APIs are not ported to `2.7`, thats why this is not a bug report because it might be intentional. \r\n\r\n `defineAsyncComponent` looks like something that would be a nice addition to this final `2.x` version, since async components already exist in vue2 land: the syntax just slightly changed ([v2](https://v2.vuejs.org/v2/guide/components-dynamic-async.html#Async-Components) vs [v3](https://vuejs.org/guide/components/async.html)).\r\n\r\nAlso [`@vue/composition-api`](https://github.com/vuejs/composition-api/blob/main/src/component/defineAsyncComponent.ts) version does it and it does not appear to use any vue3 internals, so it seems technically achievable.\r\n\r\n### What does the proposed API look like?\r\nimplement and export a `defineAsyncComponent` using prior art (`@vue/composition-api` plugin version as base).\r\n\r\n```diff\r\n- import { defineAsyncComponent }\u00a0from @vue/composition-api\r\n+ import { defineAsyncComponent }\u00a0from vue\r\n```\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"implement and export defineAsyncComponent compatible version in 2.7.x\"",
+                    "url": "https://github.com/vuejs/vue/issues/12608"
+                }
+            },
+            {
+                "i": {
+                    "number": 12622,
+                    "closed_at": "2022-07-08T02:40:18Z",
+                    "created_at": "2022-07-06T10:09:10Z",
+                    "id": 12622,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### Version\r\n2.7.2\r\n\r\n### Steps to reproduce\r\n\r\n```\r\nconst ConfigProvider = defineComponent({});\r\nfunction install(app: VueConstructor) {\r\n  app.component(ConfigProvider, ConfigProvider);\r\n}\r\n```\r\nThis will throw Error:\r\n\r\n```\r\nerror TS2345: Argument of type DefineComponent<{ getContainer: { type: FunctionConstructor; }; }, Data, Data, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, Readonly<...>, {}> is not assignable to parameter of type VueConstructor<Vue>.\r\n  Type ComponentPublicInstanceConstructor<{ $data: Data; $props: Readonly<Partial<{}> & Omit<Readonly<ExtractPropTypes<{ getContainer: { type: FunctionConstructor; }; }>>, never>>; ... 10 more ...; $watch(source: string | Function, cb: Function, options?: WatchOptions<...>): WatchStopHandle; } & ... 5 more ... & Readonly<.... is missing the following properties from type VueConstructor<Vue>: extend, nextTick, set, delete, and 10 more.\r\n```\r\n\r\n### What is expected?\r\n`defineComponent({})` return type should match `Vue.component(id, component)` second params\r\n\r\n### What is actually happening?\r\nmismatch\r\n\r\n### Additional comments\r\n\r\nVue2.7.0 works well because of `defineComponent` which returns `VueProxy<{}, RawBindings, D, C, M, Mixin, Extends, Emits>`\r\n\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"Vue.component(id, component) mismatch type of DefineComponent\"",
+                    "url": "https://github.com/vuejs/vue/issues/12622"
+                }
+            },
+            {
+                "i": {
+                    "number": 12748,
+                    "closed_at": "2022-08-18T07:23:59Z",
+                    "created_at": "2022-08-16T09:39:23Z",
+                    "id": 12748,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### What problem does this feature solve?\r\nMost Vue 2 third-party libraries do not provide types for components. Therefore, they cannot profit type checking and intellisense provided by Volar. It may be good to export type `DefineComponent` just like in Vue 3, so that users can manually shim component types or create PR to add TypeScript support for those Vue2 libraries without changing source code written in Vue <= 2.6.\r\n\r\n### What does the proposed API look like?\r\nTo manually define type of a component in Vue 2.7, we can:\r\n```ts\r\nimport type { DefineComponent, VNode } from vue\r\n\r\ndeclare module @vue/runtime-dom {\r\n  export interface GlobalComponents {\r\n    MyComponent: DefineComponent<\r\n      Props,\r\n      {\r\n        $scopedSlots: {\r\n          slotName: ({args: {propName: propType}}) => VNode[]\r\n        }\r\n      },\r\n      {},\r\n      {},\r\n      Methods\r\n    >\r\n  }\r\n}\r\n\r\n```\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"Export type `DefineComponent`\"",
+                    "url": "https://github.com/vuejs/vue/issues/12748"
+                }
+            },
+            {
+                "i": {
+                    "number": 13078,
+                    "closed_at": "2023-12-14T00:41:58Z",
+                    "created_at": "2023-09-04T23:31:55Z",
+                    "id": 13078,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### What problem does this feature solve?\r\nvue3\r\nimport type { CSSProperties } from vue is correct\r\n\r\nvue2.7\r\nimport type { CSSProperties } from vue is error\r\n\r\n\r\n### What does the proposed API look like?\r\nimport type { CSSProperties } from vue  in 2.7 is correct\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"import type { CSSProperties } from vue is error\"",
+                    "url": "https://github.com/vuejs/vue/issues/13078"
+                }
+            },
+            {
+                "i": {
+                    "number": 13128,
+                    "closed_at": "2023-12-14T00:41:58Z",
+                    "created_at": "2023-12-08T03:48:02Z",
+                    "id": 13128,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### Version\r\n2.7.16-beta.1\r\n\r\n\r\n### Steps to reproduce\r\n\r\n```ts\r\nimport type { ImgHTMLAttributes, ComponentOptionsMixin } from vue;\r\n```\r\n\r\nin Vue 2\r\n<img width=\"549\" alt=\"image\" src=\"https://github.com/vuejs/vue/assets/8111351/6eb9888d-6a60-43e5-a625-3f4d81288a9d\">\r\n\r\nin Vue 3\r\n<img width=\"552\" alt=\"image\" src=\"https://github.com/vuejs/vue/assets/8111351/0fd2a0d6-4226-42c8-ac55-454814be0bdb\">\r\n\r\n\r\n\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"Vue 2.7.16 bug: Some types has not export\"",
+                    "url": "https://github.com/vuejs/vue/issues/13128"
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit c678e3134b927645f79270b52d4d660a7e3654ce?",
+        "response": "The bugs caused by commit `c678e3134b927645f79270b52d4d660a7e3654ce` are as follows:\n\n1. Issue Number: 12758\n   - Title: \"[2.7.x] Here is a type error when using ref() on attribute ref in TSX\"\n   - State: Closed\n   - Created At: 2022-08-24T08:24:13Z\n   - Closed At: 2022-10-11T05:36:55Z\n   - URL: [Issue 12758](https://github.com/vuejs/vue/issues/12758)\n   - Description: This issue involves a type error when using `ref()` on the attribute `ref` in TSX for Vue 2.7.x. The type `ReservedProps` only supports `typeString` in Vue 2.7.x, but supports `String/Ref/Function` in Vue 3.x. The expected behavior was to use type `Ref` on the property `ref`, but the actual behavior only supported `String | undefined`.\n\n2. Issue Number: 12832\n   - Title: \"EventHandlers type error, DOMs Event was tainted by `@types/node`\"\n   - State: Closed\n   - Created At: 2022-10-16T08:58:05Z\n   - Closed At: 2022-11-09T09:25:30Z\n   - URL: [Issue 12832](https://github.com/vuejs/vue/issues/12832)\n   - Description: This issue involves a type error where `EventHandlers` type was incorrectly handling DOM events due to being tainted by `@types/node`. The expected behavior was for `<div @click=\"handleClick\">ok</div>` to work, but the actual behavior resulted in a type error stating `() => void` is not assignable to type `MouseEvent`.",
+        "query": "cypher\nMATCH (c:Commit {id: 'c678e3134b927645f79270b52d4d660a7e3654ce'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 12758,
+                    "closed_at": "2022-10-11T05:36:55Z",
+                    "created_at": "2022-08-24T08:24:13Z",
+                    "id": 12758,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### Version\r\n2.7.10\r\n\r\n### Reproduction link\r\n[codesandbox.io](https://codesandbox.io/s/infallible-cloud-wnish2?file=/src/App.tsx)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n### Steps to reproduce\r\nUsing type Ref on ref will notice the error :  `jsx.d.ts(1305, 3): The expected type comes from property ref which is declared here on type ElementAttrs<HTMLAttributes>`. \r\n\r\n![image](https://user-images.githubusercontent.com/21286829/186367241-d1e80834-d06a-46a2-a11c-281b7e771dc6.png)\r\n\r\n\r\nIn the `vue/types/jsx.d.ts`, the type ReservedProps only support typeString in Vue2.7.x\uff0cbut supporting type String/Ref/Function in Vue3.x\r\n\r\n- Vue3 - jsx.d.ts\r\n![image](https://user-images.githubusercontent.com/21286829/186367321-fe36171f-3f03-4104-b4cb-5a8c57e9a9d1.png \"Vue3\")\r\n\r\n- Vue2.7.x -jsx.d.ts\r\n![image](https://user-images.githubusercontent.com/21286829/186367413-e0e03b89-57c9-4fc0-836d-c512001c7bf7.png \"Vue2\")\r\n\r\n\r\n\r\n### What is expected?\r\nUsing type Ref on the property ref.\r\n\r\n### What is actually happening?\r\nThe type ref only support String | undefined.\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"[2.7.x] Here is a type error when using ref() on attribute ref in TSX\"",
+                    "url": "https://github.com/vuejs/vue/issues/12758"
+                }
+            },
+            {
+                "i": {
+                    "number": 12832,
+                    "closed_at": "2022-11-09T09:25:30Z",
+                    "created_at": "2022-10-16T08:58:05Z",
+                    "id": 12832,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"### Version\r\n2.7.13\r\n\r\n### Reproduction link\r\n[www.typescriptlang.org/play](https://www.typescriptlang.org/play?ts=4.8.4#code/PQgEB4CcFMDNpgOwMbVABwIYBcAWBeAIkQHsATaQ0YAPgCg6wARAeQFlQBRAN2kW1DISiWABsAlsgEB3cWTygAAtgCe6aAGdgpCnVXquofF178GYIRUEl0K0LEgkAtqFC5s2dBoBcIAObieACuAEYAdEJOwNxB0ABWWjHQwCGiJCHAAEwArACcyADsAAwAbEVkmAWZ0JgAzEUALEWwyAAcyLUUDdDIIa2ZtZhk2UV5sA3A+prACQAeYWRh2BoAxAAyAIwbrbUM0LPoJJAC4vwIsJioJnzLoADedK4WEughJJiQZKDQpsuPoMIAMI2FTeUCAl5vD5kHg3f5AoLYMEQ8Svd6fWFmVzCAAKmA02GgyMh6JhvwYT2A1ichw0gXEwm+vw08MQwJpJDp2AZiD4ZGRzlp9OEmOwrPZQu5wgJHyR4MFnOFiFF4oVXJ5QXQFUJAo56pF5P+YDIkEwflAJpsTJuLOxiCYpr8YIdZpVdpdfj5zsdboB9sdNwQ3td5PdAdmgWDfl9wg9ohqvCjMf9ZpIvEgSdDfo9MuOmbhYZs+bMRqpsBIyCCGmt-FtfoAYhWq2DG5WNMnW1XTi2m+2s8JOxoSIie23kwAhURBDOgQcq0v2I4uH428W4TCIT1gidwI7QU7oEfXLF+gCSiEPcuTACVNNAr-3EABlUJOSPHsV28-cTASfkfilqCpcQnDNNAV1rVk1nef9k04SBHBnedKVAABraAVChT4az+O0AGkMLIEhpEQMECMw0lk3I9AYA0HxQHIrCyQLP1yM1MiMKY5CgNAJxhw0cDmVZABBIJZmQCRkFQsE2H46BkxRKSZLkhThEJWZsCcPggmUqt5MfJhUgkyRpNAWS9OTcyBKIkjdIEyy5MDGcrP0ljhBc+NMETMyVMfFy+O8lyHL04c5SCvy5LTIMfIsiK9PYmL7MNFCtLIcRMBwuthGEt48wAu1AQ3dBREwUF8r9QqLxKlQ8EcII-FwbcDOnHAeWQddNyJcqRRpbloFgx9OBQSA1EJAa3OVRAKHGk9hGgoZ+u1TAmom+bpq07AhhwZbusQNbcwfCa8T0lbZsQHFqtOz8-Qu0rTidXacUcPxaPom8cB6Dqt12p9oGgdCZuu4Rfv++6rtZJ9NtEeNAYhqt1Cm8G7QAFRA6BNW1LrkwANRIKctPajdvuTAB1TB6U3cGFwE+MpB5TKIegWnDpLFCAFVTwZu0n2QRxobBDnuLAbBh3arm-WR0XcGQDdUFEMFJaCdrk0V9qvVAVXcBVqWAq6zXtaV3ADoVqWhapQ5TkJSBxdxEhLYQGzSNAHE7bOSBkxd+3IF1sFPbdj3XathK-atgOvZllAmd9wOEDDt2nOjr246tzzvJD2PH3Txx00T-3M5juq5Szs3QGkXA-tEG3EBJ8uo9AGuK5LjcQNaxkINwv1hMQFupUQY3QC7nueWTQfQN79XR9b5VH0n3vAgQKewVn4fkp47BTT7pUq+Rjf9V5RGNd3pUVaP3v+53jc95VABfBgpg-AAJDcyHjSANHATgaCMe5-gAbTw0Apw0IYRILALgABdAA-Nuf+4DvgaT5NWesQQUC91AJArgsDQBggABRYBUGkIYMC8LgIAJRGC-twO2ZA6C3z0GoNAwloaimrMYUUT8pqv3fiw+gdAKASQ+GgIQfcBC-lECwpezChL8JKjAawIj4HqCkGCcAyMaA4J-FOPW5D8CUOoXsA4PRsDgBwe3Oyrl+A6L0XIdRYiWFhCBJJVCpCgA)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n### Steps to reproduce\r\nopen the reproduction link\r\n\r\n### What is expected?\r\n`<div @click=\"handleClick\">ok</div>` to work\r\n\r\n### What is actually happening?\r\nType () => void is not assignable to type MouseEvent\r\n\r\n---\r\nDOMs Event  was tainted by `@types/node`.\r\n\r\n`E[K]` extends Function always true \r\n\r\n```ts\r\ntype EventHandlers<E> = {\r\n  [K in keyof E]?: E[K] extends Function ? E[K] : (payload: E[K]) => void\r\n}\r\n```\r\n\r\n<!-- generated by vue-issues. DO NOT REMOVE -->\"",
+                    "title": "\"EventHandlers type error, DOMs Event  was tainted by `@types/node`\"",
+                    "url": "https://github.com/vuejs/vue/issues/12832"
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on Oct 2017?",
+        "response": "The percentage of the fixing commits that introduced bugs in October 2017 is 100.0%. Can I help with anything else?",
+        "query": "cypher\nMATCH (c1:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c1.committedDate =~ '2017-10.*'\nRETURN (count(c2) * 1.0 / count(c1)) * 100 AS percentage\n",
+        "result": [
+            {
+                "percentage": 100.0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on Oct 2017?",
+        "response": "There were 25 fixing commits that addressed bugs introduced in October 2017.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)<-[:introduced]-(c2:Commit)\nWHERE c2.committedDate =~ '2017-10.*'\nRETURN COUNT(c) AS fixingCommits\n",
+        "result": [
+            {
+                "fixingCommits": 25
+            }
+        ],
+        "iteration": 0
+    }
+]

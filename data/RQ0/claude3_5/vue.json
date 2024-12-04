@@ -1,0 +1,563 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= '2024-07-28T02:54:00Z' AND c.committedDate <= '2024-08-28T02:54:00Z'\nRETURN COUNT(c) AS commitCount",
+        "result": [
+            {
+                "commitCount": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE NOT (:Commit)-[:parent_of]->(c)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1",
+        "result": [
+            {
+                "c": {
+                    "additions": 3671,
+                    "deletions": 0,
+                    "committedDate": "2016-04-11T02:47:28Z",
+                    "changedFiles": 35,
+                    "commentsCount": 0,
+                    "id": "a879ec06ef9504db8df2a19aac0d07609fe36131",
+                    "type": "Commit",
+                    "message": "\"init\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:belongs_to]->(r:Repository)\nWHERE c.committedDate >= '2018-05-27T00:00:00Z' AND c.committedDate <= '2018-05-31T23:59:59Z'\nRETURN c.id, c.message, c.additions, c.deletions, c.changedFiles, c.committedDate, r.name\nORDER BY c.committedDate",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH \"2024-07-31\"\nRETURN c.message\nLIMIT 1",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for render.js file?",
+        "response": "",
+        "query": "MATCH (f:File {name: 'render.js'})<-[r:changed]-(c:Commit)\nRETURN f.path AS filePath, c.message AS commitMessage, r.additions AS additions, r.deletions AS deletions, r.patch AS patch, c.committedDate AS date\nORDER BY c.committedDate DESC",
+        "result": [
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"chore(typo): fix comment typo (#10101)\"",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -84,7 +84,7 @@ export function renderMixin (Vue: Class<Component>) {\n     // render self\n     let vnode\n     try {\n-      // There's no need to maintain a stack becaues all render fns are called\n+      // There's no need to maintain a stack because all render fns are called\n       // separately from one another. Nested component's render fns are called\n       // when parent component is patched.\n       currentRenderingInstance = vm",
+                "date": "2019-06-04T09:51:19Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"perf: skip scoped slots normalization when possible\"",
+                "additions": 2,
+                "deletions": 1,
+                "patch": "@@ -73,7 +73,8 @@ export function renderMixin (Vue: Class<Component>) {\n     if (_parentVnode) {\n       vm.$scopedSlots = normalizeScopedSlots(\n         _parentVnode.data.scopedSlots,\n-        vm.$slots\n+        vm.$slots,\n+        vm.$scopedSlots\n       )\n     }\n ",
+                "date": "2019-02-08T19:36:36Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"fix: async component should use render owner as force update context\n\nPreviously, an async component uses its lexical owner as the force\nupdate context. This works when the async component is rendered in a\nscoped slot because in the past parent components always force update\nchild components with any type of slots. After the optimization in\nf219bed though, child components with only scoped slots are no longer\nforce-updated, and this cause async components inside scoped slots to\nnot trigger the proper update. Turns out they should have used the\nactual render owner (the component that invokes the scoped slot) as the\nforce update context all along.\n\nfix #9432\"",
+                "additions": 13,
+                "deletions": 0,
+                "patch": "@@ -51,6 +51,13 @@ export function initRender (vm: Component) {\n   }\n }\n \n+export let currentRenderingInstance: Component | null = null\n+\n+// for testing only\n+export function setCurrentRenderingInstance (vm: Component) {\n+  currentRenderingInstance = vm\n+}\n+\n export function renderMixin (Vue: Class<Component>) {\n   // install runtime convenience helpers\n   installRenderHelpers(Vue.prototype)\n@@ -76,6 +83,10 @@ export function renderMixin (Vue: Class<Component>) {\n     // render self\n     let vnode\n     try {\n+      // There's no need to maintain a stack becaues all render fns are called\n+      // separately from one another. Nested component's render fns are called\n+      // when parent component is patched.\n+      currentRenderingInstance = vm\n       vnode = render.call(vm._renderProxy, vm.$createElement)\n     } catch (e) {\n       handleError(e, vm, `render`)\n@@ -92,6 +103,8 @@ export function renderMixin (Vue: Class<Component>) {\n       } else {\n         vnode = vm._vnode\n       }\n+    } finally {\n+      currentRenderingInstance = null\n     }\n     // if the returned array contains only a single node, allow it\n     if (Array.isArray(vnode) && vnode.length === 1) {",
+                "date": "2019-02-06T03:18:05Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"refactor: ssrPrefetch -> serverPrefetch for more consistent naming\"",
+                "additions": 4,
+                "deletions": 4,
+                "patch": "@@ -50,8 +50,8 @@ const normalizeRender = vm => {\n   }\n }\n \n-function waitForSsrPrefetch (vm, resolve, reject) {\n-  let handlers = vm.$options.ssrPrefetch\n+function waitForServerPrefetch (vm, resolve, reject) {\n+  let handlers = vm.$options.serverPrefetch\n   if (isDef(handlers)) {\n     if (!Array.isArray(handlers)) handlers = [handlers]\n     try {\n@@ -206,7 +206,7 @@ function renderComponentInner (node, isRoot, context) {\n \n   const reject = context.done\n \n-  waitForSsrPrefetch(child, resolve, reject)\n+  waitForServerPrefetch(child, resolve, reject)\n }\n \n function renderAsyncComponent (node, isRoot, context) {\n@@ -432,6 +432,6 @@ export function createRenderFunction (\n     const resolve = () => {\n       renderNode(component._render(), true, context)\n     }\n-    waitForSsrPrefetch(component, resolve, done)\n+    waitForServerPrefetch(component, resolve, done)\n   }\n }",
+                "date": "2019-01-18T21:43:17Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"chore: merge branch 2.6 into dev\"",
+                "additions": 47,
+                "deletions": 9,
+                "patch": "@@ -19,6 +19,7 @@ let warned = Object.create(null)\n const warnOnce = msg => {\n   if (!warned[msg]) {\n     warned[msg] = true\n+    // eslint-disable-next-line no-console\n     console.warn(`\\n\\u001b[31m${msg}\\u001b[39m\\n`)\n   }\n }\n@@ -49,6 +50,27 @@ const normalizeRender = vm => {\n   }\n }\n \n+function waitForSsrPrefetch (vm, resolve, reject) {\n+  let handlers = vm.$options.ssrPrefetch\n+  if (isDef(handlers)) {\n+    if (!Array.isArray(handlers)) handlers = [handlers]\n+    try {\n+      const promises = []\n+      for (let i = 0, j = handlers.length; i < j; i++) {\n+        const result = handlers[i].call(vm, vm)\n+        if (result && typeof result.then === 'function') {\n+          promises.push(result)\n+        }\n+      }\n+      Promise.all(promises).then(resolve).catch(reject)\n+      return\n+    } catch (e) {\n+      reject(e)\n+    }\n+  }\n+  resolve()\n+}\n+\n function renderNode (node, isRoot, context) {\n   if (node.isString) {\n     renderStringNode(node, context)\n@@ -92,7 +114,12 @@ function renderComponent (node, isRoot, context) {\n   const registerComponent = registerComponentForCache(Ctor.options, write)\n \n   if (isDef(getKey) && isDef(cache) && isDef(name)) {\n-    const key = name + '::' + getKey(node.componentOptions.propsData)\n+    const rawKey = getKey(node.componentOptions.propsData)\n+    if (rawKey === false) {\n+      renderComponentInner(node, isRoot, context)\n+      return\n+    }\n+    const key = name + '::' + rawKey\n     const { has, get } = context\n     if (isDef(has)) {\n       has(key, hit => {\n@@ -166,13 +193,20 @@ function renderComponentInner (node, isRoot, context) {\n     context.activeInstance\n   )\n   normalizeRender(child)\n-  const childNode = child._render()\n-  childNode.parent = node\n-  context.renderStates.push({\n-    type: 'Component',\n-    prevActive\n-  })\n-  renderNode(childNode, isRoot, context)\n+\n+  const resolve = () => {\n+    const childNode = child._render()\n+    childNode.parent = node\n+    context.renderStates.push({\n+      type: 'Component',\n+      prevActive\n+    })\n+    renderNode(childNode, isRoot, context)\n+  }\n+\n+  const reject = context.done\n+\n+  waitForSsrPrefetch(child, resolve, reject)\n }\n \n function renderAsyncComponent (node, isRoot, context) {\n@@ -394,6 +428,10 @@ export function createRenderFunction (\n     })\n     installSSRHelpers(component)\n     normalizeRender(component)\n-    renderNode(component._render(), true, context)\n+\n+    const resolve = () => {\n+      renderNode(component._render(), true, context)\n+    }\n+    waitForSsrPrefetch(component, resolve, done)\n   }\n }",
+                "date": "2019-01-11T23:26:32Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"feat(core): expose all slots on $scopedSlots as functions\n\nAfter this change, users using render functions can always make use\nof slots via `this.$scopedSlots` without worrying about whether the\nslot is being passed in as scoped or not.\n\nThis should also make it easier to migrate to 3.0 where all slots are\nexposed as functions that return Array of VNodes on `this.$slots`.\"",
+                "additions": 4,
+                "deletions": 1,
+                "patch": "@@ -64,7 +64,10 @@ export function renderMixin (Vue: Class<Component>) {\n     const { render, _parentVnode } = vm.$options\n \n     if (_parentVnode) {\n-      vm.$scopedSlots = normalizeScopedSlots(_parentVnode.data.scopedSlots)\n+      vm.$scopedSlots = normalizeScopedSlots(\n+        _parentVnode.data.scopedSlots,\n+        vm.$slots\n+      )\n     }\n \n     // set parent vnode. this allows render functions to have access",
+                "date": "2019-01-09T20:35:57Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"fix(scoped-slots): ensure $scopedSlots calls always return Arrays\n\nAlso allow render functions to return an Array of a single element.\nClose #8056\"",
+                "additions": 6,
+                "deletions": 1,
+                "patch": "@@ -11,6 +11,7 @@ import {\n import { createElement } from '../vdom/create-element'\n import { installRenderHelpers } from './render-helpers/index'\n import { resolveSlots } from './render-helpers/resolve-slots'\n+import { normalizeScopedSlots } from '../vdom/helpers/normalize-scoped-slots'\n import VNode, { createEmptyVNode } from '../vdom/vnode'\n \n import { isUpdatingChildComponent } from './lifecycle'\n@@ -63,7 +64,7 @@ export function renderMixin (Vue: Class<Component>) {\n     const { render, _parentVnode } = vm.$options\n \n     if (_parentVnode) {\n-      vm.$scopedSlots = _parentVnode.data.scopedSlots || emptyObject\n+      vm.$scopedSlots = normalizeScopedSlots(_parentVnode.data.scopedSlots)\n     }\n \n     // set parent vnode. this allows render functions to have access\n@@ -89,6 +90,10 @@ export function renderMixin (Vue: Class<Component>) {\n         vnode = vm._vnode\n       }\n     }\n+    // if the returned array contains only a single node, allow it\n+    if (Array.isArray(vnode) && vnode.length === 1) {\n+      vnode = vnode[0]\n+    }\n     // return empty vnode in case the render function errored out\n     if (!(vnode instanceof VNode)) {\n       if (process.env.NODE_ENV !== 'production' && Array.isArray(vnode)) {",
+                "date": "2018-12-26T22:17:42Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"feat(ssr): allow opting-out of caching by returning false in serverCacheKey\n\nclose #8790\"",
+                "additions": 7,
+                "deletions": 2,
+                "patch": "@@ -114,7 +114,12 @@ function renderComponent (node, isRoot, context) {\n   const registerComponent = registerComponentForCache(Ctor.options, write)\n \n   if (isDef(getKey) && isDef(cache) && isDef(name)) {\n-    const key = name + '::' + getKey(node.componentOptions.propsData)\n+    const rawKey = getKey(node.componentOptions.propsData)\n+    if (rawKey === false) {\n+      renderComponentInner(node, isRoot, context)\n+      return\n+    }\n+    const key = name + '::' + rawKey\n     const { has, get } = context\n     if (isDef(has)) {\n       has(key, hit => {\n@@ -188,7 +193,7 @@ function renderComponentInner (node, isRoot, context) {\n     context.activeInstance\n   )\n   normalizeRender(child)\n-  \n+\n   const resolve = () => {\n     const childNode = child._render()\n     childNode.parent = node",
+                "date": "2018-12-20T20:47:15Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"feat(ssr): ssrPrefetch option + context.rendered hook (#9017)\"",
+                "additions": 41,
+                "deletions": 8,
+                "patch": "@@ -19,6 +19,7 @@ let warned = Object.create(null)\n const warnOnce = msg => {\n   if (!warned[msg]) {\n     warned[msg] = true\n+    // eslint-disable-next-line no-console\n     console.warn(`\\n\\u001b[31m${msg}\\u001b[39m\\n`)\n   }\n }\n@@ -49,6 +50,27 @@ const normalizeRender = vm => {\n   }\n }\n \n+function waitForSsrPrefetch (vm, resolve, reject) {\n+  let handlers = vm.$options.ssrPrefetch\n+  if (isDef(handlers)) {\n+    if (!Array.isArray(handlers)) handlers = [handlers]\n+    try {\n+      const promises = []\n+      for (let i = 0, j = handlers.length; i < j; i++) {\n+        const result = handlers[i].call(vm, vm)\n+        if (result && typeof result.then === 'function') {\n+          promises.push(result)\n+        }\n+      }\n+      Promise.all(promises).then(resolve).catch(reject)\n+      return\n+    } catch (e) {\n+      reject(e)\n+    }\n+  }\n+  resolve()\n+}\n+\n function renderNode (node, isRoot, context) {\n   if (node.isString) {\n     renderStringNode(node, context)\n@@ -166,13 +188,20 @@ function renderComponentInner (node, isRoot, context) {\n     context.activeInstance\n   )\n   normalizeRender(child)\n-  const childNode = child._render()\n-  childNode.parent = node\n-  context.renderStates.push({\n-    type: 'Component',\n-    prevActive\n-  })\n-  renderNode(childNode, isRoot, context)\n+  \n+  const resolve = () => {\n+    const childNode = child._render()\n+    childNode.parent = node\n+    context.renderStates.push({\n+      type: 'Component',\n+      prevActive\n+    })\n+    renderNode(childNode, isRoot, context)\n+  }\n+\n+  const reject = context.done\n+\n+  waitForSsrPrefetch(child, resolve, reject)\n }\n \n function renderAsyncComponent (node, isRoot, context) {\n@@ -394,6 +423,10 @@ export function createRenderFunction (\n     })\n     installSSRHelpers(component)\n     normalizeRender(component)\n-    renderNode(component._render(), true, context)\n+\n+    const resolve = () => {\n+      renderNode(component._render(), true, context)\n+    }\n+    waitForSsrPrefetch(component, resolve, done)\n   }\n }",
+                "date": "2018-12-20T20:26:12Z"
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "commitMessage": "\"fix(ssr): should not warn for custom directives that do not have ssr implementation\n\nfix #9167\"",
+                "additions": 1,
+                "deletions": 1,
+                "patch": "@@ -326,7 +326,7 @@ function renderStartingTag (node: VNode, context) {\n       for (let i = 0; i < dirs.length; i++) {\n         const name = dirs[i].name\n         if (name !== 'show') {\n-          const dirRenderer = resolveAsset(context, 'directives', name, true)\n+          const dirRenderer = resolveAsset(context, 'directives', name)\n           if (dirRenderer) {\n             // directives mutate the node's data\n             // which then gets rendered by modules",
+                "date": "2018-12-09T20:47:43Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for vnode.js file?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:changed]->(f:File {name: 'vnode.js'})\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 63420,
+                    "deletions": 64566,
+                    "committedDate": "2022-05-04T21:25:34Z",
+                    "changedFiles": 224,
+                    "commentsCount": 0,
+                    "id": "9949ab5d14e3620f40b876cffbc710a33d0237b2",
+                    "type": "Commit",
+                    "message": "\"Merge pull request #3 from dwelch2344/move_to_typescript\n\nWIP: typescript love on the tests\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 86967,
+                    "deletions": 87657,
+                    "committedDate": "2022-05-03T17:04:55Z",
+                    "changedFiles": 52,
+                    "commentsCount": 0,
+                    "id": "40dccfedd1d92ef9d61ee350ed8fbd7fc525b5b9",
+                    "type": "Commit",
+                    "message": "\"chore: fix test harness; most of the tooling + test harness is happy; coverage still needs fixing\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 27,
+                    "deletions": 2,
+                    "committedDate": "2019-03-18T07:47:43Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "982d5a492fb95577217e2dacaa044eabe78a8601",
+                    "type": "Commit",
+                    "message": "\"fix(types): support string type for style in VNode data (#9728)\n\nfix #9727\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 459,
+                    "deletions": 68,
+                    "committedDate": "2019-01-26T04:22:44Z",
+                    "changedFiles": 15,
+                    "commentsCount": 0,
+                    "id": "dbc0582587f90e78867809bb6ae683301cd0626b",
+                    "type": "Commit",
+                    "message": "\"feat: dynamic directive arguments for v-on, v-bind and custom directives (#9373)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 58,
+                    "deletions": 1,
+                    "committedDate": "2018-12-01T22:05:36Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "097f6229dffc34af452b106ad2a3b58845588807",
+                    "type": "Commit",
+                    "message": "\"fix(core): avoid mutating original children when cloning vnode\n\nThe on-demand clone strategy introduced in 956756b mutates the owner\narray of the cloned vnode. This causes the newly cloned vnode to be\ndestroyed when the parent node is destroyed. This is fixed by cloning\nthe children array when cloning a vnode.\n\nfix #7975\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 7,
+                    "deletions": 3,
+                    "committedDate": "2018-11-30T22:31:44Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "4ecc21c29ec12bb33d3b426cb4d42c579e9b0f2d",
+                    "type": "Commit",
+                    "message": "\"feat(devtools): store functional render context on vnode in development (#8586)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 0,
+                    "committedDate": "2018-03-23T23:13:10Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "8227fb35240ab1f301c30a6ad5d4d25071fa7996",
+                    "type": "Commit",
+                    "message": "\"fix: add missing `asyncMeta` during VNode cloning (#7861)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2018-03-09T13:54:55Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "d7d9b002fd60d246b1ef65f71b55b45f46563b4d",
+                    "type": "Commit",
+                    "message": "\"chore: fix typo (#7781)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 107,
+                    "deletions": 55,
+                    "committedDate": "2017-12-21T00:44:24Z",
+                    "changedFiles": 8,
+                    "commentsCount": 0,
+                    "id": "956756b1be7084daf8b6afb92ac0da7c24cde2a5",
+                    "type": "Commit",
+                    "message": "\"refactor: use more efficient on-demand clone to handle reused node edge cases\n\nremoves unnecessary slot/static node clones, fix #7292\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 63,
+                    "deletions": 15,
+                    "committedDate": "2017-11-22T21:37:24Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "604e081d0456ed136b24b5f759c608d153dfae93",
+                    "type": "Commit",
+                    "message": "\"fix: ensure functionalContext is cloned during slot clones\n\nfix #7106\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:introduced]->(i:Issue)\nWHERE i.state = 'open'\nWITH u, COUNT(DISTINCT i) AS unfixedBugs\nRETURN u.login AS developer, unfixedBugs\nORDER BY unfixedBugs DESC\nLIMIT 5",
+        "result": [
+            {
+                "developer": "yyx990803",
+                "unfixedBugs": 2
+            },
+            {
+                "developer": "shortdiv",
+                "unfixedBugs": 1
+            },
+            {
+                "developer": "Justineo",
+                "unfixedBugs": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "",
+        "query": "MATCH (u:User)-[:creates]->(i:Issue)\nWHERE i.state = 'open' AND i.type = 'Issue'\nWITH u, COUNT(i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 1\nRETURN u.login AS developer, bugCount",
+        "result": [
+            {
+                "developer": "KaelWD",
+                "bugCount": 6
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in helpers.js?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nMATCH (c)-[:changed]->(f:File {name: 'helpers.js'})\nMATCH (u:User)-[:author]->(c)\nWITH u, COUNT(DISTINCT i) AS bugFixCount\nORDER BY bugFixCount DESC\nLIMIT 5\nRETURN u.login AS developer, bugFixCount",
+        "result": [
+            {
+                "developer": "yyx990803",
+                "bugFixCount": 11
+            },
+            {
+                "developer": "defcc",
+                "bugFixCount": 2
+            },
+            {
+                "developer": "gzzhanghao",
+                "bugFixCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in client.js?",
+        "response": "",
+        "query": "MATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)\nWHERE EXISTS((c)-[:changed]->(:File {name: 'client.js'}))\nWITH u, COUNT(DISTINCT i) AS bugFixCount\nRETURN u.name AS UserName, bugFixCount\nORDER BY bugFixCount DESC\nLIMIT 1",
+        "result": [
+            {
+                "UserName": "Xin Du (Clark)",
+                "bugFixCount": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nMATCH (c)-[:changed]->(f:File)\nWITH f, COUNT(DISTINCT i) AS bugCount\nORDER BY bugCount DESC\nLIMIT 10\nRETURN f.path AS filePath, bugCount",
+        "result": [
+            {
+                "filePath": "src/vdom/index.js",
+                "bugCount": 166
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "bugCount": 88
+            },
+            {
+                "filePath": "src/vdom/modules/events.js",
+                "bugCount": 69
+            },
+            {
+                "filePath": "src/vdom/patch.js",
+                "bugCount": 69
+            },
+            {
+                "filePath": "src/runtime/instance/lifecycle.js",
+                "bugCount": 64
+            },
+            {
+                "filePath": "src/compiler/codegen/model.js",
+                "bugCount": 61
+            },
+            {
+                "filePath": "src/vdom/vnode.js",
+                "bugCount": 58
+            },
+            {
+                "filePath": "src/runtime/vdom/create-component.js",
+                "bugCount": 50
+            },
+            {
+                "filePath": "src/util/component.js",
+                "bugCount": 49
+            },
+            {
+                "filePath": "flow/compiler.js",
+                "bugCount": 46
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "",
+        "query": "MATCH (f:File)<-[:changed]-(c:Commit)-[:fixed]->(i:Issue)\nWITH f, COUNT(DISTINCT i) AS bugFixCount\nORDER BY bugFixCount DESC\nLIMIT 10\nRETURN f.path AS filePath, bugFixCount",
+        "result": [
+            {
+                "filePath": "src/vdom/index.js",
+                "bugFixCount": 103
+            },
+            {
+                "filePath": "src/compiler/codegen/model.js",
+                "bugFixCount": 50
+            },
+            {
+                "filePath": "src/runtime/instance/render.js",
+                "bugFixCount": 45
+            },
+            {
+                "filePath": "src/vdom/modules/events.js",
+                "bugFixCount": 40
+            },
+            {
+                "filePath": "src/vdom/patch.js",
+                "bugFixCount": 38
+            },
+            {
+                "filePath": "test/unit/modules/compiler/codegen.spec.js",
+                "bugFixCount": 37
+            },
+            {
+                "filePath": "src/runtime/instance/lifecycle.js",
+                "bugFixCount": 33
+            },
+            {
+                "filePath": "test/unit/features/component/component-slot.spec.js",
+                "bugFixCount": 28
+            },
+            {
+                "filePath": "test/ssr/ssr-string.spec.js",
+                "bugFixCount": 26
+            },
+            {
+                "filePath": "src/vdom/vnode.js",
+                "bugFixCount": 25
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on August 18, 2022?",
+        "response": "",
+        "query": "MATCH (c:Commit)\nWHERE c.committedDate STARTS WITH '2022-08-18' AND toLower(c.message) CONTAINS 'bug'\nRETURN c.id, c.message, c.committedDate\nORDER BY c.committedDate",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 12892?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 12892\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 79,
+                    "deletions": 7,
+                    "committedDate": "2023-12-06T09:25:12Z",
+                    "changedFiles": 3,
+                    "commentsCount": 0,
+                    "id": "25f97a5033187372e7b8c591c79336197ee5c833",
+                    "type": "Commit",
+                    "message": "\"fix(compiler-sfc): fix rewriteDefault edge cases\n\nclose #13060\nclose #12892\nclose #12906\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 11575?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE i.number = 11575\nRETURN c.id, c.message, c.committedDate",
+        "result": [
+            {
+                "c.id": "af5e05d87ecd218f73302a1b08dcaedd2b46814a",
+                "c.message": "\"fix: give correct namespace in foreignObject (#11576)\n\nFix #11575\"",
+                "c.committedDate": "2021-03-30T10:11:55Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: 'fb93c1be77f12ea1375c5e8b47d168e4d5ceb7be'})\nMATCH (c)-[:introduced]->(i:Issue)\nRETURN i.id, i.title, i.state, i.created_at",
+        "result": [
+            {
+                "i.id": 12608,
+                "i.title": "\"implement and export defineAsyncComponent compatible version in 2.7.x\"",
+                "i.state": "closed",
+                "i.created_at": "2022-07-04T14:18:14Z"
+            },
+            {
+                "i.id": 12622,
+                "i.title": "\"Vue.component(id, component) mismatch type of DefineComponent\"",
+                "i.state": "closed",
+                "i.created_at": "2022-07-06T10:09:10Z"
+            },
+            {
+                "i.id": 12748,
+                "i.title": "\"Export type `DefineComponent`\"",
+                "i.state": "closed",
+                "i.created_at": "2022-08-16T09:39:23Z"
+            },
+            {
+                "i.id": 13078,
+                "i.title": "\"import type { CSSProperties } from vue is error\"",
+                "i.state": "closed",
+                "i.created_at": "2023-09-04T23:31:55Z"
+            },
+            {
+                "i.id": 13128,
+                "i.title": "\"Vue 2.7.16 bug: Some types has not export\"",
+                "i.state": "closed",
+                "i.created_at": "2023-12-08T03:48:02Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit c678e3134b927645f79270b52d4d660a7e3654ce?",
+        "response": "",
+        "query": "MATCH (c:Commit {id: \"c678e3134b927645f79270b52d4d660a7e3654ce\"})\nMATCH (c)-[:introduced]->(i:Issue)\nWHERE i.state = \"open\"\nRETURN i.title, i.number, i.url",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on May 24, 2022?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate >= '2022-05-24T00:00:00Z' AND c.committedDate < '2022-05-25T00:00:00Z'\nRETURN c",
+        "result": [
+            {
+                "c": {
+                    "additions": 1066,
+                    "committedDate": "2022-05-24T13:49:16Z",
+                    "deletions": 0,
+                    "changedFiles": 18,
+                    "commentsCount": 0,
+                    "id": "f50a1b84d9a0bd6be199847122f8af7cc177dee1",
+                    "type": "Commit",
+                    "message": "\"wip(vca): partial ref and watch implementation\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 104,
+                    "committedDate": "2022-05-24T13:48:01Z",
+                    "deletions": 74,
+                    "changedFiles": 26,
+                    "commentsCount": 0,
+                    "id": "450767f3bbad98cce99a206484b26afa0c328805",
+                    "type": "Commit",
+                    "message": "\"refactor: isArray\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on Oct 2017?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(i:Issue)\nWHERE c.committedDate >= '2017-10-01T00:00:00Z' AND c.committedDate < '2017-11-01T00:00:00Z'\nWITH c\nMATCH (c)-[:introduced]->(bugIssue:Issue)\nWITH COUNT(DISTINCT c) AS bugIntroducingFixingCommits, COUNT(DISTINCT bugIssue) AS introducedBugs\nMATCH (fc:Commit)-[:fixed]->(:Issue)\nWHERE fc.committedDate >= '2017-10-01T00:00:00Z' AND fc.committedDate < '2017-11-01T00:00:00Z'\nWITH bugIntroducingFixingCommits, introducedBugs, COUNT(DISTINCT fc) AS totalFixingCommits\nRETURN (bugIntroducingFixingCommits * 100.0 / totalFixingCommits) AS percentageBugIntroducingFixingCommits,\n       introducedBugs AS totalIntroducedBugs",
+        "result": [
+            {
+                "percentageBugIntroducingFixingCommits": 18.75,
+                "totalIntroducedBugs": 7
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on Oct 2017?",
+        "response": "",
+        "query": "MATCH (c:Commit)-[:fixed]->(:Issue)\nWHERE c.committedDate >= '2017-10-01T00:00:00Z' AND c.committedDate < '2017-11-01T00:00:00Z'\nAND EXISTS((c)-[:introduced]->(:Issue))\nRETURN COUNT(DISTINCT c) AS fixingCommitsCausingBugs",
+        "result": [
+            {
+                "fixingCommitsCausingBugs": 6
+            }
+        ],
+        "iteration": 0
+    }
+]

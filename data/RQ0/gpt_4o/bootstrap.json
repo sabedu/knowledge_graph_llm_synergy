@@ -1,0 +1,560 @@
+[
+    {
+        "question": "how many commits happened in last month?",
+        "response": "There have been 16 commits in the last month.",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2024-07-26T19:38:09Z\"\nRETURN count(c) AS commitCount\n",
+        "result": [
+            {
+                "commitCount": 16
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what is the latest commit?",
+        "response": "The latest commit is \"Build(deps-dev): Bump hugo-bin from 0.127.0 to 0.129.1 (#40723)\". This commit updated the dependency hugo-bin from version 0.127.0 to 0.129.1. It was committed on August 13, 2024, at 12:53:44 UTC. The commit involved 5 additions, 6 deletions, and changed 2 files. There were no comments on this commit. The commit ID is 048f56f51460df75e92a2f7b472e1c56baeb68f7. The commit message includes details about the update and links to the release notes and commits for the updated dependency.",
+        "query": "cypher\nMATCH (c:Commit)\nRETURN c\nORDER BY c.committedDate DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 5,
+                    "deletions": 6,
+                    "committedDate": "2024-08-13T12:53:44Z",
+                    "changedFiles": 2,
+                    "commentsCount": 0,
+                    "id": "048f56f51460df75e92a2f7b472e1c56baeb68f7",
+                    "type": "Commit",
+                    "message": "\"Build(deps-dev): Bump hugo-bin from 0.127.0 to 0.129.1 (#40723)\n\nBumps [hugo-bin](https://github.com/fenneclab/hugo-bin) from 0.127.0 to 0.129.1.\r\n- [Release notes](https://github.com/fenneclab/hugo-bin/releases)\r\n- [Commits](https://github.com/fenneclab/hugo-bin/compare/v0.127.0...v0.129.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: hugo-bin\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "can you tell me the details of the commits between May 27th 2018 and May 31st 2018?",
+        "response": "Sure, here are the details of the commits made between May 27th, 2018, and May 31st, 2018:\n\n1. **Commit ID:** e3084c3842809ca83aaaba7c8f53ea2b0ffabe0a\n   - **Committed Date:** 2018-05-31T16:36:50Z\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"Changed Node.js download page (#26638)\\n\\nLink to the more user-friendly Node download page (rather than just the raw directory view)\"\n\n2. **Commit ID:** e163d18b12f862845e520b6fe789e241f2c66561\n   - **Committed Date:** 2018-05-31T07:02:14Z\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"Fix inline labels with a custom select (#26615)\\n\\nAdd an sr-only class to the label on inline labels with a custom select\"\n\n3. **Commit ID:** 89a47c98b937a0c85a4701e8343f33ecdfcdff5c\n   - **Committed Date:** 2018-05-31T06:43:12Z\n   - **Additions:** 1\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"https link to editorconfig.org\"\n\n4. **Commit ID:** 976aad0059a22ec1251646a1b4a9f3454c7aed64\n   - **Committed Date:** 2018-05-27T08:44:29Z\n   - **Additions:** 0\n   - **Deletions:** 28\n   - **Changed Files:** 4\n   - **Comments Count:** 0\n   - **Message:** \"Remove the unused docs upload preview stuff. (#26599)\"\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate >= \"2018-05-27T00:00:00Z\" AND c.committedDate <= \"2018-05-31T23:59:59Z\"\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-31T16:36:50Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "e3084c3842809ca83aaaba7c8f53ea2b0ffabe0a",
+                    "type": "Commit",
+                    "message": "\"Changed Node.js download page (#26638)\n\nLink to the more user-friendly Node download page (rather than just the raw directory view)\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-31T07:02:14Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "e163d18b12f862845e520b6fe789e241f2c66561",
+                    "type": "Commit",
+                    "message": "\"Fix inline labels with a custom select (#26615)\n\nAdd an sr-only class to the label on inline labels with a custom select\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 1,
+                    "committedDate": "2018-05-31T06:43:12Z",
+                    "deletions": 1,
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "89a47c98b937a0c85a4701e8343f33ecdfcdff5c",
+                    "type": "Commit",
+                    "message": "\"https link to editorconfig.org\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 0,
+                    "committedDate": "2018-05-27T08:44:29Z",
+                    "deletions": 28,
+                    "changedFiles": 4,
+                    "commentsCount": 0,
+                    "id": "976aad0059a22ec1251646a1b4a9f3454c7aed64",
+                    "type": "Commit",
+                    "message": "\"Remove the unused docs upload preview stuff. (#26599)\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "return a commit message on July 31?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)\nWHERE c.committedDate =~ '2024-07-31T.*'\nRETURN c.message\n",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "show me the changes for bootstrap-grid.scss file?",
+        "response": "Here are the changes for the `bootstrap-grid.scss` file:\n\n1. **Date:** 2023-03-10T16:45:12Z\n   - **Additions:** 0\n   - **Deletions:** 1\n   - **Changed Files:** 1\n   - **Comments Count:** 0\n   - **Message:** \"Remove useless import\"\n\n2. **Date:** 2023-01-12T05:06:18Z\n   - **Additions:** 52\n   - **Deletions:** 26\n   - **Changed Files:** 4\n   - **Comments Count:** 0\n   - **Message:** \"Add theme maps specific to dark mode (#37843)\\n\\n* Add theme maps specific to dark mode\\n\\n* Fix CSS building\\n\\n* Fix other failing test\\n\\nCo-authored-by: Mark Otto <markdotto@gmail.com>\"\n\n3. **Date:** 2023-01-11T18:01:11Z\n   - **Additions:** 8\n   - **Deletions:** 10\n   - **Changed Files:** 4\n   - **Comments Count:** 0\n   - **Message:** \"Reduce bootstrap-grid.css content\"\n\n4. **Date:** 2022-11-29T06:30:26Z\n   - **Additions:** 1973\n   - **Deletions:** 421\n   - **Changed Files:** 91\n   - **Comments Count:** 0\n   - **Message:** \"Add dark mode support (#35857)\\n\\n* Add dark mode to docs\\n\\n* Minor fix: missing space indentation\\n\\n* Minor fix: revert utilities/z-index added-in modification\\n\\n* Remove prev: and next: from doc because extracted to another PR\\n\\n* Use .bg-body-tertiary in all Utilities > Overflow examples\\n\\n* fix example\\n\\n* Fix up spacing examples\\n\\n* Update box-shadow Sass variables and utilities to auto-adjust to color modes\\n\\n* Remove unused docs class\\n\\n* Refactor form styles to use CSS variable for background images on .form-check and .form-switch\\n\\n* Fix docs selector\\n\\n* Rename shortcut for clarity\\n\\n* Heading consistency\\n\\n* Reintroduce missing 4th grid item in Utilities > Spacing example\\n\\n* Fix bundlewatch\\n\\n* .bd-callout* rendering is OK so removing comments in the code\\n\\n* Update scss/_utilities.scss\\n\\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\\n\\n* Fix gutters example styling\\n\\n* Fix text colors on background utils docs\\n\\n* redesign and fix up position marker example, which doesnt show nicely in darkmode but at least isnt broken\\n\\n* fix some color utils examples\\n\\n* Deprecate mixin notice\\n\\n* Deprecate notice for list-group-item-variant() mixin\\n\\n* Revamp new link CSS vars\\n\\n* Use map-keys in some each Sass files\\n\\n* Remove list-group-item-variant mixin ref in sass loop desc\\n\\n* Display CSS vars scoped to our built-in dark mode\\n\\n* Revert previous commit\\n\\n* Fix list group variant link\\n\\n* Fix typo\\n\\n* Remove imports of alert/list-group mixins in scss/_mixins.scss\\n\\n* Small formatting + comments removal in scss/_content.scss\\n\\n* Fix alert links colors\\n\\n* fix dropdown border-radius mixin\\n\\n* fix link color and underline again, this time using CSS var override for color var and fallback value for the underline\\n\\n* fix colors on docs navbar for dark mode\\n\\n* remove two changes\\n\\n* missing ref\\n\\n* another link underline fix, just use sass vars for link decoration for now\\n\\n* missing color bg docs, plus move dropdown override to scss\\n\\n* more changes from review\\n\\n* fix some examples, drop unused docs navbar styles, update docs navbar color mode to use mixin\\n\\n* Few fixes around type\\n\\n- Restored CSS variable for color on headings, this time with a fallback value\\n- In conjunction, restored and wrapped the default CSS var with a null value check\\n- Split headings and paragraphs docs in Reboot, elaborated on them\\n\\n* Restyle custom details > summary element in docs\\n\\n* Rewrite some migration docs\\n\\n* fix form checks\\n\\n* Fix up some navbar styling, tweak docs callout\\n\\n* Fix select images, mostly for validation styling\\n\\n* Clean up some migration notes, document some new form control CSS vars, mention new variables-dark in sass docs\\n\\n* Update site/content/docs/5.2/components/scrollspy.md\\n\\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\\n\\n* Apply suggestions from code review\\n\\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\\n\\n* mention form control css vars in migration guide\\n\\n* Tweak grid and flex docs background examples\\n\\n* clarify some docs\\n\\n* fix some more things\\n\\nCo-authored-by: Julien D\u00e9ramond <juderamond@gmail.com>\\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\"\n\n5. **Date:** 2022-07-11T23:36:12Z\n   - **Additions:** 18\n   - **Deletions:** 25\n   - **Changed Files:** 5\n   - **Comments Count:** 0\n   - **Message:** \"Add a banner mixin, helping future releases and maintenance (#36178)\\n\\n* Add a banner mixin, helping future releases and maintenance\\n\\n* Update scss/bootstrap-reboot.scss\\n\\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\\n\\n* Apply suggestions from code review\\n\\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\\nCo-authored-by: Mark Otto <markd.otto@gmail.com>\"\n\n6. **Date:** 2022-05-13T16:44:01Z\n   - **Additions:** 85\n   - **Deletions:** 84\n   - **Changed Files:** 313\n   - **Comments Count:** 0\n   - **Message:** \"Prepare v5.2.0-beta1\"\n\n7. **Date:** 2022-01-03T13:03:42Z\n   - **Additions:** 26\n   - **Deletions:** 26\n   - **Changed Files:** 15\n   - **Comments Count:** 0\n   - **Message:** \"Bump copyright year to 2022 (#35639)\"\n\n8. **Date:** 2021-11-15T11:03:48Z\n   - **Additions:** 106\n   - **Deletions:** 48\n   - **Changed Files:** 10\n   - **Comments Count:** 0\n   - **Message:** \"Move reassigned Sass maps for colors to another stylesheet (#34942)\"\n\n9. **Date:** 2021-10-09T15:28:28Z\n   - **Additions:** 250\n   - **Deletions:** 253\n   - **Changed Files:** 114\n   - **Comments Count:** 0\n   - **Message:** \"Merge remote-tracking branch remotes/origin/v513\"\n\n10. **Date:** 2021-10-09T06:43:19Z\n    - **Additions:** 250\n    - **Deletions:** 252\n    - **Changed Files:** 113\n    - **Comments Count:** 0\n    - **Message:** \"Bump version to 5.1.3.\"",
+        "query": "cypher\nMATCH (f:File {name: 'bootstrap-grid.scss'})<-[:changed]-(c:Commit)\nRETURN c.additions, c.deletions, c.changedFiles, c.commentsCount, c.message, c.committedDate\n",
+        "result": [
+            {
+                "c.additions": 0,
+                "c.deletions": 1,
+                "c.changedFiles": 1,
+                "c.commentsCount": 0,
+                "c.message": "\"Remove useless import\"",
+                "c.committedDate": "2023-03-10T16:45:12Z"
+            },
+            {
+                "c.additions": 52,
+                "c.deletions": 26,
+                "c.changedFiles": 4,
+                "c.commentsCount": 0,
+                "c.message": "\"Add theme maps specific to dark mode (#37843)\n\n* Add theme maps specific to dark mode\r\n\r\n* Fix CSS building\r\n\r\n* Fix other failing test\r\n\r\nCo-authored-by: Mark Otto <markdotto@gmail.com>\"",
+                "c.committedDate": "2023-01-12T05:06:18Z"
+            },
+            {
+                "c.additions": 8,
+                "c.deletions": 10,
+                "c.changedFiles": 4,
+                "c.commentsCount": 0,
+                "c.message": "\"Reduce bootstrap-grid.css content\"",
+                "c.committedDate": "2023-01-11T18:01:11Z"
+            },
+            {
+                "c.additions": 1973,
+                "c.deletions": 421,
+                "c.changedFiles": 91,
+                "c.commentsCount": 0,
+                "c.message": "\"Add dark mode support (#35857)\n\n* Add dark mode to docs\r\n\r\n* Minor fix: missing space indentation\r\n\r\n* Minor fix: revert utilities/z-index added-in modification\r\n\r\n* Remove prev: and next: from doc because extracted to another PR\r\n\r\n* Use .bg-body-tertiary in all Utilities > Overflow examples\r\n\r\n* fix example\r\n\r\n* Fix up spacing examples\r\n\r\n* Update box-shadow Sass variables and utilities to auto-adjust to color modes\r\n\r\n* Remove unused docs class\r\n\r\n* Refactor form styles to use CSS variable for background images on .form-check and .form-switch\r\n\r\n* Fix docs selector\r\n\r\n* Rename shortcut for clarity\r\n\r\n* Heading consistency\r\n\r\n* Reintroduce missing 4th grid item in Utilities > Spacing example\r\n\r\n* Fix bundlewatch\r\n\r\n* .bd-callout* rendering is OK so removing comments in the code\r\n\r\n* Update scss/_utilities.scss\r\n\r\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\r\n\r\n* Fix gutters example styling\r\n\r\n* Fix text colors on background utils docs\r\n\r\n* redesign and fix up position marker example, which doesnt show nicely in darkmode but at least isnt broken\r\n\r\n* fix some color utils examples\r\n\r\n* Deprecate mixin notice\r\n\r\n* Deprecate notice for list-group-item-variant() mixin\r\n\r\n* Revamp new link CSS vars\r\n\r\n* Use map-keys in some each Sass files\r\n\r\n* Remove list-group-item-variant mixin ref in sass loop desc\r\n\r\n* Display CSS vars scoped to our built-in dark mode\r\n\r\n* Revert previous commit\r\n\r\n* Fix list group variant link\r\n\r\n* Fix typo\r\n\r\n* Remove imports of alert/list-group mixins in scss/_mixins.scss\r\n\r\n* Small formatting + comments removal in scss/_content.scss\r\n\r\n* Fix alert links colors\r\n\r\n* fix dropdown border-radius mixin\r\n\r\n* fix link color and underline again, this time using CSS var override for color var and fallback value for the underline\r\n\r\n* fix colors on docs navbar for dark mode\r\n\r\n* remove two changes\r\n\r\n* missing ref\r\n\r\n* another link underline fix, just use sass vars for link decoration for now\r\n\r\n* missing color bg docs, plus move dropdown override to scss\r\n\r\n* more changes from review\r\n\r\n* fix some examples, drop unused docs navbar styles, update docs navbar color mode to use mixin\r\n\r\n* Few fixes around type\r\n\r\n- Restored CSS variable for color on headings, this time with a fallback value\r\n- In conjunction, restored and wrapped the default CSS var with a null value check\r\n- Split headings and paragraphs docs in Reboot, elaborated on them\r\n\r\n* Restyle custom details > summary element in docs\r\n\r\n* Rewrite some migration docs\r\n\r\n* fix form checks\r\n\r\n* Fix up some navbar styling, tweak docs callout\r\n\r\n* Fix select images, mostly for validation styling\r\n\r\n* Clean up some migration notes, document some new form control CSS vars, mention new variables-dark in sass docs\r\n\r\n* Update site/content/docs/5.2/components/scrollspy.md\r\n\r\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\r\n\r\n* Apply suggestions from code review\r\n\r\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\r\n\r\n* mention form control css vars in migration guide\r\n\r\n* Tweak grid and flex docs background examples\r\n\r\n* clarify some docs\r\n\r\n* fix some more things\r\n\r\nCo-authored-by: Julien D\u00e9ramond <juderamond@gmail.com>\r\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\"",
+                "c.committedDate": "2022-11-29T06:30:26Z"
+            },
+            {
+                "c.additions": 18,
+                "c.deletions": 25,
+                "c.changedFiles": 5,
+                "c.commentsCount": 0,
+                "c.message": "\"Add a banner mixin, helping future releases and maintenance (#36178)\n\n* Add a banner mixin, helping future releases and maintenance\r\n\r\n* Update scss/bootstrap-reboot.scss\r\n\r\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\r\n\r\n* Apply suggestions from code review\r\n\r\nCo-authored-by: Julien D\u00e9ramond <julien.deramond@orange.com>\r\nCo-authored-by: Mark Otto <markd.otto@gmail.com>\"",
+                "c.committedDate": "2022-07-11T23:36:12Z"
+            },
+            {
+                "c.additions": 85,
+                "c.deletions": 84,
+                "c.changedFiles": 313,
+                "c.commentsCount": 0,
+                "c.message": "\"Prepare v5.2.0-beta1\"",
+                "c.committedDate": "2022-05-13T16:44:01Z"
+            },
+            {
+                "c.additions": 26,
+                "c.deletions": 26,
+                "c.changedFiles": 15,
+                "c.commentsCount": 0,
+                "c.message": "\"Bump copyright year to 2022 (#35639)\"",
+                "c.committedDate": "2022-01-03T13:03:42Z"
+            },
+            {
+                "c.additions": 106,
+                "c.deletions": 48,
+                "c.changedFiles": 10,
+                "c.commentsCount": 0,
+                "c.message": "\"Move reassigned Sass maps for colors to another stylesheet (#34942)\"",
+                "c.committedDate": "2021-11-15T11:03:48Z"
+            },
+            {
+                "c.additions": 250,
+                "c.deletions": 253,
+                "c.changedFiles": 114,
+                "c.commentsCount": 0,
+                "c.message": "\"Merge remote-tracking branch remotes/origin/v513\"",
+                "c.committedDate": "2021-10-09T15:28:28Z"
+            },
+            {
+                "c.additions": 250,
+                "c.deletions": 252,
+                "c.changedFiles": 113,
+                "c.commentsCount": 0,
+                "c.message": "\"Bump version to 5.1.3.\"",
+                "c.committedDate": "2021-10-09T06:43:19Z"
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "give me all the commits for patterns.less file?",
+        "response": "Here are all the commits for the `patterns.less` file:\n\n1. **Commit ID:** 5c1527abc560d38e695eb8d643953a83fb37da7a\n   - **Message:** \"remove unused css files and add scaffolding and hero-unit to the builder\"\n   - **Additions:** 6\n   - **Deletions:** 33\n   - **Changed Files:** 5\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-02-02T01:06:40Z\n\n2. **Commit ID:** 0bfbe5058d61ae93d82b09f1dff7eb30dc22426e\n   - **Message:** \"Merge branch 2.0-wip\\n\\nConflicts:\\n\\t.gitignore\\n\\tLICENSE\\n\\tMakefile\\n\\tbootstrap.css\\n\\tbootstrap.min.css\\n\\tdocs/assets/js/application.js\\n\\tdocs/assets/js/google-code-prettify/prettify.css\\n\\tdocs/index.html\\n\\tdocs/javascript.html\\n\\texamples/container-app.html\\n\\texamples/fluid.html\\n\\texamples/hero.html\\n\\tjs/bootstrap-alerts.js\\n\\tjs/bootstrap-dropdown.js\\n\\tjs/bootstrap-modal.js\\n\\tjs/bootstrap-popover.js\\n\\tjs/bootstrap-scrollspy.js\\n\\tjs/bootstrap-tabs.js\\n\\tjs/bootstrap-twipsy.js\\n\\tjs/tests/index.html\\n\\tjs/tests/unit/bootstrap-modal.js\\n\\tjs/tests/unit/bootstrap-popover.js\\n\\tjs/tests/unit/bootstrap-tabs.js\\n\\tlib/forms.less\\n\\tlib/mixins.less\\n\\tlib/patterns.less\\n\\tlib/scaffolding.less\\n\\tlib/tables.less\"\n   - **Additions:** 41444\n   - **Deletions:** 9539\n   - **Changed Files:** 221\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-31T21:18:34Z\n\n3. **Commit ID:** dc2deb9a1b1995bbabee91bfd579d9b466fe78f2\n   - **Message:** \"moving structure around + more work on builder...\"\n   - **Additions:** 100\n   - **Deletions:** 91\n   - **Changed Files:** 47\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-27T05:48:46Z\n\n4. **Commit ID:** e0e54d9c6cb39eae53e31117c38ceae0a08a6e0b\n   - **Message:** \"Merge branch 2.0-wip of https://github.com/twitter/bootstrap into 2.0-wip\"\n   - **Additions:** 373\n   - **Deletions:** 340\n   - **Changed Files:** 16\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-27T04:23:28Z\n\n5. **Commit ID:** 7d292f5acc82cfc53a68b1452103c2367c0d8020\n   - **Message:** \"Merge pull request #1274 from linrock/patch-2\\n\\n[2.0 wip] Bring back the hero unit css. Fixes #1185.\"\n   - **Additions:** 46\n   - **Deletions:** 21\n   - **Changed Files:** 6\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-27T00:27:50Z\n\n6. **Commit ID:** e7bc2063beb8ab1a36b5001d5847c6995b005a29\n   - **Message:** \"Merge branch 2.0-wip of github.com:twitter/bootstrap into 2.0-wip\\n\\nConflicts:\\n\\tbootstrap.css\"\n   - **Additions:** 43\n   - **Deletions:** 18\n   - **Changed Files:** 5\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-27T00:31:10Z\n\n7. **Commit ID:** ef4e3bc0f7549e327c45792884a264faab402400\n   - **Message:** \"Move hero-unit css out of pattern.less and include it. Fixes #1185.\"\n   - **Additions:** 46\n   - **Deletions:** 21\n   - **Changed Files:** 6\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-26T23:51:11Z\n\n8. **Commit ID:** 20add59de3f2b69aaa9c9b325dab20b13c75eaa1\n   - **Message:** \"breaking out patterns.less even more, removing unnecessary div from checkbox and radio lists--now just labels and inputs\"\n   - **Additions:** 2054\n   - **Deletions:** 2105\n   - **Changed Files:** 18\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-05T18:01:42Z\n\n9. **Commit ID:** 23e5fc2133dd748ba4a7df52b598a24a2915811a\n   - **Message:** \"Tweak the docs and address the new forms list of controls: radios and checkboxes are now hanging controls to wrap text properly\"\n   - **Additions:** 49\n   - **Deletions:** 25\n   - **Changed Files:** 6\n   - **Comments Count:** 0\n   - **Committed Date:** 2012-01-05T22:11:41Z\n\n10. **Commit ID:** 3237047ac30fe4905dc515258bac050cdf811426\n    - **Message:** \"Merge branch master of https://github.com/twitter/bootstrap\"\n    - **Additions:** 15\n    - **Deletions:** 6\n    - **Changed Files:** 5\n    - **Comments Count:** 0\n    - **Committed Date:** 2012-01-04T18:03:11Z",
+        "query": "cypher\nMATCH (f:File {name: 'patterns.less'})<-[:changed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 6,
+                    "deletions": 33,
+                    "committedDate": "2012-02-02T01:06:40Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "5c1527abc560d38e695eb8d643953a83fb37da7a",
+                    "type": "Commit",
+                    "message": "\"remove unused css files and add scaffolding and hero-unit to the builder\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 41444,
+                    "deletions": 9539,
+                    "committedDate": "2012-01-31T21:18:34Z",
+                    "changedFiles": 221,
+                    "commentsCount": 0,
+                    "id": "0bfbe5058d61ae93d82b09f1dff7eb30dc22426e",
+                    "type": "Commit",
+                    "message": "\"Merge branch 2.0-wip\n\nConflicts:\n\t.gitignore\n\tLICENSE\n\tMakefile\n\tbootstrap.css\n\tbootstrap.min.css\n\tdocs/assets/js/application.js\n\tdocs/assets/js/google-code-prettify/prettify.css\n\tdocs/index.html\n\tdocs/javascript.html\n\texamples/container-app.html\n\texamples/fluid.html\n\texamples/hero.html\n\tjs/bootstrap-alerts.js\n\tjs/bootstrap-dropdown.js\n\tjs/bootstrap-modal.js\n\tjs/bootstrap-popover.js\n\tjs/bootstrap-scrollspy.js\n\tjs/bootstrap-tabs.js\n\tjs/bootstrap-twipsy.js\n\tjs/tests/index.html\n\tjs/tests/unit/bootstrap-modal.js\n\tjs/tests/unit/bootstrap-popover.js\n\tjs/tests/unit/bootstrap-tabs.js\n\tlib/forms.less\n\tlib/mixins.less\n\tlib/patterns.less\n\tlib/scaffolding.less\n\tlib/tables.less\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 100,
+                    "deletions": 91,
+                    "committedDate": "2012-01-27T05:48:46Z",
+                    "changedFiles": 47,
+                    "commentsCount": 0,
+                    "id": "dc2deb9a1b1995bbabee91bfd579d9b466fe78f2",
+                    "type": "Commit",
+                    "message": "\"moving structure around + more work on builder...\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 373,
+                    "deletions": 340,
+                    "committedDate": "2012-01-27T04:23:28Z",
+                    "changedFiles": 16,
+                    "commentsCount": 0,
+                    "id": "e0e54d9c6cb39eae53e31117c38ceae0a08a6e0b",
+                    "type": "Commit",
+                    "message": "\"Merge branch 2.0-wip of https://github.com/twitter/bootstrap into 2.0-wip\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 46,
+                    "deletions": 21,
+                    "committedDate": "2012-01-27T00:27:50Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "7d292f5acc82cfc53a68b1452103c2367c0d8020",
+                    "type": "Commit",
+                    "message": "\"Merge pull request #1274 from linrock/patch-2\n\n[2.0 wip] Bring back the hero unit css. Fixes #1185.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 43,
+                    "deletions": 18,
+                    "committedDate": "2012-01-27T00:31:10Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "e7bc2063beb8ab1a36b5001d5847c6995b005a29",
+                    "type": "Commit",
+                    "message": "\"Merge branch 2.0-wip of github.com:twitter/bootstrap into 2.0-wip\n\nConflicts:\n\tbootstrap.css\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 46,
+                    "deletions": 21,
+                    "committedDate": "2012-01-26T23:51:11Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "ef4e3bc0f7549e327c45792884a264faab402400",
+                    "type": "Commit",
+                    "message": "\"Move hero-unit css out of pattern.less and include it. Fixes #1185.\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 2054,
+                    "deletions": 2105,
+                    "committedDate": "2012-01-05T18:01:42Z",
+                    "changedFiles": 18,
+                    "commentsCount": 0,
+                    "id": "20add59de3f2b69aaa9c9b325dab20b13c75eaa1",
+                    "type": "Commit",
+                    "message": "\"breaking out patterns.less even more, removing unnecessary div from checkbox and radio lists--now just labels and inputs\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 49,
+                    "deletions": 25,
+                    "committedDate": "2012-01-05T22:11:41Z",
+                    "changedFiles": 6,
+                    "commentsCount": 0,
+                    "id": "23e5fc2133dd748ba4a7df52b598a24a2915811a",
+                    "type": "Commit",
+                    "message": "\"Tweak the docs and address the new forms list of controls: radios and checkboxes are now hanging controls to wrap text properly\""
+                }
+            },
+            {
+                "c": {
+                    "additions": 15,
+                    "deletions": 6,
+                    "committedDate": "2012-01-04T18:03:11Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "3237047ac30fe4905dc515258bac050cdf811426",
+                    "type": "Commit",
+                    "message": "\"Merge branch master of https://github.com/twitter/bootstrap\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that had the most unfixed bugs?",
+        "response": "The developer with the most unfixed bugs is XhmikosR, with a total of 10 unfixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:creates]->(i:Issue)-[:belongs_to]->(r:Repository)\nWHERE i.state <> 'closed'\nRETURN u.name AS developer, COUNT(i) AS unfixed_bugs\nORDER BY unfixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "XhmikosR",
+                "unfixed_bugs": 10
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the developers that fixed the most bugs in bootstrap-grid.scss?",
+        "response": "The developer who fixed the most bugs in `bootstrap-grid.scss` is Patrick H. Lauke, with a total of 1 bug fixed.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"bootstrap-grid.scss\"})\nRETURN u.name AS developer, COUNT(i) AS bugs_fixed\nORDER BY bugs_fixed DESC\n",
+        "result": [
+            {
+                "developer": "Patrick H. Lauke",
+                "bugs_fixed": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "who did most fixed bugs in browser-bugs.yml?",
+        "response": "Chris Rebert fixed the most bugs in \"browser-bugs.yml,\" with a total of 5 fixed bugs.",
+        "query": "cypher\nMATCH (u:User)-[:author]->(c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File {name: \"browser-bugs.yml\"})\nRETURN u.name AS user, COUNT(i) AS fixed_bugs\nORDER BY fixed_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "user": "Chris Rebert",
+                "fixed_bugs": 5
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the files that introduce the most bugs?",
+        "response": "The file that introduces the most bugs is `browser-bugs.yml`, with a total of 10 bugs.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(*) AS bug_count\nORDER BY bug_count DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "f.name": "browser-bugs.yml",
+                "bug_count": 10
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "What are the most buggy files?",
+        "response": "The most buggy files are:\n\n1. `browser-bugs.yml` with 6 bugs.\n2. `_reboot.scss`, `_breakpoints.scss`, `overview.md`, `tables.md`, `offcanvas.css`, `bootstrap-grid.scss`, `_variables.scss`, `browsers-devices.md`, and `_modal.scss`, each with 1 bug.\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue)-[:impacted]->(f:File)\nRETURN f.name, COUNT(i) AS bug_count\nORDER BY bug_count DESC\nLIMIT 10\n",
+        "result": [
+            {
+                "f.name": "browser-bugs.yml",
+                "bug_count": 6
+            },
+            {
+                "f.name": "_reboot.scss",
+                "bug_count": 1
+            },
+            {
+                "f.name": "_breakpoints.scss",
+                "bug_count": 1
+            },
+            {
+                "f.name": "overview.md",
+                "bug_count": 1
+            },
+            {
+                "f.name": "tables.md",
+                "bug_count": 1
+            },
+            {
+                "f.name": "offcanvas.css",
+                "bug_count": 1
+            },
+            {
+                "f.name": "bootstrap-grid.scss",
+                "bug_count": 1
+            },
+            {
+                "f.name": "_variables.scss",
+                "bug_count": 1
+            },
+            {
+                "f.name": "browsers-devices.md",
+                "bug_count": 1
+            },
+            {
+                "f.name": "_modal.scss",
+                "bug_count": 1
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the buggy commits that happened on March 12, 2018?",
+        "response": "The buggy commit that happened on March 12, 2018, is identified by the ID `27f553c9651dbe81a8aaf821aa2bf15670d9adb8`. The commit message is: \"Replace 'loose' HEX values with their respective variables (#25672)\". This commit had 20 additions, 19 deletions, involved changes to 9 files, and received 0 comments.",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(:Issue)\nWHERE c.committedDate =~ '2018-03-12T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 20,
+                    "deletions": 19,
+                    "committedDate": "2018-03-12T17:19:37Z",
+                    "changedFiles": 9,
+                    "commentsCount": 0,
+                    "id": "27f553c9651dbe81a8aaf821aa2bf15670d9adb8",
+                    "type": "Commit",
+                    "message": "\"Replace \"loose\" HEX values with their respective variables (#25672)\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what commits were buggy on Dec 26, 2017?",
+        "response": "The following commit was identified as introducing an issue on December 26, 2017:\n\n- Commit ID: 2435afe4e6f329ca567759f7d00890f6d523b35e\n- Committed Date: 2017-12-26T21:18:19Z\n- Message: \"Move from h4s and misc to h5s so headings from example snippets dont show in our table of contents\"\n- Additions: 52\n- Deletions: 52\n- Changed Files: 9\n- Comments Count: 0\n\nCan I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:introduced]->(i:Issue)\nWHERE c.committedDate =~ '2017-12-26T.*'\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 52,
+                    "deletions": 52,
+                    "committedDate": "2017-12-26T21:18:19Z",
+                    "changedFiles": 9,
+                    "commentsCount": 0,
+                    "id": "2435afe4e6f329ca567759f7d00890f6d523b35e",
+                    "type": "Commit",
+                    "message": "\"Move from h4s and misc to h5s so headings from example snippets dont show in our table of contents\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "commit(s) that fixed the bug ticket 11266?",
+        "response": "The commit that fixed the bug ticket 11266 has the ID \"4576dbae95e74bd1b2cfa849757b9774bcde7ade\". The commit message is \"Filed http://openradar.appspot.com/19434878\\n\\nRefs #11266, #13098\". It was committed on 2015-01-10T03:04:42Z and involved 1 addition, 1 deletion, and 1 changed file. There were no comments on this commit.",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(i:Issue {number: 11266})\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 1,
+                    "deletions": 1,
+                    "committedDate": "2015-01-10T03:04:42Z",
+                    "changedFiles": 1,
+                    "commentsCount": 0,
+                    "id": "4576dbae95e74bd1b2cfa849757b9774bcde7ade",
+                    "type": "Commit",
+                    "message": "\"Filed http://openradar.appspot.com/19434878\n\nRefs #11266, #13098\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which commit fixed the bug ticket 25166?",
+        "response": "The commit that fixed the bug ticket 25166 is identified by the ID `7044ea82c17853c4d6d3483114b860ce4a5cf7b1`. The commit message is:\n\n\"Patch fractional viewport widths to work around Safari rounding bug (#25177)\n\nIncludes simplifying the prose in `tables.md` and adding the bug to the list of browser bugs.\n\nCloses https://github.com/twbs/bootstrap/issues/25166\"\n\nThe commit was made on January 3, 2018, and involved 26 additions, 14 deletions, and changes to 5 files.",
+        "query": "cypher\nMATCH (i:Issue {number: 25166})<-[:fixed]-(c:Commit)\nRETURN c\n",
+        "result": [
+            {
+                "c": {
+                    "additions": 26,
+                    "deletions": 14,
+                    "committedDate": "2018-01-03T07:42:03Z",
+                    "changedFiles": 5,
+                    "commentsCount": 0,
+                    "id": "7044ea82c17853c4d6d3483114b860ce4a5cf7b1",
+                    "type": "Commit",
+                    "message": "\"Patch fractional viewport widths to work around Safari rounding bug (#25177)\n\nIncludes simplifying the prose in `tables.md` and adding the bug to the list of browser bugs.\r\n\r\nCloses https://github.com/twbs/bootstrap/issues/25166\""
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the bug(s) that were introduced because of commit hash 9a3d72f659669e20ccff8baa4426fe0f24413a39?",
+        "response": "The bug introduced because of commit hash 9a3d72f659669e20ccff8baa4426fe0f24413a39 is titled \"iPad modal `<select>` bug\". The issue number is 14975, and it was created on 2014-11-03. The issue describes a problem where, when popping up a modal on a scrolled-down page and then opening a `<select>` within the modal, the page jumps up, causing misalignment of elements within the modal. This issue was closed on 2015-10-13. More details can be found at the URL: [https://github.com/twbs/bootstrap/issues/14975](https://github.com/twbs/bootstrap/issues/14975).",
+        "query": "cypher\nMATCH (c:Commit {id: '9a3d72f659669e20ccff8baa4426fe0f24413a39'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 14975,
+                    "closed_at": "2015-10-13T02:13:32Z",
+                    "created_at": "2014-11-03T10:05:30Z",
+                    "id": 14975,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"When popping up a modal on a page that is scrolled down, then opening a `<select>` within the modal, the page jumps up. All elements on the modal are shifted in a way that they no longer line up with the actual visuals. Its tough to explain, so I put together a demo:\n\nhttps://github.com/CaptSaltyJack/bootstrap-select-bug\n\nOnce its broken and the modal button and dropdown no longer work, try tapping slightly above them. Youll see what I mean about the touch areas being displaced. Once you scroll to the top of the page, the modal elements work again as expected.\n\"",
+                    "title": "\"iPad modal <select> bug\"",
+                    "url": "https://github.com/twbs/bootstrap/issues/14975"
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "what are the bugs caused by commit f0c82ab4ec8ca136dad1b50bdef7515090be4f14?",
+        "response": "The commit `f0c82ab4ec8ca136dad1b50bdef7515090be4f14` introduced the bug described in Issue #25195. The issue is titled \"Amend the 'sticky `:hover`/`:focus`' section, deprecate `hover` mixin\" and details problems with the behavior of `:hover` styles on touchscreens, particularly on iOS/Safari. The issue highlights that `:hover` styles remain applied under certain conditions on these platforms, causing other styles like `:focus` and `:active` to be ignored. The workaround mentioned in the documentation is currently non-functional, and the issue suggests removing the mention of it and properly deprecating the `hover` mixin. The full details of the issue can be found [here](https://github.com/twbs/bootstrap/issues/25195).",
+        "query": "cypher\nMATCH (c:Commit {id: 'f0c82ab4ec8ca136dad1b50bdef7515090be4f14'})-[:introduced]->(i:Issue)\nRETURN i\n",
+        "result": [
+            {
+                "i": {
+                    "number": 25195,
+                    "closed_at": "2018-01-11T10:12:16Z",
+                    "created_at": "2018-01-04T01:12:01Z",
+                    "id": 25195,
+                    "state": "closed",
+                    "type": "Issue",
+                    "body": "\"On https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#sticky-hoverfocus-on-mobile it says\r\n\r\n> Even though real hovering isn\u2019t possible on most touchscreens, most mobile browsers emulate hovering support and make `:hover` \u201csticky\u201d. In other words, `:hover` styles start applying after tapping an element and only stop applying after the user taps some other element.\r\n\r\nThis is not completely correct. Currently, it seems that only iOS/Safari (and other iOS browsers using WebKit) has issues with sticky `:hover` under certain conditions. Seems limited to links, buttons. Here, `:hover` style remains applied, and other styles like `:focus` and `:active` are ignored. `:focus` does \"stick\" in all mobile browsers, even in iOS for controls like \"faked\" `<span ...>` based buttons or similar.\r\n\r\nThe prose itself, if we want to keep it, would need some rejigging, making it clear that `:hover` stickyness is an iOS/Safari only problem.\r\n\r\nThe workaround mentioned - relating to the `hover` mixin, is currently commented out and non-working. We should just remove mention of it (perhaps include some other advice, or just that were not doing anything special here to prevent this sticking at this stage). And deprecate the mixin properly (@mdo mentioned \"`@include hover { }` just returns a normal `:hover`?\").\r\n\r\nRelated: https://github.com/twbs/bootstrap/issues/25182\r\n\r\nHoping that for 4.1 we can experiment with using the upcoming `:focus-visible` https://drafts.csswg.org/selectors-4/#the-focusring-pseudo pseudo-class with polyfill, to fix sticky `:focus` as a result of touch (and mouse). And that hopefully we can find an iOS/Safari specific hack or workaround to fix the sticky `:hover` that occurs in certain situations just on this platform.\"",
+                    "title": "\"Amend the \"sticky `:hover`/`:focus`\" section, deprecate `hover` mixin\"",
+                    "url": "https://github.com/twbs/bootstrap/issues/25195"
+                }
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "Determine the percentage of the fixing commits that introduced bugs on December 2013?",
+        "response": "I don't know. Can I help with anything else?",
+        "query": "",
+        "result": [],
+        "iteration": 0
+    },
+    {
+        "question": "How many fixing commits caused bugs on December 2013?",
+        "response": "There were no fixing commits that caused bugs in December 2013. Can I help with anything else?",
+        "query": "cypher\nMATCH (c:Commit)-[:fixed]->(:Issue)-[:introduced]->(:Commit {committedDate: \"2013-12-.*\"})\nRETURN count(c) AS fixingCommits\n",
+        "result": [
+            {
+                "fixingCommits": 0
+            }
+        ],
+        "iteration": 0
+    },
+    {
+        "question": "which developer has most number of bugs yet to be fixed?",
+        "response": "The developer with the most number of bugs yet to be fixed is XhmikosR, with 12 open bugs.",
+        "query": "cypher\nMATCH (u:User)-[:creates]->(i:Issue {state: 'open'})\nRETURN u.name AS developer, COUNT(i) AS open_bugs\nORDER BY open_bugs DESC\nLIMIT 1\n",
+        "result": [
+            {
+                "developer": "XhmikosR",
+                "open_bugs": 12
+            }
+        ],
+        "iteration": 0
+    }
+]
